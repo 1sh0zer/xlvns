@@ -773,6 +773,7 @@ lvnsimage_box(LvnsImage *image, int x, int y, int w, int h, int idx)
     lvnsimage_hline(image, x, y+h-1, w, idx);
 }
 
+void
 lvnsimage_set_sepia(LvnsImage *img)
 {
     int i;

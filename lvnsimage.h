@@ -88,4 +88,6 @@ void lvnsimage_copy_scale(LvnsImage *src, int sx, int sy, int sw, int sh,
 
 void lvnsimage_box(LvnsImage *image, int x, int y, int w, int h, int idx);
 
+void lvnsimage_set_sepia(LvnsImage *img);
+
 #endif
