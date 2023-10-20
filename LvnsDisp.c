@@ -14,6 +14,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "Lvns.h"
 #include "LvnsEffect.h"
 
