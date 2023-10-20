@@ -551,8 +551,8 @@ static LvnsSystemState kizuato_state_base = {
 void
 KizuatoInitialize(Lvns *lvns)
 {
-    KizuatoState *state = (KizuatoState*)lvns->system_state 
-		= malloc(sizeof(KizuatoState));
+    lvns->system_state = malloc(sizeof(KizuatoState));
+    KizuatoState *state = (KizuatoState*)lvns->system_state;
     state->state = kizuato_state_base;
     state->vram_char = lvnsimage_new(WIDTH, HEIGHT, 0, 0);
     KizuatoSioriInit(lvns);

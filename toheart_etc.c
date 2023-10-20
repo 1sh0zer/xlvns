@@ -441,8 +441,8 @@ static LvnsSystemState toheart_state_base = {
 
 void ToHeartInitialize(Lvns *lvns)
 {
-    ToHeartState *state = 
-        (ToHeartState *)lvns->system_state = malloc(sizeof(ToHeartState));
+    lvns->system_state = malloc(sizeof(ToHeartState));
+    ToHeartState *state = (ToHeartState *)lvns->system_state;
     state->state = toheart_state_base;
 
     state->sakura_num = 0;

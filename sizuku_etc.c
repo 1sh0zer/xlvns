@@ -643,8 +643,8 @@ static LvnsSystemState sizuku_state_base = {
 void
 SizukuInitialize(Lvns *lvns)
 {
-    SizukuState *state = (SizukuState*)lvns->system_state 
-		= malloc(sizeof(SizukuState));
+    lvns->system_state = malloc(sizeof(SizukuState));
+    SizukuState *state = (SizukuState*)lvns->system_state;
     state->state     = sizuku_state_base;
     state->vram_char = lvnsimage_new(WIDTH, HEIGHT, 0, 0);
     SizukuSioriInit(lvns);
