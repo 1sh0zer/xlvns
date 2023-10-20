@@ -10,7 +10,7 @@
  */
 
 /*
- * ToHeart •®•Û•«•£•Û•∞
+ * ToHeart „Ç®„É≥„Éá„Ç£„É≥„Ç∞
  */
 
 #include <stdio.h>
@@ -113,7 +113,7 @@ static int
 white(Lvns *lvns, LvnsScript *scr, 
       void *param1, void *param2)
 {
-    /*  ∏ª˙§Úøø§√«Ú§À°ƒ */
+    /* ÊñáÂ≠ó„ÇíÁúü„Å£ÁôΩ„Å´‚Ä¶ */
     lvns->vram->palette[EDCOL][0] = 255;
     lvns->vram->palette[EDCOL][1] = 255;
     lvns->vram->palette[EDCOL][2] = 255;
@@ -176,7 +176,7 @@ DispMoji(Lvns *lvns, LvnsScript *scr,
 {
     int al = 16 - scr->state;
 
-    /*  ∏ª˙§Àøß§Ú¿ﬂƒÍ°ƒ */
+    /* ÊñáÂ≠ó„Å´Ëâ≤„ÇíË®≠ÂÆö‚Ä¶ */
     lvns->vram->palette[EDCOL][0] = SCR(255,al);
     lvns->vram->palette[EDCOL][1] = SCR(  8,al);
     lvns->vram->palette[EDCOL][2] = SCR(127,al);
@@ -209,7 +209,7 @@ DispMoji(Lvns *lvns, LvnsScript *scr,
       }
     }
 #endif
-    /* •—•Ï•√•»»ø±« */
+    /* „Éë„É¨„ÉÉ„ÉàÂèçÊò† */
     lvns->setPalette(lvns);
     lvns->drawWindow(lvns);
     lvns->flushWindow(lvns);
@@ -224,7 +224,7 @@ DispMoji(Lvns *lvns, LvnsScript *scr,
 #define BASETIME 19000
 #define CYCLE    11000 
 
-/* ToHeart •®•Û•«•£•Û•∞•π•Ø•Í•◊•» */
+/* ToHeart „Ç®„É≥„Éá„Ç£„É≥„Ç∞„Çπ„ÇØ„É™„Éó„Éà */
 static LvnsScriptData eddata[] = {
 
     { LVNS_SCRIPT_MUSIC, (void*)35 },
@@ -236,20 +236,20 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_FUNC, white },
 
 
-    /* ¥Î≤Ë */
-    { LVNS_SCRIPT_FUNC, tputs, "¥Î≤Ë", XY(50, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "π‚∂∂°°Œ∂ÃÈ", XY(54, 2) }, 
+    /* ‰ºÅÁîª */
+    { LVNS_SCRIPT_FUNC, tputs, "‰ºÅÁîª", XY(50, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÊ©ã„ÄÄÈæç‰πü", XY(54, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*0 + 3000) },
     { LVNS_SCRIPT_LOOP_FUNC, DispMoji },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*0 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* µ”À‹ */
+    /* ËÑöÊú¨ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)31 },
-    { LVNS_SCRIPT_FUNC, tputs, "µ”À‹", XY(50, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "π‚∂∂°°Œ∂ÃÈ", XY(54, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "¿ƒ°°ªÁ", XY(54, 2) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "∞™°°§‚§Í§’§ﬂ", XY(54, 3) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "ËÑöÊú¨", XY(50, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÊ©ã„ÄÄÈæç‰πü", XY(54, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Èùí„ÄÄÁ¥´", XY(54, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ëëµ„ÄÄ„ÇÇ„Çä„Åµ„Åø", XY(54, 3) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*1) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*1 + 3000) },
@@ -257,11 +257,11 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*1 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* ∏∂≤Ë */
+    /* ÂéüÁîª */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "∏∂≤Ë", XY(50, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "øÂÃµ∑Ó°°≈∞", XY(54, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "•È°º°¶£Ÿ£œ£’", XY(54, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "ÂéüÁîª", XY(50, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ê∞¥ÁÑ°Êúà„ÄÄÂæπ", XY(54, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„É©„Éº„ÉªÔºπÔºØÔºµ", XY(54, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*2) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*2 + 3000) },
@@ -269,11 +269,11 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*2 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* •∑°º•ÛπΩ¿Æ */
+    /* „Ç∑„Éº„É≥ÊßãÊàê */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)9 },
-    { LVNS_SCRIPT_FUNC, tputs, "•∑°º•ÛπΩ¿Æ", XY(32, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "π‚∂∂°°Œ∂ÃÈ°°°°øÂÃµ∑Ó°°≈∞", XY(36, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "∞°≥®Õ˝°°°°°°°°•È°º°¶£Ÿ£œ£’", XY(36, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç∑„Éº„É≥ÊßãÊàê", XY(32, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÊ©ã„ÄÄÈæç‰πü„ÄÄ„ÄÄÊ∞¥ÁÑ°Êúà„ÄÄÂæπ", XY(36, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "‰∫úÁµµÁêÜ„ÄÄ„ÄÄ„ÄÄ„ÄÄ„É©„Éº„ÉªÔºπÔºØÔºµ", XY(36, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*3) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*3 + 3000) },
@@ -281,10 +281,10 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*3 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* •◊•Ì•∞•È•‡ */
+    /* „Éó„É≠„Ç∞„É©„É† */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)10 },
-    { LVNS_SCRIPT_FUNC, tputs, "•◊•Ì•∞•È•‡", XY(30, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "£»£·£Í£È£Ì£Â°°£Œ£È£Ó£Ô£Ì£·£Â", XY(34, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Éó„É≠„Ç∞„É©„É†", XY(30, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº®ÔΩÅÔΩäÔΩâÔΩçÔΩÖ„ÄÄÔºÆÔΩâÔΩéÔΩèÔΩçÔΩÅÔΩÖ", XY(34, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*4) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*4 + 3000) },
@@ -292,12 +292,12 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*4 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* •∞•È•’•£•Ø•π */
+    /* „Ç∞„É©„Éï„Ç£„ÇØ„Çπ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)11 },
-    { LVNS_SCRIPT_FUNC, tputs, "•∞•È•’•£•Ø•π", XY(50, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "£À£≈£Œ£À£≈£Œ", XY(54, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "¿∏«»Ã¥", XY(54, 2) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "ƒªÃÓ°°¿µøÆ", XY(54, 3) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç∞„É©„Éï„Ç£„ÇØ„Çπ", XY(50, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº´Ôº•ÔºÆÔº´Ôº•ÔºÆ", XY(54, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "ÁîüÊ≥¢Â§¢", XY(54, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "È≥•Èáé„ÄÄÊ≠£‰ø°", XY(54, 3) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*5) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*5 + 3000) },
@@ -305,12 +305,12 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*5 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* •∞•È•’•£•Ø•π */
+    /* „Ç∞„É©„Éï„Ç£„ÇØ„Çπ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)12 },
-    { LVNS_SCRIPT_FUNC, tputs, "•∞•È•’•£•Ø•π", XY(47, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "§Õ§Œ§ƒ§≠§Ê§≠§∑§Ì", XY(51, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "§Ì§ﬂ§Â", XY(51, 2) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "•Ù•£°º• •π", XY(51, 3) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç∞„É©„Éï„Ç£„ÇØ„Çπ", XY(47, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Å≠„ÅÆ„Å§„Åç„ÇÜ„Åç„Åó„Çç", XY(51, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Çç„Åø„ÇÖ", XY(51, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„É¥„Ç£„Éº„Éä„Çπ", XY(51, 3) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*6) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*6 + 3000) },
@@ -318,11 +318,11 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*6 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* •∞•È•’•£•Ø•π */
+    /* „Ç∞„É©„Éï„Ç£„ÇØ„Çπ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)13 },
-    { LVNS_SCRIPT_FUNC, tputs, "•∞•È•’•£•Ø•π", XY(50, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "£ƒ£œ£⁄£¡", XY(54, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "ø∆…„", XY(54, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç∞„É©„Éï„Ç£„ÇØ„Çπ", XY(50, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº§ÔºØÔº∫Ôº°", XY(54, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ë¶™Áà∂", XY(54, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*7) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*7 + 3000) },
@@ -330,10 +330,10 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*7 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* «ÿ∑ •∞•È•’•£•Ø•π */
+    /* ËÉåÊôØ„Ç∞„É©„Éï„Ç£„ÇØ„Çπ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)14 },
-    { LVNS_SCRIPT_FUNC, tputs, "«ÿ∑ •∞•È•’•£•Ø•π", XY(50, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "ƒªÃÓ°°¿µøÆ", XY(54, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "ËÉåÊôØ„Ç∞„É©„Éï„Ç£„ÇØ„Çπ", XY(50, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "È≥•Èáé„ÄÄÊ≠£‰ø°", XY(54, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*8) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*8 + 3000) },
@@ -341,12 +341,12 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*8 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* ≤ª≥⁄ */
+    /* Èü≥Ê•Ω */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)15 },
-    { LVNS_SCRIPT_FUNC, tputs, "≤ª°°≥⁄", XY(50, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "≤º¿Ó°°ƒæ∫»", XY(54, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "√ÊæÂ°°œ¬±—", XY(54, 2) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "¿–¿Ó°°øøÃÈ", XY(54, 3) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Èü≥„ÄÄÊ•Ω", XY(50, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "‰∏ãÂ∑ù„ÄÄÁõ¥Âìâ", XY(54, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "‰∏≠‰∏ä„ÄÄÂíåËã±", XY(54, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Áü≥Â∑ù„ÄÄÁúü‰πü", XY(54, 3) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*9) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*9 + 3000) },
@@ -354,12 +354,12 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*9 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* ED•Ω•Û•∞ */
+    /* ED„ÇΩ„É≥„Ç∞ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "£≈£ƒ•Ω•Û•∞", XY(21, 0) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "∫Ó°°ªÏ°ß£Œ£≈£À£œ°°∫Ó ‘∂ °ß≤º¿Óƒæ∫»", XY(25, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "•Æ•ø°º°ß °∏∂ø¬∏„°°œø°°≤ª°ßÕ≠¬º∑Ú∞Ï", XY(25, 2) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "°°≤Œ°°°ß§¢§√§≥", XY(25, 3) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº•Ôº§„ÇΩ„É≥„Ç∞", XY(21, 0) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "‰Ωú„ÄÄË©ûÔºöÔºÆÔº•Ôº´ÔºØ„ÄÄ‰ΩúÁ∑®Êõ≤Ôºö‰∏ãÂ∑ùÁõ¥Âìâ", XY(25, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„ÇÆ„Çø„ÉºÔºöÁ¶èÂéüÁ¥≥Âêæ„ÄÄÈå≤„ÄÄÈü≥ÔºöÊúâÊùëÂÅ•‰∏Ä", XY(25, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„ÄÄÊ≠å„ÄÄÔºö„ÅÇ„Å£„Åì", XY(25, 3) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*10) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*10 + 3000) },
@@ -367,10 +367,10 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*10 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* •ø•§•»•Î•Ì•¥ */
+    /* „Çø„Ç§„Éà„É´„É≠„Ç¥ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)21 },
-    { LVNS_SCRIPT_FUNC, tputs, "•ø•§•»•Î•Ì•¥", XY(47, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "•Ø•È•’•»•ﬁ•Û", XY(51, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Çø„Ç§„Éà„É´„É≠„Ç¥", XY(47, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„ÇØ„É©„Éï„Éà„Éû„É≥", XY(51, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*11) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*11 + 3000) },
@@ -380,8 +380,8 @@ static LvnsScriptData eddata[] = {
 
     /* TEST PLAY */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)32 },
-    { LVNS_SCRIPT_FUNC, tputs, "£‘£≈£”£‘°°£–£Ã£¡£Ÿ", XY(30, 1) },  
-    { LVNS_SCRIPT_FUNC, tputs, "£¡£Ã£Ã°°£Ã£≈£¡£∆°°£”£‘£¡£∆£∆", XY(34, 2) },  
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº¥Ôº•Ôº≥Ôº¥„ÄÄÔº∞Ôº¨Ôº°Ôºπ", XY(30, 1) },  
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº°Ôº¨Ôº¨„ÄÄÔº¨Ôº•Ôº°Ôº¶„ÄÄÔº≥Ôº¥Ôº°Ôº¶Ôº¶", XY(34, 2) },  
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*12) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*12 + 3000) },
@@ -389,10 +389,10 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*12 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* ≥´»Ø */
+    /* ÈñãÁô∫ */
     { LVNS_SCRIPT_FUNC, DispSmall, (void*)17 },
-    { LVNS_SCRIPT_FUNC, tputs, "≥´°°»Ø", XY(44, 1) }, 
-    { LVNS_SCRIPT_FUNC, tputs, "£±£π£π£∑°°£Ã£≈£¡£∆", XY(48, 2) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "Èñã„ÄÄÁô∫", XY(44, 1) }, 
+    { LVNS_SCRIPT_FUNC, tputs, "ÔºëÔºôÔºôÔºó„ÄÄÔº¨Ôº•Ôº°Ôº¶", XY(48, 2) }, 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*13) },
     { LVNS_SCRIPT_WHITEIN },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*13 + 3000) },
@@ -400,7 +400,7 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*13 + 9500) },
     { LVNS_SCRIPT_WHITEOUT },
 
-    /* Leaf •Ì•¥ */
+    /* Leaf „É≠„Ç¥ */
     { LVNS_SCRIPT_FUNC, SetLogo },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(BASETIME + CYCLE*14) },
     { LVNS_SCRIPT_WHITEIN },

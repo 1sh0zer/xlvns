@@ -10,16 +10,16 @@
  */
 
 /* 
- * ¼¶ ¥·¥Ê¥ê¥ª½èÍı¥¨¥ó¥¸¥ó
+ * é›« ã‚·ãƒŠãƒªã‚ªå‡¦ç†ã‚¨ãƒ³ã‚¸ãƒ³
  */
 #include <stdio.h>
 #include <ctype.h>
 #include "sizuku.h"
 
-/* ¤¦¤Í¤¦¤Í sin_effect.h */
+/* ã†ã­ã†ã­ sin_effect.h */
 extern LvnsBackEffectInfo lvnsSinEffect;
 
-/* ÆÃ¼ì¥¨¥Õ¥§¥¯¥È¡ÖÎŞ¤Î¼¶¡×ÍÑ¥Ç¡¼¥¿ ¤½¤Î1 */
+/* ç‰¹æ®Šã‚¨ãƒ•ã‚§ã‚¯ãƒˆã€Œæ¶™ã®é›«ã€ç”¨ãƒ‡ãƒ¼ã‚¿ ãã®1 */
 static LvnsAnimationData sizuku01[] = {
     { LVNS_ANIM_IMAGE, "OP_S00.LFG", 10, 0, 160 },
     { LVNS_ANIM_IMAGE, "OP_S01.LFG", 10, 0, 160 },
@@ -62,7 +62,7 @@ static LvnsAnimationData sizuku01[] = {
     { LVNS_ANIM_NONE, NULL, 0 }
 };
 
-/* ÆÃ¼ì¥¨¥Õ¥§¥¯¥È¡ÖÎŞ¤Î¼¶¡×ÍÑ¥Ç¡¼¥¿ ¤½¤Î2 */
+/* ç‰¹æ®Šã‚¨ãƒ•ã‚§ã‚¯ãƒˆã€Œæ¶™ã®é›«ã€ç”¨ãƒ‡ãƒ¼ã‚¿ ãã®2 */
 static LvnsAnimationData sizuku02[] = {
     { LVNS_ANIM_IMAGE, "OP_S00.LFG", 10, 0, 160 },
     { LVNS_ANIM_IMAGE, "OP_S01.LFG", 10, 0, 160 },
@@ -86,7 +86,7 @@ static LvnsAnimationData sizuku02[] = {
     { LVNS_ANIM_NONE, NULL, 0 }
 };
 
-/* ¼¶ ¥¨¥Õ¥§¥¯¥ÈÂĞ±şÉ½ */
+/* é›« ã‚¨ãƒ•ã‚§ã‚¯ãƒˆå¯¾å¿œè¡¨ */
 static LvnsEffectType sizuku_effect[] = {
     LVNS_EFFECT_FADE_PALETTE,
     LVNS_EFFECT_GURUGURU,
@@ -105,7 +105,7 @@ static LvnsEffectType sizuku_effect[] = {
 };
 
 /*
- * ¥Æ¥­¥¹¥ÈÍÑ¥¨¥Õ¥§¥¯¥È¥Ñ¥é¥á¡¼¥¿ÊÑ´¹
+ * ãƒ†ã‚­ã‚¹ãƒˆç”¨ã‚¨ãƒ•ã‚§ã‚¯ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å¤‰æ›
  */
 static LvnsEffectType
 text_effect(int c1, int c2)
@@ -124,7 +124,7 @@ text_effect(int c1, int c2)
 }
 
 /*
- * bgm ¥Ñ¥é¥á¡¼¥¿ÊÑ´¹
+ * bgm ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å¤‰æ›
  */
 static int
 bgmmap(int no)
@@ -138,28 +138,28 @@ bgmmap(int no)
 }
 
 /* 
- * ¥Õ¥é¥°¥Ñ¥é¥á¡¼¥¿ÊÑ´¹
+ * ãƒ•ãƒ©ã‚°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å¤‰æ›
  */
 static int
 flagmap(int no)
 {
     switch (no) {
     case 0:
-        return 0; /* ¥¨¥ó¥Ç¥£¥ó¥°¾õÂÖµ­Ï¿(Èó½é´ü²½ÂĞ¾İ) */
+        return 0; /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°çŠ¶æ…‹è¨˜éŒ²(éåˆæœŸåŒ–å¯¾è±¡) */
     case 1:
-        return 1; /* »¨¥Õ¥é¥° */
-    case 0x40: /* ÎÜÍş»Ò¤ÈÌóÂ« */
-    case 0x41: /* ²ø¤·¤¤¿Í±Æ */
-    case 0x42: /* Éô³èÆ°¤ÇÊÑ¤ï¤Ã¤¿¤³¤È */
-    case 0x43: /* ÂÎ°é´Û¤Ç¡Ä */
-    case 0x44: /* ÎÜÍş»Ò²°¾å¡ÖÆÏ¤«¤Ê¤«¤Ã¤¿¡× */
-    case 0x45: /* ÎÜÍş»Ò TRUE  (Èó½é´ü²½ÂĞ¾İ) */
-    case 0x46: /* ÎÜÍş»Ò HAPPY (Èó½é´ü²½ÂĞ¾İ) */
-    case 0x47: /* º´¿¥¥ë¡¼¥ÈON */
-    case 0x48: /* º´¿¥ H¥·¡¼¥ó */  
-    case 0x49: /* ¤ª¤½¤é¤¯Ì¤»ÈÍÑ */
-    case 0x4a: /* ¿ğÊæ°ÜÆ°¾ì½êÀ©¸æÍÑ */
-    case 0x4b: /* ¥ª¥ë¥´¡¼¥ë¤¼¤ó¤Ş¤¤ */
+        return 1; /* é›‘ãƒ•ãƒ©ã‚° */
+    case 0x40: /* ç‘ ç’ƒå­ã¨ç´„æŸ */
+    case 0x41: /* æ€ªã—ã„äººå½± */
+    case 0x42: /* éƒ¨æ´»å‹•ã§å¤‰ã‚ã£ãŸã“ã¨ */
+    case 0x43: /* ä½“è‚²é¤¨ã§â€¦ */
+    case 0x44: /* ç‘ ç’ƒå­å±‹ä¸Šã€Œå±Šã‹ãªã‹ã£ãŸã€ */
+    case 0x45: /* ç‘ ç’ƒå­ TRUE  (éåˆæœŸåŒ–å¯¾è±¡) */
+    case 0x46: /* ç‘ ç’ƒå­ HAPPY (éåˆæœŸåŒ–å¯¾è±¡) */
+    case 0x47: /* ä½ç¹”ãƒ«ãƒ¼ãƒˆON */
+    case 0x48: /* ä½ç¹” Hã‚·ãƒ¼ãƒ³ */  
+    case 0x49: /* ãŠãã‚‰ãæœªä½¿ç”¨ */
+    case 0x4a: /* ç‘ç©‚ç§»å‹•å ´æ‰€åˆ¶å¾¡ç”¨ */
+    case 0x4b: /* ã‚ªãƒ«ã‚´ãƒ¼ãƒ«ãœã‚“ã¾ã„ */
         return 2 + no - 0x40;
     default:
         dprintf((stderr, "bad flag no:%d\n", no));
@@ -168,17 +168,17 @@ flagmap(int no)
 }
 
 /**
- * ¥·¥Ê¥ê¥ª½é´ü²½ (¥¯¥ê¥¢¾õÂÖ¥Õ¥é¥°¤ÈÌ¤¸«¾ğÊó°Ê³°¤Î½é´ü²½)
+ * ã‚·ãƒŠãƒªã‚ªåˆæœŸåŒ– (ã‚¯ãƒªã‚¢çŠ¶æ…‹ãƒ•ãƒ©ã‚°ã¨æœªè¦‹æƒ…å ±ä»¥å¤–ã®åˆæœŸåŒ–)
  */
 void
 SizukuScenarioInit(Lvns *lvns)
 {
     SizukuState *state = (SizukuState*)lvns->system_state;
 
-    /* ¥»¡¼¥Ö¾õÂÖ¾õÂÖ½é´ü²½ */
+    /* ã‚»ãƒ¼ãƒ–çŠ¶æ…‹çŠ¶æ…‹åˆæœŸåŒ– */
     LvnsInitSavePoint(lvns, &lvns->savepoint);
 
-    /* ¥·¥Ê¥ê¥ª¥Õ¥é¥°½é´ü²½ */
+    /* ã‚·ãƒŠãƒªã‚ªãƒ•ãƒ©ã‚°åˆæœŸåŒ– */
     state->flag_save[2] = 0;
     state->flag_save[3] = 0;
     state->flag_save[4] = 0;
@@ -193,7 +193,7 @@ SizukuScenarioInit(Lvns *lvns)
 }
 
 /**
- * ¤·¤ª¤ê½é´ü²½ (Á´¥Õ¥é¥°¾Ãµî)
+ * ã—ãŠã‚ŠåˆæœŸåŒ– (å…¨ãƒ•ãƒ©ã‚°æ¶ˆå»)
  */
 void
 SizukuSioriInit(Lvns *lvns)
@@ -203,15 +203,15 @@ SizukuSioriInit(Lvns *lvns)
 
     dprintf((stderr, "Siori Init\n"));
 
-    /* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿½é´ü²½ */
+    /* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿åˆæœŸåŒ– */
     SizukuScenarioInit(lvns);
 
-    /* Ì¤¸«¥Õ¥é¥°Á´¾Ãµî */
+    /* æœªè¦‹ãƒ•ãƒ©ã‚°å…¨æ¶ˆå» */
     for (i=0; i<SIZUKU_SCN_NO;i++) {
 		state->seen_flag[i] = 0;
     }
 
-    /* »Ä¤ê¤ÎÀ©¸æ¥Õ¥é¥°¤Î¾Ãµî */
+    /* æ®‹ã‚Šã®åˆ¶å¾¡ãƒ•ãƒ©ã‚°ã®æ¶ˆå» */
     state->flag_save[0] = 0;
     state->flag_save[7] = 0;
     state->flag_save[8] = 0;
@@ -235,16 +235,16 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 2;
 		} else switch (c[0]) {
 
-		case '$': /* '$' ¥á¥Ã¥»¡¼¥¸½ªÎ» */
+		case '$': /* '$' ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸çµ‚äº† */
 			c++;
 			return;
 			
-		case 'r': /* ²ş¹Ô */
+		case 'r': /* æ”¹è¡Œ */
 			LvnsNewLineText(lvns);
 			c++;
 			break;
 			
-		case 'p': /* ¥Ú¡¼¥¸¹¹¿·ÂÔ¤Á */
+		case 'p': /* ãƒšãƒ¼ã‚¸æ›´æ–°å¾…ã¡ */
 			if (!history_mode) {
 				LvnsWaitPage(lvns);
 				lvns->savepoint_flag = True;
@@ -253,7 +253,7 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			break;
 			
 		case 'k':
-		case 'K': /* ¥­¡¼ÆşÎÏÂÔ¤Á */
+		case 'K': /* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ */
 			if (!history_mode) {
 				if (!lvns->fast_text)
 					LvnsWaitKey(lvns);
@@ -261,13 +261,13 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c++;
 			break;
 			
-		case '0': /* ¥¹¥¯¥ê¥×¥È¥Ğ¥°¤Ç '0' ¤¬Í¾Ê¬¤Ë¤Ä¤¤¤Æ¤¤¤ë¤È¤³¤í¤¬¤¢¤ë */
-			dprintf((stderr, "[¡Ö0¡×Ìµ»ë!]\n"));
+		case '0': /* ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒã‚°ã§ '0' ãŒä½™åˆ†ã«ã¤ã„ã¦ã„ã‚‹ã¨ã“ã‚ãŒã‚ã‚‹ */
+			dprintf((stderr, "[ã€Œ0ã€ç„¡è¦–!]\n"));
 			c++;
 			break;
 			
-		case 'C': /* ¥­¥ã¥é¥¯¥¿¸ò´¹ */
-			dprintf((stderr, "[¥­¥ã¥é¥¯¥¿¸ò´¹(%c, MAX_C%c%c)]", c[1], c[2], c[3]));
+		case 'C': /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿äº¤æ› */
+			dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿äº¤æ›(%c, MAX_C%c%c)]", c[1], c[2], c[3]));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
 				SizukuClearCharacter(lvns, c[1]);
@@ -277,8 +277,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 4;
 			break;
 			
-		case 'B': /* ÇØ·ÊÉ½¼¨ */
-			dprintf((stderr, "[ÇØ·Ê¥í¡¼¥É(%c%c, %d, %d)]\n", c[1], c[2],
+		case 'B': /* èƒŒæ™¯è¡¨ç¤º */
+			dprintf((stderr, "[èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰(%c%c, %d, %d)]\n", c[1], c[2],
 					 Dig(c[3],c[4]), Dig(c[5],c[6])));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
@@ -289,8 +289,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 7;
 			break;
 			
-		case 'S': /* ÇØ·Ê¤Ä¤­¥­¥ã¥é¥¯¥¿É½¼¨ */
-			dprintf((stderr, "[ÇØ·ÊÉÕ¤­¥­¥ã¥éÉ½¼¨(%c, MAX_C%c%c, MAX_S%c%c, %d, %d)]",
+		case 'S': /* èƒŒæ™¯ã¤ãã‚­ãƒ£ãƒ©ã‚¯ã‚¿è¡¨ç¤º */
+			dprintf((stderr, "[èƒŒæ™¯ä»˜ãã‚­ãƒ£ãƒ©è¡¨ç¤º(%c, MAX_C%c%c, MAX_S%c%c, %d, %d)]",
 					 c[1], c[2],c[3],c[4],c[5], Dig(c[6],c[7]), Dig(c[8], c[9])));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
@@ -302,8 +302,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 10;
 			break;
 			
-		case 'D': /* ¥­¥ã¥é¥¯¥¿Á´¾Ãµî¸åÉ½¼¨ */
-			dprintf((stderr, "[¥­¥ã¥éÁ´¾Ãµî¸åÉ½¼¨(%c, MAX_C%c%c)]", c[1], c[2], c[3]));
+		case 'D': /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿å…¨æ¶ˆå»å¾Œè¡¨ç¤º */
+			dprintf((stderr, "[ã‚­ãƒ£ãƒ©å…¨æ¶ˆå»å¾Œè¡¨ç¤º(%c, MAX_C%c%c)]", c[1], c[2], c[3]));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
 				SizukuClearCharacter(lvns, 'a');
@@ -315,7 +315,7 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			
 		case 'A':
 		case 'a':
-			dprintf((stderr, "[¥­¥ã¥é3¿ÍÉ½¼¨(%c, %c%c, %c, %c%c, %c, %c%c)]",
+			dprintf((stderr, "[ã‚­ãƒ£ãƒ©3äººè¡¨ç¤º(%c, %c%c, %c, %c%c, %c, %c%c)]",
 					 c[1],c[2],c[3],  c[4],c[5],c[6], c[7],c[8],c[9]));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
@@ -328,8 +328,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 10;
 			break;
 			
-		case 'Q': /* ²èÌÌ¤òÍÉ¤é¤¹ */
-			dprintf((stderr, "[²èÌÌ¤òÍÉ¤é¤¹(%02x)]", c[0]));
+		case 'Q': /* ç”»é¢ã‚’æºã‚‰ã™ */
+			dprintf((stderr, "[ç”»é¢ã‚’æºã‚‰ã™(%02x)]", c[0]));
 			if (!history_mode) {
 				LvnsClearCursor(lvns);
 				LvnsVibrato(lvns);
@@ -337,8 +337,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c++;
 			break;
 			
-		case 'E': /* ÇØ·ÊÉ½¼¨2 ? */
-			dprintf((stderr, "[ÇØ·Ê¥í¡¼¥É(2)?(MAX_S%c%c.LFG, %d, %d)]",
+		case 'E': /* èƒŒæ™¯è¡¨ç¤º2 ? */
+			dprintf((stderr, "[èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰(2)?(MAX_S%c%c.LFG, %d, %d)]",
 					 c[1], c[2], Dig(c[3], c[4]), Dig(c[5], c[6])));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
@@ -349,8 +349,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 7;
 			break;
 			
-		case 'F': /* ¥Õ¥é¥Ã¥·¥å */
-			dprintf((stderr, "[¥Õ¥é¥Ã¥·¥å(%c)]", c[0]));
+		case 'F': /* ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ */
+			dprintf((stderr, "[ãƒ•ãƒ©ãƒƒã‚·ãƒ¥(%c)]", c[0]));
 			if (!history_mode) {
 				LvnsWhiteOut(lvns);
 				LvnsWhiteIn(lvns);
@@ -358,8 +358,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c++;
 			break;
 			
-		case 'V': /* ¥Ó¥¸¥å¥¢¥ë¥·¡¼¥óÉ½¼¨ */
-			dprintf((stderr, "[¥Ó¥¸¥å¥¢¥ë(VIS%c%c, %d, %d)]",
+		case 'V': /* ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ã‚·ãƒ¼ãƒ³è¡¨ç¤º */
+			dprintf((stderr, "[ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«(VIS%c%c, %d, %d)]",
 					 c[1], c[2], Dig(c[3], c[4]), Dig(c[5], c[6])));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
@@ -370,8 +370,8 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 7;
 			break;
 			
-		case 'H': /* H¥·¡¼¥óÉ½¼¨ */
-			dprintf((stderr, "[H¥·¡¼¥ó(HVS%c%c, %d, %d)]",
+		case 'H': /* Hã‚·ãƒ¼ãƒ³è¡¨ç¤º */
+			dprintf((stderr, "[Hã‚·ãƒ¼ãƒ³(HVS%c%c, %d, %d)]",
 					 c[1], c[2], Dig(c[3], c[4]), Dig(c[5], c[6])));
 			if (!history_mode) {
 				LvnsUndispText(lvns);
@@ -382,19 +382,19 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c += 7;
 			break;
 			
-		case 'M': /* BGM ´ØÏ¢ */
+		case 'M': /* BGM é–¢é€£ */
 			{
 				int c1 = c[1];
 				c += 2;
 				if (c1 == 'f') {
-					dprintf((stderr, "[BGM ¥Õ¥§¡¼¥É¥¢¥¦¥È]\n"));
+					dprintf((stderr, "[BGM ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ]\n"));
 					if (!history_mode) {
 						LvnsFadeMusic(lvns);
 					}
 				} else if (c1 == 'n') {
 					int c2 = *c++;
 					int c3 = *c++;
-					dprintf((stderr, "[BGM ºÆÀ¸(next)(M_%c%c)\n", c2, c3));
+					dprintf((stderr, "[BGM å†ç”Ÿ(next)(M_%c%c)\n", c2, c3));
 					if (!history_mode) {
 						LvnsSetNextMusicLoop(lvns, bgmmap(Dig(c2, c3)));
 					}
@@ -405,12 +405,12 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 					}
 				} else if (c1 >= '0' && c1 <= '2') {
 					int c2 = *c++;
-					dprintf((stderr, "[BGM ºÆÀ¸(M_%c%c)]\n", c1, c2));
+					dprintf((stderr, "[BGM å†ç”Ÿ(M_%c%c)]\n", c1, c2));
 					if (!history_mode) {
 						LvnsStartMusicLoop(lvns, bgmmap(Dig(c1, c2)));
 					}
 				} else if (c1 == 's') {
-					dprintf((stderr, "[BGM Ää»ß]\n"));
+					dprintf((stderr, "[BGM åœæ­¢]\n"));
 					if (!history_mode) {
 						LvnsPauseMusic(lvns);
 					}
@@ -420,14 +420,14 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			}
 			break;
 			
-		case 'P': /* PCM ´ØÏ¢ */
+		case 'P': /* PCM é–¢é€£ */
 			{
 				int c1 = c[1];
 				c += 2;
 				if ( c1 == 'l' ) {
 					int c2 = *c++;
 					int c3 = *c++;
-					dprintf((stderr, "[PCM¥í¡¼¥É(%c%c)]\n", c2, c3));
+					dprintf((stderr, "[PCMãƒ­ãƒ¼ãƒ‰(%c%c)]\n", c2, c3));
 					if (!history_mode) {
 						LvnsLoadSound(lvns, "SZ_VD%02d.P16", Dig(c2,c3));
 					}
@@ -435,20 +435,20 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 					int c2 = *c++;
 					int c3 = *c++;
 					int c4 = *c++;
-					dprintf((stderr, "[PCMºÆÀ¸»ØÄê(%c%c, %c%c)\n]", 
+					dprintf((stderr, "[PCMå†ç”ŸæŒ‡å®š(%c%c, %c%c)\n]", 
 							 c1, c2, c3, c4));
 					if (!history_mode) {
 						LvnsStartSound(lvns, 1);
 					}
 				} else if (c1 == 'f') {
-					dprintf((stderr, "[PCM¥Õ¥§¡¼¥É¥¢¥¦¥È?]\n"));
+					dprintf((stderr, "[PCMãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ?]\n"));
 				} else if (c1 == 'w') {
 					dprintf((stderr, "[PCM wait?]\n"));
 					if (!history_mode) {
 						LvnsWaitSound(lvns);
 					}
 				} else if (c1 == 's') {
-					dprintf((stderr, "[PCMÄä»ß]\n"));	
+					dprintf((stderr, "[PCMåœæ­¢]\n"));	
 					if (!history_mode) {
 						LvnsStopSound(lvns);
 					}
@@ -458,16 +458,16 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 				break;
 			}
 			
-		case 'X': /* 'X' É½¼¨¥ª¥Õ¥»¥Ã¥È»ØÄê */
-			dprintf((stderr, "[É½¼¨¥ª¥Õ¥»¥Ã¥È»ØÄê(%x)]\n", c[1]));
+		case 'X': /* 'X' è¡¨ç¤ºã‚ªãƒ•ã‚»ãƒƒãƒˆæŒ‡å®š */
+			dprintf((stderr, "[è¡¨ç¤ºã‚ªãƒ•ã‚»ãƒƒãƒˆæŒ‡å®š(%x)]\n", c[1]));
 			if (!history_mode) {
 				LvnsSetTextOffset(lvns, c[1]);
 			}
 			c += 2;
 			break;
 			
-		case 's': /* 's' É½¼¨Â®ÅÙ»ØÄê */
-			dprintf((stderr, "[É½¼¨Â®ÅÙ»ØÄê?(%x)]\n", c[1]));
+		case 's': /* 's' è¡¨ç¤ºé€Ÿåº¦æŒ‡å®š */
+			dprintf((stderr, "[è¡¨ç¤ºé€Ÿåº¦æŒ‡å®š?(%x)]\n", c[1]));
 			if (!history_mode) {
 				lvns->char_wait_time = c[1];
 			}
@@ -483,7 +483,7 @@ SizukuDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 }
 
 /*
- * ¥Æ¥­¥¹¥È¥·¥Ê¥ê¥ª½èÍı
+ * ãƒ†ã‚­ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªå‡¦ç†
  */
 static void
 TextParser(Lvns *lvns, int no, Bool add_history)
@@ -495,19 +495,19 @@ TextParser(Lvns *lvns, int no, Bool add_history)
 }
 
 /* ------------------------------------------------------------ */
-/** ¥·¥Ê¥ê¥ª¥¨¥ó¥¸¥ó³«»ÏÍÑ */
+/** ã‚·ãƒŠãƒªã‚ªã‚¨ãƒ³ã‚¸ãƒ³é–‹å§‹ç”¨ */
 static void
 SizukuStartScenario(Lvns *lvns)
 {
     SizukuState *state = (SizukuState*)lvns->system_state;
 
-    /* ¥·¥Ê¥ê¥ª¾õÂÖÉü³è */
+    /* ã‚·ãƒŠãƒªã‚ªçŠ¶æ…‹å¾©æ´» */
     LvnsLoadScenario(lvns, lvns->savepoint.scn, lvns->savepoint.blk);
     lvns->scn_cur = lvns->scn_cur_head + lvns->savepoint.scn_offset;
 
 	LvnsClearText(lvns);
 
-    /* ²èÌÌ¾õÂÖ¤ÎÉü³è */
+    /* ç”»é¢çŠ¶æ…‹ã®å¾©æ´» */
     if (lvns->savepoint.bg_no) {
         switch (lvns->savepoint.bg_type) {
         case LVNS_VISUAL:
@@ -534,21 +534,21 @@ SizukuStartScenario(Lvns *lvns)
     }
 
 
-    /* BGMÉü³è */
+    /* BGMå¾©æ´» */
     if (lvns->savepoint.current_music)
         LvnsSetNextMusicLoop(lvns, lvns->savepoint.current_music);
 
-    /* ¥Õ¥é¥°Éü³è */
+    /* ãƒ•ãƒ©ã‚°å¾©æ´» */
     memcpy(state->flag, state->flag_save, sizeof state->flag);
 
-    /* ¡ÖÁªÂò»è¤ËÌá¤ë¡×½é´ü²½ */
+    /* ã€Œé¸æŠè‚¢ã«æˆ»ã‚‹ã€åˆæœŸåŒ– */
     lvns->selectpoint = lvns->savepoint;
     memcpy(state->flag_select, state->flag_save, sizeof state->flag);
 }
 
 
 /*
- * ¼¶¥·¥Ê¥ê¥ª¥Ñ¡¼¥µËÜÂÎ
+ * é›«ã‚·ãƒŠãƒªã‚ªãƒ‘ãƒ¼ã‚µæœ¬ä½“
  */
 #define c lvns->scn_cur
 void
@@ -557,12 +557,12 @@ SizukuMain(Lvns *lvns)
     SizukuState *state = (SizukuState *)lvns->system_state;
 	SizukuStartScenario(lvns);
 
-	/* ¥á¥¤¥ó¥ë¡¼¥× */
+	/* ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ— */
     while(1) {
 
 		lvns->inside_state = LVNS_MAIN;
 
-		/* ¥»¡¼¥Ö¥İ¥¤¥ó¥ÈÀßÄê */
+		/* ã‚»ãƒ¼ãƒ–ãƒã‚¤ãƒ³ãƒˆè¨­å®š */
 		if (lvns->savepoint_flag) {
 			LvnsSetSavePoint(lvns, &lvns->savepoint);
 			memcpy(state->flag_save, state->flag, sizeof state->flag);
@@ -570,15 +570,15 @@ SizukuMain(Lvns *lvns)
 		}
 
         switch (c[0]) {
-        case 0x00:		/* ¥Ö¥í¥Ã¥¯½ªÎ» */
+        case 0x00:		/* ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº† */
             dprintf((stderr, "[END]\n"));
             c++;
 			return;
 
-        case 0x01: /* ÆÃ¼ì¸ú²Ì */
+        case 0x01: /* ç‰¹æ®ŠåŠ¹æœ */
             switch (c[1]) {
             case 0x01:
-                dprintf((stderr, "[¤°¤Ë¤ã¤ê¢ª°Å]-[¥á¥Ã¥»¡¼¥¸:%d]\n", c[2]));
+                dprintf((stderr, "[ãã«ã‚ƒã‚Šâ†’æš—]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[2]));
 				LvnsSetBackEffect(lvns, &lvnsSinEffect);
 				TextParser(lvns, c[2], True);
 				LvnsSetBackEffect(lvns, NULL);   
@@ -586,7 +586,7 @@ SizukuMain(Lvns *lvns)
 				c += 3;
                 break;
             case 0x02:
-                dprintf((stderr, "[°Å¢ª¤°¤Ë¤ã¤ê]-[¥á¥Ã¥»¡¼¥¸:%d]\n", c[2]));
+                dprintf((stderr, "[æš—â†’ãã«ã‚ƒã‚Š]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[2]));
 				LvnsDisp(lvns, LVNS_EFFECT_FADE_PALETTE);
 				LvnsSetBackEffect(lvns, &lvnsSinEffect);
 				TextParser(lvns, c[2], True);
@@ -594,40 +594,40 @@ SizukuMain(Lvns *lvns)
 				c += 3;
                 break;
             case 0x03:
-                dprintf((stderr, "[ÎŞ¤Î¼¶:%02x]\n", c[2]));
+                dprintf((stderr, "[æ¶™ã®é›«:%02x]\n", c[2]));
                 LvnsAnimation(lvns, (c[2] == 0)?sizuku01:sizuku02);
                 c += 3;
                 break;
             case 0x04:
-                dprintf((stderr, "[¤°¤Ë¤ã¤ê2(°Û¼¡¸µ)]-[¥á¥Ã¥»¡¼¥¸:%d]\n", c[2]));
+                dprintf((stderr, "[ãã«ã‚ƒã‚Š2(ç•°æ¬¡å…ƒ)]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[2]));
 				TextParser(lvns, c[2], True);
                 c += 3;
                 break;
             default:
-                dprintf((stderr, "°Û¾ï¤Ê0x01¥³¥Ş¥ó¥É¤Ç¤¹(%02x,%02x)\n", c[1], c[2]));
+                dprintf((stderr, "ç•°å¸¸ãª0x01ã‚³ãƒãƒ³ãƒ‰ã§ã™(%02x,%02x)\n", c[1], c[2]));
 				return;
                 break;
             }
             break;
 
-        case 0x03: /* Ææ */
-            dprintf((stderr, "[Ææ:%02x(%02x)]\n", c[0], c[1]));
+        case 0x03: /* è¬ */
+            dprintf((stderr, "[è¬:%02x(%02x)]\n", c[0], c[1]));
             c += 2;
             break;
 
-        case 0x04: /* ¥¸¥ã¥ó¥×Ì¿Îá */
-            dprintf((stderr, "[¥¸¥ã¥ó¥× SCN%03d.DAT - Block %d]\n", c[1], c[2]));
+        case 0x04: /* ã‚¸ãƒ£ãƒ³ãƒ—å‘½ä»¤ */
+            dprintf((stderr, "[ã‚¸ãƒ£ãƒ³ãƒ— SCN%03d.DAT - Block %d]\n", c[1], c[2]));
             LvnsLoadScenario(lvns, c[1], c[2]);
 			break;
 			
-        case 0x05: /* ÁªÂò»è */
-			dprintf((stderr, "[ÁªÂò»è(%d)]-[¥á¥Ã¥»¡¼¥¸:%d]\n", c[2], c[1]));
+        case 0x05: /* é¸æŠè‚¢ */
+			dprintf((stderr, "[é¸æŠè‚¢(%d)]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[2], c[1]));
             {
                 int i;
 				TextParser(lvns, c[1], True);
                 for (i = 0; i < c[2]; i++) {
                     dprintf((stderr,
-							 "\t[ÁªÂò»è %d]-[¥á¥Ã¥»¡¼¥¸:%d]-[¥ª¥Õ¥»¥Ã¥È:%02x]\n"
+							 "\t[é¸æŠè‚¢ %d]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]-[ã‚ªãƒ•ã‚»ãƒƒãƒˆ:%02x]\n"
                              , i, c[3+i*2], c[4+i*2]));
 					lvns->text_attr = i+1;
 					TextParser(lvns, c[3+i*2], False);
@@ -636,120 +636,120 @@ SizukuMain(Lvns *lvns)
 				i = LvnsWaitSelect(lvns, c[2]);
 				LvnsAddHistory(lvns, c[3+i*2]);
 
-				dprintf((stderr, "ÁªÂòÊ¬´ô: %d (+%02x)\n", i, c[4 + i*2]));
+				dprintf((stderr, "é¸æŠåˆ†å²: %d (+%02x)\n", i, c[4 + i*2]));
 				c = c + 3 + c[2]*2 + c[4 + i*2];
             }
             break;
 
         case 0x06:
-            dprintf((stderr, "[Ææ:%02x()]\n", c[0]));
+            dprintf((stderr, "[è¬:%02x()]\n", c[0]));
             c++;
             break;
 			
         case 0x07:
-            dprintf((stderr, "[Á°¤ÎÁªÂò»è¤ËÌá¤ë¥Ş¡¼¥¯°ÌÃÖ]\n"));
+            dprintf((stderr, "[å‰ã®é¸æŠè‚¢ã«æˆ»ã‚‹ãƒãƒ¼ã‚¯ä½ç½®]\n"));
             LvnsSetSavePoint(lvns, &lvns->selectpoint);
             memcpy(state->flag_select, state->flag, sizeof state->flag);
             c++;
             break;		      
 			
-        case 0x0a: /* ÇØ·Ê¥í¡¼¥É */
-            dprintf((stderr, "[ÇØ·Ê¥í¡¼¥É¤Î¤ß: MAX_S%02d.LFG]\n", c[1]));
+        case 0x0a: /* èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰ */
+            dprintf((stderr, "[èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰ã®ã¿: MAX_S%02d.LFG]\n", c[1]));
 			SizukuLoadBG(lvns, c[1]);
             c += 2;
 			break;
 			
-        case 0x14: /* ²èÌÌ¾Ãµî */
-            dprintf((stderr, "[²èÌÌ¥¯¥ê¥¢? (%02d)]\n", c[1]));
+        case 0x14: /* ç”»é¢æ¶ˆå» */
+            dprintf((stderr, "[ç”»é¢ã‚¯ãƒªã‚¢? (%02d)]\n", c[1]));
 			LvnsUndispText(lvns);
             LvnsClear(lvns, sizuku_effect[c[1]]);
             c += 2;
 			break;
 
-        case 0x16: /* H¥í¡¼¥É */
-            dprintf((stderr, "[H¥·¡¼¥ó¥í¡¼¥É : MAX_H%02d.LFG]\n", c[1]));
+        case 0x16: /* Hãƒ­ãƒ¼ãƒ‰ */
+            dprintf((stderr, "[Hã‚·ãƒ¼ãƒ³ãƒ­ãƒ¼ãƒ‰ : MAX_H%02d.LFG]\n", c[1]));
 			LvnsUndispText(lvns);
 			SizukuLoadHVisual(lvns, c[1]);
 			LvnsDisp(lvns, LVNS_EFFECT_NORMAL);
             c += 2;
 			break;
 
-        case 0x22: /* ¥­¥ã¥é¥¯¥¿¥í¡¼¥É */
-			dprintf((stderr, "[¥­¥ã¥é¥¯¥¿¥í¡¼¥É : MAX_C%02x.LFG : %02x]\n", c[1], c[2]));
+        case 0x22: /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ­ãƒ¼ãƒ‰ */
+			dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ­ãƒ¼ãƒ‰ : MAX_C%02x.LFG : %02x]\n", c[1], c[2]));
 			LvnsUndispText(lvns);
 			SizukuLoadCharacter(lvns, c[1], c[2]);
 			LvnsDisp(lvns, LVNS_EFFECT_FADE_MASK);
 			c += 3;
 			break;
 			
-        case 0x24: /* ¥­¥ã¥é¥¯¥¿¥í¡¼¥É¤½¤Î2? */
-			dprintf((stderr, "[¥­¥ã¥é¥¯¥¿¥í¡¼¥É(2? center?) : MAX_C%02x.LFG]\n", c[1]));
+        case 0x24: /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ­ãƒ¼ãƒ‰ãã®2? */
+			dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ­ãƒ¼ãƒ‰(2? center?) : MAX_C%02x.LFG]\n", c[1]));
 			LvnsUndispText(lvns);
 			SizukuLoadCharacter(lvns, c[1], 'c');
 			LvnsDisp(lvns, LVNS_EFFECT_FADE_MASK);
 			c += 3;
 			break;
 			
-        case 0x28: /* ÁªÂò»è¤ÎÁ°¤ËÂ¸ºß¤¹¤ë¥Ç¡¼¥¿ */
-            dprintf((stderr,  "[ÁªÂò»è¤ÎÁ°]\n"));
+        case 0x28: /* é¸æŠè‚¢ã®å‰ã«å­˜åœ¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ */
+            dprintf((stderr,  "[é¸æŠè‚¢ã®å‰]\n"));
             c++;
             break;
 
         case 0x38:      
-            dprintf((stderr, "[É½¼¨½èÍı:%02x(%02x)]\n", c[0], c[1]));
+            dprintf((stderr, "[è¡¨ç¤ºå‡¦ç†:%02x(%02x)]\n", c[0], c[1]));
             LvnsDisp(lvns, sizuku_effect[c[1]]);
             c += 2;
             break;
 			
-        case 0x3d:	/* ifÊ¸ */
+        case 0x3d:	/* ifæ–‡ */
             dprintf((stderr, "[if flg:%02x == 0x%02x pc += %02x]\n", c[1], c[2], c[3]));
             if (state->flag[flagmap(c[1])] == c[2])
                 c += c[3];
             c += 4;
             break;
 
-        case 0x3e:	/* ifÊ¸(ÈİÄê) */
+        case 0x3e:	/* ifæ–‡(å¦å®š) */
             dprintf((stderr, "[if flg:%02x != 0x%02x pc += %02x]\n", c[1], c[2], c[3]));
             if (state->flag[flagmap(c[1])] != c[2])
                 c += c[3];
             c += 4;
             break;
 
-        case 0x47:     /* ¥Õ¥é¥°¤ÎÃÍÀßÄê */
+        case 0x47:     /* ãƒ•ãƒ©ã‚°ã®å€¤è¨­å®š */
             dprintf((stderr, "[flg:%02x = 0x%02x]\n", c[1], c[2]));
             state->flag[flagmap(c[1])] = c[2];
             c += 3;
             break;
 			
-        case 0x48:	/* ¥Õ¥é¥°²Ã»» */
+        case 0x48:	/* ãƒ•ãƒ©ã‚°åŠ ç®— */
             dprintf((stderr, "[flg:%02x += 0x%02x\n", c[1], c[2]));
             state->flag[flagmap(c[1])] += c[2];
             c += 3;
             break;
 			
-        case 0x54:      /* ¥Æ¥­¥¹¥È¥á¥Ã¥»¡¼¥¸ */
-            dprintf((stderr, "[¥á¥Ã¥»¡¼¥¸:%d]\n", c[1]));
+        case 0x54:      /* ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
+            dprintf((stderr, "[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[1]));
 			TextParser(lvns, c[1], True);
             c += 2;
             break;
 
         case 0x5a:
-            dprintf((stderr, "[Ææ:%02x()]\n", c[0]));
+            dprintf((stderr, "[è¬:%02x()]\n", c[0]));
             c ++;
             break;
 
         case 0x5c:
-            dprintf((stderr, "[Ææ:%02x(%02x)]\n", c[0], c[1]));
+            dprintf((stderr, "[è¬:%02x(%02x)]\n", c[0], c[1]));
             c += 2;
             break;
 
         case 0x61:
-            dprintf((stderr, "[Ææ:%02x(%02x %02x)]\n", c[0], c[1], c[2]));
+            dprintf((stderr, "[è¬:%02x(%02x %02x)]\n", c[0], c[1], c[2]));
             c += 3;
             break;
 
         case 0x62:
-            dprintf((stderr, "[Ææ:%02x(%02x)]\n", c[0], c[1]));
+            dprintf((stderr, "[è¬:%02x(%02x)]\n", c[0], c[1]));
             c += 2;
             break;
 
@@ -758,41 +758,41 @@ SizukuMain(Lvns *lvns)
         case 0x64:
         case 0x65:
         case 0x66:
-            dprintf((stderr, "[Ææ:%02x()]\n", c[0]));
+            dprintf((stderr, "[è¬:%02x()]\n", c[0]));
             c++;
             break;
 
-        case 0x6e: /* BGM ºÆÀ¸ */
-            dprintf((stderr, "[BGMºÆÀ¸(CMD):(%02x)]\n", c[1]));
+        case 0x6e: /* BGM å†ç”Ÿ */
+            dprintf((stderr, "[BGMå†ç”Ÿ(CMD):(%02x)]\n", c[1]));
             LvnsStartMusicLoop(lvns, bgmmap(c[1]));
             c += 2;
             break;
 
         case 0x6f:
         case 0x73:
-            dprintf((stderr, "[Ææ:%02x()]\n", c[0]));
+            dprintf((stderr, "[è¬:%02x()]\n", c[0]));
             c++;
             break;
 
         case 0x7e:
-            dprintf((stderr, "[¥¨¥ó¥Ç¥£¥ó¥°ÈÖ¹æÀßÄê: %02x]\n", c[1]));
+            dprintf((stderr, "[ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ç•ªå·è¨­å®š: %02x]\n", c[1]));
 /*
- 0 12 Â´¶È¼°
- 1 12 ¿ğÊæ BAD
- 2 12 ÇË²õ
- 3 12 ¥È¡¼¥¹¥¿¡¼
- 4 11 º´¿¥ HAPPY
- 5 12 º´¿¥ BAD
- 6 11 ¿ğÊæ HAPPY
- 7 12 ¿ğÊæ BAD
+ 0 12 å’æ¥­å¼
+ 1 12 ç‘ç©‚ BAD
+ 2 12 ç ´å£Š
+ 3 12 ãƒˆãƒ¼ã‚¹ã‚¿ãƒ¼
+ 4 11 ä½ç¹” HAPPY
+ 5 12 ä½ç¹” BAD
+ 6 11 ç‘ç©‚ HAPPY
+ 7 12 ç‘ç©‚ BAD
  8 10 True
- 9 11 ÎÜÍş»Ò Happy
- a 01 ÂçÅÄ¤µ¤ó
- b 14 °Û¼¡¸µ
- c 12 °Û¼¡¸µ BAD
+ 9 11 ç‘ ç’ƒå­ Happy
+ a 01 å¤§ç”°ã•ã‚“
+ b 14 ç•°æ¬¡å…ƒ
+ c 12 ç•°æ¬¡å…ƒ BAD
 */
             if (state->flag[flagmap(0x46)] == 1) { 
-                /* ÎÜÍş»Ò True END ¤ò¸«¤Æ¤¤¤ë */
+                /* ç‘ ç’ƒå­ True END ã‚’è¦‹ã¦ã„ã‚‹ */
                 state->flag[0] = 3;
             } else {
                 if (state->flag[0] == 0)
@@ -804,22 +804,22 @@ SizukuMain(Lvns *lvns)
             break;
 
         case 0x7c:
-            dprintf((stderr, "[¥¨¥ó¥Ç¥£¥ó¥°´Ø·¸ Ææ:%02x()]\n", c[0]));
+            dprintf((stderr, "[ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°é–¢ä¿‚ è¬:%02x()]\n", c[0]));
             c++;
             break;
 
         case 0x7d:
-            dprintf((stderr, "[¥¨¥ó¥Ç¥£¥ó¥°BGMÀßÄê & µ¯Æ°:%02x(%d)]\n", c[0], c[1]));
-            /* ¥¨¥ó¥Ç¥£¥ó¥°±éÁÕ³«»Ï */
+            dprintf((stderr, "[ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°BGMè¨­å®š & èµ·å‹•:%02x(%d)]\n", c[0], c[1]));
+            /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°æ¼”å¥é–‹å§‹ */
             LvnsStartMusic(lvns, bgmmap(c[1]));
             
-			/* ¥¨¥ó¥Ç¥£¥ó¥°¼Â¹Ô */
+			/* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°å®Ÿè¡Œ */
 			SizukuEnding(lvns);
 
-            /* ºÇ½ªÅª¤Ê¥Õ¥é¥°¤òÈ¿±Ç */
+            /* æœ€çµ‚çš„ãªãƒ•ãƒ©ã‚°ã‚’åæ˜  */
             memcpy(state->flag_save, state->flag, sizeof state->flag);
 
-            /* ¥¨¥ó¥Ç¥£¥ó¥°ÅşÃ£¤Ë¤Ä¤­¶¯À©¥·¥Ê¥ê¥ª¥Ç¡¼¥¿½é´ü²½ */
+            /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°åˆ°é”ã«ã¤ãå¼·åˆ¶ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿åˆæœŸåŒ– */
             SizukuScenarioInit(lvns);
             SizukuSave(lvns);
 
@@ -827,11 +827,11 @@ SizukuMain(Lvns *lvns)
 			break;
 
         case 0xff:
-			dprintf((stderr, "ËÜÍè¥¢¥¯¥»¥¹¤·ÆÀ¤Ê¤¤¾ì½ê¤Ë¥¢¥¯¥»¥¹¤·¤¿??\n"));
+			dprintf((stderr, "æœ¬æ¥ã‚¢ã‚¯ã‚»ã‚¹ã—å¾—ãªã„å ´æ‰€ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ãŸ??\n"));
 			return;
 			
         default:
-            dprintf((stderr, "¥­¥ã¥Ã¥Á¤µ¤ì¤Ê¤«¤Ã¤¿¥³¥Ş¥ó¥É¤Ç¤¹(%02x)\n", c[0]));
+            dprintf((stderr, "ã‚­ãƒ£ãƒƒãƒã•ã‚Œãªã‹ã£ãŸã‚³ãƒãƒ³ãƒ‰ã§ã™(%02x)\n", c[0]));
 			return;
         }
 	
@@ -840,7 +840,7 @@ SizukuMain(Lvns *lvns)
 #undef c
 
 /**
- * ³«»ÏÄ¾Á°¤Î½é´ü²½
+ * é–‹å§‹ç›´å‰ã®åˆæœŸåŒ–
  */
 void
 SizukuStart(Lvns *lvns)
@@ -854,27 +854,27 @@ SizukuStart(Lvns *lvns)
 }
 
 /**
- * ÍúÎò¤ÎÉ½¼¨
+ * å±¥æ­´ã®è¡¨ç¤º
  */
 void
 SizukuDispHistory(Lvns *lvns, int pos)
 {
-	LvnsClearText(lvns);         /* ¾Ãµî */
+	LvnsClearText(lvns);         /* æ¶ˆå» */
 	LvnsDispWindow(lvns);
 	if (pos >= 0 && pos < lvns->history_pos) {
 		LvnsLoadScenario(lvns, lvns->history[pos].scn, lvns->history[pos].blk);
 		SizukuDispText(lvns, LvnsGetScenarioText(lvns, lvns->history[pos].no), True);
 	}
 
-	// ¥«¡¼¥½¥ëÉ½¼¨
+	// ã‚«ãƒ¼ã‚½ãƒ«è¡¨ç¤º
 #ifndef USE_MGL
 #define CUR_X 25
 #else
 #define CUR_X 24
 #endif
 	LvnsLocate(lvns, CUR_X, 0);
-	LvnsPuts(lvns, "¢¬", 1);
+	LvnsPuts(lvns, "â†‘", 1);
 	LvnsLocate(lvns, CUR_X, 11);
-	LvnsPuts(lvns, "¢­", 2);
+	LvnsPuts(lvns, "â†“", 2);
 }
 

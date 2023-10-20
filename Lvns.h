@@ -63,7 +63,7 @@
 #define INTERVAL 60
 #define NOCHARACTER 255
 
-/* EUC ¥³¡¼¥É¤«¤é¥Ñ¥Ã¥¯¤·¤¿ JIS ¥³¡¼¥É¤Ø¡Ä */
+/* EUC ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ãƒ‘ãƒƒã‚¯ã—ãŸ JIS ã‚³ãƒ¼ãƒ‰ã¸â€¦ */
 #define EucToJisPack(code)  ((((code>>8)&0x7f)-33)*94 + ((code&0x7f)-33))
 
 #define LVNS     lvns->system_state
@@ -100,7 +100,7 @@
 #define MGL_XOFFSET 80
 #define MGL_YOFFSET 20
 
-/* °ìÉô¤Î´Ø¿ô¡¦¹½Â¤ÂÎ¤Ï MGL2 ÈÇ¤Çº¹¤·ÂØ¤¨ */
+/* ä¸€éƒ¨ã®é–¢æ•°ãƒ»æ§‹é€ ä½“ã¯ MGL2 ç‰ˆã§å·®ã—æ›¿ãˆ */
 #define LvnsImage mgImage
 #define lvnsimage_new mglimage_new
 #define lvnsimage_delete mglimage_delete
@@ -113,7 +113,7 @@
 #define lvnsimage_add4(s,d,x,y,p) mglimage_add(s,d,(x)/2,(y)/2)
 #define lvnsimage_circle(i,x,y,r,s,p) mglimage_circle(i,x,y,(r)/2,s,p)
 /*
- * MGL2 ÈÇ¤Î¾ì¹ç¤Ï X ÈÇ¤È°ã¤¤¡¤¿§¤ò°ú¿ô¤Ë¤³¤Î´Ø¿ô¤ò¸Æ¤Ó½Ğ¤¹¤³¤È¡¥
+ * MGL2 ç‰ˆã®å ´åˆã¯ X ç‰ˆã¨é•ã„ï¼Œè‰²ã‚’å¼•æ•°ã«ã“ã®é–¢æ•°ã‚’å‘¼ã³å‡ºã™ã“ã¨ï¼
  */
 #define lvnsimage_clear_index mglimage_clear_color
 #endif
@@ -148,47 +148,47 @@ typedef struct {
 } LvnsBackEffectInfo;
 
 typedef struct {
-	int scn;  /* ¥·¥Ê¥ê¥ªÈÖ¹æ */
-	int blk;  /* ¥Ö¥í¥Ã¥¯ÈÖ¹æ */
-	int no;   /* ¥Æ¥­¥¹¥ÈÈÖ¹æ */
-} LvnsHistoryData;        /* ²óÁÛ¥â¡¼¥ÉÍÑ */
+	int scn;  /* ã‚·ãƒŠãƒªã‚ªç•ªå· */
+	int blk;  /* ãƒ–ãƒ­ãƒƒã‚¯ç•ªå· */
+	int no;   /* ãƒ†ã‚­ã‚¹ãƒˆç•ªå· */
+} LvnsHistoryData;        /* å›æƒ³ãƒ¢ãƒ¼ãƒ‰ç”¨ */
 
 typedef struct {
     char *command;
     int enable;
-} LvnsCommandInfo;   /* ³°ÉôÀ©¸æÍÑ */
+} LvnsCommandInfo;   /* å¤–éƒ¨åˆ¶å¾¡ç”¨ */
 
 typedef struct {
 
-    int width;                   /* ÆâÉôÉÁ²èÎÎ°è¤Î¥µ¥¤¥º */
+    int width;                   /* å†…éƒ¨æç”»é ˜åŸŸã®ã‚µã‚¤ã‚º */
     int height;             
-    int colors;                  /* É¬Í×¤ÊºÇÂç¿§¿ô       */ 
+    int colors;                  /* å¿…è¦ãªæœ€å¤§è‰²æ•°       */ 
 
-    const char *leafpack_name;   /* ¥Ç¡¼¥¿ÍÑ¥Ñ¥Ã¥¯¥Õ¥¡¥¤¥ëÌ¾¾Î   */
-    const char *scnpack_name;    /* ¥·¥Ê¥ê¥ªÍÑ¥Ñ¥Ã¥¯¥Õ¥¡¥¤¥ëÌ¾¾Î */
-    const char *scn_name;        /* ¥·¥Ê¥ê¥ª¥Õ¥¡¥¤¥ë¥Ù¡¼¥¹Ì¾¾Î */
-    const char *fonttable_name;  /* ¥³¡¼¥É¥³¥ó¥Ğ¡¼¥È¥Æ¡¼¥Ö¥ëÌ¾¾Î */
+    const char *leafpack_name;   /* ãƒ‡ãƒ¼ã‚¿ç”¨ãƒ‘ãƒƒã‚¯ãƒ•ã‚¡ã‚¤ãƒ«åç§°   */
+    const char *scnpack_name;    /* ã‚·ãƒŠãƒªã‚ªç”¨ãƒ‘ãƒƒã‚¯ãƒ•ã‚¡ã‚¤ãƒ«åç§° */
+    const char *scn_name;        /* ã‚·ãƒŠãƒªã‚ªãƒ•ã‚¡ã‚¤ãƒ«ãƒ™ãƒ¼ã‚¹åç§° */
+    const char *fonttable_name;  /* ã‚³ãƒ¼ãƒ‰ã‚³ãƒ³ãƒãƒ¼ãƒˆãƒ†ãƒ¼ãƒ–ãƒ«åç§° */
 
 	MenuData *main_menu;
 
-	void (*start)(struct Lvns *lvns);    /* ½é´ü²½       */
-	void (*jingle)(struct Lvns *lvns);   /* ¥¸¥ó¥°¥ë     */
-	void (*opening)(struct Lvns *lvns);  /* ¥ª¡¼¥×¥Ë¥ó¥° */
-	void (*title)(struct Lvns *lvns);    /* ¥¿¥¤¥È¥ë     */
-	void (*main)(struct Lvns *lvns);     /* ¥á¥¤¥ó       */
+	void (*start)(struct Lvns *lvns);    /* åˆæœŸåŒ–       */
+	void (*jingle)(struct Lvns *lvns);   /* ã‚¸ãƒ³ã‚°ãƒ«     */
+	void (*opening)(struct Lvns *lvns);  /* ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚° */
+	void (*title)(struct Lvns *lvns);    /* ã‚¿ã‚¤ãƒˆãƒ«     */
+	void (*main)(struct Lvns *lvns);     /* ãƒ¡ã‚¤ãƒ³       */
 
-    void (*mergeCharacter)(struct Lvns *lvns);   /* ¥­¥ã¥é¥¯¥¿¹çÀ® */
-    void (*clearScreen)(struct Lvns *lvns);      /* ²¾ÁÛ VRAM ¤Î¾Ãµî */
-    void (*loadBG)(struct Lvns *lvns, int no);   /* ÇØ·ÊÆÉ¤ß¹ş¤ß */
+    void (*mergeCharacter)(struct Lvns *lvns);   /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åˆæˆ */
+    void (*clearScreen)(struct Lvns *lvns);      /* ä»®æƒ³ VRAM ã®æ¶ˆå» */
+    void (*loadBG)(struct Lvns *lvns, int no);   /* èƒŒæ™¯èª­ã¿è¾¼ã¿ */
 
-    LvnsCommandInfo* (*getCommandList)(struct Lvns *lvns);           /* ³°ÉôÁàºî°ìÍ÷ */
-    void (*execCommand)(struct Lvns *lvns, const char *command);     /* ³°ÉôÁàºî     */
-    void (*drawChar)(struct Lvns *lvns, int x, int y, int, int);     /* Ê¸»úÉ½¼¨     */
+    LvnsCommandInfo* (*getCommandList)(struct Lvns *lvns);           /* å¤–éƒ¨æ“ä½œä¸€è¦§ */
+    void (*execCommand)(struct Lvns *lvns, const char *command);     /* å¤–éƒ¨æ“ä½œ     */
+    void (*drawChar)(struct Lvns *lvns, int x, int y, int, int);     /* æ–‡å­—è¡¨ç¤º     */
 
 	void (*dispHistory)(struct Lvns *lvns, int pos);
 
-    int cursor_key;   /* ¥­¡¼ÆşÎÏÂÔ¤Á¤Î¥«¡¼¥½¥ë */
-    int cursor_page;  /* ²ş¥Ú¡¼¥¸ÂÔ¤Á¤Î¥«¡¼¥½¥ë */
+    int cursor_key;   /* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ã®ã‚«ãƒ¼ã‚½ãƒ« */
+    int cursor_page;  /* æ”¹ãƒšãƒ¼ã‚¸å¾…ã¡ã®ã‚«ãƒ¼ã‚½ãƒ« */
 
 } LvnsSystemState;
 
@@ -205,46 +205,46 @@ typedef struct Lvns {
 	} inside_state;
 
     /* ------------------------------------------------------------ */
-	/* ¥Ç¡¼¥¿¥Ñ¥é¥á¡¼¥¿ */
+	/* ãƒ‡ãƒ¼ã‚¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ */
 
-    LvnsSystemState *system_state;     /* ¥·¥¹¥Æ¥à¥¹¥Æ¡¼¥È */
+    LvnsSystemState *system_state;     /* ã‚·ã‚¹ãƒ†ãƒ ã‚¹ãƒ†ãƒ¼ãƒˆ */
 
-    char *data_path;        /* ¥Ç¡¼¥¿¸¡º÷´ğËÜ¥Ñ¥¹ */
-    char *savedata_path;    /* ¥Ç¡¼¥¿ÊİÂ¸°ÌÃÖ */
+    char *data_path;        /* ãƒ‡ãƒ¼ã‚¿æ¤œç´¢åŸºæœ¬ãƒ‘ã‚¹ */
+    char *savedata_path;    /* ãƒ‡ãƒ¼ã‚¿ä¿å­˜ä½ç½® */
  
-    LeafPack *leafpack;     /* ¥Ç¡¼¥¿ÍÑ¥Ñ¥Ã¥¯¥Õ¥¡¥¤¥ë */
-    LeafPack *scnpack;      /* ¥·¥Ê¥ê¥ªÍÑ¥Ñ¥Ã¥¯¥Õ¥¡¥¤¥ë */
-    u_char *leaf_font_data; /* Leaf FONT ¤Î¥Ç¡¼¥¿   */
+    LeafPack *leafpack;     /* ãƒ‡ãƒ¼ã‚¿ç”¨ãƒ‘ãƒƒã‚¯ãƒ•ã‚¡ã‚¤ãƒ« */
+    LeafPack *scnpack;      /* ã‚·ãƒŠãƒªã‚ªç”¨ãƒ‘ãƒƒã‚¯ãƒ•ã‚¡ã‚¤ãƒ« */
+    u_char *leaf_font_data; /* Leaf FONT ã®ãƒ‡ãƒ¼ã‚¿   */
 
-    u_char *leaf_to_euc;    /* ¥³¡¼¥É¥³¥ó¥Ğ¡¼¥È¥Æ¡¼¥Ö¥ë Leaf -> EUC  */
-    u_short *jis_to_leaf;   /* ¥³¡¼¥É¥³¥ó¥Ğ¡¼¥È¥Æ¡¼¥Ö¥ë JIS Pack -> Leaf */
-
-    /* ------------------------------------------------------ */
-    /* ¥ê¥½¡¼¥¹ */
-
-    Bool force_skip;      /* ¸«¤¿Ê¸½ñ¤Ç¤â¤¹¤Ã¤È¤Ğ¤¹           */
-    Bool key_click_fast;  /* ¥­¡¼¥¯¥ê¥Ã¥¯¤ÇÊ¸½ñ¤ò¹âÂ®É½¼¨µö²Ä */
-	Bool fast_when_seen;  /* ´ûÆÉÊ¸½ñ¤ÏÁá¤¯É½¼¨¤¹¤ë           */
-    Bool enable_effect;       /* ¸ú²Ì¤ò»È¤¦ */
-    Bool enable_effect_back;  /* ÇØ·Ê¸ú²Ì¤ò»È¤¦ */
-
-    Bool seen_mode;       /* Á´Ê¸´ûÆÉ¤È¤ß¤Ê¤¹¥â¡¼¥É(for DEBUG) */
-    Bool demo_mode;       /* ¥ª¡¼¥È¥Ç¥â¥â¡¼¥É */
+    u_char *leaf_to_euc;    /* ã‚³ãƒ¼ãƒ‰ã‚³ãƒ³ãƒãƒ¼ãƒˆãƒ†ãƒ¼ãƒ–ãƒ« Leaf -> EUC  */
+    u_short *jis_to_leaf;   /* ã‚³ãƒ¼ãƒ‰ã‚³ãƒ³ãƒãƒ¼ãƒˆãƒ†ãƒ¼ãƒ–ãƒ« JIS Pack -> Leaf */
 
     /* ------------------------------------------------------ */
-    /* ¥·¥¹¥Æ¥à¥Ñ¥é¥á¡¼¥¿ */
+    /* ãƒªã‚½ãƒ¼ã‚¹ */
 
-    Bool image_dark;    /* ¸½ºß¤Î°Å¤µ                      */
+    Bool force_skip;      /* è¦‹ãŸæ–‡æ›¸ã§ã‚‚ã™ã£ã¨ã°ã™           */
+    Bool key_click_fast;  /* ã‚­ãƒ¼ã‚¯ãƒªãƒƒã‚¯ã§æ–‡æ›¸ã‚’é«˜é€Ÿè¡¨ç¤ºè¨±å¯ */
+	Bool fast_when_seen;  /* æ—¢èª­æ–‡æ›¸ã¯æ—©ãè¡¨ç¤ºã™ã‚‹           */
+    Bool enable_effect;       /* åŠ¹æœã‚’ä½¿ã† */
+    Bool enable_effect_back;  /* èƒŒæ™¯åŠ¹æœã‚’ä½¿ã† */
 
-    int  char_wait_time;         /* Ê¸»úÉ½¼¨ÂÔ¤Á»ş´Ö     */
+    Bool seen_mode;       /* å…¨æ–‡æ—¢èª­ã¨ã¿ãªã™ãƒ¢ãƒ¼ãƒ‰(for DEBUG) */
+    Bool demo_mode;       /* ã‚ªãƒ¼ãƒˆãƒ‡ãƒ¢ãƒ¢ãƒ¼ãƒ‰ */
+
+    /* ------------------------------------------------------ */
+    /* ã‚·ã‚¹ãƒ†ãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ */
+
+    Bool image_dark;    /* ç¾åœ¨ã®æš—ã•                      */
+
+    int  char_wait_time;         /* æ–‡å­—è¡¨ç¤ºå¾…ã¡æ™‚é–“     */
     
-    Bool fast_text;    /* ¥Æ¥­¥¹¥È¤¹¤ÃÈô¤Ğ¤·¥Õ¥é¥°       */
-    Bool fast_disp;    /* É½¼¨¥¨¥Õ¥§¥¯¥È¤¹¤Ã¤È¤Ğ¤·¥Õ¥é¥° */
+    Bool fast_text;    /* ãƒ†ã‚­ã‚¹ãƒˆã™ã£é£›ã°ã—ãƒ•ãƒ©ã‚°       */
+    Bool fast_disp;    /* è¡¨ç¤ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆã™ã£ã¨ã°ã—ãƒ•ãƒ©ã‚° */
 
 	jmp_buf jump;
 
     /* ------------------------------------------------------ */
-    /* ¸½ºß¤Î¾õÂÖ ¥Ç¡¼¥¿¤ÎÊİÂ¸ÍÑ */
+    /* ç¾åœ¨ã®çŠ¶æ…‹ ãƒ‡ãƒ¼ã‚¿ã®ä¿å­˜ç”¨ */
     enum bgtype {
         LVNS_VISUAL,
         LVNS_HCG,
@@ -259,17 +259,17 @@ typedef struct Lvns {
         enum bgtype bg_type;
         int bg_no;
 		int character_no[3];
-        int scn;         /* ¥·¥Ê¥ê¥ªÈÖ¹æÊİÂ¸ÍÑ */
-        int blk;         /* ¥·¥Ê¥ê¥ª¥Ö¥í¥Ã¥¯ÊİÂ¸ÍÑ       */
-        long scn_offset; /* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿ÊİÂ¸ÍÑ¥«¡¼¥½¥ë */
+        int scn;         /* ã‚·ãƒŠãƒªã‚ªç•ªå·ä¿å­˜ç”¨ */
+        int blk;         /* ã‚·ãƒŠãƒªã‚ªãƒ–ãƒ­ãƒƒã‚¯ä¿å­˜ç”¨       */
+        long scn_offset; /* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿ä¿å­˜ç”¨ã‚«ãƒ¼ã‚½ãƒ« */
         int current_music;
     } savepoint;
     struct SavePoint selectpoint;
 
     /* ---------------------------------------------------------- */
-    /* Áàºî¾õÂÖ */
+    /* æ“ä½œçŠ¶æ…‹ */
 
-	/* ³°ÉôÀ©¸æ¾õÂÖ */
+	/* å¤–éƒ¨åˆ¶å¾¡çŠ¶æ…‹ */
     Bool select;
 	Bool cancel;
 	Bool skip;
@@ -283,35 +283,35 @@ typedef struct Lvns {
 	Bool image_mode;
 	
     /* ---------------------------------------------------------- */
-    /* ¥·¥Ê¥ê¥ª¥Ñ¡¼¥µ */
+    /* ã‚·ãƒŠãƒªã‚ªãƒ‘ãƒ¼ã‚µ */
 
-    int start_scn_num;    /* µ¯Æ°»ş¥·¥Ê¥ê¥ªÈÖ¹æ(for DEBUG) */
+    int start_scn_num;    /* èµ·å‹•æ™‚ã‚·ãƒŠãƒªã‚ªç•ªå·(for DEBUG) */
 
-    u_char *scn_data;     /* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿             */
-    u_char *scn_cur_head; /* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿ÀèÆ¬         */
-    u_char *scn_cur;      /* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿¥«¡¼¥½¥ë     */
-    u_char *scn_text;     /* ¥·¥Ê¥ê¥ª¥Æ¥­¥¹¥È           */
+    u_char *scn_data;     /* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿             */
+    u_char *scn_cur_head; /* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿å…ˆé ­         */
+    u_char *scn_cur;      /* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿ã‚«ãƒ¼ã‚½ãƒ«     */
+    u_char *scn_text;     /* ã‚·ãƒŠãƒªã‚ªãƒ†ã‚­ã‚¹ãƒˆ           */
 
     size_t  scn_length;
-	Bool    seen;         /* ´ûÆÉ¥·¥Ê¥ê¥ª¥Õ¥é¥°         */
+	Bool    seen;         /* æ—¢èª­ã‚·ãƒŠãƒªã‚ªãƒ•ãƒ©ã‚°         */
 
-    int scn_current;                       /* ¸½ºß¤Î¥·¥Ê¥ê¥ªÈÖ¹æ     */
-    int blk_current;                       /* ¸½ºß¤Î¥·¥Ê¥ê¥ª¥Ö¥í¥Ã¥¯ */
+    int scn_current;                       /* ç¾åœ¨ã®ã‚·ãƒŠãƒªã‚ªç•ªå·     */
+    int blk_current;                       /* ç¾åœ¨ã®ã‚·ãƒŠãƒªã‚ªãƒ–ãƒ­ãƒƒã‚¯ */
 
 
     /* ------------------------------------------------------ */
-    /* ¥Æ¥­¥¹¥È¥ì¥¤¥ä½èÍı·Ï */
+    /* ãƒ†ã‚­ã‚¹ãƒˆãƒ¬ã‚¤ãƒ¤å‡¦ç†ç³» */
 
 #define TEXT_WIDTH  26
 #define TEXT_HEIGHT 16
 
     struct {
-        /* ¥Æ¥­¥¹¥È¥ì¥¤¥äÍÑ²¾ÁÛVRAM */
+        /* ãƒ†ã‚­ã‚¹ãƒˆãƒ¬ã‚¤ãƒ¤ç”¨ä»®æƒ³VRAM */
 		struct TextVramLine {
 			int offset;
 			struct TextVram {
-				int code;       /* Ê¸»ú¤Î¥³¡¼¥É       */
-				int attribute;  /* Ê¸»ú¤ÎÂ°À­         */
+				int code;       /* æ–‡å­—ã®ã‚³ãƒ¼ãƒ‰       */
+				int attribute;  /* æ–‡å­—ã®å±æ€§         */
 			} column[TEXT_WIDTH];
 		} row[TEXT_HEIGHT];
         int cur_x;
@@ -321,84 +321,84 @@ typedef struct Lvns {
     } tvram[2];
     int current_tvram;
 
-    /* ¥«¡¼¥½¥ë¤Î¾õÂÖ */
+    /* ã‚«ãƒ¼ã‚½ãƒ«ã®çŠ¶æ…‹ */
     int cursor_state;
     
-    /* ¥Æ¥­¥¹¥È¥«¡¼¥½¥ë¤Î¾õÂÖ */
+    /* ãƒ†ã‚­ã‚¹ãƒˆã‚«ãƒ¼ã‚½ãƒ«ã®çŠ¶æ…‹ */
     int text_cursor_state;     
 
-	/* É½¼¨Â°À­ */
+	/* è¡¨ç¤ºå±æ€§ */
     int text_attr;
 
-	/* Ê¸»ú¤¬½ñ¤­¹ş¤Ş¤ì¤Æ¤¤¤ë¤«? */
+	/* æ–‡å­—ãŒæ›¸ãè¾¼ã¾ã‚Œã¦ã„ã‚‹ã‹? */
 	Bool text_written;
 
-	/* ¥Æ¥­¥¹¥ÈÉ½¼¨¥â¡¼¥É¤«¤É¤¦¤« */
+	/* ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹ */
 	Bool text_mode;
 
     /* ------------------------------------------------------- */
-    /* ²èÁüÉÁ²è·Ï */
+    /* ç”»åƒæç”»ç³» */
 
-    LvnsImage *background; /* ÇØ·Ê¥Ç¡¼¥¿Êİ»ıÍÑ        */
-    LvnsImage *vram;       /* ÇØ·Ê¹çÀ®ºî¶ÈÍÑ²¾ÁÛ VRAM */
+    LvnsImage *background; /* èƒŒæ™¯ãƒ‡ãƒ¼ã‚¿ä¿æŒç”¨        */
+    LvnsImage *vram;       /* èƒŒæ™¯åˆæˆä½œæ¥­ç”¨ä»®æƒ³ VRAM */
 
-    int latitude;          /* ¸½ºß¤Î²èÁü¤ÎÌÀ¤ë¤µ 0-255 */
-    int latitude_dark;     /* ²èÌÌ¤¬°Å¤¤»ş¤Îµ±ÅÙ¤Î»ØÄê */
+    int latitude;          /* ç¾åœ¨ã®ç”»åƒã®æ˜ã‚‹ã• 0-255 */
+    int latitude_dark;     /* ç”»é¢ãŒæš—ã„æ™‚ã®è¼åº¦ã®æŒ‡å®š */
 
-    int sepia_mode_next;   /* ¼¡¤Î²èÌÌÀÚ¤êÂØ¤¨¤Ç¥»¥Ô¥¢Ä´É½¼¨ */
-    int sepia_mode;        /* ¥»¥Ô¥¢Ä´É½¼¨ */
+    int sepia_mode_next;   /* æ¬¡ã®ç”»é¢åˆ‡ã‚Šæ›¿ãˆã§ã‚»ãƒ”ã‚¢èª¿è¡¨ç¤º */
+    int sepia_mode;        /* ã‚»ãƒ”ã‚¢èª¿è¡¨ç¤º */
 
     LvnsBackEffectInfo *effect_back;
     LvnsBackEffectInfo *effect_back_next;
-    int effect_back_state;                 /* ÇØ·Ê¥¨¥Õ¥§¥¯¥ÈÍÑ¥¹¥Æ¡¼¥È */
+    int effect_back_state;                 /* èƒŒæ™¯ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”¨ã‚¹ãƒ†ãƒ¼ãƒˆ */
 #ifdef FONT_PLUS
     u_char*          font_file;
     LvnsFont	     *font;
 #endif /* FONT_PLUS */
 
-	void (*disp_func)(struct Lvns *lvns, void *data); /* ÄÉ²ÃÉ½¼¨´Ø¿ô */
+	void (*disp_func)(struct Lvns *lvns, void *data); /* è¿½åŠ è¡¨ç¤ºé–¢æ•° */
 	void *disp_func_param;
 
     /* -------------------------------------------------------- */
-    /* ²»³ÚºÆÀ¸·Ï */
+    /* éŸ³æ¥½å†ç”Ÿç³» */
 	Music *music;
 
-    /* ¥ë¡¼¥×½èÍıÍÑ */
-    int current_music;                            /* ¸½ºß±éÁÕÃæ¤Î²»³Ú     */
-    Bool loop_music;                              /* ¥ë¡¼¥×¤«¤É¤¦¤«       */
-    int next_music;                               /* ¼¡¤Î¥·¡¼¥ó¤«¤é¤Î²»³Ú */
-    Bool loop_next_music;                         /* ¥ë¡¼¥×¤«¤É¤¦¤«       */
+    /* ãƒ«ãƒ¼ãƒ—å‡¦ç†ç”¨ */
+    int current_music;                            /* ç¾åœ¨æ¼”å¥ä¸­ã®éŸ³æ¥½     */
+    Bool loop_music;                              /* ãƒ«ãƒ¼ãƒ—ã‹ã©ã†ã‹       */
+    int next_music;                               /* æ¬¡ã®ã‚·ãƒ¼ãƒ³ã‹ã‚‰ã®éŸ³æ¥½ */
+    Bool loop_next_music;                         /* ãƒ«ãƒ¼ãƒ—ã‹ã©ã†ã‹       */
 
-	/* ¥Ü¥ê¥å¡¼¥à½èÍıÍÑ */
-    int current_music_volume;                     /* ¸½ºß¤Î¥Ü¥ê¥å¡¼¥àÀßÄê */
-    int music_fade_mode;                          /* ¥Õ¥§¡¼¥É¥â¡¼¥É       */
-    int music_fade_flag;                          /* ¥Õ¥§¡¼¥É¤ÎÊı¸ş       */
+	/* ãƒœãƒªãƒ¥ãƒ¼ãƒ å‡¦ç†ç”¨ */
+    int current_music_volume;                     /* ç¾åœ¨ã®ãƒœãƒªãƒ¥ãƒ¼ãƒ è¨­å®š */
+    int music_fade_mode;                          /* ãƒ•ã‚§ãƒ¼ãƒ‰ãƒ¢ãƒ¼ãƒ‰       */
+    int music_fade_flag;                          /* ãƒ•ã‚§ãƒ¼ãƒ‰ã®æ–¹å‘       */
 
     /* -------------------------------------------------------- */
-    /* ¥µ¥¦¥ó¥ÉºÆÀ¸·Ï */
+    /* ã‚µã‚¦ãƒ³ãƒ‰å†ç”Ÿç³» */
 	Sound *sound;
 
-    /* ¥ë¡¼¥×½èÍıÍÑ */
+    /* ãƒ«ãƒ¼ãƒ—å‡¦ç†ç”¨ */
     int sound_loop;
     int sound_count;
     int interval_count;
 
     /* -------------------------------------------------------- */
-	/* ¥Ò¥¹¥È¥ê */
+	/* ãƒ’ã‚¹ãƒˆãƒª */
 	LvnsHistoryData *history;
 	int history_size;
 	int history_pos;
 
 #ifdef USE_MGL
     /* -------------------------------------------------------- */
-    /* mglvns ¤Î¤ß¤Ç»È¤¦¾õÂÖÃÍ */
+    /* mglvns ã®ã¿ã§ä½¿ã†çŠ¶æ…‹å€¤ */
     int version;
 #endif
 
     /* -------------------------------------------------------- */
-	/* ¥·¥¹¥Æ¥à°ÍÂ¸Éô */
+	/* ã‚·ã‚¹ãƒ†ãƒ ä¾å­˜éƒ¨ */
 
-    void *system_depend;                /* Æ°ºî¥·¥¹¥Æ¥à°ÍÂ¸¾ğÊó */
+    void *system_depend;                /* å‹•ä½œã‚·ã‚¹ãƒ†ãƒ ä¾å­˜æƒ…å ± */
 
 	void (*flushWindow)(struct Lvns *lvns);
 	void (*flushWindowArea)(struct Lvns *lvns, int x, int y, int w, int h);
@@ -426,7 +426,7 @@ typedef struct Lvns {
 
 } Lvns;
 
-/* LvnsDisp.c É½¼¨·Ï */
+/* LvnsDisp.c è¡¨ç¤ºç³» */
 void LvnsDrawTextLayerAll(Lvns *lvns);
 void LvnsDrawTextLayer(Lvns *lvns);
 void LvnsClearCursor(Lvns *lvns);
@@ -438,7 +438,7 @@ void LvnsDispText(Lvns *lvns);
 void LvnsTextOff(Lvns *lvns);
 void LvnsTextOn(Lvns *lvns);
 
-/* LvnsText.c ¥Æ¥­¥¹¥È½èÍı·Ï */
+/* LvnsText.c ãƒ†ã‚­ã‚¹ãƒˆå‡¦ç†ç³» */
 void LvnsLocate(Lvns *lvns, int x, int y);
 void LvnsPutChar(Lvns *lvns, int c, int attr);
 void LvnsPutCharNormal(Lvns *lvns, int c, int attr);
@@ -449,7 +449,7 @@ void LvnsNewLineText(Lvns *lvns);
 void LvnsDrawString(Lvns *lvns, int x, int y, const u_char *str, int attr);
 void LvnsDrawStringCenter(Lvns *lvns, int y, const u_char *str, int attr);
 
-/* LvnsMusic.c ²»³ÚÀ©¸æ */
+/* LvnsMusic.c éŸ³æ¥½åˆ¶å¾¡ */
 void LvnsSetMusicVolume(Lvns *lvns, int no);
 void LvnsStartMusic(Lvns *lvns, int no);
 void LvnsStopMusic(Lvns *lvns);
@@ -464,7 +464,7 @@ void LvnsLoopMusic(Lvns *lvns);
 void LvnsWaitMusic(Lvns *lvns);
 void LvnsWaitMusicFade(Lvns *lvns);
 
-/* LvnsSound.c ¸ú²Ì²»À©¸æ */
+/* LvnsSound.c åŠ¹æœéŸ³åˆ¶å¾¡ */
 void LvnsLoadSound(Lvns *lvns, const char* basename, int no);
 void LvnsLoadSound2(Lvns *lvns, const char* name);
 void LvnsStartSound(Lvns *lvns, int count);
@@ -472,13 +472,13 @@ void LvnsStopSound(Lvns *lvns);
 void LvnsWaitSound(Lvns *lvns);
 void LvnsLoopSound(Lvns *lvns);
 
-/* LvnsBackEffect.c ÇØ·Ê¥¨¥Õ¥§¥¯¥ÈÀ©¸æ */
+/* LvnsBackEffect.c èƒŒæ™¯ã‚¨ãƒ•ã‚§ã‚¯ãƒˆåˆ¶å¾¡ */
 void LvnsSetBackEffect(Lvns *lvns, LvnsBackEffectInfo *info);
 void LvnsSetNextBackEffect(Lvns *lvns, LvnsBackEffectInfo *info);
 void LvnsBackEffectSetState(Lvns *lvns);
 void LvnsBackEffect(Lvns *lvns);
 
-/* LvnsFile.c ¥Õ¥¡¥¤¥ëÆÉ¤ß¹ş¤ß */
+/* LvnsFile.c ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ */
 u_char *LvnsLoadData(Lvns *lvns, const char *name, size_t *size);
 LvnsImage *LvnsLoadImage(Lvns *lvns, const char *name, LvnsImage *over);
 void LvnsLoadScenario(Lvns *lvns, int scn, int blk);

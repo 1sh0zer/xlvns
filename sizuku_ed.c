@@ -10,7 +10,7 @@
  */
 
 /* 
- * �� ����ǥ���
+ * ¼¶ ¥¨¥ó¥Ç¥£¥ó¥°
  */
 
 #include <stdio.h>
@@ -42,7 +42,7 @@ DispMoji(Lvns *lvns, LvnsScript *scr,
     return True;
 }
 
-/* �� ����ǥ��󥰥�����ץ� */
+/* ¼¶ ¥¨¥ó¥Ç¥£¥ó¥°¥¹¥¯¥ê¥×¥È */
 static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_CLEAR, NULL, (void*)LVNS_EFFECT_FADE_PALETTE },
 
@@ -50,8 +50,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ץ������", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ȣ��ʣɣͣš��ΣɣΣϣͣ���", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "¥×¥í¥°¥é¥à", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£È£Á£Ê£É£Í£Å¡¡£Î£É£Î£Ï£Í£Á£Å", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)44 },
@@ -60,8 +60,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "����饯��������", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "��ɧ��ζ��", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "¥­¥ã¥é¥¯¥¿¡¼¸¶°Æ", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "¹âÉ§¡¡Î¶ºÈ", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)11 },
@@ -70,8 +70,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "����", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "��̵�Ű", (void*) 7 },
+    { LVNS_SCRIPT_FUNC, tputs, "¸¶²è", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "¿åÌµ·î¡¡Å°", (void*) 7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)12 },
@@ -80,8 +80,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "����", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ⶶ��ζ��", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "µÓËÜ", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "¹â¶¶¡¡Î¶Ìé", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_WAIT, (void*)6000 },
@@ -90,12 +90,12 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ӥ��奢�륰��ե��å���", (void*)4 },
-    { LVNS_SCRIPT_FUNC, tputs, "Ļ�����", (void*)6 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ȣ��ͣͣţ�", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "������", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "����̴", (void*)9 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ģϣڣ�", (void*)10 },
+    { LVNS_SCRIPT_FUNC, tputs, "¥Ó¥¸¥å¥¢¥ë¥°¥é¥Õ¥£¥Ã¥¯¥¹", (void*)4 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ä»Ìî¡¡Àµ¿®", (void*)6 },
+    { LVNS_SCRIPT_FUNC, tputs, "£È£Á£Í£Í£Å£Ò", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "¿ÆÉãÌý", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "À¸ÇÈÌ´", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Ä£Ï£Ú£Á", (void*)10 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)15 },
@@ -104,9 +104,9 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "����饯��������ե��å���", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ȣ��ͣͣţ�", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "Ļ�����", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "¥­¥ã¥é¥¯¥¿¡¼¥°¥é¥Õ¥£¥Ã¥¯¥¹", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£È£Á£Í£Í£Å£Ò", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ä»Ìî¡¡Àµ¿®", (void*)8 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)20 },
@@ -115,10 +115,10 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "�طʥ���ե��å���", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "Ļ�����", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "������", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "����̴", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÇØ·Ê¥°¥é¥Õ¥£¥Ã¥¯¥¹", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ä»Ìî¡¡Àµ¿®", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "¿ÆÉãÌý", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "À¸ÇÈÌ´", (void*)9 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)22 },
@@ -127,10 +127,10 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "���ꥸ�ʥ�ե����", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ȣ��ͣͣţ�", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "�����졹��Ƭ��", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "��̵�Ű", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "¥ª¥ê¥¸¥Ê¥ë¥Õ¥©¥ó¥È", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£È£Á£Í£Í£Å£Ò", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÇúÎö±ì¡¹¹õÆ¬¶Ò", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "¿åÌµ·î¡¡Å°", (void*)9 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)24 },
@@ -139,11 +139,11 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "��������", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ϣңɣ£��ӣ�", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "�շͥ��", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "��̵�Ű", (void*)9 },
-    { LVNS_SCRIPT_FUNC, tputs, "��浡", (void*)10 },
+    { LVNS_SCRIPT_FUNC, tputs, "¥·¡¼¥ó¹½À®", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Ï£Ò£É£Â£Á£Ó£Ó", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÍÕ·î¡¡Í¥°ì", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "¿åÌµ·î¡¡Å°", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "½é¹æµ¡", (void*)10 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)26 },
@@ -152,10 +152,10 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "����", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�޸͡�����", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "���ľ��", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "�������", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "²»³Ú", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÀÞ¸Í¡¡¿­¼£", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "²¼Àî¡¡Ä¾ºÈ", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÀÐÀî¡¡¿¿Ìé", (void*)9 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)27 },
@@ -164,8 +164,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ԣţӣԡ��У̣���", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "���̡̣��̣ţ��ơ��ӣԣ��ƣ�", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Ô£Å£Ó£Ô¡¡£Ð£Ì£Á£Ù", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Á£Ì£Ì¡¡£Ì£Å£Á£Æ¡¡£Ó£Ô£Á£Æ£Æ", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)31 },
@@ -174,8 +174,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ӣУţãɣ��̡��ԣȣ��Σ�", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�ˣţΡ��ˣţ�", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Ó£Ð£Å£Ã£É£Á£Ì¡¡£Ô£È£Á£Î£Ø", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Ë£Å£Î¡¡£Ë£Å£Î", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)35 },
@@ -184,7 +184,7 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "���Σġ��٣ϣ�", (void*)6 },
+    { LVNS_SCRIPT_FUNC, tputs, "£Á£Î£Ä¡¡£Ù£Ï£Õ", (void*)6 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_WAIT, (void*)6000 },
@@ -194,8 +194,8 @@ static LvnsScriptData eddata[]= {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "��衦��ȯ", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "�����������̣ţ���", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "´ë²è¡¦³«È¯", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "£±£¹£¹£¶¡¡£Ì£Å£Á£Æ", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_WAIT, (void*)0 },

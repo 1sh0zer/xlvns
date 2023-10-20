@@ -5,25 +5,25 @@
 
 typedef enum {
     LVNS_EFFECT_NONE,
-	LVNS_EFFECT_NO_EFFECT,         /* д╩д╦дтд╖д╩дд */
-    LVNS_EFFECT_NORMAL,            /* ├▒╜у╔╜╝и */
-    LVNS_EFFECT_FADE_MASK,         /* е▐е╣епе╒езб╝е╔ */
-    LVNS_EFFECT_WIPE_TTOB,         /* ╛хдлдщеяеде╫ */
-    LVNS_EFFECT_WIPE_LTOR,         /* ║╕длдщеяеде╫ */
-    LVNS_EFFECT_FADE_PALETTE,      /* Palette е╒езб╝е╔ */
-    LVNS_EFFECT_WIPE_MASK_LTOR,    /* ║╕длдщеяеде╫(е▐е╣еп) */
-    LVNS_EFFECT_FADE_SQUARE,       /* д╥д╖╖┴вбе╒езб╝е╔ */
-    LVNS_EFFECT_WIPE_SQUARE_LTOR,  /* д╥д╖╖┴вб║╕еяеде╫ */
-    LVNS_EFFECT_SLIDE_LTOR,        /* ║╕длдщ╜─е╣ещеде╔ */
-    LVNS_EFFECT_SLANTTILE,         /* ╝╨д║дь▓гете╢едепе╣ещеде╔ */
-    LVNS_EFFECT_GURUGURU,          /* д░дыд░ды */
-    LVNS_EFFECT_VERTCOMPOSITION,   /* ╜─╩¤╕■д╟д╧д╡д▀д│д▀ */
-    LVNS_EFFECT_CIRCLE_SHRINK,     /* ├ц┐┤╩¤╕■д╦д┴д╕др */
-    LVNS_EFFECT_LEFT_SCROLL,       /* ║╕д╦е╣епеэб╝еы */
-    LVNS_EFFECT_TOP_SCROLL,        /* ╛хд╦е╣епеэб╝еы */
-    LVNS_EFFECT_RAND_RASTER,       /* ещеєе└ер╣╘╔╜╝и */
-    LVNS_EFFECT_BLOOD,             /* ╖ьдмд└дщд└дщ   */
-} LvnsEffectType;                  /* еие╒езепе╚╝я╩╠ */
+	LVNS_EFFECT_NO_EFFECT,         /* уБкуБлуВВуБЧуБкуБД */
+    LVNS_EFFECT_NORMAL,            /* хНШч┤Фшбичд║ */
+    LVNS_EFFECT_FADE_MASK,         /* уГЮуВ╣уВпуГХуВзуГ╝уГЙ */
+    LVNS_EFFECT_WIPE_TTOB,         /* ф╕КуБЛуВЙуГпуВдуГЧ */
+    LVNS_EFFECT_WIPE_LTOR,         /* х╖жуБЛуВЙуГпуВдуГЧ */
+    LVNS_EFFECT_FADE_PALETTE,      /* Palette уГХуВзуГ╝уГЙ */
+    LVNS_EFFECT_WIPE_MASK_LTOR,    /* х╖жуБЛуВЙуГпуВдуГЧ(уГЮуВ╣уВп) */
+    LVNS_EFFECT_FADE_SQUARE,       /* уБ▓уБЧх╜втЧЖуГХуВзуГ╝уГЙ */
+    LVNS_EFFECT_WIPE_SQUARE_LTOR,  /* уБ▓уБЧх╜втЧЖх╖жуГпуВдуГЧ */
+    LVNS_EFFECT_SLIDE_LTOR,        /* х╖жуБЛуВЙч╕жуВ╣уГйуВдуГЙ */
+    LVNS_EFFECT_SLANTTILE,         /* цЦЬуБЪуВМцикуГвуВ╢уВдуВпуВ╣уГйуВдуГЙ */
+    LVNS_EFFECT_GURUGURU,          /* уБРуВЛуБРуВЛ */
+    LVNS_EFFECT_VERTCOMPOSITION,   /* ч╕жцЦ╣хРСуБзуБпуБХуБ┐уБУуБ┐ */
+    LVNS_EFFECT_CIRCLE_SHRINK,     /* ф╕нх┐ГцЦ╣хРСуБлуБбуБШуВА */
+    LVNS_EFFECT_LEFT_SCROLL,       /* х╖жуБлуВ╣уВпуГнуГ╝уГл */
+    LVNS_EFFECT_TOP_SCROLL,        /* ф╕КуБлуВ╣уВпуГнуГ╝уГл */
+    LVNS_EFFECT_RAND_RASTER,       /* уГйуГ│уГАуГашбМшбичд║ */
+    LVNS_EFFECT_BLOOD,             /* шбАуБМуБауВЙуБауВЙ   */
+} LvnsEffectType;                  /* уВиуГХуВзуВпуГИчиохИе */
 
 /* LvnsEffect.c */
 void LvnsClearLow(Lvns *lvns, LvnsEffectType effect_clear);

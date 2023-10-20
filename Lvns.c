@@ -15,7 +15,7 @@
 #include "LvnsEffect.h"
 
 /**
- * LVNS À¸À®
+ * LVNS ç”Ÿæˆ
  */
 Lvns *
 LvnsNew(void)
@@ -30,7 +30,7 @@ LvnsNew(void)
     lvns->savedata_path = NULL;
 
     /* ---------------------------------------------------------- */
-    /* ¥·¥Ê¥ê¥ª¥Ñ¡¼¥µ½é´ü²½ */
+    /* ã‚·ãƒŠãƒªã‚ªãƒ‘ãƒ¼ã‚µåˆæœŸåŒ– */
 
     lvns->start_scn_num = -1;
     lvns->scn_data = NULL;
@@ -55,7 +55,7 @@ LvnsNew(void)
     lvns->demo_mode = False;
 
     /* ------------------------------------------------------ */
-    /* ¥Æ¥­¥¹¥È¥ì¥¤¥ä½èÍı·Ï */
+    /* ãƒ†ã‚­ã‚¹ãƒˆãƒ¬ã‚¤ãƒ¤å‡¦ç†ç³» */
 
     lvns->current_tvram = 1;
     LvnsClearText(lvns);
@@ -67,7 +67,7 @@ LvnsNew(void)
     lvns->text_attr   = 0;
 
     /* -------------------------------------------------------- */
-    /* ²èÁüÉÁ²è·Ï½é´ü²½ */
+    /* ç”»åƒæç”»ç³»åˆæœŸåŒ– */
     lvns->latitude  = 16;
     lvns->latitude_dark = 11;
 
@@ -81,7 +81,7 @@ LvnsNew(void)
 	lvns->disp_func = NULL;
 
     /* -------------------------------------------------------- */
-    /* ²»³ÚºÆÀ¸·Ï½é´ü²½ */
+    /* éŸ³æ¥½å†ç”Ÿç³»åˆæœŸåŒ– */
     lvns->current_music        = 0;
     lvns->next_music           = 0;
     lvns->loop_music           = False;
@@ -91,13 +91,13 @@ LvnsNew(void)
     lvns->music                = NULL;
 
     /* --------------------------------------------------------- */
-    /* SE ´ØÏ¢½é´ü²½ */
+    /* SE é–¢é€£åˆæœŸåŒ– */
     lvns->sound_loop  = False;
     lvns->sound_count = 0;
 	lvns->sound       = NULL;
 
     /* --------------------------------------------------------- */
-    /* ¥Ò¥¹¥È¥ê´ØÏ¢½é´ü²½ */
+    /* ãƒ’ã‚¹ãƒˆãƒªé–¢é€£åˆæœŸåŒ– */
 	lvns->history      = NULL;
 	lvns->history_pos  = 0;
 	lvns->history_size = 0;
@@ -106,16 +106,16 @@ LvnsNew(void)
 }
 
 /**
- * LVNS ½é´ü²½
- * @param type   ¥²¡¼¥à¼ïÊÌ
- * @param depend ¥·¥¹¥Æ¥à°ÍÂ¸¾ğÊó
+ * LVNS åˆæœŸåŒ–
+ * @param type   ã‚²ãƒ¼ãƒ ç¨®åˆ¥
+ * @param depend ã‚·ã‚¹ãƒ†ãƒ ä¾å­˜æƒ…å ±
  */
 void
 LvnsInitialize(Lvns *lvns, int type, void *depend)
 {
 	lvns->system_depend = depend;
 
-	/* ¥â¥¸¥å¡¼¥ëÊÌ½èÍı */
+	/* ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åˆ¥å‡¦ç† */
 
     switch (type) {
     case 0:
@@ -129,17 +129,17 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
         break;
     }
 
-	/* ÆâÉô²èÌÌ¥Ğ¥Ã¥Õ¥¡À¸À® */
+	/* å†…éƒ¨ç”»é¢ãƒãƒƒãƒ•ã‚¡ç”Ÿæˆ */
     lvns->background = lvnsimage_new(WIDTH, HEIGHT, 0, 0);
     lvns->vram       = lvnsimage_new(WIDTH, HEIGHT, 0, 0);
     LVNS->clearScreen(lvns);
 
     dprintf((stderr, "data loading...\n"));
     {
-        /* ¥Ç¡¼¥¿ÆÉ¤ß½Ğ¤·ÍÑ¥Ñ¥¹ */
+        /* ãƒ‡ãƒ¼ã‚¿èª­ã¿å‡ºã—ç”¨ãƒ‘ã‚¹ */
         char path[1024];
     
-        /* ¥³¡¼¥ÉÊÑ´¹¥Æ¡¼¥Ö¥ë¤ÎÆÉ¤ß¹ş¤ß */
+        /* ã‚³ãƒ¼ãƒ‰å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«ã®èª­ã¿è¾¼ã¿ */
         {
             FILE *fp;
             size_t size;
@@ -156,7 +156,7 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
             size = ftell(fp);
             rewind(fp);
         
-            /* ÊÑ´¹ÍÑ¥Æ¡¼¥Ö¥ë¤è¤ß¤³¤ß */
+            /* å¤‰æ›ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«ã‚ˆã¿ã“ã¿ */
             lvns->leaf_to_euc = malloc(size);
             if (fread(lvns->leaf_to_euc, 1, size, fp) != size) {
                 perror(LVNS->fonttable_name);
@@ -165,17 +165,17 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
             }
             fclose(fp);
         
-            /* µÕÊÑ´¹ÍÑ¥Æ¡¼¥Ö¥ëºîÀ® */
-            size /= 2;  /* Ê¸»ú¿ô */
+            /* é€†å¤‰æ›ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆ */
+            size /= 2;  /* æ–‡å­—æ•° */
             lvns->jis_to_leaf = (u_short *)
                 malloc(sizeof(u_short) * 94 * 94);
 
-            /* ½é´ü²½ */
+            /* åˆæœŸåŒ– */
             for (i=0; i < 94 * 94; i++) {
                 lvns->jis_to_leaf[i] = 0;
             }
         
-            /* ¥Ş¥Ã¥Ô¥ó¥° */
+            /* ãƒãƒƒãƒ”ãƒ³ã‚° */
             for (i=0; i < size; i++) {
                 int code = ((lvns->leaf_to_euc[i*2  ] & 0x7f) - 33) * 94 +
                     (lvns->leaf_to_euc[i*2+1] & 0x7f) - 33;
@@ -183,7 +183,7 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
             }
         }
 
-        /* ¥Ç¡¼¥¿¥Ñ¥Ã¥±¡¼¥¸¥ª¡¼¥×¥ó */
+        /* ãƒ‡ãƒ¼ã‚¿ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚ªãƒ¼ãƒ—ãƒ³ */
         snprintf(path, sizeof path, "%s/%s", lvns->data_path, LVNS->leafpack_name);
         if ((lvns->leafpack = leafpack_new(path)) == NULL) {
             if ((lvns->leafpack = leafpack_new(LVNS->leafpack_name)) == NULL) {
@@ -192,7 +192,7 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
             }
         }
 
-        /* ¥·¥Ê¥ê¥ª¥Ñ¥Ã¥±¡¼¥¸¥ª¡¼¥×¥ó */
+        /* ã‚·ãƒŠãƒªã‚ªãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚ªãƒ¼ãƒ—ãƒ³ */
         if ((LVNS->scnpack_name)) {
             snprintf(path, sizeof path, "%s/%s", lvns->data_path, LVNS->scnpack_name);
             if ((lvns->scnpack = leafpack_new(path)) == NULL) {
@@ -206,7 +206,7 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
             lvns->scnpack = lvns->leafpack;
         }
 
-        /* ¥Õ¥©¥ó¥È¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß */
+        /* ãƒ•ã‚©ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿ */
         if (!(lvns->leaf_font_data=LvnsLoadData(lvns, "KNJ_ALL.KNJ", NULL))){
             fprintf(stderr, "Can't open KNJ_ALL.KNJ.\n");
             exit(1);
@@ -215,61 +215,61 @@ LvnsInitialize(Lvns *lvns, int type, void *depend)
 }
 
 /**
- * LVNS ÇË´ş
+ * LVNS ç ´æ£„
  */
 void
 LvnsDestroy(Lvns *lvns)
 {
 	if (lvns) {
-		/* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿²òÊü */
+		/* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿è§£æ”¾ */
 		free(lvns->scn_data);
 		free(lvns->scn_text);
 		
-		/* ¥Ç¡¼¥¿¥Ñ¥Ã¥±¡¼¥¸²òÊü */
+		/* ãƒ‡ãƒ¼ã‚¿ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸è§£æ”¾ */
 		leafpack_delete(lvns->leafpack);
 		
-		/* ¥·¥Ê¥ê¥ª¥Ñ¥Ã¥±¡¼¥¸²òÊü */
+		/* ã‚·ãƒŠãƒªã‚ªãƒ‘ãƒƒã‚±ãƒ¼ã‚¸è§£æ”¾ */
 		if (LVNS->scnpack_name)
 			leafpack_delete(lvns->scnpack);
 		
-		/* ¥Õ¥©¥ó¥È¥Ç¡¼¥¿²òÊü */
+		/* ãƒ•ã‚©ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿è§£æ”¾ */
 		free(lvns->leaf_font_data);
 
-		/* ¥»¡¼¥Ö¥Ç¡¼¥¿¥Ñ¥¹¾ğÊó³«Êü */
+		/* ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ãƒ‘ã‚¹æƒ…å ±é–‹æ”¾ */
 		if (lvns->savedata_path) {
 			free(lvns->savedata_path);
 		}
 
-		/* ¥Ç¡¼¥¿¥Ñ¥¹¾ğÊó³«Êü */
+		/* ãƒ‡ãƒ¼ã‚¿ãƒ‘ã‚¹æƒ…å ±é–‹æ”¾ */
 		if (lvns->data_path) {
 			free(lvns->data_path);
 		}
 
-		/* ¥Ò¥¹¥È¥ê¾ğÊóÇÑ´ş */
+		/* ãƒ’ã‚¹ãƒˆãƒªæƒ…å ±å»ƒæ£„ */
 		if (lvns->history) {
 			free(lvns->history);
 		}
 
-		/* ¼«Ê¬¼«¿È¤òÇË´ş */
+		/* è‡ªåˆ†è‡ªèº«ã‚’ç ´æ£„ */
 		free(lvns);
 	}
 }
 
 /**
- * ÆâÉô´Ø¿ô¥¤¥ó¥¿¡¼¥Ğ¥ë¼Â¹Ô½èÍı
+ * å†…éƒ¨é–¢æ•°ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«å®Ÿè¡Œå‡¦ç†
  */
 static void
 Interval(Lvns *lvns, Bool redisp_ok)
 {
-	/* BGM ¤Î½èÍı */
+	/* BGM ã®å‡¦ç† */
 	if (lvns->current_music) {
-		/* ¥Õ¥§¡¼¥É½èÍı */
+		/* ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç† */
 		if (lvns->music_fade_mode) {
 			int vol, fade;
 			if (lvns->music_fade_flag) {
-				fade =   256 * 2 * 10 / INTERVAL;  /* 0.5ÉÃ°ÊÆâ */
+				fade =   256 * 2 * 10 / INTERVAL;  /* 0.5ç§’ä»¥å†… */
 			} else {
-				fade = - 256 * 2 * 10 / INTERVAL;  /* 0.5ÉÃ°ÊÆâ */
+				fade = - 256 * 2 * 10 / INTERVAL;  /* 0.5ç§’ä»¥å†… */
 			}
 			
 			vol = lvns->current_music_volume + fade;
@@ -305,7 +305,7 @@ Interval(Lvns *lvns, Bool redisp_ok)
 	if (lvns->sound_loop || lvns->sound_count) 
 		LvnsLoopSound(lvns);
 
-	/* ÇØ·Ê²èÁü½èÍı */
+	/* èƒŒæ™¯ç”»åƒå‡¦ç† */
 	if (lvns->effect_back && lvns->enable_effect_back) {
 		LvnsBackEffectSetState(lvns);
 #ifdef USE_MGL
@@ -321,7 +321,7 @@ Interval(Lvns *lvns, Bool redisp_ok)
 }
 
 /**
- * ²èÌÌ¥Õ¥ê¥Ã¥×ÂÔ¤Á
+ * ç”»é¢ãƒ•ãƒªãƒƒãƒ—å¾…ã¡
  */
 void
 LvnsFlip(Lvns *lvns, Bool redisp_ok)
@@ -331,23 +331,23 @@ LvnsFlip(Lvns *lvns, Bool redisp_ok)
 }
 
 /*
- * ½èÍı¥á¥¤¥ó¥¨¥ó¥¸¥ó
+ * å‡¦ç†ãƒ¡ã‚¤ãƒ³ã‚¨ãƒ³ã‚¸ãƒ³
  */
 void
 LvnsMain(Lvns *lvns)
 {
-	/* BGM·Ï½é´ü²½ */
+	/* BGMç³»åˆæœŸåŒ– */
 	MusicOpen(lvns->music);
 	
-	/* SE·Ï½é´ü²½ */
+	/* SEç³»åˆæœŸåŒ– */
 	SoundOpen(lvns->sound);
 
-	/* ³Æ¼ï½é´ü²½ */
+	/* å„ç¨®åˆæœŸåŒ– */
 	LVNS->start(lvns);
 
-	/* Âç°è¥¸¥ã¥ó¥×ÍÑ */
+	/* å¤§åŸŸã‚¸ãƒ£ãƒ³ãƒ—ç”¨ */
 	switch ((LvnsJumpParameter)setjmp(lvns->jump)) {
-	case LVNS_JUMP_NONE: /* ½é²ó */
+	case LVNS_JUMP_NONE: /* åˆå› */
 		break;
 	case LVNS_JUMP_RESTART:
 		goto main_start;
@@ -358,13 +358,13 @@ LvnsMain(Lvns *lvns)
 	}
 
 	if (lvns->start_scn_num >= 0) {
-		/* ¥Ç¥Ğ¥Ã¥°ÍÑ¥·¥Ê¥ê¥ª»ØÄêµ¯Æ° */
+		/* ãƒ‡ãƒãƒƒã‚°ç”¨ã‚·ãƒŠãƒªã‚ªæŒ‡å®šèµ·å‹• */
 		LvnsInitSavePoint(lvns, &lvns->savepoint);
 		lvns->savepoint.scn        = lvns->start_scn_num;
 		lvns->savepoint.blk        = 1;
 		lvns->savepoint.scn_offset = 0;
 	} else {
-		/* µ¯Æ°»ş¥¸¥ó¥°¥ë & ¥ª¡¼¥×¥Ë¥ó¥° */
+		/* èµ·å‹•æ™‚ã‚¸ãƒ³ã‚°ãƒ« & ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚° */
 		LVNS->jingle(lvns);
 		LVNS->opening(lvns);
 	}
@@ -375,11 +375,11 @@ LvnsMain(Lvns *lvns)
 		lvns->latitude    = 16;
 		LVNS->main(lvns);
 
-		/* BGMÄä»ß */
+		/* BGMåœæ­¢ */
 		LvnsStopMusic(lvns);
 		LvnsStopSound(lvns);
 
-		/* ²èÌÌ¾Ãµî */
+		/* ç”»é¢æ¶ˆå» */
 		lvns->current_tvram = 0;
 		LvnsClearText(lvns);
 		LvnsClear(lvns, LVNS_EFFECT_WIPE_TTOB);
@@ -391,16 +391,16 @@ LvnsMain(Lvns *lvns)
 
  end:
 
-	/* ¥µ¥¦¥ó¥É·Ï½ªÎ» */
+	/* ã‚µã‚¦ãƒ³ãƒ‰ç³»çµ‚äº† */
 	SoundClose(lvns->sound);
 	
-	/* BGM·Ï½ªÎ» */
+	/* BGMç³»çµ‚äº† */
 	MusicClose(lvns->music);
 }
 
 /**
- * »ş´ÖÂÔ¤Á
- * »ØÄê¤·¤¿²ó¿ô¤Î¥Õ¥ê¥Ã¥×Ê¬ÂÔ¤Ä
+ * æ™‚é–“å¾…ã¡
+ * æŒ‡å®šã—ãŸå›æ•°ã®ãƒ•ãƒªãƒƒãƒ—åˆ†å¾…ã¤
  */
 void
 LvnsWait(Lvns *lvns, int flip_cnt)
@@ -411,7 +411,7 @@ LvnsWait(Lvns *lvns, int flip_cnt)
 }
 
 /**
- * Âç°è¥¸¥ã¥ó¥×½èÍı
+ * å¤§åŸŸã‚¸ãƒ£ãƒ³ãƒ—å‡¦ç†
  */
 void
 LvnsJump(Lvns *lvns, LvnsJumpParameter param)
@@ -423,7 +423,7 @@ LvnsJump(Lvns *lvns, LvnsJumpParameter param)
 }
 
 /**
- * ¥Õ¥¡¥¤¥ëÊİÂ¸¥Ñ¥¹ÀßÄê
+ * ãƒ•ã‚¡ã‚¤ãƒ«ä¿å­˜ãƒ‘ã‚¹è¨­å®š
  */
 void
 LvnsSetSaveDataPath(Lvns *lvns, const char *path)

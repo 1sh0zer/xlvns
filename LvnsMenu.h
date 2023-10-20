@@ -20,9 +20,9 @@ typedef struct MenuData {
 	int demo_choice;
 	int (*menu)(struct Lvns *lvns, int select);
 	/*
-	  µ¢ÃÍ  0: ¥á¥Ë¥å¡¼·ÑÂ³
-	  µ¢ÃÍ -1: ¥­¥ã¥ó¥»¥ë(¥á¥Ë¥å¡¼½ªÎ»)
-	  µ¢ÃÍ  +: ÁªÂò½èÍı´°Î»(¥á¥Ë¥å¡¼½ªÎ»)
+	  å¸°å€¤  0: ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç¶™ç¶š
+	  å¸°å€¤ -1: ã‚­ãƒ£ãƒ³ã‚»ãƒ«(ãƒ¡ãƒ‹ãƒ¥ãƒ¼çµ‚äº†)
+	  å¸°å€¤  +: é¸æŠå‡¦ç†å®Œäº†(ãƒ¡ãƒ‹ãƒ¥ãƒ¼çµ‚äº†)
 	*/
 	void (*disp)(struct Lvns *lvns, struct MenuData *menu_data);
 } MenuData;

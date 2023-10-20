@@ -17,15 +17,15 @@
 #include "LvnsAnim.h"
 #include "LvnsScript.h"
 
-#define SIZUKU_SCN_NO  205  /* ¥·¥Ê¥ê¥ª¤Î¸Ä¿ô */
-#define SIZUKU_FLAG_NO  14  /* ¥Õ¥é¥°¤Î¸Ä¿ô   */
+#define SIZUKU_SCN_NO  205  /* ã‚·ãƒŠãƒªã‚ªã®å€‹æ•° */
+#define SIZUKU_FLAG_NO  14  /* ãƒ•ãƒ©ã‚°ã®å€‹æ•°   */
 
 #define SIZUKU_COL_BLACK 0
 #define SIZUKU_COL_WHITE 16
 #define SIZUKU_COL_GRAY  17
 
 /*
- * ÀìÍÑ¥Ñ¥ì¥Ã¥È
+ * å°‚ç”¨ãƒ‘ãƒ¬ãƒƒãƒˆ
  */
 #define SIZUKU_PAL_DAY       0
 #define SIZUKU_PAL_YUUGATA   1
@@ -40,12 +40,12 @@
 typedef struct {
     LvnsSystemState state;
 
-    int seen_flag[SIZUKU_SCN_NO];    /* ¥·¥Ê¥ê¥ª´ûÆÉ¥Õ¥é¥°   */
-    int flag[SIZUKU_FLAG_NO];        /* ¥·¥Ê¥ê¥ªÀ©¸æÍÑ¥Õ¥é¥° */
-    int flag_save[SIZUKU_FLAG_NO];   /* ÊİÂ¸ÍÑ */
-    int flag_select[SIZUKU_FLAG_NO]; /* ÁªÂò»è¤ËÌá¤ëÊİÂ¸ÍÑ   */
-    LvnsImage *vram_char;            /* ¥­¥ã¥é¥¯¥¿¹çÀ®ºî¶ÈÍÑ */
-    int siori_no;                    /* ¸½ºß¤Î¤·¤ª¤êÈÖ¹æ     */
+    int seen_flag[SIZUKU_SCN_NO];    /* ã‚·ãƒŠãƒªã‚ªæ—¢èª­ãƒ•ãƒ©ã‚°   */
+    int flag[SIZUKU_FLAG_NO];        /* ã‚·ãƒŠãƒªã‚ªåˆ¶å¾¡ç”¨ãƒ•ãƒ©ã‚° */
+    int flag_save[SIZUKU_FLAG_NO];   /* ä¿å­˜ç”¨ */
+    int flag_select[SIZUKU_FLAG_NO]; /* é¸æŠè‚¢ã«æˆ»ã‚‹ä¿å­˜ç”¨   */
+    LvnsImage *vram_char;            /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åˆæˆä½œæ¥­ç”¨ */
+    int siori_no;                    /* ç¾åœ¨ã®ã—ãŠã‚Šç•ªå·     */
 
 } SizukuState;
 

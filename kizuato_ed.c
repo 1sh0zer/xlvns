@@ -10,7 +10,7 @@
  */
 
 /*
- * ∫Ø •®•Û•«•£•Û•∞
+ * Áóï „Ç®„É≥„Éá„Ç£„É≥„Ç∞
  */
 
 #include <stdio.h>
@@ -40,7 +40,7 @@ DispMoji(Lvns *lvns, LvnsScript *scr,
     return True;
 }
 
-/* ∫Ø •®•Û•«•£•Û•∞•π•Ø•Í•◊•» */
+/* Áóï „Ç®„É≥„Éá„Ç£„É≥„Ç∞„Çπ„ÇØ„É™„Éó„Éà */
 static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_FADE_PALETTE },
 
@@ -48,8 +48,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "¥Î≤Ë", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "π‚∂∂°°Œ∂ÃÈ", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "‰ºÅÁîª", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÊ©ã„ÄÄÈæç‰πü", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)6 },
@@ -58,8 +58,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "µ”À‹", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "π‚∂∂°°Œ∂ÃÈ", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ËÑöÊú¨", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÊ©ã„ÄÄÈæç‰πü", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)7 },
@@ -68,8 +68,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "•≠•„•È•Ø•ø°º∏∂∞∆", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "π‚…ß°°Œ∂∫»", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç≠„É£„É©„ÇØ„Çø„ÉºÂéüÊ°à", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÂΩ¶„ÄÄÈæçÂìâ", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG,(void*) 8 },
@@ -78,8 +78,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "∏∂≤Ë", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "øÂÃµ∑Ó°°≈∞", (void*) 7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÂéüÁîª", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ê∞¥ÁÑ°Êúà„ÄÄÂæπ", (void*) 7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)9 },
@@ -88,8 +88,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "•◊•Ì•∞•È•‡", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "£»£¡£ £…£Õ£≈°°£Œ£…£Œ£œ£Õ£¡£≈", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "„Éó„É≠„Ç∞„É©„É†", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº®Ôº°Ôº™Ôº©Ôº≠Ôº•„ÄÄÔºÆÔº©ÔºÆÔºØÔº≠Ôº°Ôº•", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)12 },
@@ -98,12 +98,12 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "•”•∏•Â•¢•Î•∞•È•’•£•√•Ø•π", (void*)4 },
-    { LVNS_SCRIPT_FUNC, tputs, "ƒªÃÓ°°¿µøÆ", (void*)6 },
-    { LVNS_SCRIPT_FUNC, tputs, "•È°º°¶£Ÿ£œ£’", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "¿∏«»Ã¥", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "£ƒ£œ£⁄£¡", (void*)9 },
-    { LVNS_SCRIPT_FUNC, tputs, "£À£≈£Œ£À£≈£Œ", (void*)10 },
+    { LVNS_SCRIPT_FUNC, tputs, "„Éì„Ç∏„É•„Ç¢„É´„Ç∞„É©„Éï„Ç£„ÉÉ„ÇØ„Çπ", (void*)4 },
+    { LVNS_SCRIPT_FUNC, tputs, "È≥•Èáé„ÄÄÊ≠£‰ø°", (void*)6 },
+    { LVNS_SCRIPT_FUNC, tputs, "„É©„Éº„ÉªÔºπÔºØÔºµ", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÁîüÊ≥¢Â§¢", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº§ÔºØÔº∫Ôº°", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº´Ôº•ÔºÆÔº´Ôº•ÔºÆ", (void*)10 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)15 },
@@ -112,12 +112,12 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "•≠•„•È•Ø•ø°º•∞•È•’•£•√•Ø•π", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "ƒªÃÓ°°¿µøÆ", (void*)6 },
-    { LVNS_SCRIPT_FUNC, tputs, "•È°º°¶£Ÿ£œ£’", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "¿∏«»Ã¥", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "£À£≈£Œ£À£≈£Œ", (void*)9 },
-    { LVNS_SCRIPT_FUNC, tputs, "£ƒ£œ£⁄£¡", (void*)10 }, 
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç≠„É£„É©„ÇØ„Çø„Éº„Ç∞„É©„Éï„Ç£„ÉÉ„ÇØ„Çπ", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "È≥•Èáé„ÄÄÊ≠£‰ø°", (void*)6 },
+    { LVNS_SCRIPT_FUNC, tputs, "„É©„Éº„ÉªÔºπÔºØÔºµ", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÁîüÊ≥¢Â§¢", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº´Ôº•ÔºÆÔº´Ôº•ÔºÆ", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº§ÔºØÔº∫Ôº°", (void*)10 }, 
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)16 },
@@ -126,8 +126,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "«ÿ∑ •∞•È•’•£•√•Ø•π", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "ƒªÃÓ°°¿µøÆ", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ËÉåÊôØ„Ç∞„É©„Éï„Ç£„ÉÉ„ÇØ„Çπ", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "È≥•Èáé„ÄÄÊ≠£‰ø°", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)17 },
@@ -136,11 +136,11 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "≤ª≥⁄", (void*)4 },
-    { LVNS_SCRIPT_FUNC, tputs, "≤º¿Ó°°ƒæ∫»", (void*)6 },
-    { LVNS_SCRIPT_FUNC, tputs, "¿–¿Ó°°øøÃÈ", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "√ÊæÂ°°œ¬±—", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "π‚∂∂°°Œ∂ÃÈ", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "Èü≥Ê•Ω", (void*)4 },
+    { LVNS_SCRIPT_FUNC, tputs, "‰∏ãÂ∑ù„ÄÄÁõ¥Âìâ", (void*)6 },
+    { LVNS_SCRIPT_FUNC, tputs, "Áü≥Â∑ù„ÄÄÁúü‰πü", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "‰∏≠‰∏ä„ÄÄÂíåËã±", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "È´òÊ©ã„ÄÄÈæç‰πü", (void*)9 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)19 },
@@ -149,11 +149,11 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP,(void*) LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "•∑°º•ÛπΩ¿Æ", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "Õ’∑Ó°°Õ•∞Ï", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "øÂÃµ∑Ó°°≈∞", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "√ÊæÂ°°œ¬±—", (void*)9 },
-    { LVNS_SCRIPT_FUNC, tputs, "¿∏«»Ã¥", (void*)10 },
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç∑„Éº„É≥ÊßãÊàê", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "ËëâÊúà„ÄÄÂÑ™‰∏Ä", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ê∞¥ÁÑ°Êúà„ÄÄÂæπ", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "‰∏≠‰∏ä„ÄÄÂíåËã±", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÁîüÊ≥¢Â§¢", (void*)10 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)24 },
@@ -162,10 +162,10 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 }, 
-    { LVNS_SCRIPT_FUNC, tputs, "•™•Í•∏• •Î•’•©•Û•»", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "∞Ï°°∞Ï", (void*)7 },
-    { LVNS_SCRIPT_FUNC, tputs, "øÂÃµ∑Ó°°≈∞", (void*)8 },
-    { LVNS_SCRIPT_FUNC, tputs, "£»£¡£Õ£Õ£≈£“", (void*)9 },
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç™„É™„Ç∏„Éä„É´„Éï„Ç©„É≥„Éà", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "‰∏Ä„ÄÄ‰∏Ä", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ê∞¥ÁÑ°Êúà„ÄÄÂæπ", (void*)8 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº®Ôº°Ôº≠Ôº≠Ôº•Ôº≤", (void*)9 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)27 },
@@ -174,8 +174,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP,(void*) LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "•∑•Á°º•»•∑• •Í•™µ”À‹", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "¿ƒ°°ªÁ", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "„Ç∑„Éß„Éº„Éà„Ç∑„Éä„É™„Ç™ËÑöÊú¨", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "Èùí„ÄÄÁ¥´", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)45 },
@@ -184,8 +184,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "£‘£≈£”£‘°°£–£Ã£¡£Ÿ", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "£¡£Ã£Ã°°£Ã£≈£¡£∆°°£”£‘£¡£∆£∆", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº¥Ôº•Ôº≥Ôº¥„ÄÄÔº∞Ôº¨Ôº°Ôºπ", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "Ôº°Ôº¨Ôº¨„ÄÄÔº¨Ôº•Ôº°Ôº¶„ÄÄÔº≥Ôº¥Ôº°Ôº¶Ôº¶", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
 
     { LVNS_SCRIPT_BG, (void*)11 },
@@ -194,8 +194,8 @@ static LvnsScriptData eddata[] = {
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_PALETTE },
 
     { LVNS_SCRIPT_WAIT, (void*)1000 },
-    { LVNS_SCRIPT_FUNC, tputs, "≥´»Ø", (void*)5 },
-    { LVNS_SCRIPT_FUNC, tputs, "£±£π£π£∂°°£Ã£≈£¡£∆", (void*)7 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÈñãÁô∫", (void*)5 },
+    { LVNS_SCRIPT_FUNC, tputs, "ÔºëÔºôÔºôÔºñ„ÄÄÔº¨Ôº•Ôº°Ôº¶", (void*)7 },
     { LVNS_SCRIPT_FUNC, DispMoji },
     { LVNS_SCRIPT_WAIT, (void*)2000 },
 

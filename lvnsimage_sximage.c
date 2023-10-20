@@ -17,12 +17,12 @@
 #include "lvnsimage.h"
 #include "sximage.h"
 
-static int cmap_m[17][256]; /* Multiple·×»»ÍÑ¥Æ¡¼¥Ö¥ë(¹õ¤È¤Î¦Á¥Ö¥ì¥ó¥É) */
-static int cmap_s[17][256]; /* Screen  ·×»»ÍÑ¥Æ¡¼¥Ö¥ë(Çò¤È¤Î¦Á¥Ö¥ì¥ó¥É) */
-static int cmap_a[17][512]; /* ¦Á¥Ö¥ì¥ó¥É·×»»ÍÑ¥Æ¡¼¥Ö¥ë                 */
+static int cmap_m[17][256]; /* Multipleè¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(é»’ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
+static int cmap_s[17][256]; /* Screen  è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(ç™½ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
+static int cmap_a[17][512]; /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«                 */
 
 /*
- * ¦ÁÃÍ¤Ï 0-16 ¤Î´Ö
+ * Î±å€¤ã¯ 0-16 ã®é–“
  */
 
 void
@@ -30,15 +30,15 @@ lvnsimage_sximage_init(void)
 {
     int i, j;
     for (i=0;i<17;i++) {
-        /* multiple ·×»»ÍÑ¥Æ¡¼¥Ö¥ë */
+        /* multiple è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ« */
         for (j=0;j<256;j++) {
             cmap_m[i][j] = j * i/16;
         }
-        /* screen ·×»»ÍÑ¥Æ¡¼¥Ö¥ë */
+        /* screen è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ« */
         for (j=0;j<256;j++) {
             cmap_s[i][j] = j + (255-j)*i/16;
         }
-        /* ¦Á¥Ö¥ì¥ó¥É·×»»ÍÑ¥Æ¡¼¥Ö¥ë */
+        /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ« */
         for (j=-255;j<256;j++) {
             cmap_a[i][j+255] = j *i/16;
         }
@@ -49,7 +49,7 @@ lvnsimage_sximage_init(void)
 (s->tcmap->red[r+cmap_a[p][r2-r+255]] | s->tcmap->green[g+cmap_a[p][g2-g+255]] | s->tcmap->blue[b+cmap_a[p][b2-b+255]])
 
 /*
- * LvnsImage ¤«¤é SXImage ¤ËÂĞ¤·¤Æ¥Ñ¥ì¥Ã¥È¤ÎÀßÄê¤ò¹Ô¤¦
+ * LvnsImage ã‹ã‚‰ SXImage ã«å¯¾ã—ã¦ãƒ‘ãƒ¬ãƒƒãƒˆã®è¨­å®šã‚’è¡Œã†
  */
 void
 lvnsimage_set_pal_to_sximage(LvnsImage *image, SuperXImage *sximage)
@@ -64,7 +64,7 @@ lvnsimage_set_pal_to_sximage(LvnsImage *image, SuperXImage *sximage)
 }
 
 /*
- * LvnsImage ¤«¤é SXImage ¤ËÂĞ¤·¤Æ¥Ñ¥ì¥Ã¥È¤ÎÀßÄê¤ò¹Ô¤¦ (Multiple)
+ * LvnsImage ã‹ã‚‰ SXImage ã«å¯¾ã—ã¦ãƒ‘ãƒ¬ãƒƒãƒˆã®è¨­å®šã‚’è¡Œã† (Multiple)
  */
 void
 lvnsimage_set_pal_to_sximage_multi(LvnsImage *image, SuperXImage *sximage, int par16)
@@ -85,7 +85,7 @@ lvnsimage_set_pal_to_sximage_multi(LvnsImage *image, SuperXImage *sximage, int p
 }
 
 /*
- * LvnsImage ¤«¤é SXImage ¤ËÂĞ¤·¤Æ¥Ñ¥ì¥Ã¥È¤ÎÀßÄê¤ò¹Ô¤¦ (Screen)
+ * LvnsImage ã‹ã‚‰ SXImage ã«å¯¾ã—ã¦ãƒ‘ãƒ¬ãƒƒãƒˆã®è¨­å®šã‚’è¡Œã† (Screen)
  */
 void
 lvnsimage_set_pal_to_sximage_screen(LvnsImage *image, SuperXImage *sximage, int par16)
@@ -100,7 +100,7 @@ lvnsimage_set_pal_to_sximage_screen(LvnsImage *image, SuperXImage *sximage, int 
 }
 
 /* 
- * LvnsImage Á´ÂÎ¤ò¥³¥Ô¡¼
+ * LvnsImage å…¨ä½“ã‚’ã‚³ãƒ”ãƒ¼
  */
 void
 lvnsimage_copy_to_sximage(LvnsImage *image, 
@@ -190,8 +190,8 @@ lvnsimage_copy_to_sximage(LvnsImage *image,
 }
 
 /**
- * LvnsImage ¤«¤é SXImage ¤Ø»ØÄê¤·¤¿ÎÎ°è¤Î¥³¥Ô¡¼¤ò¹Ô¤¦¡£
- * src ¤Î¥ª¥Õ¥»¥Ã¥È¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤
+ * LvnsImage ã‹ã‚‰ SXImage ã¸æŒ‡å®šã—ãŸé ˜åŸŸã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã†ã€‚
+ * src ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„
  */
 void
 lvnsimage_copy_area_to_sximage(LvnsImage *src, SuperXImage *dst, 
@@ -325,9 +325,9 @@ lvnsimage_copy_area_to_sximage(LvnsImage *src, SuperXImage *dst,
 } 
 
 /**
- * LvnsImage ¤«¤é SXImage ¤Ø»ØÄê¤·¤¿ÎÎ°è¤Î¥³¥Ô¡¼¤ò¹Ô¤¦¡£
- * src ¤Î¥ª¥Õ¥»¥Ã¥È¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤
- * Æ±¤¸¾ì½ê¤ò»ØÄê¤¹¤ëÈÇ
+ * LvnsImage ã‹ã‚‰ SXImage ã¸æŒ‡å®šã—ãŸé ˜åŸŸã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã†ã€‚
+ * src ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„
+ * åŒã˜å ´æ‰€ã‚’æŒ‡å®šã™ã‚‹ç‰ˆ
  */
 void
 lvnsimage_copy_area_to_sximage2(LvnsImage *src, SuperXImage *dst, 
@@ -337,8 +337,8 @@ lvnsimage_copy_area_to_sximage2(LvnsImage *src, SuperXImage *dst,
 }
 
 /*
- * 16¡ß16¤ÎÌÖÌÜ¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ç¥³¥Ô¡¼¤¹¤ë
- * »ØÄê¤·¤¿ºÂÉ¸¤«¤é mask ¤Ç»ØÄê¤µ¤ì¤¿¥Ñ¥¿¡¼¥ó¤Ç½èÍı
+ * 16Ã—16ã®ç¶²ç›®ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚³ãƒ”ãƒ¼ã™ã‚‹
+ * æŒ‡å®šã—ãŸåº§æ¨™ã‹ã‚‰ mask ã§æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¿ãƒ¼ãƒ³ã§å‡¦ç†
  */
 void 
 lvnsimage_copy_mask_unit_to_sximage(LvnsImage *src, SuperXImage *dst, int x, int y, int x2, int y2, int mask)
@@ -436,8 +436,8 @@ lvnsimage_copy_mask_unit_to_sximage(LvnsImage *src, SuperXImage *dst, int x, int
 }
 
 /*
- * 16¡ß16¤Î¶ë·Á¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ç¥³¥Ô¡¼¤¹¤ë¡£
- * »ØÄê¤·¤¿ºÂÉ¸¤«¤é mask ¤Ç»ØÄê¤µ¤ì¤¿¥Ñ¥¿¡¼¥ó¤Ç½èÍı
+ * 16Ã—16ã®çŸ©å½¢ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
+ * æŒ‡å®šã—ãŸåº§æ¨™ã‹ã‚‰ mask ã§æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¿ãƒ¼ãƒ³ã§å‡¦ç†
  */
 void
 lvnsimage_copy_squaremask_unit_to_sximage(LvnsImage *src, SuperXImage *dst, int x, int y, int x2, int y2, int mask)

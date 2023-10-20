@@ -10,7 +10,7 @@
  */
 
 /* 
- * ¼¶ ¥¸¥ó¥°¥ë
+ * é›« ã‚¸ãƒ³ã‚°ãƒ«
  */
 
 #include <stdio.h>
@@ -64,7 +64,7 @@ LoadTitle2(Lvns *lvns, LvnsScript *scr)
 }
 
 /*
- * ºÇ¸å¤Îº¸±¦¤«¤é¤Î¥¹¥é¥¤¥ÉÉôÊ¬
+ * æœ€å¾Œã®å·¦å³ã‹ã‚‰ã®ã‚¹ãƒ©ã‚¤ãƒ‰éƒ¨åˆ†
  */
 static int
 Slide(Lvns *lvns, LvnsScript *scr)
@@ -78,13 +78,13 @@ Slide(Lvns *lvns, LvnsScript *scr)
     lvns->clearWindowArea(lvns, 310 - scr->state * 10, 160, 10, 40);
     if (++scr->state * 10 >= WIDTH) {
 #endif
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
-/* ¥¸¥ó¥°¥ë¥¹¥¯¥ê¥×¥È */
+/* ã‚¸ãƒ³ã‚°ãƒ«ã‚¹ã‚¯ãƒªãƒ—ãƒˆ */
 static LvnsScriptData jingledata[] = {
     { LVNS_SCRIPT_FUNC, ClearWhite },
     { LVNS_SCRIPT_MUSIC, (void*)2 },
@@ -102,7 +102,7 @@ static LvnsScriptData jingledata[] = {
 };
 
 /*
- * ¼¶ ¥¸¥ó¥°¥ë
+ * é›« ã‚¸ãƒ³ã‚°ãƒ«
  */
 void
 SizukuJingle(Lvns *lvns)

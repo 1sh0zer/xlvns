@@ -4,16 +4,16 @@
 
 @implementation LvnsController
 
-// NSView ƒƒ\ƒbƒhŒQ
+// NSView ãƒ¡ã‚½ãƒƒãƒ‰ç¾¤
 
-/* Ä•`‰æ */
+/* å†æç”» */
 - (void) drawRect : (NSRect) arBounds
 {
 	[image draw : arBounds];
 	[[NSGraphicsContext currentContext] flushGraphics];
 }
 
-// ƒCƒxƒ“ƒgˆ—
+// ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
 
 - (void)mouseMoved:(NSEvent *)theEvent
 {
@@ -72,7 +72,7 @@
 // Lvns System Depend Functions
 
 /** 
- * ‘S‰æ–Ê‚ğƒŠƒtƒŒƒbƒVƒ…‚µ‚ÄÀÛ‚Ì‰æ–Ê‚É”½‰f‚³‚¹‚é
+ * å…¨ç”»é¢ã‚’ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã—ã¦å®Ÿéš›ã®ç”»é¢ã«åæ˜ ã•ã›ã‚‹
  */
 static void 
 FlushWindow(Lvns *lvns)
@@ -85,7 +85,7 @@ FlushWindow(Lvns *lvns)
 }
 
 /**
- * ‰æ–Ê‚ğ•”•ª“I‚ÉƒŠƒtƒŒƒbƒVƒ…‚µ‚ÄÀÛ‚Ì‰æ–Ê‚É”½‰f‚³‚¹‚é
+ * ç”»é¢ã‚’éƒ¨åˆ†çš„ã«ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã—ã¦å®Ÿéš›ã®ç”»é¢ã«åæ˜ ã•ã›ã‚‹
  */
 static void
 FlushWindowArea(Lvns *lvns, int x, int y, int w, int h)
@@ -98,7 +98,7 @@ FlushWindowArea(Lvns *lvns, int x, int y, int w, int h)
 }
 
 /**
- * ‘S‘Ì‚ğ•`‰æ(ƒtƒ‰ƒbƒVƒ…–³‚µ) 
+ * å…¨ä½“ã‚’æç”»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—) 
  */
 static void
 DrawWindow(Lvns *lvns) 
@@ -108,7 +108,7 @@ DrawWindow(Lvns *lvns)
 }
 
 /**
- * •”•ª•`‰æ(ƒtƒ‰ƒbƒVƒ…–³‚µ) 
+ * éƒ¨åˆ†æç”»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—) 
  */
 static void
 DrawWindowArea(Lvns *lvns, int x, int y, int w, int h, int x2, int y2)
@@ -118,7 +118,7 @@ DrawWindowArea(Lvns *lvns, int x, int y, int w, int h, int x2, int y2)
 }
 
 /**
- * ‘S‰æ–Ê‰æ–ÊÁ‹(ƒtƒ‰ƒbƒVƒ…–³‚µ)
+ * å…¨ç”»é¢ç”»é¢æ¶ˆå»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
  */
 static void
 ClearWindow(Lvns *lvns)
@@ -128,7 +128,7 @@ ClearWindow(Lvns *lvns)
 }
 
 /**
- * •”•ª‰æ–ÊÁ‹(ƒtƒ‰ƒbƒVƒ…–³‚µ)
+ * éƒ¨åˆ†ç”»é¢æ¶ˆå»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
  */
 static void
 ClearWindowArea(Lvns *lvns, int x, int y, int w, int h)
@@ -138,7 +138,7 @@ ClearWindowArea(Lvns *lvns, int x, int y, int w, int h)
 }
 
 /**
- * “Á’è‚ÌƒCƒ“ƒfƒbƒNƒX‚ÉƒJƒ‰[‚ğŠ„‚è“–‚Ä‚é
+ * ç‰¹å®šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«ã‚«ãƒ©ãƒ¼ã‚’å‰²ã‚Šå½“ã¦ã‚‹
  */
 static void
 SetPaletteIndex(Lvns *lvns, int index, int r, int g, int b)
@@ -148,8 +148,8 @@ SetPaletteIndex(Lvns *lvns, int index, int r, int g, int b)
 }
 
 /**
- * ƒpƒŒƒbƒgİ’è(’Êí)
- * ‘S•”‚ğİ’è‚·‚éc
+ * ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š(é€šå¸¸)
+ * å…¨éƒ¨ã‚’è¨­å®šã™ã‚‹â€¦
  */
 static void
 MySetPalette(Lvns *lvns)
@@ -159,7 +159,7 @@ MySetPalette(Lvns *lvns)
 }
 
 /**
- * ƒpƒŒƒbƒgİ’è(multiple)
+ * ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š(multiple)
  */
 static void
 SetPaletteMulti(Lvns *lvns, int par16)
@@ -169,7 +169,7 @@ SetPaletteMulti(Lvns *lvns, int par16)
 }
 
 /**
- * ƒpƒŒƒbƒgİ’è(screen)
+ * ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š(screen)
  */
 static void
 SetPaletteScreen(Lvns *lvns, int par16)
@@ -179,7 +179,7 @@ SetPaletteScreen(Lvns *lvns, int par16)
 }
 
 /* 
- * ƒ}ƒXƒNƒpƒ^[ƒ“‚ÅƒEƒCƒ“ƒhƒE‚É‘Î‚µ‚Ä•`‰æ‚ğs‚¤(ƒtƒ‰ƒbƒVƒ…–³‚µ)
+ * ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«å¯¾ã—ã¦æç”»ã‚’è¡Œã†(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
  */
 static void
 DrawWindowMask(Lvns *lvns, int x, int y, int state)
@@ -189,7 +189,7 @@ DrawWindowMask(Lvns *lvns, int x, int y, int state)
 }
 
 /* 
- * ‹éŒ`ƒpƒ^[ƒ“‚ÅƒEƒBƒ“ƒhƒE‚É‘Î‚µ‚Ä•`‰æ‚ğs‚¤(ƒtƒ‰ƒbƒVƒ…–³‚µ)
+ * çŸ©å½¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾ã—ã¦æç”»ã‚’è¡Œã†(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
  */
 static void
 DrawWindowSquareMask(Lvns *lvns, int x, int y, int state)
@@ -199,7 +199,7 @@ DrawWindowSquareMask(Lvns *lvns, int x, int y, int state)
 }
 
 /*
- * •\¦‚³‚ê‚Ä‚¢‚é‰æ–Ê‚ÌƒIƒtƒZƒbƒg‚ğ‚¸‚ç‚·(U“®—p)
+ * è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ç”»é¢ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’ãšã‚‰ã™(æŒ¯å‹•ç”¨)
  */
 static void
 SetDispOffset(Lvns *lvns, int xoff, int yoff, int maxoff)
@@ -207,7 +207,7 @@ SetDispOffset(Lvns *lvns, int xoff, int yoff, int maxoff)
 }
 
 /* 
- * •¶šƒpƒ^[ƒ“•\¦ (´/­ —p)
+ * æ–‡å­—ãƒ‘ã‚¿ãƒ¼ãƒ³è¡¨ç¤º (é›«/ç—• ç”¨)
  */
 static void
 PutPattern(Lvns *lvns, int x, int y, int index, u_char *data)
@@ -217,7 +217,7 @@ PutPattern(Lvns *lvns, int x, int y, int index, u_char *data)
 }
 
 /* 
- * •¶šƒpƒ^[ƒ“•\¦ (ToHeart—p)
+ * æ–‡å­—ãƒ‘ã‚¿ãƒ¼ãƒ³è¡¨ç¤º (ToHeartç”¨)
  */ 
 static void 
 PutPattern2(Lvns *lvns, int x, int y, int index, u_char *data)
@@ -227,8 +227,8 @@ PutPattern2(Lvns *lvns, int x, int y, int index, u_char *data)
 }
 
 /* 
- * ƒ^ƒCƒ}‚ğƒŠƒZƒbƒg‚·‚é
- * @param no ƒ^ƒCƒ}”Ô†
+ * ã‚¿ã‚¤ãƒã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
+ * @param no ã‚¿ã‚¤ãƒç•ªå·
  */
 static void
 ResetTimer(Lvns *lvns, int no)
@@ -238,11 +238,11 @@ ResetTimer(Lvns *lvns, int no)
 }
 
 /*
- * ƒ^ƒCƒ}’l‚ğæ“¾‚·‚é
- * @param no ƒ^ƒCƒ}”Ô†
- * @return ƒ^ƒCƒ}’l (msec’PˆÊ)
- */	// ƒVƒ“ƒNƒ
-	// ƒVƒ“ƒNƒ
+ * ã‚¿ã‚¤ãƒå€¤ã‚’å–å¾—ã™ã‚‹
+ * @param no ã‚¿ã‚¤ãƒç•ªå·
+ * @return ã‚¿ã‚¤ãƒå€¤ (msecå˜ä½)
+ */	// ã‚·ãƒ³ã‚¯ãƒ­
+	// ã‚·ãƒ³ã‚¯ãƒ­
 
 static long 
 GetTimer(Lvns *lvns, int no)
@@ -255,9 +255,9 @@ GetTimer(Lvns *lvns, int no)
 }
 
 /**
- * ‹éŒ`‚ğ•`‰æ‚·‚é
- * @param x,y,w,h ˆÊ’u‚ÆƒTƒCƒY
- * @param idx F‚ÌƒCƒ“ƒfƒbƒNƒX’l
+ * çŸ©å½¢ã‚’æç”»ã™ã‚‹
+ * @param x,y,w,h ä½ç½®ã¨ã‚µã‚¤ã‚º
+ * @param idx è‰²ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤
  */
 static void
 DrawBox(Lvns *lvns, int x, int y, int w, int h, int idx)
@@ -268,7 +268,7 @@ DrawBox(Lvns *lvns, int x, int y, int w, int h, int idx)
 #include <sys/stat.h>
 
 /** 
- * w’è‚µ‚½ƒtƒ@ƒCƒ‹‚ÌXV“ú•t‚ğæ“¾‚·‚é
+ * æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®æ›´æ–°æ—¥ä»˜ã‚’å–å¾—ã™ã‚‹
  */
 static time_t
 GetFileTime(Lvns *lvns, const char *path)
@@ -309,7 +309,7 @@ GetFileTime(Lvns *lvns, const char *path)
 }
 
 /*
- * •`‰æƒ^ƒCƒ~ƒ“ƒO‘Ò‚¿ˆ—
+ * æç”»ã‚¿ã‚¤ãƒŸãƒ³ã‚°å¾…ã¡å‡¦ç†
  */
 static void
 Flip(Lvns *lvns)
@@ -319,7 +319,7 @@ Flip(Lvns *lvns)
 }
 
 /**
- * ƒƒCƒ“ƒGƒ“ƒWƒ“ 
+ * ãƒ¡ã‚¤ãƒ³ã‚¨ãƒ³ã‚¸ãƒ³ 
  */
 - (void) runMain : (id) param
 {
@@ -329,7 +329,7 @@ Flip(Lvns *lvns)
 extern int system_type;
 
 /**
- * ‰Šú‰»ˆ—
+ * åˆæœŸåŒ–å‡¦ç†
  */
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -341,13 +341,13 @@ extern int system_type;
 	}
 	//LvnsSetDataPath(lvns, );
 
-	/* ƒŠƒ\[ƒX‚Ì”½‰f */
+	/* ãƒªã‚½ãƒ¼ã‚¹ã®åæ˜  */
 	lvns->demo_mode        = False;
 	lvns->seen_mode        = False;
 	lvns->latitude_dark    = 11;
 	lvns->key_click_fast   = True;
 
-	/* ƒVƒXƒeƒ€ˆË‘¶ŠÖ”ŒQ‚Ìİ’è */
+	/* ã‚·ã‚¹ãƒ†ãƒ ä¾å­˜é–¢æ•°ç¾¤ã®è¨­å®š */
 	lvns->flushWindow          = FlushWindow;
 	lvns->flushWindowArea      = FlushWindowArea;
 	lvns->drawWindow           = DrawWindow;
@@ -371,7 +371,7 @@ extern int system_type;
 
 	LvnsInitialize(lvns, system_type, self);
 
-	//ƒTƒCƒYŒˆ’è
+	//ã‚µã‚¤ã‚ºæ±ºå®š
 	{
 		NSSize size = { WIDTH, HEIGHT };
 		[mainWindow setContentSize : size];
@@ -382,7 +382,7 @@ extern int system_type;
 	wait_clock = [NSDate timeIntervalSinceReferenceDate];
 	wait_count = TICKSPERSEC;
 
-	// ƒXƒŒƒbƒh‚ğ•ª‚¯‚Ä–{‘Ì‚ğ“®‚©‚·
+	// ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’åˆ†ã‘ã¦æœ¬ä½“ã‚’å‹•ã‹ã™
 	[NSThread detachNewThreadSelector: @selector(runMain:) toTarget:self withObject:self];
 }
 

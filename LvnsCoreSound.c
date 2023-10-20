@@ -10,7 +10,7 @@
  */
 
 /*
- * LvnsCore ¥µ¥¦¥ó¥É½èÍı²ó¤ê
+ * LvnsCore ã‚µã‚¦ãƒ³ãƒ‰å‡¦ç†å›ã‚Š
  */
 
 #include <stdio.h>
@@ -24,8 +24,8 @@
 #include "LvnsCoreP.h"
 
 /*
- * ¥µ¥¦¥ó¥É¥×¥í¥»¥¹ÄÌ¿®½èÍı¥¨¥ó¥¸¥ó
- * ¥µ¥¦¥ó¥É¤Î±éÁÕ¤¬°ì²ó´°Î»¤¹¤ë¤È¡¢»Ò¥×¥í¥»¥¹¤«¤éÄÌ¿®¤¬Æş¤ë¤¿¤á¤³¤³¤¬¸Æ¤Ğ¤ì¤ë
+ * ã‚µã‚¦ãƒ³ãƒ‰ãƒ—ãƒ­ã‚»ã‚¹é€šä¿¡å‡¦ç†ã‚¨ãƒ³ã‚¸ãƒ³
+ * ã‚µã‚¦ãƒ³ãƒ‰ã®æ¼”å¥ãŒä¸€å›å®Œäº†ã™ã‚‹ã¨ã€å­ãƒ—ãƒ­ã‚»ã‚¹ã‹ã‚‰é€šä¿¡ãŒå…¥ã‚‹ãŸã‚ã“ã“ãŒå‘¼ã°ã‚Œã‚‹
  */
 static void
 SoundControl(XtPointer cl, int *fd, XtInputId *id)
@@ -38,7 +38,7 @@ SoundControl(XtPointer cl, int *fd, XtInputId *id)
         perror("SoundControl");
     } else if (len == 1) {
         if (buf[0] == 'E') {
-            /* ÆÃ¤Ë½èÍı¤ÏÌµ¤·¡Ä */
+            /* ç‰¹ã«å‡¦ç†ã¯ç„¡ã—â€¦ */
     if (LCW.sound_ctl_id) {
         XtRemoveInput(LCW.sound_ctl_id);
     }
@@ -48,7 +48,7 @@ SoundControl(XtPointer cl, int *fd, XtInputId *id)
 }
 
 /*
- * ¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß 
+ * ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿ 
  */
 static void
 LoadSound(LvnsCoreWidget lcw, const char* name)
@@ -61,12 +61,12 @@ LoadSound(LvnsCoreWidget lcw, const char* name)
 }
 
 /*
- * ±éÁÕ³«»Ï
+ * æ¼”å¥é–‹å§‹
  */
 static void
 StartSound(LvnsCoreWidget lcw)
 {
-    /* Ê£¿ô¤Î¥µ¥¦¥ó¥É¤ÏÆ±»ş¤ËÌÄ¤é¤»¤Ê¤¤¡Ä */
+    /* è¤‡æ•°ã®ã‚µã‚¦ãƒ³ãƒ‰ã¯åŒæ™‚ã«é³´ã‚‰ã›ãªã„â€¦ */
     if (LCW.sound_ctl_fd >= 0 && LCW.sound_ctl_id == None) {
         XtAppContext app = XtWidgetToApplicationContext((Widget)lcw);
         write(LCW.sound_ctl_fd, "S\n", 2);
@@ -79,7 +79,7 @@ StartSound(LvnsCoreWidget lcw)
 }
 
 /*
- * ±éÁÕ´°Î»(¥Ç¡¼¥¿¤òÇË´ş)
+ * æ¼”å¥å®Œäº†(ãƒ‡ãƒ¼ã‚¿ã‚’ç ´æ£„)
  */
 static void
 StopSound(LvnsCoreWidget lcw)
@@ -91,7 +91,7 @@ StopSound(LvnsCoreWidget lcw)
 }
 
 /*
- * ±éÁÕ¾õÂÖ¤Î³ÎÇ§
+ * æ¼”å¥çŠ¶æ…‹ã®ç¢ºèª
  */
 static int
 GetSoundState(LvnsCoreWidget lcw)
@@ -104,17 +104,17 @@ GetSoundState(LvnsCoreWidget lcw)
 }       
 
 /* 
- * ±éÁÕ¥¨¥ó¥¸¥ó¤ÎÄä»ß
+ * æ¼”å¥ã‚¨ãƒ³ã‚¸ãƒ³ã®åœæ­¢
  */
 static void
 CloseSound(LvnsCoreWidget lcw)
 {
-    /* ¥µ¥¦¥ó¥ÉÍÑ¥×¥í¥»¥¹²òÊü */
+    /* ã‚µã‚¦ãƒ³ãƒ‰ç”¨ãƒ—ãƒ­ã‚»ã‚¹è§£æ”¾ */
     if (LCW.sound_ctl_id != None) {
         XtRemoveInput(LCW.sound_ctl_id);
     }
     if (LCW.sound_ctl_fd >= 0) {
-        close(LCW.sound_ctl_fd);  /* Áê¼ê¤Ï¤³¤ì¤ò¤¦¤±¤Æ½ªÎ»¤¹¤ë */
+        close(LCW.sound_ctl_fd);  /* ç›¸æ‰‹ã¯ã“ã‚Œã‚’ã†ã‘ã¦çµ‚äº†ã™ã‚‹ */
     }
 
     LCW.sound_ctl_id  = None;
@@ -122,7 +122,7 @@ CloseSound(LvnsCoreWidget lcw)
 }
 
 /*
- * ¥µ¥¦¥ó¥É½èÍıÍÑ»Ò¥×¥í¥»¥¹ 
+ * ã‚µã‚¦ãƒ³ãƒ‰å‡¦ç†ç”¨å­ãƒ—ãƒ­ã‚»ã‚¹ 
  */
 #include "audioinfo.h"  /* SOUND-audio Control */
 static void
@@ -160,7 +160,7 @@ OpenSound(LvnsCoreWidget lcw)
         return;
     }
 
-    /* ±éÁÕ½èÍıÍÑ»Ò¥×¥í¥»¥¹ */
+    /* æ¼”å¥å‡¦ç†ç”¨å­ãƒ—ãƒ­ã‚»ã‚¹ */
     dprintf((stderr, "starting sound process...\n"));
     close(fd[0]);
 
@@ -184,21 +184,21 @@ OpenSound(LvnsCoreWidget lcw)
 
             switch (buf[0]) {
             case 'L':
-                /* ¥í¡¼¥É */
+                /* ãƒ­ãƒ¼ãƒ‰ */
                 sound_data = LvnsLoadData(lvns, buf + 1, &sound_len);
                 break;
 
             case 'S': 
-                /* ±éÁÕ³«»Ï */
+                /* æ¼”å¥é–‹å§‹ */
                 if (sound_data) {
                     audioinfo_play(ainfo, sound_data, sound_len);
                 }
-                /* ±éÁÕ´°Î»¤ò¿Æ¤ËÄÌÃÎ */
+                /* æ¼”å¥å®Œäº†ã‚’è¦ªã«é€šçŸ¥ */
                 write(fd[1], "E", 1);
                 break;
 
             case 'E':
-                /* ±éÁÕ½ªÎ» */
+                /* æ¼”å¥çµ‚äº† */
                 if (sound_data)
                     free(sound_data);
                 sound_data = NULL;

@@ -10,7 +10,7 @@
  */
 
 /*
- * Lvns ¥¹¥¯¥ê¥×¥È½èÍı
+ * Lvns ã‚¹ã‚¯ãƒªãƒ—ãƒˆå‡¦ç†
  */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@
 #include "LvnsAnim.h"
 
 /**
- * ¥¹¥¯¥ê¥×¥È½èÍı¤ò¼Â¹Ô¤¹¤ë
+ * ã‚¹ã‚¯ãƒªãƒ—ãƒˆå‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹
  */
 static int
 ScriptStep(Lvns *lvns, LvnsScript *scr)

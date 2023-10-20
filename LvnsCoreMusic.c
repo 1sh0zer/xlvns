@@ -10,7 +10,7 @@
  */
 
 /*
- * LvnsCore ²»³Ú½èÍı²ó¤ê
+ * LvnsCore éŸ³æ¥½å‡¦ç†å›ã‚Š
  */
 
 #include <stdio.h>
@@ -24,14 +24,14 @@
 #include "mgLvnsCore.h"
 #endif
 
-/* ¥Ü¥ê¥å¡¼¥àÀßÄê */
+/* ãƒœãƒªãƒ¥ãƒ¼ãƒ è¨­å®š */
 static void
 SetMusicVolume(LvnsCoreWidget lcw, int no)
 {
     cdinfo_set_volume(LCW.cdinfo, no);
 }
 
-/* BGM ±éÁÕ³«»Ï */
+/* BGM æ¼”å¥é–‹å§‹ */
 static void
 StartMusic(LvnsCoreWidget lcw, int no)
 {
@@ -44,7 +44,7 @@ StopMusic(LvnsCoreWidget lcw)
     cdinfo_stop(LCW.cdinfo);
 }
 
-/* BGM °ì»şÄä»ß */
+/* BGM ä¸€æ™‚åœæ­¢ */
 static void
 PauseMusic(LvnsCoreWidget lcw)
 {

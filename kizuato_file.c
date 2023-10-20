@@ -10,14 +10,14 @@
  */
 
 /* 
- * º¯ ¤·¤ª¤ê½èÍıÍÑ
+ * ç—• ã—ãŠã‚Šå‡¦ç†ç”¨
  */
 
 #include <stdio.h>
 #include "kizuato.h"
 
 /**
- * ¥Õ¥¡¥¤¥ëÌ¾¤Î·èÄê
+ * ãƒ•ã‚¡ã‚¤ãƒ«åã®æ±ºå®š
  */
 static void
 KizuatoFileName(Lvns *lvns, char *dst, size_t len, int no)
@@ -30,7 +30,7 @@ KizuatoFileName(Lvns *lvns, char *dst, size_t len, int no)
 
 
 /**
- * ¸½ºß¤Î¤·¤ª¤ê¤Ø¤Î¾õÂÖ¤ÎÊİÂ¸
+ * ç¾åœ¨ã®ã—ãŠã‚Šã¸ã®çŠ¶æ…‹ã®ä¿å­˜
  */
 void
 KizuatoSave(Lvns *lvns)
@@ -48,16 +48,16 @@ KizuatoSave(Lvns *lvns)
 	return;
     }
 
-    /* ¥·¥Ê¥ê¥ªÈÖ¹æ    */
+    /* ã‚·ãƒŠãƒªã‚ªç•ªå·    */
     putc(lvns->savepoint.scn, fp);
 
-    /* ¥Ö¥í¥Ã¥¯ÈÖ¹æ */  
+    /* ãƒ–ãƒ­ãƒƒã‚¯ç•ªå· */  
     putc(lvns->savepoint.blk, fp);
 
-    /* ¥·¥Ê¥ê¥ª¤Î¥ª¥Õ¥»¥Ã¥È */
+    /* ã‚·ãƒŠãƒªã‚ªã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ */
     PUTLONG(lvns->savepoint.scn_offset);
 
-    /* ²èÁü¾õÂÖ */
+    /* ç”»åƒçŠ¶æ…‹ */
     putc(lvns->savepoint.bg_type, fp);
     putc(lvns->savepoint.bg_no, fp);
     putc(0, fp); /* BG PAL */
@@ -65,29 +65,29 @@ KizuatoSave(Lvns *lvns)
     putc(lvns->savepoint.character_no[1], fp);
     putc(lvns->savepoint.character_no[2], fp);
 
-    /* Ì¤¸«¥Õ¥é¥° */
+    /* æœªè¦‹ãƒ•ãƒ©ã‚° */
     for (i=0; i<KIZUATO_SCN_NO;i++) {
 	putc(state->seen_flag[i], fp);
     }
 
-    /* À©¸æ¥Õ¥é¥° */
+    /* åˆ¶å¾¡ãƒ•ãƒ©ã‚° */
     for (i=0; i<KIZUATO_FLAG_NO;i++) {
 	putc(state->flag_save[i], fp);
     }
 
-    /* ¥¨¥ó¥Ç¥£¥ó¥°¸«¤¿¾õÂÖ */
+    /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°è¦‹ãŸçŠ¶æ…‹ */
     for (i=0; i<sizeof state->ending;i++) {
 	putc(state->ending[i], fp);
     }
 
-    /* BGM ¤Î¾õÂÖ */
+    /* BGM ã®çŠ¶æ…‹ */
     putc(lvns->savepoint.current_music, fp);
 
     fclose(fp);
 }
 
 /**
- * ¸½ºß¤Î¤·¤ª¤ê¤«¤é¤Î¾õÂÖ¤Î¥í¡¼¥É
+ * ç¾åœ¨ã®ã—ãŠã‚Šã‹ã‚‰ã®çŠ¶æ…‹ã®ãƒ­ãƒ¼ãƒ‰
  */
 void
 KizuatoLoad(Lvns *lvns)
@@ -105,13 +105,13 @@ KizuatoLoad(Lvns *lvns)
 	return;
     }
 
-    /* ¸½ºß¤Î¥·¥Ê¥ê¥ªÈÖ¹æ    */
+    /* ç¾åœ¨ã®ã‚·ãƒŠãƒªã‚ªç•ªå·    */
     lvns->savepoint.scn = fgetc(fp);
 
-    /* ¸½ºß¤Î¥Ö¥í¥Ã¥¯ÈÖ¹æ    */
+    /* ç¾åœ¨ã®ãƒ–ãƒ­ãƒƒã‚¯ç•ªå·    */
     lvns->savepoint.blk = fgetc(fp);
 
-    /* ¥·¥Ê¥ê¥ª¥ª¥Õ¥»¥Ã¥È */
+    /* ã‚·ãƒŠãƒªã‚ªã‚ªãƒ•ã‚»ãƒƒãƒˆ */
     {
         int a,b,c,d;
         a = getc(fp);
@@ -121,7 +121,7 @@ KizuatoLoad(Lvns *lvns)
         lvns->savepoint.scn_offset = (a <<24) + (b<<16) + (c<<8) + d;
     }
 	
-    /* ²èÁü¾õÂÖ */
+    /* ç”»åƒçŠ¶æ…‹ */
     lvns->savepoint.bg_type   = getc(fp);
     lvns->savepoint.bg_no     = getc(fp);
     getc(fp); /* BG PAL */
@@ -130,22 +130,22 @@ KizuatoLoad(Lvns *lvns)
     lvns->savepoint.character_no[2] = getc(fp);
 
 	
-    /* Ì¤¸«¥Õ¥é¥° */
+    /* æœªè¦‹ãƒ•ãƒ©ã‚° */
     for (i=0; i<KIZUATO_SCN_NO;i++) {
 		state->seen_flag[i] = getc(fp);
     }
 	
-    /* À©¸æ¥Õ¥é¥° */
+    /* åˆ¶å¾¡ãƒ•ãƒ©ã‚° */
     for (i=0; i<KIZUATO_FLAG_NO;i++) {
 		state->flag_save[i] = getc(fp);
     }
 	
-    /* ¥¨¥ó¥Ç¥£¥ó¥°¸«¤¿¾õÂÖ */
+    /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°è¦‹ãŸçŠ¶æ…‹ */
     for (i=0; i<sizeof state->ending;i++) {
 		state->ending[i] = getc(fp);
     }
 	
-    /* BGM ¤Î¾õÂÖ */
+    /* BGM ã®çŠ¶æ…‹ */
     lvns->savepoint.current_music = getc(fp);
 
     fclose(fp);

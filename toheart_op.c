@@ -10,20 +10,20 @@
  */
 
 /* 
- * ToHeart •™°º•◊•À•Û•∞/•ø•§•»•Î
+ * ToHeart „Ç™„Éº„Éó„Éã„É≥„Ç∞/„Çø„Ç§„Éà„É´
  */
 
 #include <stdio.h>
 #include "toheart.h"
 
 /* ------------------------------------------------------------ */
-/** §∑§™§ÍΩÈ¥¸≤ΩÕ—•·•À•Â°º */
+/** „Åó„Åä„ÇäÂàùÊúüÂåñÁî®„É°„Éã„É•„Éº */
 
 static MenuLine siori_init_menu_line[] = {
-    MENULINE( 9, "¡¥§∆§Œ§∑§™§Í§ÚΩÈ¥¸≤Ω§∑§ﬁ§π",0),
-    MENULINE(10, "§Ë§Ì§∑§§§«§π§´°©",0),
-    MENULINE(11, "§œ§§",1),
-    MENULINE(12, "§§§§§®",2),
+    MENULINE( 9, "ÂÖ®„Å¶„ÅÆ„Åó„Åä„Çä„ÇíÂàùÊúüÂåñ„Åó„Åæ„Åô",0),
+    MENULINE(10, "„Çà„Çç„Åó„ÅÑ„Åß„Åô„ÅãÔºü",0),
+    MENULINE(11, "„ÅØ„ÅÑ",1),
+    MENULINE(12, "„ÅÑ„ÅÑ„Åà",2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -34,13 +34,13 @@ SioriInitMenuEngine(Lvns *lvns, int select)
 
     if (select == 1) {
         ToHeartSioriInit(lvns);
-        /* ¡¥•«°º•ø§Ú ›¬∏ */
+        /* ÂÖ®„Éá„Éº„Çø„Çí‰øùÂ≠ò */
         for (i=1; i<=5; i++) {
             ToHeartSave(lvns, i);
         }
         ToHeartSaveCommon(lvns);
     }
-    /* •ø•§•»•Î•·•À•Â°º§ÀÃ·§Î */
+    /* „Çø„Ç§„Éà„É´„É°„Éã„É•„Éº„Å´Êàª„Çã */
 	return select;
 }
 
@@ -51,16 +51,16 @@ static MenuData siori_init_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/**  •ø•§•»•Î•·•À•Â°º */
+/**  „Çø„Ç§„Éà„É´„É°„Éã„É•„Éº */
 
 static MenuLine title_menu_line[] = {
-	MENULINE(8, "•≤°º•‡§Úªœ§·§Î",1),
-	MENULINE(9, "§∑§™§Í§ŒΩÈ¥¸≤Ω",2),
+	MENULINE(8, "„Ç≤„Éº„É†„ÇíÂßã„ÇÅ„Çã",1),
+	MENULINE(9, "„Åó„Åä„Çä„ÅÆÂàùÊúüÂåñ",2),
 #if 0
-	MENULINE(10, "ª◊§§Ω–§Œ•¢•Î•–•‡",3),
-    MENULINE(13, "•’•©•Û•» —ππ",4),
+	MENULINE(10, "ÊÄù„ÅÑÂá∫„ÅÆ„Ç¢„É´„Éê„É†",3),
+    MENULINE(13, "„Éï„Ç©„É≥„ÉàÂ§âÊõ¥",4),
 #endif
-	MENULINE(10, "Ω™Œª§π§Î",3),
+	MENULINE(10, "ÁµÇ‰∫Ü„Åô„Çã",3),
 	MENULINE(0, NULL, 0),
 };
 
@@ -68,16 +68,16 @@ static int
 TitleMenuEngine(Lvns *lvns, int select)
 {
     switch (select) {
-    case 1: /*•≤°º•‡≥´ªœ */
+    case 1: /*„Ç≤„Éº„É†ÈñãÂßã */
 		ToHeartSioriDate(lvns);
 		return  LvnsMenu(lvns, &toheart_title_load_menu, True) > 0 ? 1: 0;
        
-    case 2: /* §∑§™§ÍΩÈ¥¸≤Ω */
+    case 2: /* „Åó„Åä„ÇäÂàùÊúüÂåñ */
 		ToHeartSioriDate(lvns);
 		LvnsMenu(lvns, &siori_init_menu, True);
 		return 0;
 
-    case 3: /* Ω™Œª */
+    case 3: /* ÁµÇ‰∫Ü */
         LvnsJump(lvns, LVNS_JUMP_END);
     }
 
@@ -93,7 +93,7 @@ static MenuData title_menu = {
 /* ------------------------------------------------------------ */
 
 /*
- * •µ•Ø•È§Ú§¡§È§∑§œ§∏§·§Î
+ * „Çµ„ÇØ„É©„Çí„Å°„Çâ„Åó„ÅØ„Åò„ÇÅ„Çã
  */
 static int
 start_sakura(Lvns *lvns, LvnsScript *scr)
@@ -117,7 +117,7 @@ start_sakura2(Lvns *lvns, LvnsScript *scr)
 }    
 
 /**
- * §µ§Ø§Èƒ‰ªﬂ
+ * „Åï„Åè„ÇâÂÅúÊ≠¢
  */
 static int
 stop_sakura(Lvns *lvns, LvnsScript *scr)
@@ -126,7 +126,7 @@ stop_sakura(Lvns *lvns, LvnsScript *scr)
 }
 
 
-/* √±Ω„≤Ë¡¸•Ì°º•… */
+/* ÂçòÁ¥îÁîªÂÉè„É≠„Éº„Éâ */
 static int
 LoadImage(Lvns *lvns, LvnsScript *scr, 
           void * param1, void * param2) 
@@ -137,7 +137,7 @@ LoadImage(Lvns *lvns, LvnsScript *scr,
     return True;
 }
 
-/* ≤Ë¡¸ƒ…≤√(•ª•Û•ø•Í•Û•∞) */
+/* ÁîªÂÉèËøΩÂä†(„Çª„É≥„Çø„É™„É≥„Ç∞) */
 static int
 AddImage(Lvns *lvns, LvnsScript *scr, 
          void * param1, void * param2) 
@@ -153,7 +153,7 @@ AddImage(Lvns *lvns, LvnsScript *scr,
     return True;
 }
 
-/* ≤Ë¡¸ƒ…≤√(ƒÃæÔ) */
+/* ÁîªÂÉèËøΩÂä†(ÈÄöÂ∏∏) */
 static int
 AddImage2(Lvns *lvns, LvnsScript *scr, 
           void * param1, void * param2) 
@@ -164,7 +164,7 @@ AddImage2(Lvns *lvns, LvnsScript *scr,
     return True;
 }
 
-/* ≤Ë¡¸ƒ…≤√(•–•∞¬–ΩËÕ—) */
+/* ÁîªÂÉèËøΩÂä†(„Éê„Ç∞ÂØæÂá¶Áî®) */
 static int
 AddImage3(Lvns *lvns, LvnsScript *scr, 
           void * param1, void * param2) 
@@ -246,7 +246,7 @@ disp(Lvns *lvns, int mask)
     lvns->flushWindow(lvns);
 }
 
-/* •¢•Î•–•‡…Ωº® */
+/* „Ç¢„É´„Éê„É†Ë°®Á§∫ */
 static int
 album_in(Lvns *lvns, LvnsScript *scr)
 {
@@ -258,7 +258,7 @@ album_in(Lvns *lvns, LvnsScript *scr)
     }
 }
 
-/* •¢•Î•–•‡æ√µÓ */
+/* „Ç¢„É´„Éê„É†Ê∂àÂéª */
 static int
 album_out(Lvns *lvns, LvnsScript *scr)
 {
@@ -271,7 +271,7 @@ album_out(Lvns *lvns, LvnsScript *scr)
     }
 }
 
-/* ∂ı§´§È•π•Ø•Ì°º•ÎΩÈ¥¸≤Ω */
+/* Á©∫„Åã„Çâ„Çπ„ÇØ„É≠„Éº„É´ÂàùÊúüÂåñ */
 static int
 init_sky(Lvns *lvns, LvnsScript *scr)
 {
@@ -280,10 +280,10 @@ init_sky(Lvns *lvns, LvnsScript *scr)
     LvnsImage *img;
     lvns->latitude = 16;
 
-    /* «ÿ∑ §Œ∂ı*/
+    /* ËÉåÊôØ„ÅÆÁ©∫*/
     /*
-     * §≥§≥§¿§±§œ Lvns.h §Œ #define lvnsimage_add... §Úª»§¶§»«À√æ
-     * (•™•’•Ø•Í°º•Û§ §Œ§«°§∆ÛΩ≈§«•µ•§•∫ΩÃæÆ§∑§∆§∑§ﬁ§¶§≥§»§À§ §Î)
+     * „Åì„Åì„Å†„Åë„ÅØ Lvns.h „ÅÆ #define lvnsimage_add... „Çí‰Ωø„ÅÜ„Å®Á†¥Á∂ª
+     * („Ç™„Éï„ÇØ„É™„Éº„É≥„Å™„ÅÆ„ÅßÔºå‰∫åÈáç„Åß„Çµ„Ç§„Ç∫Á∏ÆÂ∞è„Åó„Å¶„Åó„Åæ„ÅÜ„Åì„Å®„Å´„Å™„Çã)
      */
     state->roll = lvnsimage_new(WIDTH, HEIGHT*2, 0, 0);
     img = LvnsLoadImage(lvns, "S19D.LF2", NULL);
@@ -313,13 +313,13 @@ init_sky(Lvns *lvns, LvnsScript *scr)
     state->title_mask = 16;
     state->light = LvnsLoadImage(lvns, "LIGHT.LFG", NULL);
 
-    /* ¡∞§Œ≤ËÃÃ§œæ√§∑§∆§™§Ø */
+    /* Ââç„ÅÆÁîªÈù¢„ÅØÊ∂à„Åó„Å¶„Åä„Åè */
     lvnsimage_clear_index(lvns->vram, TOHEART_COL_BLACK);
 
     return True;
 }
 
-/* ∂ı§´§È•π•Ø•Ì°º•Î*/
+/* Á©∫„Åã„Çâ„Çπ„ÇØ„É≠„Éº„É´*/
 #ifndef USE_MGL
 #define STEP 2
 #else
@@ -342,12 +342,12 @@ sky(Lvns *lvns, LvnsScript *scr)
 		fprintf(stderr, "%d/%d\n", msec, wtime);
 #endif
 
-        /*  ∏ª˙πÁ¿Æ */
+        /* ÊñáÂ≠óÂêàÊàê */
         if (scr->state > 140) {
             state->title_mask = 16 - (scr->state - 140);
         }
 
-        /* «ÿ∑ §ÿ§Œ∏˜§ŒπÁ¿Æ */
+        /* ËÉåÊôØ„Å∏„ÅÆÂÖâ„ÅÆÂêàÊàê */
         lvnsimage_copy_area(state->roll, lvns->background, 0, y, WIDTH, HEIGHT, 0, 0);
         if (scr->state < 32) {
             LightPut(state->light, lvns->background,   
@@ -383,7 +383,7 @@ sky(Lvns *lvns, LvnsScript *scr)
     }
 }
 
-/* •ø•§•»•Î…Ωº® */
+/* „Çø„Ç§„Éà„É´Ë°®Á§∫ */
 static int
 show_title(Lvns *lvns, LvnsScript *scr)
 {
@@ -402,7 +402,7 @@ end(Lvns *lvns, LvnsScript *scr)
     ToHeartState *state = (ToHeartState*)lvns->system_state;
     lvnsimage_delete(state->roll);
     lvnsimage_delete(state->light);
-    state->roll = state->light = NULL; /* end §œ 2 ≤Û∏∆§–§Ï§ÎæÏπÁ§¨§¢§Î */
+    state->roll = state->light = NULL; /* end „ÅØ 2 ÂõûÂëº„Å∞„Çå„ÇãÂ†¥Âêà„Åå„ÅÇ„Çã */
     return True;
 }
 
@@ -453,8 +453,8 @@ static LvnsScriptData opdata[] = {
 #define RPOS (void *)1
 #define LPOS (void *)0
 
-    /* §¢§´§Í */
-    { LVNS_SCRIPT_BG, (void*)35 }, /* πªÃÁ(∆‚¬¶) */
+    /* „ÅÇ„Åã„Çä */
+    { LVNS_SCRIPT_BG, (void*)35 }, /* Ê†°ÈñÄ(ÂÜÖÂÅ¥) */
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0181, RPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -465,8 +465,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT,(void*)(50000 + 6250) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* ¿Ë«⁄ */
-    { LVNS_SCRIPT_BG, (void*)9 }, /* ≈œ§Íœ≠≤º */
+    /* ÂÖàËº© */
+    { LVNS_SCRIPT_BG, (void*)9 }, /* Ê∏°„ÇäÂªä‰∏ã */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0202, LPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -477,8 +477,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*2) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* §§§§§Û§¡§Á */
-    { LVNS_SCRIPT_BG, (void*)15 }, /* ≤∞æÂ */
+    /* „ÅÑ„ÅÑ„Çì„Å°„Çá */
+    { LVNS_SCRIPT_BG, (void*)15 }, /* Â±ã‰∏ä */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0301, RPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -489,8 +489,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*3) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* ª÷ › */
-    { LVNS_SCRIPT_BG, (void*)21 }, /* ∫‰∆ª */
+    /* Âøó‰øù */
+    { LVNS_SCRIPT_BG, (void*)21 }, /* ÂùÇÈÅì */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0402, LPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -501,8 +501,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*4) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* ∞™ */
-    { LVNS_SCRIPT_BG, (void*)29 }, /* ø¿º“ */
+    /* Ëëµ */
+    { LVNS_SCRIPT_BG, (void*)29 }, /* Á•ûÁ§æ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0501, RPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -513,8 +513,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*5) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* •ﬁ•Î•¡ */
-    { LVNS_SCRIPT_BG, (void*)10 }, /* øﬁΩÒºº */
+    /* „Éû„É´„ÉÅ */
+    { LVNS_SCRIPT_BG, (void*)10 }, /* Âõ≥Êõ∏ÂÆ§ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0604, LPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -525,8 +525,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*6) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* ∂◊≤ª */
-    { LVNS_SCRIPT_BG, (void*)26 }, /* ∏¯±‡ */
+    /* Áê¥Èü≥ */
+    { LVNS_SCRIPT_BG, (void*)26 }, /* ÂÖ¨Âúí */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar, (void*)0x0701, RPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -537,8 +537,8 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*7) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    /* •Ï•ﬂ•£ */
-    { LVNS_SCRIPT_BG, (void*)14 }, /* √ÊƒÌ */
+    /* „É¨„Éü„Ç£ */
+    { LVNS_SCRIPT_BG, (void*)14 }, /* ‰∏≠Â∫≠ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)600 },
     { LVNS_SCRIPT_FUNC, LoadChar,(void*) 0x0801, LPOS },
     { LVNS_SCRIPT_DISP, (void*)LVNS_EFFECT_FADE_MASK, (void*)600 },
@@ -550,42 +550,42 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(50000 + 6250*8) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V31.LF2" }, /* §§§§§Û§¡§Á */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V31.LF2" }, /* „ÅÑ„ÅÑ„Çì„Å°„Çá */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V70.LF2" }, /* ∂◊≤ª */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V70.LF2" }, /* Áê¥Èü≥ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250*2) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V50.LF2" }, /* ∞™ */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V50.LF2" }, /* Ëëµ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250*3) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V41.LF2" }, /* ª÷ › */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V41.LF2" }, /* Âøó‰øù */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250*4) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V60.LF2" }, /* •ﬁ•Î•¡ */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V60.LF2" }, /* „Éû„É´„ÉÅ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250*5) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V80.LF2" }, /* •Ï•ﬂ•£ */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V80.LF2" }, /* „É¨„Éü„Ç£ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250*6) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V20.LF2" }, /* §ª§Û§—§§ */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V20.LF2" }, /* „Åõ„Çì„Å±„ÅÑ */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
     { LVNS_SCRIPT_TIMER_WAIT, (void*)(100000 + 3250*7) },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_SLIDE_LTOR },
 
-    { LVNS_SCRIPT_FUNC, LoadImage, "V12.LF2" }, /* §¢§´§Í */
+    { LVNS_SCRIPT_FUNC, LoadImage, "V12.LF2" }, /* „ÅÇ„Åã„Çä */
     { LVNS_SCRIPT_DISP,  (void*)LVNS_EFFECT_SLIDE_LTOR, (void*)0 },
 
     { LVNS_SCRIPT_TIMER_WAIT, (void*)126000 },
@@ -600,7 +600,7 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_FUNC, end },
     { LVNS_SCRIPT_EXIT },
 
-    /* OP §Ú√Ê√«§∑§øæÏπÁ °ƒ */
+    /* OP „Çí‰∏≠Êñ≠„Åó„ÅüÂ†¥Âêà ‚Ä¶ */
     { LVNS_SCRIPT_CLICK_JUMP },
     { LVNS_SCRIPT_MUSIC_FADE },
     { LVNS_SCRIPT_CLEAR, (void*)LVNS_EFFECT_FADE_PALETTE },
@@ -613,7 +613,7 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_END },
 };
 
-/* ToHeart •™°º•◊•À•Û•∞ */
+/* ToHeart „Ç™„Éº„Éó„Éã„É≥„Ç∞ */
 void
 ToHeartOpening(Lvns *lvns)
 {
@@ -623,7 +623,7 @@ ToHeartOpening(Lvns *lvns)
 
 /* ------------------------------------------------------------ */
 
-/* ToHeart•ø•§•»•ÎÕ—•π•Ø•Í•◊•» */
+/* ToHeart„Çø„Ç§„Éà„É´Áî®„Çπ„ÇØ„É™„Éó„Éà */
 static LvnsScriptData titledata[] = {
     { LVNS_SCRIPT_BG, (void*)17 },
     { LVNS_SCRIPT_FUNC, AddImage3, "TITLE.LF2" },

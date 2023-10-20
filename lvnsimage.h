@@ -20,22 +20,22 @@
 
 typedef struct LvnsImage {
 
-    int width;        /* ²èÁü¤ÎÉı   */
-    int height;       /* ²èÁü¤Î¹â¤µ */
+    int width;        /* ç”»åƒã®å¹…   */
+    int height;       /* ç”»åƒã®é«˜ã• */
 
-    int xoffset;      /* ²èÁü¤Î¥ª¥Õ¥»¥Ã¥È (x) */
-    int yoffset;      /* ²èÁü¤Î¥ª¥Õ¥»¥Ã¥È (y) */
+    int xoffset;      /* ç”»åƒã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ (x) */
+    int yoffset;      /* ç”»åƒã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ (y) */
 
-    int rwidth;       /* ¼Â¥µ¥¤¥º */
+    int rwidth;       /* å®Ÿã‚µã‚¤ã‚º */
     int rheight;
 
-    u_char *data;     /* ²èÁü¥Ç¡¼¥¿     */
+    u_char *data;     /* ç”»åƒãƒ‡ãƒ¼ã‚¿     */
  
-    int transparent;  /* Æ©ÌÀ¿§ index ÃÍ: add ¤Î¾ì¹ç¤ËÍ­¸ú   */
-    int black;        /* ¡Ö¹õ¡×¤Î index ÃÍ: ¾Ãµî¤Î¾ì¹ç¤ËÍ­¸ú */
+    int transparent;  /* é€æ˜è‰² index å€¤: add ã®å ´åˆã«æœ‰åŠ¹   */
+    int black;        /* ã€Œé»’ã€ã® index å€¤: æ¶ˆå»ã®å ´åˆã«æœ‰åŠ¹ */
 
-    u_char palette [256][3]; /* ¥Ñ¥ì¥Ã¥È¥Ç¡¼¥¿ */
-    int palette_num;  /* ¥Ñ¥ì¥Ã¥È¸Ä¿ô   */
+    u_char palette [256][3]; /* ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ */
+    int palette_num;  /* ãƒ‘ãƒ¬ãƒƒãƒˆå€‹æ•°   */
 
 } LvnsImage;
 

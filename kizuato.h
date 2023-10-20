@@ -17,8 +17,8 @@
 #include "LvnsAnim.h"
 #include "LvnsScript.h"
 
-#define KIZUATO_SCN_NO 177   /* ¥·¥Ê¥ê¥ª¤Î¸Ä¿ô */
-#define KIZUATO_FLAG_NO 28  /* ¥Õ¥é¥°¤Î¸Ä¿ô   */
+#define KIZUATO_SCN_NO 177   /* ã‚·ãƒŠãƒªã‚ªã®å€‹æ•° */
+#define KIZUATO_FLAG_NO 28  /* ãƒ•ãƒ©ã‚°ã®å€‹æ•°   */
 
 #define KIZUATO_COL_BLACK 0
 #define KIZUATO_COL_WHITE 16
@@ -29,20 +29,20 @@
 typedef struct {
     LvnsSystemState state;
 
-    int seen_flag[KIZUATO_SCN_NO];  /* ¥·¥Ê¥ê¥ª´ûÆÉ¥Õ¥é¥°         */
-    int ending[17];            /* ¥¨¥ó¥Ç¥£¥ó¥°¤ò¤ß¤¿¤«¤É¤¦¤« */
-    int flag[KIZUATO_FLAG_NO];   /* ¥·¥Ê¥ê¥ªÀ©¸æÍÑ¥Õ¥é¥° */
-    int flag_save[KIZUATO_FLAG_NO];   /* ¥·¥Ê¥ê¥ªÀ©¸æÍÑ¥Õ¥é¥° */
-    int flag_select[KIZUATO_FLAG_NO];   /* ¥·¥Ê¥ê¥ªÀ©¸æÍÑ¥Õ¥é¥° */
+    int seen_flag[KIZUATO_SCN_NO];  /* ã‚·ãƒŠãƒªã‚ªæ—¢èª­ãƒ•ãƒ©ã‚°         */
+    int ending[17];            /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚’ã¿ãŸã‹ã©ã†ã‹ */
+    int flag[KIZUATO_FLAG_NO];   /* ã‚·ãƒŠãƒªã‚ªåˆ¶å¾¡ç”¨ãƒ•ãƒ©ã‚° */
+    int flag_save[KIZUATO_FLAG_NO];   /* ã‚·ãƒŠãƒªã‚ªåˆ¶å¾¡ç”¨ãƒ•ãƒ©ã‚° */
+    int flag_select[KIZUATO_FLAG_NO];   /* ã‚·ãƒŠãƒªã‚ªåˆ¶å¾¡ç”¨ãƒ•ãƒ©ã‚° */
 
-    int change_palette;   /* ¶¯À©¥Ñ¥ì¥Ã¥ÈÃÖ´¹¥â¡¼¥É */
-    int reverse_palette;  /* ¿§È¿Å¾ */
-    int change_palette2;  /* É½¼¨»ş¤Ë¥Ñ¥ì¥Ã¥ÈÃÖ´¹³«»Ï¡Ä */
+    int change_palette;   /* å¼·åˆ¶ãƒ‘ãƒ¬ãƒƒãƒˆç½®æ›ãƒ¢ãƒ¼ãƒ‰ */
+    int reverse_palette;  /* è‰²åè»¢ */
+    int change_palette2;  /* è¡¨ç¤ºæ™‚ã«ãƒ‘ãƒ¬ãƒƒãƒˆç½®æ›é–‹å§‹â€¦ */
 
-    LvnsImage *vram_char;  /* ¥­¥ã¥é¥¯¥¿¹çÀ®ºî¶ÈÍÑ    */
-    int siori_no;          /* ¸½ºß¤Î¤·¤ª¤êÈÖ¹æ        */
+    LvnsImage *vram_char;  /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åˆæˆä½œæ¥­ç”¨    */
+    int siori_no;          /* ç¾åœ¨ã®ã—ãŠã‚Šç•ªå·        */
 
-    /* OPÍÑ¶¦ÄÌºî¶È¥Ç¡¼¥¿ */
+    /* OPç”¨å…±é€šä½œæ¥­ãƒ‡ãƒ¼ã‚¿ */
     LvnsImage *chizuru;
     LvnsImage *azusa;
     LvnsImage *kaede;

@@ -33,7 +33,7 @@ static struct Rain {
 static int rain_num = 0;
 
 /*
- * ±«¥¨¥Õ¥§¥¯¥È
+ * é›¨ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
  */
 
 static
@@ -49,7 +49,7 @@ void setRain(Lvns *lvns, int idx)
   rain[idx].lifetime = RAIN_LIFETIME;
 }
 
-/* ½é´ü²½ */
+/* åˆæœŸåŒ– */
 void
 ToHeartRainEffectInit(Lvns *lvns, int num)
 {
@@ -63,7 +63,7 @@ ToHeartRainEffectInit(Lvns *lvns, int num)
   }
 }
 
-/* ¾õÂÖÁ«°Ü */
+/* çŠ¶æ…‹é·ç§» */
 static void
 ToHeartRainEffectSetState(Lvns *lvns)
 {
@@ -119,7 +119,7 @@ drawRain(Lvns *lvns, int idx)
 #endif
 
 /* 
- * ÉÁ²è½èÍı 
+ * æç”»å‡¦ç† 
  */
 static void
 ToHeartRainEffect(Lvns *lvns)
@@ -139,23 +139,23 @@ ToHeartRainEffect(Lvns *lvns)
 
     lvnsimage_copy_palette(lvns->background, lvns->vram);
 
-    /* ÇØ·Ê */
+    /* èƒŒæ™¯ */
     lvnsimage_copy(lvns->background, lvns->vram);
 
-    /* ÇØÌÌ¤Î±« */
+    /* èƒŒé¢ã®é›¨ */
     for (i = 0; i < rain_num; i++) {
       if (rain[i].pos == RAIN_BACK) drawRain(lvns, i);
     }
 
-    /* ¥­¥ã¥é¥¯¥¿Î©¤Á³¨¤òÄÉ²Ã */
+    /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ç«‹ã¡çµµã‚’è¿½åŠ  */
     LVNS->mergeCharacter(lvns);
 
-    /* Á°ÌÌ¤Î±« */
+    /* å‰é¢ã®é›¨ */
     for (i = 0; i < rain_num; i++) {
       if (rain[i].pos == RAIN_FRONT) drawRain(lvns, i);
     }
 
-    /* ±«ÍÑ¥Ñ¥ì¥Ã¥ÈÄÉ²Ã */
+    /* é›¨ç”¨ãƒ‘ãƒ¬ãƒƒãƒˆè¿½åŠ  */
     lvnsimage_set_palette3(lvns->vram, rain_pal, TOHEART_COL_SAKURA, RAIN_PAL_SIZE);
     lvns->vram->palette_num = TOHEART_COL_SAKURA + RAIN_PAL_SIZE;
 }   
