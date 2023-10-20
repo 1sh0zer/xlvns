@@ -10,7 +10,7 @@
  */
 
 /*
- * Lvns ã±ã‚‰ã±ã‚‰ã‚¢ãƒ‹ãƒ¡å‡¦ç†
+ * Lvns ¤Ñ¤é¤Ñ¤é¥¢¥Ë¥á½èÍı
  */
 
 #include <stdio.h>
@@ -18,7 +18,7 @@
 #include "LvnsAnim.h"
 
 /*
- * ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿ã®åˆæœŸåŒ–
+ * ¥¢¥Ë¥á¡¼¥·¥ç¥ó¥Ç¡¼¥¿¤Î½é´ü²½
  */
 void
 LvnsInitAnimation(Lvns *lvns, LvnsAnimationData *data) 
@@ -38,7 +38,7 @@ LvnsInitAnimation(Lvns *lvns, LvnsAnimationData *data)
 }
 
 /*
- * ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å†ç”Ÿå‡¦ç†
+ * ¥¢¥Ë¥á¡¼¥·¥ç¥óºÆÀ¸½èÍı
  */
 static Bool
 Animation(Lvns *lvns, LvnsAnimationData **data, int *wait_time)

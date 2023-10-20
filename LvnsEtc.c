@@ -13,7 +13,7 @@
 #include "Lvns.h"
 
 /**
- * ã‚»ãƒ¼ãƒ–ä½ç½®æƒ…å ±åˆæœŸåŒ–
+ * ¥»¡¼¥Ö°ÌÃÖ¾ğÊó½é´ü²½
  */
 void
 LvnsInitSavePoint(Lvns *lvns, struct SavePoint *sp)
@@ -21,12 +21,12 @@ LvnsInitSavePoint(Lvns *lvns, struct SavePoint *sp)
 #if 0
     dprintf((stderr, "InitSavePoint\n"));
 #endif
-    /* ã‚·ãƒŠãƒªã‚ªä½ç½®åˆæœŸåŒ– */
+    /* ¥·¥Ê¥ê¥ª°ÌÃÖ½é´ü²½ */
     sp->scn = 0;
     sp->blk = 1;
     sp->scn_offset = 0;
 
-    /* ç”»åƒ/BGM çŠ¶æ…‹åˆæœŸåŒ– */
+    /* ²èÁü/BGM ¾õÂÖ½é´ü²½ */
     sp->bg_type       = LVNS_BACKGROUND;
     sp->bg_no         = 0;
     sp->character_no[0] = NOCHARACTER;
@@ -36,7 +36,7 @@ LvnsInitSavePoint(Lvns *lvns, struct SavePoint *sp)
 }
 
 /**
- * ã‚»ãƒ¼ãƒ–ä½ç½®è¨­å®š
+ * ¥»¡¼¥Ö°ÌÃÖÀßÄê
  */
 void
 LvnsSetSavePoint(Lvns *lvns, struct SavePoint *sp)

@@ -10,31 +10,31 @@
  */
 
 /*
- * CD-DA å†ç”Ÿç”¨ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
- * å„ OS ç”¨ã«åŒæ§˜ã®ã‚‚ã®ã‚’æ›¸ãèµ·ã“ã›ã°è‰¯ã„ã‚ˆã†ã«ã—ãŸã¤ã‚‚ã‚Šâ€¦
+ * CD-DA ºÆÀ¸ÍÑ¤Î¥â¥¸¥å¡¼¥ë
+ * ³Æ OS ÍÑ¤ËÆ±ÍÍ¤Î¤â¤Î¤ò½ñ¤­µ¯¤³¤»¤ĞÎÉ¤¤¤è¤¦¤Ë¤·¤¿¤Ä¤â¤ê¡Ä
  *
- * æƒ…å ±ä¿æŒç”¨æ§‹é€ ä½“
+ * ¾ğÊóÊİ»ıÍÑ¹½Â¤ÂÎ
  * CDTimeInfo, CDInfo
  *
- * åˆæœŸåŒ–ç”¨ 
+ * ½é´ü²½ÍÑ 
  * CDInfo *cdinfo_new(const char *devicename);
  * 
- * æƒ…å ±ç ´æ£„ç”¨
+ * ¾ğÊóÇË´şÍÑ
  * void cdinfo_delete(CDInfo *info);
  *
- * æŒ‡å®šã—ãŸãƒˆãƒ©ãƒƒã‚¯ã‚’æ¼”å¥é–‹å§‹
+ * »ØÄê¤·¤¿¥È¥é¥Ã¥¯¤ò±éÁÕ³«»Ï
  * int cdinfo_play(CDInfo *cdinfo, int no);
  *
- * æ¼”å¥ä¸­æ­¢
+ * ±éÁÕÃæ»ß
  * int cdinfo_stop(CDInfo *cdinfo);
  *
- * æ¼”å¥åœæ­¢
+ * ±éÁÕÄä»ß
  * int cdinfo_pause(CDInfo *cdio);
  *
- * CD éŸ³é‡è¨­å®š (0-255)
+ * CD ²»ÎÌÀßÄê (0-255)
  * int cdinfo_set_volume(CDInfo *cdinfo, int vol);
  *
- * ç¾åœ¨ã®æ¼”å¥æ™‚åˆ»ã®å–å¾—
+ * ¸½ºß¤Î±éÁÕ»ş¹ï¤Î¼èÆÀ
  * int cdinfo_get_current_time(CDInfo *cdinfo, CDTimeInfo *current);
  */
 
@@ -63,7 +63,7 @@ msf2lba (u_char m, u_char s, u_char f)
 #include <sys/cdio.h>
 
 /*
- * ãƒˆãƒ©ãƒƒã‚¯æƒ…å ±ã®å–å¾—
+ * ¥È¥é¥Ã¥¯¾ğÊó¤Î¼èÆÀ
  */
 static int
 cdinfo_get_entry(CDInfo *info)
@@ -72,7 +72,7 @@ cdinfo_get_entry(CDInfo *info)
     struct ioc_read_toc_entry toc;
     int no;
 
-    /* æƒ…å ±ã‚¯ãƒªã‚¢ */
+    /* ¾ğÊó¥¯¥ê¥¢ */
     if (info->infos)
         free(info->infos);
     info->track_no = 0;
@@ -81,10 +81,10 @@ cdinfo_get_entry(CDInfo *info)
         return -1;
     }
 
-    /* ãƒ˜ãƒƒãƒ€æƒ…å ±å–å¾— */
+    /* ¥Ø¥Ã¥À¾ğÊó¼èÆÀ */
     no = toc_header.ending_track - toc_header.starting_track + 1;
 
-    /* TOC æƒ…å ±å–å¾— */
+    /* TOC ¾ğÊó¼èÆÀ */
     toc.address_format = CD_MSF_FORMAT;
     toc.starting_track = 0;
 
@@ -105,7 +105,7 @@ cdinfo_get_entry(CDInfo *info)
     }
 
     {
-        /* æƒ…å ±å–å¾— */
+        /* ¾ğÊó¼èÆÀ */
         int i;
         for (i=0; i<no; i++) {
             info->infos[i].block = msf2lba(toc.data[i].addr.msf.minute,
@@ -123,7 +123,7 @@ cdinfo_get_entry(CDInfo *info)
         }
     }
 
-    /* ä½œæ¥­é ˜åŸŸè§£æ”¾ */
+    /* ºî¶ÈÎÎ°è²òÊü */
     free(toc.data);
 
     return 0;
@@ -162,7 +162,7 @@ cdinfo_pause(CDInfo *info)
 }
 
 /*
- * ç¾åœ¨ã®æ¼”å¥ä¸­ã®æ™‚åˆ»ã‚’å–å¾—
+ * ¸½ºß¤Î±éÁÕÃæ¤Î»ş¹ï¤ò¼èÆÀ
  */
 int
 cdinfo_get_current_time(CDInfo *info, CDTimeInfo *current)
@@ -257,7 +257,7 @@ lba2msf (u_int from, u_int to)
 }
 
 /*
- * ãƒˆãƒ©ãƒƒã‚¯æƒ…å ±ã®å–å¾—
+ * ¥È¥é¥Ã¥¯¾ğÊó¤Î¼èÆÀ
  */
 
 static int
@@ -268,7 +268,7 @@ cdinfo_get_entry(CDInfo *info)
     int no, endtrk, i;
     struct  cdrom_msf0 tocmsf[100];
     
-    /* æƒ…å ±ã‚¯ãƒªã‚¢ */
+    /* ¾ğÊó¥¯¥ê¥¢ */
     if (info->infos)
         free(info->infos);
     info->track_no = 0;
@@ -277,10 +277,10 @@ cdinfo_get_entry(CDInfo *info)
         return -1;
     }
 
-    /* ãƒ˜ãƒƒãƒ€æƒ…å ±å–å¾— */
+    /* ¥Ø¥Ã¥À¾ğÊó¼èÆÀ */
     no = endtrk = toc_header.cdth_trk1;
 
-    /* TOC æƒ…å ±å–å¾— */
+    /* TOC ¾ğÊó¼èÆÀ */
     toc.cdte_format = CDROM_MSF;
     for (i = 1; i <=endtrk; i++) {
         toc.cdte_track = i;
@@ -295,7 +295,7 @@ cdinfo_get_entry(CDInfo *info)
     if (ioctl(info->fd, CDROMREADTOCENTRY, &toc) < 0) {
         return -1;
     }
-    /* Linux PPC å¯¾ç­– */
+    /* Linux PPC ÂĞºö */
 
     tocmsf[endtrk].minute = toc.cdte_addr.msf.minute - (toc.cdte_addr.msf.second == 0 && toc.cdte_addr.msf.frame == 0 ? 1 : 0);
     tocmsf[endtrk].second = toc.cdte_addr.msf.second - toc.cdte_addr.msf.frame == 0 ? 1 : 0;
@@ -313,7 +313,7 @@ cdinfo_get_entry(CDInfo *info)
     }
 
     {
-        /* æƒ…å ±å–å¾— */
+        /* ¾ğÊó¼èÆÀ */
         int i;
         for (i=0; i<no; i++) {
             info->infos[i].block = msf2lba(tocmsf[i].minute,
@@ -371,7 +371,7 @@ cdinfo_pause(CDInfo *info)
 }
 
 /*
- * ç¾åœ¨ã®æ¼”å¥ä¸­ã®æ™‚åˆ»ã‚’å–å¾—
+ * ¸½ºß¤Î±éÁÕÃæ¤Î»ş¹ï¤ò¼èÆÀ
  */
 int
 cdinfo_get_current_time(CDInfo *info, CDTimeInfo *current)
@@ -443,7 +443,7 @@ cdinfo_new(const char *devicename)
 #include <sys/cdio.h>
 
 /*
- * ãƒˆãƒ©ãƒƒã‚¯æƒ…å ±ã®å–å¾—
+ * ¥È¥é¥Ã¥¯¾ğÊó¤Î¼èÆÀ
  */
 static struct cdrom_msf lba2msf (u_int from, u_int to);
 
@@ -471,7 +471,7 @@ cdinfo_get_entry(CDInfo *info)
     int no, endtrk, i;
     struct  cdrom_msf tocmsf[100];
     
-    /* æƒ…å ±ã‚¯ãƒªã‚¢ */
+    /* ¾ğÊó¥¯¥ê¥¢ */
     if (info->infos)
         free(info->infos);
     info->track_no = 0;
@@ -480,10 +480,10 @@ cdinfo_get_entry(CDInfo *info)
         return -1;
     }
 
-    /* ãƒ˜ãƒƒãƒ€æƒ…å ±å–å¾— */
+    /* ¥Ø¥Ã¥À¾ğÊó¼èÆÀ */
     no = endtrk = toc_header.cdth_trk1;
 
-    /* TOC æƒ…å ±å–å¾— */
+    /* TOC ¾ğÊó¼èÆÀ */
     toc.cdte_format = CDROM_MSF;
     for (i = 1; i <=endtrk; i++) {
         toc.cdte_track = i;
@@ -510,7 +510,7 @@ cdinfo_get_entry(CDInfo *info)
     }
 
     {
-        /* æƒ…å ±å–å¾— */
+        /* ¾ğÊó¼èÆÀ */
         int i;
         for (i=0; i<no; i++) {
             info->infos[i].block = msf2lba(tocmsf[i].cdmsf_min0,
@@ -568,7 +568,7 @@ cdinfo_pause(CDInfo *info)
 }
 
 /*
- * ç¾åœ¨ã®æ¼”å¥ä¸­ã®æ™‚åˆ»ã‚’å–å¾—
+ * ¸½ºß¤Î±éÁÕÃæ¤Î»ş¹ï¤ò¼èÆÀ
  */
 int
 cdinfo_get_current_time(CDInfo *info, CDTimeInfo *current)

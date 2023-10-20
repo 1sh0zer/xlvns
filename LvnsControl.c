@@ -9,7 +9,7 @@
  */
 
 /*
- * å¤–éƒ¨ã‹ã‚‰ LVNSãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’åˆ¶å¾¡ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
+ * ³°Éô¤«¤é LVNS¥â¥¸¥å¡¼¥ë¤òÀ©¸æ¤¹¤ë¤¿¤á¤Î¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +17,7 @@
 #include "LvnsEffect.h"
 
 /*
- * ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã®ç§»å‹•
+ * ¥Ş¥¦¥¹¥«¡¼¥½¥ë¤Î°ÜÆ°
  */
 void
 LvnsMotion(Lvns *lvns, int x, int y)
@@ -48,7 +48,7 @@ LvnsInputNumber(Lvns *lvns, int no) {
 
 
 /*
- * ã‚¤ãƒ¡ãƒ¼ã‚¸è¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰ã«é·ç§»(ãƒˆãƒªã‚¬é§†å‹•)
+ * ¥¤¥á¡¼¥¸É½¼¨¥â¡¼¥É¤ËÁ«°Ü(¥È¥ê¥¬¶îÆ°)
  */
 void
 LvnsSetImageMode(Lvns *lvns)
@@ -60,13 +60,13 @@ LvnsSetImageMode(Lvns *lvns)
 }
 
 /*
- * é¸æŠè‚¢ã¾ã§é£›ã°ã™
+ * ÁªÂò»è¤Ş¤ÇÈô¤Ğ¤¹
  */
 void
 LvnsSkipTillSelect(Lvns *lvns)
 {
     if (lvns->seen) {
-		lvns->skip = True; // ã‚¹ã‚­ãƒƒãƒ—ON
+		lvns->skip = True; // ¥¹¥­¥Ã¥×ON
     }
 }
 
@@ -83,7 +83,7 @@ LvnsCursorDown(Lvns *lvns)
 }
 
 /**
- * æ–‡å­—æ¶ˆå»ãƒ¢ãƒ¼ãƒ‰
+ * Ê¸»ú¾Ãµî¥â¡¼¥É
  */
 void
 LvnsImageMode(Lvns *lvns)
@@ -108,8 +108,8 @@ LvnsImageMode(Lvns *lvns)
 }
 
 /*
- * æ”¹ãƒšãƒ¼ã‚¸å¾…ã¡
- * (ãƒ¡ãƒ‹ãƒ¥ãƒ¼èµ·å‹•æœ‰ã‚Š)
+ * ²ş¥Ú¡¼¥¸ÂÔ¤Á
+ * (¥á¥Ë¥å¡¼µ¯Æ°Í­¤ê)
  */
 void
 LvnsWaitPage(Lvns *lvns)
@@ -132,11 +132,11 @@ LvnsWaitPage(Lvns *lvns)
 				(lvns->demo_mode && ++demo_cnt > 120)) {
 				break;
 			} else if (lvns->cancel) {
-				/* ãƒ¡ãƒ‹ãƒ¥ãƒ¼èµ·å‹• */
+				/* ¥á¥Ë¥å¡¼µ¯Æ° */
 				LvnsTextOff(lvns);
 				LvnsMenu(lvns, LVNS->main_menu, True);
 				LvnsTextOn(lvns);
-				LvnsDispWindow(lvns);       /* æç”»çŠ¶æ…‹ã‚’æˆ»ã™ */
+				LvnsDispWindow(lvns);       /* ÉÁ²è¾õÂÖ¤òÌá¤¹ */
 				lvns->cancel = False;
 			} else if (lvns->image_mode) {
 				LvnsImageMode(lvns);
@@ -151,14 +151,14 @@ LvnsWaitPage(Lvns *lvns)
 		lvns->select        = False;
 	}
 
-	/* æ–‡å­—æ¶ˆå» */
+	/* Ê¸»ú¾Ãµî */
 	LvnsClearText(lvns);
 	LvnsDispWindow(lvns);
 }
 	
 /*
- * ã‚­ãƒ¼å…¥åŠ›å¾…ã¡
- * (ãƒ¡ãƒ‹ãƒ¥ãƒ¼èµ·å‹•æœ‰ã‚Š)
+ * ¥­¡¼ÆşÎÏÂÔ¤Á
+ * (¥á¥Ë¥å¡¼µ¯Æ°Í­¤ê)
  */
 void
 LvnsWaitKey(Lvns *lvns)
@@ -181,11 +181,11 @@ LvnsWaitKey(Lvns *lvns)
 				(lvns->demo_mode && ++demo_cnt > 60)) {
 				break;
 			} else if (lvns->cancel) {
-				/* ãƒ¡ãƒ‹ãƒ¥ãƒ¼èµ·å‹• */
+				/* ¥á¥Ë¥å¡¼µ¯Æ° */
 				LvnsTextOff(lvns);
 				LvnsMenu(lvns, LVNS->main_menu, True);
 				LvnsTextOn(lvns);
-				LvnsDispWindow(lvns); /* æç”»çŠ¶æ…‹ã‚’æˆ»ã™ */
+				LvnsDispWindow(lvns); /* ÉÁ²è¾õÂÖ¤òÌá¤¹ */
 			} else if (lvns->image_mode) {
 				LvnsImageMode(lvns);
 			} else if (lvns->cursor_up) {
@@ -201,8 +201,8 @@ LvnsWaitKey(Lvns *lvns)
 }
 
 /*
- * é¸æŠå¾…ã¡
- * (ãƒ¡ãƒ‹ãƒ¥ãƒ¼èµ·å‹•æœ‰ã‚Š)
+ * ÁªÂòÂÔ¤Á
+ * (¥á¥Ë¥å¡¼µ¯Æ°Í­¤ê)
  */
 int
 LvnsWaitSelect(Lvns *lvns, int select_num)
@@ -212,7 +212,7 @@ LvnsWaitSelect(Lvns *lvns, int select_num)
 	lvns->inside_state = LVNS_WAIT_SELECT;
 
 	lvns->force_skip = False;
-	lvns->skip       = False;	/* ã€Œé¸æŠè‚¢ã¾ã§é€²ã‚€ã€ã®è§£é™¤ */
+	lvns->skip       = False;	/* ¡ÖÁªÂò»è¤Ş¤Ç¿Ê¤à¡×¤Î²ò½ü */
 	
 	lvns->text_cursor_state = 0;
 	lvns->select        = False;
@@ -230,11 +230,11 @@ LvnsWaitSelect(Lvns *lvns, int select_num)
 			else
 				lvns->select = False;
 		} else if (lvns->cancel) {
-			/* ãƒ¡ãƒ‹ãƒ¥ãƒ¼èµ·å‹• */
+			/* ¥á¥Ë¥å¡¼µ¯Æ° */
 			LvnsTextOff(lvns);
 			LvnsMenu(lvns, LVNS->main_menu, True);
 			LvnsTextOn(lvns);
-			LvnsDispWindow(lvns);       /* æç”»çŠ¶æ…‹ã‚’æˆ»ã™ */
+			LvnsDispWindow(lvns);       /* ÉÁ²è¾õÂÖ¤òÌá¤¹ */
 			lvns->cancel = False;
 		} else if (lvns->motion) {
 			struct TextVram *c;
@@ -298,7 +298,7 @@ LvnsWaitSelect(Lvns *lvns, int select_num)
 	lvns->cursor_down   = False;
 	lvns->motion        = False;
 
-	/* æ–‡å­—æ¶ˆå» */
+	/* Ê¸»ú¾Ãµî */
 	LvnsClearText(lvns);
 	LvnsDispWindow(lvns);
 
@@ -306,7 +306,7 @@ LvnsWaitSelect(Lvns *lvns, int select_num)
 }
 
 /*
- * ã‚¯ãƒªãƒƒã‚¯å¾…ã¡
+ * ¥¯¥ê¥Ã¥¯ÂÔ¤Á
  */
 void
 LvnsWaitClick(Lvns *lvns)

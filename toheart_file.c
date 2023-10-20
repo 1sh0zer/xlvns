@@ -10,14 +10,14 @@
  */
 
 /* 
- * ToHeart ã—ãŠã‚Šå‡¦ç†ç”¨
+ * ToHeart ¤·¤ª¤ê½èÍıÍÑ
  */
 
 #include <stdio.h>
 #include "toheart.h"
 
 /**
- * ãƒ•ã‚¡ã‚¤ãƒ«åã®æ±ºå®š
+ * ¥Õ¥¡¥¤¥ëÌ¾¤Î·èÄê
  */
 static void
 ToHeartFileName(Lvns *lvns, char *dst, size_t len, int no)
@@ -50,7 +50,7 @@ ToHeartSioriDate(Lvns *lvns)
 
 
 /*
- * å…±é€šã—ãŠã‚Šã¸ã®çŠ¶æ…‹ã®ä¿å­˜
+ * ¶¦ÄÌ¤·¤ª¤ê¤Ø¤Î¾õÂÖ¤ÎÊİÂ¸
  */
 void
 ToHeartSaveCommon(Lvns *lvns)
@@ -68,11 +68,11 @@ ToHeartSaveCommon(Lvns *lvns)
 	return;
     }
 
-    /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒ•ãƒ©ã‚° */
+    /* ¥¨¥ó¥Ç¥£¥ó¥°¥Õ¥é¥° */
     putc(state->flag[0x50], fp); 
     putc(state->flag[0x51], fp);
 
-    /* æœªè¦‹ãƒ•ãƒ©ã‚° */
+    /* Ì¤¸«¥Õ¥é¥° */
     for (i=0; i<sizeof state->seen_flag / sizeof state->seen_flag[0];i++) {
 	putc(state->seen_flag[i], fp);
     }
@@ -81,7 +81,7 @@ ToHeartSaveCommon(Lvns *lvns)
 }
 
 /**
- * ã—ãŠã‚Šã¸ã®çŠ¶æ…‹ã®ä¿å­˜
+ * ¤·¤ª¤ê¤Ø¤Î¾õÂÖ¤ÎÊİÂ¸
  */
 void
 ToHeartSave(Lvns *lvns, int no)
@@ -99,26 +99,26 @@ ToHeartSave(Lvns *lvns, int no)
 	return;
     }
 
-    /* ã‚·ãƒŠãƒªã‚ªç•ªå·    */
+    /* ¥·¥Ê¥ê¥ªÈÖ¹æ    */
     PUTWORD(lvns->savepoint.scn, fp);
 
-    /* ãƒ–ãƒ­ãƒƒã‚¯ç•ªå· */  
+    /* ¥Ö¥í¥Ã¥¯ÈÖ¹æ */  
     PUTWORD(lvns->savepoint.blk, fp);
     
-    /* ã‚·ãƒŠãƒªã‚ªã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ */
+    /* ¥·¥Ê¥ê¥ª¤Î¥ª¥Õ¥»¥Ã¥È */
     PUTLONG(lvns->savepoint.scn_offset, fp);
 
-    /* ç”»åƒçŠ¶æ…‹ */
+    /* ²èÁü¾õÂÖ */
     PUTWORD(lvns->savepoint.bg_no,     fp);
     PUTWORD(lvns->savepoint.character_no[0],   fp);
     PUTWORD(lvns->savepoint.character_no[1],   fp);
     PUTWORD(lvns->savepoint.character_no[2],   fp);
     putc(lvns->savepoint.bg_type,      fp);
 
-    /* BGM ã®çŠ¶æ…‹ */
+    /* BGM ¤Î¾õÂÖ */
     putc(lvns->savepoint.current_music, fp);
 
-    /* åˆ¶å¾¡ãƒ•ãƒ©ã‚° */
+    /* À©¸æ¥Õ¥é¥° */
     for (i=0; i<TOHEART_FLAG_NO;i++) {
 	putc(state->flag_save[i], fp);
     }
@@ -127,7 +127,7 @@ ToHeartSave(Lvns *lvns, int no)
 }
 
 /*
- * å…±é€šã—ãŠã‚Šã‹ã‚‰ã®ãƒ­ãƒ¼ãƒ‰
+ * ¶¦ÄÌ¤·¤ª¤ê¤«¤é¤Î¥í¡¼¥É
  */
 void
 ToHeartLoadCommon(Lvns *lvns)
@@ -145,10 +145,10 @@ ToHeartLoadCommon(Lvns *lvns)
 	return;
     }
     
-    state->flag[0x50] = getc(fp); /* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒ•ãƒ©ã‚° */
+    state->flag[0x50] = getc(fp); /* ¥¨¥ó¥Ç¥£¥ó¥°¥Õ¥é¥° */
     state->flag[0x51] = getc(fp);
 
-    /* æœªè¦‹ãƒ•ãƒ©ã‚° */
+    /* Ì¤¸«¥Õ¥é¥° */
     for (i=0; i<sizeof state->seen_flag / sizeof state->seen_flag[0];i++) {
 	state->seen_flag[i] = getc(fp);
     }
@@ -158,7 +158,7 @@ ToHeartLoadCommon(Lvns *lvns)
 
 
 /**
- * ã—ãŠã‚Šã‹ã‚‰ã®çŠ¶æ…‹ã®ãƒ­ãƒ¼ãƒ‰
+ * ¤·¤ª¤ê¤«¤é¤Î¾õÂÖ¤Î¥í¡¼¥É
  */
 void
 ToHeartLoad(Lvns *lvns, int no)
@@ -176,13 +176,13 @@ ToHeartLoad(Lvns *lvns, int no)
 	return;
     }
 
-    /* ç¾åœ¨ã®ã‚·ãƒŠãƒªã‚ªç•ªå·    */
+    /* ¸½ºß¤Î¥·¥Ê¥ê¥ªÈÖ¹æ    */
     lvns->savepoint.scn = getword(fp);
 
-    /* ç¾åœ¨ã®ãƒ–ãƒ­ãƒƒã‚¯ç•ªå·    */
+    /* ¸½ºß¤Î¥Ö¥í¥Ã¥¯ÈÖ¹æ    */
     lvns->savepoint.blk = getword(fp);
 
-    /* ã‚·ãƒŠãƒªã‚ªã‚ªãƒ•ã‚»ãƒƒãƒˆ */
+    /* ¥·¥Ê¥ê¥ª¥ª¥Õ¥»¥Ã¥È */
     {
         int a,b,c,d;
         a = getc(fp);
@@ -192,17 +192,17 @@ ToHeartLoad(Lvns *lvns, int no)
         lvns->savepoint.scn_offset = (a <<24) + (b<<16) + (c<<8) + d;
     }
 
-    /* ç”»åƒçŠ¶æ…‹ */
+    /* ²èÁü¾õÂÖ */
     lvns->savepoint.bg_no     = getword(fp);
     lvns->savepoint.character_no[0] = getword(fp);
     lvns->savepoint.character_no[1] = getword(fp);
     lvns->savepoint.character_no[2] = getword(fp);
     lvns->savepoint.bg_type   = getc(fp);
 
-    /* BGM ã®çŠ¶æ…‹ */
+    /* BGM ¤Î¾õÂÖ */
     lvns->savepoint.current_music = getc(fp);
 
-    /* åˆ¶å¾¡ãƒ•ãƒ©ã‚° */
+    /* À©¸æ¥Õ¥é¥° */
     for (i=0; i<TOHEART_FLAG_NO;i++) {
 	state->flag_save[i] = getc(fp);
     }

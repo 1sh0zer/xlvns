@@ -10,14 +10,14 @@
  */
 
 /* 
- * é›« ã—ãŠã‚Šå‡¦ç†
+ * ¼¶ ¤·¤ª¤ê½èÍı
  */
 
 #include <stdio.h>
 #include "sizuku.h"
 
 /**
- * ãƒ•ã‚¡ã‚¤ãƒ«åã®æ±ºå®š
+ * ¥Õ¥¡¥¤¥ëÌ¾¤Î·èÄê
  */
 static void
 SizukuFileName(Lvns *lvns, char *dst, size_t len, int no)
@@ -30,7 +30,7 @@ SizukuFileName(Lvns *lvns, char *dst, size_t len, int no)
 
 
 /**
- * ç¾åœ¨ã®ã—ãŠã‚Šã¸ã®çŠ¶æ…‹ã®ä¿å­˜
+ * ¸½ºß¤Î¤·¤ª¤ê¤Ø¤Î¾õÂÖ¤ÎÊİÂ¸
  */
 void
 SizukuSave(Lvns *lvns)
@@ -48,16 +48,16 @@ SizukuSave(Lvns *lvns)
 	return;
     }
 
-    /* ã‚·ãƒŠãƒªã‚ªç•ªå·    */
+    /* ¥·¥Ê¥ê¥ªÈÖ¹æ    */
     putc(lvns->savepoint.scn, fp);
 
-    /* ãƒ–ãƒ­ãƒƒã‚¯ç•ªå· */  
+    /* ¥Ö¥í¥Ã¥¯ÈÖ¹æ */  
     putc(lvns->savepoint.blk, fp);
 
-    /* ã‚·ãƒŠãƒªã‚ªã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ */
+    /* ¥·¥Ê¥ê¥ª¤Î¥ª¥Õ¥»¥Ã¥È */
     PUTLONG(lvns->savepoint.scn_offset);
 
-    /* ç”»åƒçŠ¶æ…‹ */
+    /* ²èÁü¾õÂÖ */
     putc(lvns->savepoint.bg_type, fp);
     putc(lvns->savepoint.bg_no, fp);
     putc(0, fp); /* BG PAL */
@@ -65,24 +65,24 @@ SizukuSave(Lvns *lvns)
     putc(lvns->savepoint.character_no[1], fp);
     putc(lvns->savepoint.character_no[2], fp);
 
-    /* æœªè¦‹ãƒ•ãƒ©ã‚° */
+    /* Ì¤¸«¥Õ¥é¥° */
     for (i=0; i<SIZUKU_SCN_NO;i++) {
 	putc(state->seen_flag[i], fp);
     }
 
-    /* åˆ¶å¾¡ãƒ•ãƒ©ã‚° */
+    /* À©¸æ¥Õ¥é¥° */
     for (i=0; i<SIZUKU_FLAG_NO;i++) {
 	putc(state->flag_save[i], fp);
     }
 
-    /* BGM ã®çŠ¶æ…‹ */
+    /* BGM ¤Î¾õÂÖ */
     putc(lvns->savepoint.current_music, fp);
 
     fclose(fp);
 }
 
 /**
- * ç¾åœ¨ã®ã—ãŠã‚Šã‹ã‚‰ã®çŠ¶æ…‹ã®ãƒ­ãƒ¼ãƒ‰
+ * ¸½ºß¤Î¤·¤ª¤ê¤«¤é¤Î¾õÂÖ¤Î¥í¡¼¥É
  */
 void
 SizukuLoad(Lvns *lvns)
@@ -100,13 +100,13 @@ SizukuLoad(Lvns *lvns)
 	return;
     }
 
-    /* ç¾åœ¨ã®ã‚·ãƒŠãƒªã‚ªç•ªå·    */
+    /* ¸½ºß¤Î¥·¥Ê¥ê¥ªÈÖ¹æ    */
     lvns->savepoint.scn = fgetc(fp);
 
-    /* ç¾åœ¨ã®ãƒ–ãƒ­ãƒƒã‚¯ç•ªå·    */
+    /* ¸½ºß¤Î¥Ö¥í¥Ã¥¯ÈÖ¹æ    */
     lvns->savepoint.blk = fgetc(fp);
 
-    /* ã‚·ãƒŠãƒªã‚ªã‚ªãƒ•ã‚»ãƒƒãƒˆ */
+    /* ¥·¥Ê¥ê¥ª¥ª¥Õ¥»¥Ã¥È */
     {
         int a,b,c,d;
         a = getc(fp);
@@ -116,7 +116,7 @@ SizukuLoad(Lvns *lvns)
         lvns->savepoint.scn_offset = (a <<24) + (b<<16) + (c<<8) + d;
     }
 
-    /* ç”»åƒçŠ¶æ…‹ */
+    /* ²èÁü¾õÂÖ */
     lvns->savepoint.bg_type    = getc(fp);
     lvns->savepoint.bg_no = getc(fp);
     getc(fp); /* BG PAL */
@@ -124,17 +124,17 @@ SizukuLoad(Lvns *lvns)
     lvns->savepoint.character_no[1] = getc(fp);
     lvns->savepoint.character_no[2] = getc(fp);
 
-    /* æœªè¦‹ãƒ•ãƒ©ã‚° */
+    /* Ì¤¸«¥Õ¥é¥° */
     for (i=0; i<SIZUKU_SCN_NO;i++) {
 	state->seen_flag[i] = getc(fp);
     }
 
-    /* åˆ¶å¾¡ãƒ•ãƒ©ã‚° */
+    /* À©¸æ¥Õ¥é¥° */
     for (i=0; i<SIZUKU_FLAG_NO;i++) {
 	state->flag_save[i] = getc(fp);
     }
 
-    /* BGM ã®çŠ¶æ…‹ */
+    /* BGM ¤Î¾õÂÖ */
     lvns->savepoint.current_music = getc(fp);
 
     fclose(fp);

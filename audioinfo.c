@@ -10,24 +10,24 @@
  */
 
 /*
- * ã‚µã‚¦ãƒ³ãƒ‰å†ç”Ÿç”¨ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
- * å„ OS ç”¨ã«åŒæ§˜ã®ã‚‚ã®ã‚’æ›¸ãèµ·ã“ã›ã°è‰¯ã„ã‚ˆã†ã«ã—ãŸã¤ã‚‚ã‚Šâ€¦
- * _AUDIOInfo ã¯å¿…è¦ã«å¿œã˜ã¦å¤‰æ›´ã—ã¦ä¸‹ã•ã„
+ * ¥µ¥¦¥ó¥ÉºÆÀ¸ÍÑ¤Î¥â¥¸¥å¡¼¥ë
+ * ³Æ OS ÍÑ¤ËÆ±ÍÍ¤Î¤â¤Î¤ò½ñ¤­µ¯¤³¤»¤ĞÎÉ¤¤¤è¤¦¤Ë¤·¤¿¤Ä¤â¤ê¡Ä
+ * _AUDIOInfo ¤ÏÉ¬Í×¤Ë±ş¤¸¤ÆÊÑ¹¹¤·¤Æ²¼¤µ¤¤
  *
- * æƒ…å ±ä¿æŒç”¨æ§‹é€ ä½“
+ * ¾ğÊóÊİ»ıÍÑ¹½Â¤ÂÎ
  * struct _AUDIOInfo
  *
- * åˆæœŸåŒ–ç”¨
+ * ½é´ü²½ÍÑ
  * AUDIOInfo *audioinfo_new(const char *audiodevice);  
  *
- * æƒ…å ±ç ´æ£„ç”¨
+ * ¾ğÊóÇË´şÍÑ
  * void audioinfo_delete(AUDIOInfo *ainfo)
  *
- * ãƒ‡ãƒ¼ã‚¿ (11KHz, 16bit, Linear, Stereo, Little Endian) ã®ã¹ãŸå†ç”Ÿ
+ * ¥Ç¡¼¥¿ (11KHz, 16bit, Linear, Stereo, Little Endian) ¤Î¤Ù¤¿ºÆÀ¸
  * void audioinfo_play(AUDIOInfo *ainfo, const char *data, size_t size);
  *
- * ãƒ—ãƒ­ã‚»ã‚¹ã¯ LvnsCoreSound ã®ã»ã†ã§åˆ†ã‘ã¦ã‚ã‚‹ã®ã§ãã®ã¾ã¾å‡ºåŠ›ã™ã‚‹ã ã‘ã§
- * ã‹ã¾ã„ã¾ã›ã‚“
+ * ¥×¥í¥»¥¹¤Ï LvnsCoreSound ¤Î¤Û¤¦¤ÇÊ¬¤±¤Æ¤¢¤ë¤Î¤Ç¤½¤Î¤Ş¤Ş½ĞÎÏ¤¹¤ë¤À¤±¤Ç
+ * ¤«¤Ş¤¤¤Ş¤»¤ó
  */
 
 #include <stdio.h>
@@ -90,7 +90,7 @@ audioinfo_play(AUDIOInfo *ainfo, const char *data, size_t size)
 #else 
 
 /*
- * OpenBSD/Solaris ç”¨ (/dev/audio ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ä»•æ§˜)
+ * OpenBSD/Solaris ÍÑ (/dev/audio ¥¤¥ó¥¿¡¼¥Õ¥§¡¼¥¹»ÅÍÍ)
  */
 #if defined(__OpenBSD__) || (defined(sun) && defined(SVR4))
 #include <sys/audioio.h>
@@ -155,7 +155,7 @@ audioinfo_play(AUDIOInfo *ainfo, const char *data, size_t size)
 {
     size_t ret;
 #if !defined(__OpenBSD__) && defined(_BIG_ENDIAN)
-    /* ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³å¤‰æ›ã™ã‚‹ */
+    /* ¥¨¥ó¥Ç¥£¥¢¥óÊÑ´¹¤¹¤ë */
     int i;
     u_char *data2;
     if ((data2 = malloc(size)) == NULL) 
@@ -183,13 +183,13 @@ audioinfo_play(AUDIOInfo *ainfo, const char *data, size_t size)
         data += ret;
     } while (size > 3);
 #endif
-    /* æ¼”å¥å®Œäº†å¾…ã¡ */
+    /* ±éÁÕ´°Î»ÂÔ¤Á */
     ioctl(ainfo->fd, AUDIO_DRAIN, NULL);
 }
 
 /*
- * FreeBSD/NetBSD/Linux ç”¨ã‚³ãƒ¼ãƒ‰ (OSSäº’æ›ä»•æ§˜)
- * OpenBSD ã‚‚ã“ã‚Œã§ã‚‚ã„ã‘ã‚‹ã¯ãšâ€¦
+ * FreeBSD/NetBSD/Linux ÍÑ¥³¡¼¥É (OSS¸ß´¹»ÅÍÍ)
+ * OpenBSD ¤â¤³¤ì¤Ç¤â¤¤¤±¤ë¤Ï¤º¡Ä
  */
 #elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__linux__)
 
@@ -267,14 +267,14 @@ audioinfo_play(AUDIOInfo *ainfo, const char *data, size_t size)
         size -= ret;
         data += ret;
     } while (size > 3);
-    /* æ¼”å¥å®Œäº†å¾…ã¡ */
+    /* ±éÁÕ´°Î»ÂÔ¤Á */
     ioctl(ainfo->fd, SNDCTL_DSP_SYNC, NULL);
 }
 
 #else
 
 /*
- * ä½•ã‚‚ã—ãªã„ãƒ€ãƒŸãƒ¼é–¢æ•°
+ * ²¿¤â¤·¤Ê¤¤¥À¥ß¡¼´Ø¿ô
  */
 struct _AUDIOInfo {};
 AUDIOInfo *audioinfo_new(const char *audiodevice) { return NULL; }

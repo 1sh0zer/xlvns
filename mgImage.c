@@ -22,15 +22,15 @@ static int DecodeLZ77(u_char *, u_char *, int, int);
 
 u_char ring[RINGBUF_SIZE];
 
-static int cmap_m[17][17]; /* Multipleè¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(é»’ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
+static int cmap_m[17][17]; /* Multiple·×»»ÍÑ¥Æ¡¼¥Ö¥ë(¹õ¤È¤Î¦Á¥Ö¥ì¥ó¥É) */
 
-static int cmap_s_s[17][17]; /* Screen  è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(ç™½ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
-static int cmap_s_b[17][17]; /* Screen  è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(ç™½ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
+static int cmap_s_s[17][17]; /* Screen  ·×»»ÍÑ¥Æ¡¼¥Ö¥ë(Çò¤È¤Î¦Á¥Ö¥ì¥ó¥É) */
+static int cmap_s_b[17][17]; /* Screen  ·×»»ÍÑ¥Æ¡¼¥Ö¥ë(Çò¤È¤Î¦Á¥Ö¥ì¥ó¥É) */
 
-//static int cmap_a[17][17]; /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«                 */
+//static int cmap_a[17][17]; /* ¦Á¥Ö¥ì¥ó¥É·×»»ÍÑ¥Æ¡¼¥Ö¥ë                 */
 
-static int pwidth, pheight; /* ç‰©ç†ç”»é¢ã®æœ‰åŠ¹ãªé ˜åŸŸã®ã‚µã‚¤ã‚º */
-static int xoffset, yoffset; /* ç‰©ç†ç”»é¢ã®æœ‰åŠ¹ãªé ˜åŸŸã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ */
+static int pwidth, pheight; /* ÊªÍı²èÌÌ¤ÎÍ­¸ú¤ÊÎÎ°è¤Î¥µ¥¤¥º */
+static int xoffset, yoffset; /* ÊªÍı²èÌÌ¤ÎÍ­¸ú¤ÊÎÎ°è¤Î¥ª¥Õ¥»¥Ã¥È */
 
 #undef WIDTH
 #undef HEIGHT
@@ -77,7 +77,7 @@ mglimage_delete(mgImage *img)
 }
 
 /*
- * ç”»åƒã®è¿½åŠ ï¼ã¯ã¿å‡ºã—ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œãªã‚ãªã„ï¼
+ * ²èÁü¤ÎÄÉ²Ã¡¥¤Ï¤ß½Ğ¤·¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ê¤ï¤Ê¤¤¡¥
  */
 void
 mglimage_add(mgImage *src, mgImage *dst, int x, int y)
@@ -103,7 +103,7 @@ mglimage_add(mgImage *src, mgImage *dst, int x, int y)
 }
 
 /*
- * ç”»åƒã®è¿½åŠ ï¼ã¯ã¿å‡ºã—ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œãªã†ï¼
+ * ²èÁü¤ÎÄÉ²Ã¡¥¤Ï¤ß½Ğ¤·¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤Ê¤¦¡¥
  */
 void
 mglimage_add2(mgImage *src, mgImage *dst, int x, int y)
@@ -155,8 +155,8 @@ mglimage_add2(mgImage *src, mgImage *dst, int x, int y)
 }
 
 /* 
- * å¼·åˆ¶åˆæˆã€‚ToHeart ã®ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼å‡¦ç†å°‚ç”¨
- * ç”»åƒã®ã¯ã¿å‡ºã—ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ãŸã‚ã€ã¯ã¿ã§ã‚‹ã¨ç ´ç¶»ã™ã‚‹
+ * ¶¯À©¹çÀ®¡£ToHeart ¤Î¥«¥ì¥ó¥À¡¼½èÍıÀìÍÑ
+ * ²èÁü¤Î¤Ï¤ß½Ğ¤·¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¤¿¤á¡¢¤Ï¤ß¤Ç¤ë¤ÈÇËÃ¾¤¹¤ë
  */
 void
 mglimage_add3(mgImage *src, mgImage *dst, int x, int y, int pixoff, int transparent, int step)
@@ -176,7 +176,7 @@ mglimage_add3(mgImage *src, mgImage *dst, int x, int y, int pixoff, int transpar
     }
 
     if (step < 3) {
-      if (transparent == 209) {/* å¤ã„æ—¥ä»˜ */
+      if (transparent == 209) {/* ¸Å¤¤ÆüÉÕ */
 	for (i=0; i<src->rheight; i++) {
 	  u_short *p = src->hsb_data + i * src->rwidth;
 	  u_short *q = dst->hsb_data + (y + i) * dst->rwidth + x;
@@ -194,7 +194,7 @@ mglimage_add3(mgImage *src, mgImage *dst, int x, int y, int pixoff, int transpar
     }
     
     if (step == 3 || step == 4) {
-      if (transparent == 209) {/* å¤ã„æ—¥ä»˜ */
+      if (transparent == 209) {/* ¸Å¤¤ÆüÉÕ */
 	
 	for (i = 0; i < dst->rheight; i++) {
 	  for (j = dst->rwidth - 10; j >= 0; j--) {
@@ -219,7 +219,7 @@ mglimage_add3(mgImage *src, mgImage *dst, int x, int y, int pixoff, int transpar
 	}
       }
       
-      if (transparent == 211) { /* æ–°ã—ã„æ—¥ä»˜ */
+      if (transparent == 211) { /* ¿·¤·¤¤ÆüÉÕ */
 	
 	for (i = 0; i < dst->rheight; i++) {
 	  for (j = 10; j < dst->rwidth; j++) {
@@ -275,7 +275,7 @@ mglimage_add3(mgImage *src, mgImage *dst, int x, int y, int pixoff, int transpar
 }
 
 /*
- * ç”»åƒã® OR åˆæˆï¼ã¯ã¿å‡ºã—ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œãªã†ï¼
+ * ²èÁü¤Î OR ¹çÀ®¡¥¤Ï¤ß½Ğ¤·¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤Ê¤¦¡¥
  */
 void
 mglimage_or(mgImage *src, mgImage *dst, int x, int y)
@@ -530,8 +530,8 @@ DecodeLZ77(u_char *dst, u_char *src, int size, int osize)
 }
 
 /*
- * å†…éƒ¨é–¢æ•°ã€‚ç‚¹ã‚’ã†ã¤ã€‚
- * ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã£ã¦ã„ã‚‹
+ * ÆâÉô´Ø¿ô¡£ÅÀ¤ò¤¦¤Ä¡£
+ * ¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤Ã¤Æ¤¤¤ë
  */
 static void
 mglimage_put_pixel(mgImage *image, int x, int y, u_short pixel)
@@ -543,8 +543,8 @@ mglimage_put_pixel(mgImage *image, int x, int y, u_short pixel)
 }
 
 /*
- * å†…éƒ¨é–¢æ•°
- * æŒ‡å®šã—ãŸã‚µã‚¤ã‚ºã®çŸ©å½¢ã§ç‚¹ã‚’æ‰“ã¤
+ * ÆâÉô´Ø¿ô
+ * »ØÄê¤·¤¿¥µ¥¤¥º¤Î¶ë·Á¤ÇÅÀ¤òÂÇ¤Ä
  */ 
 static void 
 mglimage_put_box_pixel(mgImage *image, int x, int y, int size, u_short pixel)
@@ -558,7 +558,7 @@ mglimage_put_box_pixel(mgImage *image, int x, int y, int size, u_short pixel)
 }
 
 /*
- * æŒ‡å®šã—ãŸã‚µã‚¤ã‚ºã®çŸ©å½¢ã®ç‚¹ã§å††ã‚’æ›¸ã
+ * »ØÄê¤·¤¿¥µ¥¤¥º¤Î¶ë·Á¤ÎÅÀ¤Ç±ß¤ò½ñ¤¯
  */
 void
 mglimage_circle(mgImage *image, int xc, int yc, int r, int size, int pixel)
@@ -727,8 +727,8 @@ mglimage_copy_squaremask_unit_to_sximage(mgImage *src, int x, int y, int x2, int
 }
 
 /**
- * æŒ‡å®šã—ãŸé ˜åŸŸã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã†ã€‚
- * src ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ã€‚
+ * »ØÄê¤·¤¿ÎÎ°è¤Î¥³¥Ô¡¼¤ò¹Ô¤¦¡£
+ * src ¤Î¥ª¥Õ¥»¥Ã¥È¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¡£
  */
 void
 lvnsimage_copy_area(mgImage *src, mgImage *dst, int x, int y, int w, int h, int x2, int y2)
@@ -782,7 +782,7 @@ lvnsimage_copy_area(mgImage *src, mgImage *dst, int x, int y, int w, int h, int 
 }
 
 /**
- * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®ç‰¹å®šé ˜åŸŸã‚’0ç•ªã®ãƒ”ã‚¯ã‚»ãƒ«ã§æ¶ˆå»
+ * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤ÎÆÃÄêÎÎ°è¤ò0ÈÖ¤Î¥Ô¥¯¥»¥ë¤Ç¾Ãµî
  */
 void
 lvnsimage_clear_area(mgImage *img, int x, int y, int w, int h)
@@ -793,7 +793,7 @@ lvnsimage_clear_area(mgImage *img, int x, int y, int w, int h)
 }
 
 /**
- * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ç‰¹å®šé ˜åŸŸã‚’æŒ‡å®šã—ãŸè‰²ã§å¡—ã‚Šæ½°ã™
+ * LVNSÍÑ¥¤¥á¡¼¥¸¤ÎÆÃÄêÎÎ°è¤ò»ØÄê¤·¤¿¿§¤ÇÅÉ¤êÄÙ¤¹
  */
 void
 lvnsimage_boxfill(mgImage *img, int color, int x, int y, int x2, int y2)
@@ -897,7 +897,7 @@ mglimage_draw_string(mgImage *img, int x, int y, char *str, int color)
     off = create_memscreen(12 * len / 2, 12, NULL, STK_GENERIC_4COLOR, 0);
 
     /*
-     * TODO: FONT_PLUS æ‹¡å¼µã¸ã®å¯¾å¿œ
+     * TODO: FONT_PLUS ³ÈÄ¥¤Ø¤ÎÂĞ±ş
      */
     push_screen(off);
     set_color(COLOR_BLACK);
@@ -953,13 +953,13 @@ lvnsimage_copy_scale(mgImage *src, int sx, int sy, int sw, int sh,
     if (dy + dh > dst->rheight)
         h = dst->rheight - y;
 
-    /* å¯¾å¿œåº§æ¨™ç®—å‡º */
+    /* ÂĞ±şºÂÉ¸»»½Ğ */
     for (i=0; i<w; i++)
         xpos[i] = sx + (xoff + i) * sw / dw;
     for (i=0; i<h; i++)
         ypos[i] = sy + (yoff + i) * sh / dh;
 
-    /* ã“ã´ãƒ¼ */
+    /* ¤³¤Ô¡¼ */
     {
         u_short *q = dst->hsb_data + y * dst->rwidth + x;
         for (i=0; i<h; i++) {
@@ -1028,7 +1028,7 @@ lvnsimage_add_mask(mgImage *src, mgImage *dst, int x, int y, int mask, int dummy
 }
 
 /*
- * put_pixstream_rect ã®ãƒ©ãƒƒãƒ‘ãƒ¼
+ * put_pixstream_rect ¤Î¥é¥Ã¥Ñ¡¼
  */
 void
 mglimage_put_pixstream_rect(int x, int y, int *stream, int len, int op, int w)

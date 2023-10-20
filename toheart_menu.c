@@ -10,7 +10,7 @@
  */
 
 /*
- * ToHeart ã—ãŠã‚Šé¸æŠãƒ¡ãƒ‹ãƒ¥ãƒ¼è¡¨ç¤º
+ * ToHeart ¤·¤ª¤êÁªÂò¥á¥Ë¥å¡¼É½¼¨
  */
 
 #include <stdio.h>
@@ -20,11 +20,11 @@
 #include "toheart.h"
 
 /* ------------------------------------------------------------ */
-/** ã‚²ãƒ¼ãƒ åˆæœŸåŒ–ç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¥²¡¼¥à½é´ü²½ÍÑ¥á¥Ë¥å¡¼ */
 
 static MenuLine from_first_menu_line[] = {
-	MENULINE(8, "ç¶šãã‹ã‚‰å§‹ã‚ã‚‹", 1),
-	MENULINE(9, "åˆã‚ã‹ã‚‰å§‹ã‚ã‚‹", 2),
+	MENULINE(8, "Â³¤­¤«¤é»Ï¤á¤ë", 1),
+	MENULINE(9, "½é¤á¤«¤é»Ï¤á¤ë", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -35,13 +35,13 @@ static MenuData from_first_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ã‚»ãƒ¼ãƒ–ç¢ºèªç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¥»¡¼¥Ö³ÎÇ§ÍÑ¥á¥Ë¥å¡¼ */
 
 static MenuLine save_confirm_menu_line[] = {
-    MENULINE(4, "ã‚»ãƒ¼ãƒ–ã—ã¾ã™ã€‚", 0),
-    MENULINE(5, "ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ", 0),
-    MENULINE(7, "ã¯ã„",1),
-    MENULINE(8, "ã„ã„ãˆ", 2),
+    MENULINE(4, "¥»¡¼¥Ö¤·¤Ş¤¹¡£", 0),
+    MENULINE(5, "¤è¤í¤·¤¤¤Ç¤¹¤«¡©", 0),
+    MENULINE(7, "¤Ï¤¤",1),
+    MENULINE(8, "¤¤¤¤¤¨", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -52,13 +52,13 @@ static MenuData save_confirm_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ãƒ­ãƒ¼ãƒ‰ç¢ºèªç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¥í¡¼¥É³ÎÇ§ÍÑ¥á¥Ë¥å¡¼ */
 
 static MenuLine load_confirm_menu_line[] = {
-    MENULINE(4, "ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚", 0),
-    MENULINE(5, "ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ", 0),
-    MENULINE(7, "ã¯ã„",1),
-    MENULINE(8, "ã„ã„ãˆ", 2),
+    MENULINE(4, "¥í¡¼¥É¤·¤Ş¤¹¡£", 0),
+    MENULINE(5, "¤è¤í¤·¤¤¤Ç¤¹¤«¡©", 0),
+    MENULINE(7, "¤Ï¤¤",1),
+    MENULINE(8, "¤¤¤¤¤¨", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -69,9 +69,9 @@ static MenuData load_confirm_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ã—ãŠã‚Šãƒ¡ãƒ‹ãƒ¥ãƒ¼å…±é€š */
+/** ¤·¤ª¤ê¥á¥Ë¥å¡¼¶¦ÄÌ */
 
-/** ã—ãŠã‚Šãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®é ˜åŸŸæƒ…å ± */
+/** ¤·¤ª¤ê¥á¥Ë¥å¡¼¤ÎÎÎ°è¾ğÊó */
 static MenuLine siori_menu_line[] = {
 	{ 64, 40+86*0, 512, 82, "", 1 },
 	{ 64, 40+86*1, 512, 82, "", 2 },
@@ -81,7 +81,7 @@ static MenuLine siori_menu_line[] = {
 	{ 0, 0, 0, 0, NULL, 0 },
 };
 
-/* çŸ©å½¢è¡¨ç¤º */
+/* ¶ë·ÁÉ½¼¨ */
 static void
 box(Lvns *lvns, int x, int y, int w, int h, int b, int idx)
 {
@@ -91,11 +91,11 @@ box(Lvns *lvns, int x, int y, int w, int h, int b, int idx)
     }
 }
 
-/* ç•ªå·ã®è¨­å®š */
+/* ÈÖ¹æ¤ÎÀßÄê */
 static void
 setnum(char *p, int no)
 {
-    char num[] = "ã€€ï¼";
+    char num[] = "¡¡£°";
 
     if (no / 10) {
         *p++ = num[2];
@@ -109,7 +109,7 @@ setnum(char *p, int no)
 }
 
 /**
- * ã—ãŠã‚Šãƒ­ãƒ¼ãƒ‰ç”¨ç”»é¢è¡¨ç¤º
+ * ¤·¤ª¤ê¥í¡¼¥ÉÍÑ²èÌÌÉ½¼¨
  */
 #ifdef USE_MGL
 #define LvnsDrawString(l,x,y,s,c) LvnsDrawString(l,(x)/2,(y)/2,s,c) 
@@ -119,8 +119,8 @@ fileMenuDisp(Lvns *lvns)
 {
     ToHeartState *state = (ToHeartState *)lvns->system_state;
     int i;
-    char name[] = "ã—ãŠã‚Šã€€ï¼ã€€ãƒ’ãƒ­"; /* XXX æ‰‹æŠœãâ€¦ */
-    char date[] = "ã€€ï¼æœˆã€€ï¼æ—¥ã€€ï¼æ™‚ã€€ï¼åˆ†";
+    char name[] = "¤·¤ª¤ê¡¡£°¡¡¥Ò¥í"; /* XXX ¼êÈ´¤­¡Ä */
+    char date[] = "¡¡£°·î¡¡£°Æü¡¡£°»ş¡¡£°Ê¬";
 
     for (i=0;i<5;i++) {
         time_t clock = state->sioris[i];
@@ -148,7 +148,7 @@ fileMenuDisp(Lvns *lvns)
 #undef LvnsDrawString
 
 /* ------------------------------------------------------------ */
-/** ã—ãŠã‚Šä¿å­˜ãƒ¡ãƒ‹ãƒ¥ãƒ¼å…±é€š */
+/** ¤·¤ª¤êÊİÂ¸¥á¥Ë¥å¡¼¶¦ÄÌ */
 
 static int
 SioriSaveMenuEngine(Lvns *lvns, int select)
@@ -158,7 +158,7 @@ SioriSaveMenuEngine(Lvns *lvns, int select)
 	case 2:			
 		break;
 	case 1:
-		/* ã‚»ãƒ¼ãƒ–å‡¦ç† */
+		/* ¥»¡¼¥Ö½èÍı */
 		ToHeartSaveCommon(lvns);
 		ToHeartSave(lvns, select);
 		break;
@@ -170,7 +170,7 @@ static void
 SioriSaveMenuDisp(Lvns *lvns, MenuData *data)
 {
     LvnsDrawString(lvns, XPOS(2,0), YPOS(0), 
-				   "ã‚»ãƒ¼ãƒ–ã™ã‚‹ã—ãŠã‚Šã‚’é¸æŠã—ã¦ãã ã•ã„", 0);
+				   "¥»¡¼¥Ö¤¹¤ë¤·¤ª¤ê¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤", 0);
     fileMenuDisp(lvns);
 }
 
@@ -182,7 +182,7 @@ static MenuData siori_save_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ã—ãŠã‚Šèª­ã¿è¾¼ã¿ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¤·¤ª¤êÆÉ¤ß¹ş¤ß¥á¥Ë¥å¡¼ */
 
 static int
 SioriLoadMenuEngine(Lvns *lvns, int select)
@@ -192,7 +192,7 @@ SioriLoadMenuEngine(Lvns *lvns, int select)
 	case 2:			
 		break;
 	case 1:
-		/* ãƒ­ãƒ¼ãƒ‰å‡¦ç† */
+		/* ¥í¡¼¥É½èÍı */
 		ToHeartLoadCommon(lvns);
 		ToHeartLoad(lvns, select);
 		LvnsClear(lvns, LVNS_EFFECT_WIPE_TTOB);
@@ -203,13 +203,13 @@ SioriLoadMenuEngine(Lvns *lvns, int select)
 }
 
 /**
- * ãƒ­ãƒ¼ãƒ‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼è¡¨ç¤ºç”¨ 
+ * ¥í¡¼¥É¥á¥Ë¥å¡¼É½¼¨ÍÑ 
  */
 static void
 SioriLoadMenuDisp(Lvns *lvns, MenuData *data)
 {
     LvnsDrawString(lvns, XPOS(2,0), YPOS(0), 
-				   "ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã—ãŠã‚Šã‚’é¸æŠã—ã¦ãã ã•ã„", 0);
+				   "¥í¡¼¥É¤¹¤ë¤·¤ª¤ê¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤", 0);
     fileMenuDisp(lvns);
 }
 
@@ -221,14 +221,14 @@ static MenuData siori_load_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ã‚¿ã‚¤ãƒˆãƒ«ç”¨ã—ãŠã‚Šèª­ã¿è¾¼ã¿ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¥¿¥¤¥È¥ëÍÑ¤·¤ª¤êÆÉ¤ß¹ş¤ß¥á¥Ë¥å¡¼ */
 
 static int
 TitleSioriLoadMenuEngine(Lvns *lvns, int select)
 {
 	ToHeartLoadCommon(lvns);
 	ToHeartLoad(lvns, select);
-	if (lvns->savepoint.scn) { /* ã‚·ãƒŠãƒªã‚ªã®å…ˆé ­ã‹? */
+	if (lvns->savepoint.scn) { /* ¥·¥Ê¥ê¥ª¤ÎÀèÆ¬¤«? */
 		switch (LvnsMenu(lvns, &from_first_menu, True)) {
 		case -1: /* cancel */
 			return False;
@@ -252,13 +252,13 @@ MenuData toheart_title_load_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** çµ‚äº†ç¢ºèªãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ½ªÎ»³ÎÇ§¥á¥Ë¥å¡¼ */
 
 static MenuLine end_confirm_menu_line[] = {
-    MENULINE(4, "çµ‚äº†ã—ã¾ã™ã€‚", 0),
-    MENULINE(5, "ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ", 0),
-    MENULINE(7, "ã¯ã„",1),
-    MENULINE(8, "ã„ã„ãˆ", 2),
+    MENULINE(4, "½ªÎ»¤·¤Ş¤¹¡£", 0),
+    MENULINE(5, "¤è¤í¤·¤¤¤Ç¤¹¤«¡©", 0),
+    MENULINE(7, "¤Ï¤¤",1),
+    MENULINE(8, "¤¤¤¤¤¨", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -270,15 +270,15 @@ static MenuData end_confirm_menu = {
 
 
 /* ------------------------------------------------------------ */
-/** ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¥á¥¤¥ó¥á¥Ë¥å¡¼ */
 
 static MenuLine toheart_menu_line[] = {
-	MENULINE(5, "æ–‡å­—ã‚’æ¶ˆã™",1),
-	MENULINE(6, "ãƒ­ãƒ¼ãƒ‰ã™ã‚‹", 2),
-	MENULINE(7, "ã‚»ãƒ¼ãƒ–ã™ã‚‹", 3),
-    MENULINE(8, "ã‚·ãƒŠãƒªã‚ªå›æƒ³", 4),
-    MENULINE(9, "ä¸€ã¤å‰ã®é¸æŠè‚¢ã«æˆ»ã‚‹", 5),
-    MENULINE(10, "ã‚²ãƒ¼ãƒ çµ‚äº†", 6),
+	MENULINE(5, "Ê¸»ú¤ò¾Ã¤¹",1),
+	MENULINE(6, "¥í¡¼¥É¤¹¤ë", 2),
+	MENULINE(7, "¥»¡¼¥Ö¤¹¤ë", 3),
+    MENULINE(8, "¥·¥Ê¥ê¥ª²óÁÛ", 4),
+    MENULINE(9, "°ì¤ÄÁ°¤ÎÁªÂò»è¤ËÌá¤ë", 5),
+    MENULINE(10, "¥²¡¼¥à½ªÎ»", 6),
     MENULINE(0, NULL, 0),
 };
 
@@ -286,7 +286,7 @@ static void
 ToHeartMenuDisp(Lvns *lvns, MenuData *data)
 {
     ToHeartState *state = (ToHeartState *)lvns->system_state;
-    char date[] = "ã€€ï¼æœˆã€€ï¼æ—¥ã€€";
+    char date[] = "¡¡£°·î¡¡£°Æü¡¡";
     int mon;
     int day = state->flag[TOHEART_FLAG_DATE];
     if (day <= 31) {
@@ -316,33 +316,33 @@ ToHeartMenuEngine(Lvns *lvns, int select)
 		break;
 
     case 2:
-		/* ãƒ­ãƒ¼ãƒ‰ */
+		/* ¥í¡¼¥É */
 		ToHeartSioriDate(lvns);
 		if (LvnsMenu(lvns, &siori_load_menu, True) <= 0)
 			return 0;
 		break;
 
     case 3:
-        /* ã‚»ãƒ¼ãƒ– */
+        /* ¥»¡¼¥Ö */
 		ToHeartSioriDate(lvns);
 		if (LvnsMenu(lvns, &siori_save_menu, True) <= 0)
 			return 0;
 		break;
 
 	case 4:
-		/* å›æƒ³ãƒ¢ãƒ¼ãƒ‰ */
+		/* ²óÁÛ¥â¡¼¥É */
 		LvnsHistoryMode(lvns);
 		break;
 		
     case 5:
-        /* é¸æŠè‚¢ã«æˆ»ã‚‹ */
+        /* ÁªÂò»è¤ËÌá¤ë */
         lvns->savepoint = lvns->selectpoint;
         memcpy(state->flag_save, state->flag_select, sizeof state->flag);
 		LvnsClear(lvns, LVNS_EFFECT_WIPE_TTOB);
 		LvnsJump(lvns, LVNS_JUMP_RESTART);
 
     case 6:
-        /* ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ */
+        /* ¥¿¥¤¥È¥ë¤ËÌá¤ë */
 		switch (LvnsMenu(lvns, &end_confirm_menu, True)) {
 		case -1: /* cancel */
 			return 0;

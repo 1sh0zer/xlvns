@@ -4,26 +4,26 @@
 
 #define STORE24(p,d)  memcpy(p,d,3)
 
-static int cmap_m[17][256]; /* Multipleè¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(é»’ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
-static int cmap_s[17][256]; /* Screen  è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«(ç™½ã¨ã®Î±ãƒ–ãƒ¬ãƒ³ãƒ‰) */
-static int cmap_a[17][512]; /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«                 */
+static int cmap_m[17][256]; /* MultipleŒvZ—pƒe[ƒuƒ‹(•‚Æ‚Ìƒ¿ƒuƒŒƒ“ƒh) */
+static int cmap_s[17][256]; /* Screen  ŒvZ—pƒe[ƒuƒ‹(”’‚Æ‚Ìƒ¿ƒuƒŒƒ“ƒh) */
+static int cmap_a[17][512]; /* ƒ¿ƒuƒŒƒ“ƒhŒvZ—pƒe[ƒuƒ‹                 */
 
 /**
- * åˆæœŸåŒ–å‡¦ç†
+ * ‰Šú‰»ˆ—
  */
 + (void) Init
 {
     int i, j;
     for (i=0;i<17;i++) {
-        /* multiple è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ« */
+        /* multiple ŒvZ—pƒe[ƒuƒ‹ */
         for (j=0;j<256;j++) {
             cmap_m[i][j] = j * i/16;
         }
-        /* screen è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ« */
+        /* screen ŒvZ—pƒe[ƒuƒ‹ */
         for (j=0;j<256;j++) {
             cmap_s[i][j] = j + (255-j)*i/16;
         }
-        /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ« */
+        /* ƒ¿ƒuƒŒƒ“ƒhŒvZ—pƒe[ƒuƒ‹ */
         for (j=-255;j<256;j++) {
             cmap_a[i][j+255] = j *i/16;
         }
@@ -67,7 +67,7 @@ static int cmap_a[17][512]; /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«              
 }
 
 /*
- * 24Ã—24 ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ pixel ã®è‰²ã§æç”»ã™ã‚‹
+ * 24~24 ‚Ìƒrƒbƒgƒ}ƒbƒvƒpƒ^[ƒ“‚ğ pixel ‚ÌF‚Å•`‰æ‚·‚é
  */ 
 - (void) putPattern24 : (int) x : (int) y : (int) color : (u_char *) pat
 {
@@ -107,7 +107,7 @@ static int cmap_a[17][512]; /* Î±ãƒ–ãƒ¬ãƒ³ãƒ‰è¨ˆç®—ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«              
 }
 
 /*
- * 24Ã—24 ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ pixel ã®è‰²ã§æç”»ã™ã‚‹
+ * 24~24 ‚Ìƒrƒbƒgƒ}ƒbƒvƒpƒ^[ƒ“‚ğ pixel ‚ÌF‚Å•`‰æ‚·‚é
  * ToHeart/Kizuato
  */ 
 - (void) putPattern24_2 : (int) x : (int) y : (int) color : (u_char *) pat

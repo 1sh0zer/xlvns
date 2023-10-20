@@ -23,9 +23,9 @@
 (s->tcmap->red[r] | s->tcmap->green[g] | s->tcmap->blue[b])
 
 /*
- * XImage ã«ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãŠã‚ˆã³è¡¨ç¤ºå¯¾è±¡ã«ãªã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®
- * ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ãŠã‚ˆã³ã‚«ãƒ©ãƒ¼ãƒãƒƒãƒ—ã®æƒ…å ±ã‚’æŒãŸã›ãŸã‚‚ã®ã€‚
- * MIT-sharad ã®ã‚µãƒãƒ¼ãƒˆã‚‚è¡Œã†
+ * XImage ¤Ë¥Ç¥£¥¹¥×¥ì¥¤¤ª¤è¤ÓÉ½¼¨ÂĞ¾İ¤Ë¤Ê¤ë¥¦¥£¥ó¥É¥¦¤Î
+ * ¥Ó¥¸¥å¥¢¥ë¤ª¤è¤Ó¥«¥é¡¼¥Ş¥Ã¥×¤Î¾ğÊó¤ò»ı¤¿¤»¤¿¤â¤Î¡£
+ * MIT-sharad ¤Î¥µ¥İ¡¼¥È¤â¹Ô¤¦
  */
 
 #include <sys/types.h>
@@ -35,7 +35,7 @@
 #include <X11/Xutil.h>
 #include <X11/extensions/XShm.h>
 
-/* TrueColor ç”¨ã®ã‚«ãƒ©ãƒ¼ãƒãƒƒãƒ— */
+/* TrueColor ÍÑ¤Î¥«¥é¡¼¥Ş¥Ã¥× */
 typedef struct TrueColorMap {
     long red[256];
     long green[256];
@@ -44,26 +44,26 @@ typedef struct TrueColorMap {
 
 typedef struct SuperXImage {
     
-    XImage *ximage;           /* ç”»åƒ XImage */
-    Display *display;         /* è¡¨ç¤ºå¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ */
-    Window window;            /* è¡¨ç¤ºå¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦   */
-    Colormap colormap;        /* ä½¿ç”¨ã™ã‚‹ã‚«ãƒ©ãƒ¼ãƒãƒƒãƒ— */
+    XImage *ximage;           /* ²èÁü XImage */
+    Display *display;         /* É½¼¨ÂĞ¾İ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¥Ç¥£¥¹¥×¥ì¥¤ */
+    Window window;            /* É½¼¨ÂĞ¾İ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¥¦¥£¥ó¥É¥¦   */
+    Colormap colormap;        /* »ÈÍÑ¤¹¤ë¥«¥é¡¼¥Ş¥Ã¥× */
 
-    int xoff;                 /* Window ã¨ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ */
+    int xoff;                 /* Window ¤È¤Î¥ª¥Õ¥»¥Ã¥È */
     int yoff;
 
     int visual_class;         /* Visual Class */
 
     long pixels[256];          /* pixel convert table */
-    int pixel_num;             /* ç¢ºä¿ã—ãŸè‰²ã®æ•° (for PseudoColor)  */
+    int pixel_num;             /* ³ÎÊİ¤·¤¿¿§¤Î¿ô (for PseudoColor)  */
 
     /* for TrueColor */
-    TrueColorMap *tcmap;       /* RGB->PIXELå€¤ç½®æ›ç”¨ãƒ†ãƒ¼ãƒ–ãƒ«    */
+    TrueColorMap *tcmap;       /* RGB->PIXELÃÍÃÖ´¹ÍÑ¥Æ¡¼¥Ö¥ë    */
 
 #ifdef MITSHM
-    Bool shared_ok;             /* Shraed Extention ãŒæœ‰åŠ¹ */
-    Bool shared_pixmap_ok;      /* Shared Pixmap ãŒæœ‰åŠ¹    */
-    XShmSegmentInfo shminfo;    /* å…±æœ‰ãƒ¡ãƒ¢ãƒªæƒ…å ± */
+    Bool shared_ok;             /* Shraed Extention ¤¬Í­¸ú */
+    Bool shared_pixmap_ok;      /* Shared Pixmap ¤¬Í­¸ú    */
+    XShmSegmentInfo shminfo;    /* ¶¦Í­¥á¥â¥ê¾ğÊó */
 #endif
 
     /* with Pixmap... */
@@ -73,7 +73,7 @@ typedef struct SuperXImage {
 } SuperXImage;
 
 /*
- * æ–°è¦ä½œæˆ
+ * ¿·µ¬ºîÀ®
  */
 SuperXImage *
 super_ximage_new(Display *dpy, Window win, int width, int height, int maxcol, int noshared);
@@ -82,7 +82,7 @@ void
 super_ximage_set_offset(SuperXImage *sximage, int xoff, int yoff);
 
 /*
- * XImage ã®å†…å®¹ã‚’ å†…éƒ¨ Pixmap ã«åæ˜ ã•ã›ã‚‹ 
+ * XImage ¤ÎÆâÍÆ¤ò ÆâÉô Pixmap ¤ËÈ¿±Ç¤µ¤»¤ë 
  */
 void
 super_ximage_set_pixmap(SuperXImage *sximage);
@@ -91,31 +91,31 @@ void
 super_ximage_set_pixmap_area(SuperXImage *sximage, int x, int y, int w, int h);
 
 /*
- * XImage ã®å†…å®¹ã‚’å¤–éƒ¨ Pixmap ã«å‡ºåŠ›ã™ã‚‹
+ * XImage ¤ÎÆâÍÆ¤ò³°Éô Pixmap ¤Ë½ĞÎÏ¤¹¤ë
  */
 void
 super_ximage_put_pixmap(SuperXImage *sximage, Pixmap pixmap);
 
 /*
- * ç ´æ£„
+ * ÇË´ş
  */
 void 
 super_ximage_delete(SuperXImage *sximage);
 
 /* 
- * ç”»é¢æ¶ˆå»
+ * ²èÌÌ¾Ãµî
  */
 void
 super_ximage_clear(SuperXImage *sximage, long pixel);
 
 /*
- * 24Ã—24 ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ pixel ã®è‰²ã§æç”»ã™ã‚‹
+ * 24¡ß24 ¤Î¥Ó¥Ã¥È¥Ş¥Ã¥×¥Ñ¥¿¡¼¥ó¤ò pixel ¤Î¿§¤ÇÉÁ²è¤¹¤ë
  */ 
 void
 super_ximage_put_pattern24(SuperXImage *sximage, int x, int y, long pixel, char *data);
 
 /*
- * 24Ã—24 ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ pixel ã®è‰²ã§æç”»ã™ã‚‹
+ * 24¡ß24 ¤Î¥Ó¥Ã¥È¥Ş¥Ã¥×¥Ñ¥¿¡¼¥ó¤ò pixel ¤Î¿§¤ÇÉÁ²è¤¹¤ë
  */ 
 void
 super_ximage_put_pattern24_2(SuperXImage *sximage, int x, int y, long pixel, char *data);

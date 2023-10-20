@@ -10,7 +10,7 @@
  */
 
 /*
- * Lvns ãƒ•ã‚¡ã‚¤ãƒ«å‡¦ç†ã¾ã‚ã‚Š
+ * Lvns ¥Õ¥¡¥¤¥ë½èÍı¤Ş¤ï¤ê
  */
 
 #include <stdio.h>
@@ -18,7 +18,7 @@
 #include <string.h>
 #include "Lvns.h"
 
-/* å˜ç´”ãƒ‡ãƒ¼ã‚¿ãƒ­ãƒ¼ãƒ‰ */
+/* Ã±½ã¥Ç¡¼¥¿¥í¡¼¥É */
 u_char *
 LvnsLoadData(Lvns *lvns, const char *name, size_t *size)
 {
@@ -31,7 +31,7 @@ LvnsLoadData(Lvns *lvns, const char *name, size_t *size)
 }
 
 /*
- * ç”»åƒã®ãƒ­ãƒ¼ãƒ‰ 
+ * ²èÁü¤Î¥í¡¼¥É 
  */
 LvnsImage *
 LvnsLoadImage(Lvns *lvns, const char *name, LvnsImage *over)
@@ -50,7 +50,7 @@ LvnsLoadImage(Lvns *lvns, const char *name, LvnsImage *over)
         return NULL;
     }
 
-    /* æ‹¡å¼µå­åˆ¤å®š... */
+    /* ³ÈÄ¥»ÒÈ½Äê... */
     {
         char *p = strchr(name, '.') + 1;
         if (strcasecmp(p, "lfg") == 0) {
@@ -75,7 +75,7 @@ LvnsLoadImage(Lvns *lvns, const char *name, LvnsImage *over)
 #define GET_SHORT(p) (((p)[1]<<8)|(p)[0])
 #define GET_LONG(p) ((p)[3]<<24|(p)[2]<<16|(p)[1]<<8|(p)[0])
 
-/* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿ã®ã‚ˆã¿ã“ã¿ */
+/* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿¤Î¤è¤ß¤³¤ß */
 void
 LvnsLoadScenario(Lvns *lvns, int scn, int blk)
 {
@@ -83,7 +83,7 @@ LvnsLoadScenario(Lvns *lvns, int scn, int blk)
     char name[100];
     u_char *data;
 
-    /* ã‚·ãƒŠãƒªã‚ªãƒ•ã‚¡ã‚¤ãƒ«åæ±ºå®š */
+    /* ¥·¥Ê¥ê¥ª¥Õ¥¡¥¤¥ëÌ¾·èÄê */
     sprintf(name, LVNS->scn_name, scn);
 
     dprintf((stderr, "scenario: %s %d\n", name, blk));
@@ -96,7 +96,7 @@ LvnsLoadScenario(Lvns *lvns, int scn, int blk)
             exit(1);
         }
 
-        /* å±•é–‹ */
+        /* Å¸³« */
         {
             u_char *p_scn  = data + GET_SHORT(data) * 16;
             u_char *p_text = data + GET_SHORT(data+2) * 16;
@@ -111,18 +111,18 @@ LvnsLoadScenario(Lvns *lvns, int scn, int blk)
             lvns->scn_data = realloc(lvns->scn_data, size_scn);
             lvns->scn_text = realloc(lvns->scn_text, size_text);
 
-            /* lzs å±•é–‹ */
+            /* lzs Å¸³« */
             leafpack_lzs2(p_scn  + 4, lvns->scn_data, size_scn);
             leafpack_lzs2(p_text + 4, lvns->scn_text, size_text);
         }
 
 /*
- nn nn å€‹æ•°
+ nn nn ¸Ä¿ô
  aa aa 00index
  ....  01index
- 00ãƒ‡ãƒ¼ã‚¿ ....
+ 00¥Ç¡¼¥¿ ....
 
- ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿ã¯ãŸã¶ã‚“å…¨éƒ¨ 01 ã«ã¯ã„ã£ã¦ã„ã‚‹â€¦
+ ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿¤Ï¤¿¤Ö¤óÁ´Éô 01 ¤Ë¤Ï¤¤¤Ã¤Æ¤¤¤ë¡Ä
 */
         lvns->scn_current = scn;
         lvns->blk_current = blk;
@@ -141,7 +141,7 @@ LvnsLoadScenarioBlock(Lvns *lvns, int blk)
     lvns->scn_cur = lvns->scn_data + GET_SHORT(lvns->scn_data + (blk+1) * 2);
 }
 
-/* ãƒ†ã‚­ã‚¹ãƒˆè¨­å®š */
+/* ¥Æ¥­¥¹¥ÈÀßÄê */
 u_char *
 LvnsGetScenarioText(Lvns *lvns, int no)
 {
@@ -156,7 +156,7 @@ LvnsGetScenarioText(Lvns *lvns, int no)
 }
 
 /*
- * èƒŒæ™¯ç”»åƒã‚’è¨­å®šã™ã‚‹(ç•ªå·æŒ‡å®š)
+ * ÇØ·Ê²èÁü¤òÀßÄê¤¹¤ë(ÈÖ¹æ»ØÄê)
  */
 void
 LvnsLoadBackground(Lvns *lvns, const char *basename, int no)

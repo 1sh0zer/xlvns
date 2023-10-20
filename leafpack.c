@@ -89,7 +89,7 @@ guess_key(LeafPack * lp)
 }
 
 /*
- * ãƒ•ã‚¡ã‚¤ãƒ«åã®æ­£è¦åŒ–
+ * ¥Õ¥¡¥¤¥ëÌ¾¤ÎÀµµ¬²½
  */
 static void 
 regularize_name(char *name)
@@ -114,7 +114,7 @@ regularize_name(char *name)
 }
 
 /*
- * ãƒ•ã‚¡ã‚¤ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®å±•é–‹
+ * ¥Õ¥¡¥¤¥ë¥Æ¡¼¥Ö¥ë¤ÎÅ¸³«
  */
 static void 
 extract_table(LeafPack * lp)
@@ -165,7 +165,7 @@ extract_table(LeafPack * lp)
 
 
 /*
- * ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã„ã¦ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚
+ * ¥Õ¥¡¥¤¥ë¤ò³«¤¤¤Æ¥Õ¥¡¥¤¥ë°ìÍ÷¥Æ¡¼¥Ö¥ë¤ò¼èÆÀ¤¹¤ë¡£
  */
 LeafPack *
 leafpack_new(const char *path)
@@ -177,14 +177,14 @@ leafpack_new(const char *path)
 	if ((addr = filemap(path, &size)) == NULL)
 		return NULL;
 
-	/* ãƒã‚¸ãƒƒã‚¯ã‚³ãƒ¼ãƒ‰ã®ãƒã‚§ãƒƒã‚¯ */
+	/* ¥Ş¥¸¥Ã¥¯¥³¡¼¥É¤Î¥Á¥§¥Ã¥¯ */
 	if (strncmp(addr, "LEAFPACK", 8)) {
 		fprintf(stderr, "leafpack_open/check magic\n");
 		fileunmap(addr, size);
 		return NULL;
 	}
 
-	/* ãƒ‡ãƒ¼ã‚¿é ˜åŸŸç¢ºä¿ */
+	/* ¥Ç¡¼¥¿ÎÎ°è³ÎÊİ */
 	if ((lp = malloc(sizeof(LeafPack))) == NULL) {
 		perror("leafpack_open");
 		fileunmap(addr, size);
@@ -195,7 +195,7 @@ leafpack_new(const char *path)
 	lp->size     = size;
 	lp->file_num = addr[8] | addr[9]<<8;
 
-    /* ãƒ•ã‚¡ã‚¤ãƒ«ç”¨ãƒ‡ãƒ¼ã‚¿é ˜åŸŸç¢ºä¿ */
+    /* ¥Õ¥¡¥¤¥ëÍÑ¥Ç¡¼¥¿ÎÎ°è³ÎÊİ */
     if ((lp->files = calloc(sizeof(lp->files[0]), lp->file_num)) == NULL) {
         perror("leafpack_open");
         leafpack_delete(lp);
@@ -215,10 +215,10 @@ leafpack_new(const char *path)
         lp->type = LPTYPE_UNKNOWN;
     }
 
-    /* KEY ã®è‡ªå‹•å–å¾— */
+    /* KEY ¤Î¼«Æ°¼èÆÀ */
     guess_key(lp);
 
-    /* ãƒ•ã‚¡ã‚¤ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã®å–å¾— */
+    /* ¥Õ¥¡¥¤¥ë¥Æ¡¼¥Ö¥ë¤Î¼èÆÀ */
     extract_table(lp);
 
     return lp;
@@ -231,17 +231,17 @@ void
 leafpack_delete(LeafPack * lp)
 {
     if (lp) {
-        /* ãƒ•ã‚¡ã‚¤ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«è§£æ”¾ */
+        /* ¥Õ¥¡¥¤¥ë¥Æ¡¼¥Ö¥ë²òÊü */
         if (lp->files)
             free(lp->files);
-        /* ãƒãƒƒãƒ—è§£æ”¾ */
+        /* ¥Ş¥Ã¥×²òÊü */
         fileunmap(lp->addr, lp->size);
         free(lp);
     }
 }
 
 /*
- * ãƒ‘ãƒƒã‚¯ã®ç¨®åˆ¥ã‚’è¡¨ç¤ºã™ã‚‹
+ * ¥Ñ¥Ã¥¯¤Î¼ïÊÌ¤òÉ½¼¨¤¹¤ë
  */
 void 
 leafpack_print_type(LeafPack * lp)
@@ -267,7 +267,7 @@ leafpack_print_type(LeafPack * lp)
 }
 
 /*
- * ãƒ†ãƒ¼ãƒ–ãƒ«ã®å†…å®¹ã‚’è¡¨ç¤ºã™ã‚‹
+ * ¥Æ¡¼¥Ö¥ë¤ÎÆâÍÆ¤òÉ½¼¨¤¹¤ë
  */
 void 
 leafpack_print_table(LeafPack * lp, int verbose)
@@ -321,20 +321,20 @@ leafpack_extract(LeafPack * lp, int index, size_t *sizeret)
     u_char *p, *q;
     size_t size;
 
-    /* é ˜åŸŸç¢ºä¿ */
+    /* ÎÎ°è³ÎÊİ */
     if ((ret = malloc(lp->files[index].len)) == NULL) {
         perror("leafpack_extract");
         return NULL;
     }
 
-    size = lp->files[index].len;          /* ã‚µã‚¤ã‚º */
+    size = lp->files[index].len;          /* ¥µ¥¤¥º */
     if (sizeret)
         *sizeret = size;
 
-    p = lp->addr + lp->files[index].pos;  /* è»¢é€å…ƒ */
-    q = ret;                              /* è»¢é€å…ˆ */
+    p = lp->addr + lp->files[index].pos;  /* Å¾Á÷¸µ */
+    q = ret;                              /* Å¾Á÷Àè */
 
-    /* ã‚­ãƒ¼ã®è§£é™¤ & copy */
+    /* ¥­¡¼¤Î²ò½ü & copy */
     for (i=0; i<size;i++) {
         int a = *p++;
         a = (a - lp->key[i % LP_KEY_LEN]) & 0xff;
@@ -436,10 +436,10 @@ void leafpack_lzs2(const u_char * pLoadBuff, u_char * pSaveBuff, size_t DataSize
     u_short LFlag;
     u_char TextBuff[0x1011],Flag;
 
-  /* ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢ */
+  /* ¥Æ¥­¥¹¥È¥Ğ¥Ã¥Õ¥¡¤Î¥¯¥ê¥¢ */
   memset(TextBuff, 0, sizeof(TextBuff));
 
-  /* ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ•ã‚¡ã®æ›¸ãè¾¼ã¿ä½ç½®ã®è¨­å®š */
+  /* ¥Æ¥­¥¹¥È¥Ğ¥Ã¥Õ¥¡¤Î½ñ¤­¹ş¤ß°ÌÃÖ¤ÎÀßÄê */
   Index = 0xfee;
 
   FlagCount = 0;
@@ -447,7 +447,7 @@ void leafpack_lzs2(const u_char * pLoadBuff, u_char * pSaveBuff, size_t DataSize
     if (FlagCount-- > 0) {
       Flag <<= 1;
     } else {
-      /* ãƒ•ãƒ©ã‚°ã®å–å¾— */
+      /* ¥Õ¥é¥°¤Î¼èÆÀ */
       Flag = ~(*(pLoadBuff++));
       FlagCount = 7;
     }
@@ -457,18 +457,18 @@ void leafpack_lzs2(const u_char * pLoadBuff, u_char * pSaveBuff, size_t DataSize
       Index &= 0x0fff;
       DataSize--;
     } else {
-      /* ä»¥å‰ã«å‡ºç¾ã—ãŸå ´æ‰€ã¨é•·ã•ã®æƒ…å ±ã®å–å¾—(2 byte) */
+      /* °ÊÁ°¤Ë½Ğ¸½¤·¤¿¾ì½ê¤ÈÄ¹¤µ¤Î¾ğÊó¤Î¼èÆÀ(2 byte) */
       LFlag = ~(*(pLoadBuff) + (*(pLoadBuff+1) << 8));
       pLoadBuff += 2;
 
-      /* é•·ã• */
+      /* Ä¹¤µ */
       Len = (LFlag & 0xf) + 3;
       DataSize -= Len;
 
-      /* ä»¥å‰å‡ºç¾ã—ãŸä½ç½®*/
+      /* °ÊÁ°½Ğ¸½¤·¤¿°ÌÃÖ*/
       LIndex = LFlag >> 4;
 
-      /* ä»¥å‰å‡ºç¾ã—ãŸä½ç½®ã‹ã‚‰ã‚³ãƒ”ãƒ¼*/
+      /* °ÊÁ°½Ğ¸½¤·¤¿°ÌÃÖ¤«¤é¥³¥Ô¡¼*/
       while(Len-- > 0) {
 	TextBuff[Index++] = *(pSaveBuff++) = TextBuff[LIndex++];
 	LIndex &= 0x0fff;
@@ -487,10 +487,10 @@ void leafpack_lzs3(const u_char * pLoadBuff, u_char * pSaveBuff, size_t DataSize
 
     pSaveBuff += DataSize - 1;
 
-  /* ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢ */
+  /* ¥Æ¥­¥¹¥È¥Ğ¥Ã¥Õ¥¡¤Î¥¯¥ê¥¢ */
   memset(TextBuff, 0, sizeof(TextBuff));
 
-  /* ãƒ†ã‚­ã‚¹ãƒˆãƒãƒƒãƒ•ã‚¡ã®æ›¸ãè¾¼ã¿ä½ç½®ã®è¨­å®š */
+  /* ¥Æ¥­¥¹¥È¥Ğ¥Ã¥Õ¥¡¤Î½ñ¤­¹ş¤ß°ÌÃÖ¤ÎÀßÄê */
   Index = 0xfee;
 
   FlagCount = 0;
@@ -498,7 +498,7 @@ void leafpack_lzs3(const u_char * pLoadBuff, u_char * pSaveBuff, size_t DataSize
     if (FlagCount-- > 0) {
       Flag <<= 1;
     } else {
-      /* ãƒ•ãƒ©ã‚°ã®å–å¾— */
+      /* ¥Õ¥é¥°¤Î¼èÆÀ */
       Flag = ~(*(pLoadBuff++));
       FlagCount = 7;
     }
@@ -508,18 +508,18 @@ void leafpack_lzs3(const u_char * pLoadBuff, u_char * pSaveBuff, size_t DataSize
       Index &= 0x0fff;
       DataSize--;
     } else {
-      /* ä»¥å‰ã«å‡ºç¾ã—ãŸå ´æ‰€ã¨é•·ã•ã®æƒ…å ±ã®å–å¾—(2 byte) */
+      /* °ÊÁ°¤Ë½Ğ¸½¤·¤¿¾ì½ê¤ÈÄ¹¤µ¤Î¾ğÊó¤Î¼èÆÀ(2 byte) */
       LFlag = ~(*(pLoadBuff) + (*(pLoadBuff+1) << 8));
       pLoadBuff += 2;
 
-      /* é•·ã• */
+      /* Ä¹¤µ */
       Len = (LFlag & 0xf) + 3;
       DataSize -= Len;
 
-      /* ä»¥å‰å‡ºç¾ã—ãŸä½ç½®*/
+      /* °ÊÁ°½Ğ¸½¤·¤¿°ÌÃÖ*/
       LIndex = LFlag >> 4;
 
-      /* ä»¥å‰å‡ºç¾ã—ãŸä½ç½®ã‹ã‚‰ã‚³ãƒ”ãƒ¼*/
+      /* °ÊÁ°½Ğ¸½¤·¤¿°ÌÃÖ¤«¤é¥³¥Ô¡¼*/
       while(Len-- > 0) {
 	TextBuff[Index++] = *(pSaveBuff--) = TextBuff[LIndex++];
 	LIndex &= 0x0fff;

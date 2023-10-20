@@ -10,13 +10,13 @@
  */
 
 /*
- * Lvns éŸ³æ¥½å‡¦ç†å›ã‚Š
+ * Lvns ²»³Ú½èÍı²ó¤ê
  */
 
 #include <stdio.h>
 #include "Lvns.h"
 
-/* ãƒœãƒªãƒ¥ãƒ¼ãƒ è¨­å®š */
+/* ¥Ü¥ê¥å¡¼¥àÀßÄê */
 void
 LvnsSetMusicVolume(Lvns *lvns, int no)
 {
@@ -25,7 +25,7 @@ LvnsSetMusicVolume(Lvns *lvns, int no)
     dprintf((stderr, "set volume: %d\n", no));
 }
 
-/* BGM æ¼”å¥é–‹å§‹ */
+/* BGM ±éÁÕ³«»Ï */
 void
 LvnsStartMusic(Lvns *lvns, int no)
 {
@@ -39,7 +39,7 @@ LvnsStartMusic(Lvns *lvns, int no)
     lvns->loop_music = False;
 }
 
-/* BGM åœæ­¢ */
+/* BGM Ää»ß */
 void
 LvnsStopMusic(Lvns *lvns)
 {
@@ -47,7 +47,7 @@ LvnsStopMusic(Lvns *lvns)
     lvns->current_music = 0;
 }
 
-/* BGM ä¸€æ™‚åœæ­¢ */
+/* BGM °ì»şÄä»ß */
 void
 LvnsPauseMusic(Lvns *lvns)
 {
@@ -55,7 +55,7 @@ LvnsPauseMusic(Lvns *lvns)
     lvns->current_music = 0;
 }
 
-/* BGM ãƒ«ãƒ¼ãƒ—æ¼”å¥é–‹å§‹ */
+/* BGM ¥ë¡¼¥×±éÁÕ³«»Ï */
 void
 LvnsStartMusicLoop(Lvns *lvns, int no)
 {
@@ -69,7 +69,7 @@ LvnsStartMusicLoop(Lvns *lvns, int no)
     lvns->loop_music = True;
 }
 
-/* BGM ãƒ«ãƒ¼ãƒ—æ¼”å¥é–‹å§‹ */
+/* BGM ¥ë¡¼¥×±éÁÕ³«»Ï */
 void
 LvnsStartMusicLoop2(Lvns *lvns, int no)
 {
@@ -83,7 +83,7 @@ LvnsStartMusicLoop2(Lvns *lvns, int no)
     lvns->loop_music = True;
 }
 
-/* æ¬¡ã®ã‚·ãƒ¼ãƒ³ã§ã® BGM ã‚’æŒ‡å®š */
+/* ¼¡¤Î¥·¡¼¥ó¤Ç¤Î BGM ¤ò»ØÄê */
 void
 LvnsSetNextMusic(Lvns *lvns, int no)
 {
@@ -91,7 +91,7 @@ LvnsSetNextMusic(Lvns *lvns, int no)
     lvns->loop_next_music = False;
 }
 
-/* æ¬¡ã®ã‚·ãƒ¼ãƒ³ã§ BGM (ãƒ«ãƒ¼ãƒ—æ¼”å¥) ã‚’æŒ‡å®š */
+/* ¼¡¤Î¥·¡¼¥ó¤Ç BGM (¥ë¡¼¥×±éÁÕ) ¤ò»ØÄê */
 void
 LvnsSetNextMusicLoop(Lvns *lvns, int no)
 {
@@ -110,7 +110,7 @@ LvnsFadeMusic(Lvns *lvns)
 
 /* ---------------------------------------------------------------- */
 
-/* æ¬¡ã®ã‚·ãƒ¼ãƒ³ã® BGM ã‚’é–‹å§‹ã™ã‚‹ */
+/* ¼¡¤Î¥·¡¼¥ó¤Î BGM ¤ò³«»Ï¤¹¤ë */
 void
 LvnsStartNextMusic(Lvns *lvns)
 {
@@ -124,7 +124,7 @@ LvnsStartNextMusic(Lvns *lvns)
     }
 }
 
-/* BGM çµ‚äº†å¾…ã¡å‡¦ç† */
+/* BGM ½ªÎ»ÂÔ¤Á½èÍı */
 void
 LvnsWaitMusic(Lvns *lvns)
 {
@@ -139,7 +139,7 @@ LvnsWaitMusic(Lvns *lvns)
 	}
 }
 
-/* BGM Fade å‡¦ç†çµ‚äº†å¾…ã¡å‡¦ç† */
+/* BGM Fade ½èÍı½ªÎ»ÂÔ¤Á½èÍı */
 void
 LvnsWaitMusicFade(Lvns *lvns)
 {
@@ -153,7 +153,7 @@ LvnsWaitMusicFade(Lvns *lvns)
     } 
 }
 
-/* BGM ãƒ«ãƒ¼ãƒ—å‡¦ç† */
+/* BGM ¥ë¡¼¥×½èÍı */
 void
 LvnsLoopMusic(Lvns *lvns)
 {

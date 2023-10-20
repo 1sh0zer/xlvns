@@ -83,7 +83,7 @@ convert(LeafPack *lp, PakWriter *pw)
 	    xo = img->xoffset / 2;
 	    yo = img->yoffset / 2;
 	    if (!strcmp("OP2_MN_W.LFG", name)) {
-	      /* 色の補正 */
+	      /* �������� */
 	      fprintf(stderr, "[correct color]...");
 	      fix_color(img);
 	    }
@@ -101,7 +101,7 @@ convert(LeafPack *lp, PakWriter *pw)
 	    xo = img->xoffset / 2;
 	    yo = img->yoffset / 2;
 	    if (!strcmp("TITLE.LF2", name)) {
-	      /* 透明色の補正 */
+	      /* Ʃ���������� */
 	      fprintf(stderr, "[correct transparent color]...");
 	      set_transparent_color(img, 0, 0);
 	    }
@@ -129,10 +129,10 @@ convert(LeafPack *lp, PakWriter *pw)
 	    free(data2);
 
 	} else if (!strcasecmp(p, "knj")) {
-	    // 現在は雫, 痕の場合のみ有効
-	    //   24x24(dep1)を12x12(dep2)に変換する為のバッファ
-	    //   一文字当たりのサイズ比は((24 * 24) / (12 * 12 * 2))
-	    //   となるのでサイズはオリジナルの1/2になる。
+	    // ���ߤϼ�, ���ξ��Τ�ͭ��
+	    //   24x24(dep1)��12x12(dep2)���Ѵ�����٤ΥХåե�
+	    //   ��ʸ��������Υ��������((24 * 24) / (12 * 12 * 2))
+	    //   �Ȥʤ�Τǥ������ϥ��ꥸ�ʥ��1/2�ˤʤ롣
             data2 = malloc( size / 2);
 
 	    switch( lp->type){
@@ -174,7 +174,7 @@ convert(LeafPack *lp, PakWriter *pw)
 
 
 /*
- * フォント縮小(雫/痕用)
+ * �ե���Ƚ̾�(��/����)
  */
 void
 lvnsfont_conv( u_char *src_bmap, u_char *dst_bmap, size_t size)
@@ -233,7 +233,7 @@ lvnsfont_conv( u_char *src_bmap, u_char *dst_bmap, size_t size)
 }
 
 /*
- * フォント縮小(ToHeart用)
+ * �ե���Ƚ̾�(ToHeart��)
  */
 void
 lvnsfont_conv2( u_char* src_bmap, u_char* dst_bmap, size_t size)
@@ -292,7 +292,7 @@ lvnsfont_conv2( u_char* src_bmap, u_char* dst_bmap, size_t size)
 }
 
 /*
- * 24x24(depth 1) -> 12x12(depth 2) (3x3平滑化)
+ * 24x24(depth 1) -> 12x12(depth 2) (3x3ʿ�경)
  */
 #define __ORG_WIDTH__	24
 #define __ORG_HEIGHT__	24
@@ -305,8 +305,8 @@ resize_24to12( u_char *src[], u_char *dst[])
      int x, y;
      static int btbl[ 10] = { 0, 0, 1, 1, 2, 2, 2, 3, 3, 3};
      /*
-      * 縮小時の基本座標の取り方
-      * 情報の損失を最小にする為以下の様にする。
+      * �̾����δ��ܺ�ɸ�μ����
+      * �����»����Ǿ��ˤ���ٰʲ����ͤˤ��롣
       *
       *                         6   7   8   9   10  11
       *                         |   |   |   |   |   |
@@ -314,27 +314,27 @@ resize_24to12( u_char *src[], u_char *dst[])
       *   |   |   |   |   |   |
       *   0   1   2   3   4   5
       *
-      *  3x3の平滑化なので両端の1dotは基本座標にしない
+      *  3x3��ʿ�경�ʤΤ�ξü��1dot�ϴ��ܺ�ɸ�ˤ��ʤ�
       */
      /*
-      * 作成領域を以下のように分割
+      * �����ΰ��ʲ��Τ褦��ʬ��
       *
       * +-----------+-----------+
       * |           |           |
       * |     A     |     B     |
-      * |  X:0〜11  |  X:12〜22 |
-      * |  Y:0〜11  |  Y:0〜11  |
+      * |  X:0��11  |  X:12��22 |
+      * |  Y:0��11  |  Y:0��11  |
       * |           |           |
       * +-----------+-----------+
       * |           |           |
       * |     C     |     D     |
-      * |  X:0〜11  |  X:12〜22 |
-      * |  Y:12〜22 |  Y:12〜22 |
+      * |  X:0��11  |  X:12��22 |
+      * |  Y:12��22 |  Y:12��22 |
       * |           |           |
       * +-----------+-----------+
       */
       for( y = 1; y < (__ORG_HEIGHT__ / 2); y += 2){
-          // 領域Aの生成
+          // �ΰ�A������
           for( x = 1; x < (__ORG_WIDTH__ / 2); x += 2){
               dst[y / 2][x / 2] = btbl[   src[ y - 1][ x - 1]
                                         + src[ y - 1][ x + 0]
@@ -347,7 +347,7 @@ resize_24to12( u_char *src[], u_char *dst[])
                                         + src[ y + 1][ x + 1]];
           }
 
-          // 領域Bの生成
+          // �ΰ�B������
           for( x = (__ORG_WIDTH__ / 2); x < (__ORG_WIDTH__ - 1); x += 2){
               dst[y / 2][x / 2] = btbl[   src[ y - 1][ x - 1]
                                         + src[ y - 1][ x + 0]
@@ -362,7 +362,7 @@ resize_24to12( u_char *src[], u_char *dst[])
       }
 
       for( y = (__ORG_HEIGHT__ / 2); y < (__ORG_HEIGHT__ - 1); y += 2){
-          // 領域Cの生成
+          // �ΰ�C������
           for( x = 1; x < (__ORG_WIDTH__ / 2); x += 2){
               dst[y / 2][x / 2] = btbl[   src[ y - 1][ x - 1]
                                         + src[ y - 1][ x + 0]
@@ -375,7 +375,7 @@ resize_24to12( u_char *src[], u_char *dst[])
                                         + src[ y + 1][ x + 1]];
           }
 
-          // 領域Dの生成
+          // �ΰ�D������
           for( x = (__ORG_WIDTH__ / 2); x < (__ORG_WIDTH__ - 1); x += 2){
               dst[y / 2][x / 2] = btbl[   src[ y - 1][ x - 1]
                                         + src[ y - 1][ x + 0]
@@ -396,7 +396,7 @@ resize_24to12( u_char *src[], u_char *dst[])
 
 
 /*
- * 「痕」オープニングのための色補正
+ * �ֺ��ץ����ץ˥󥰤Τ���ο�����
  */
 static void
 fix_color(Image *img)

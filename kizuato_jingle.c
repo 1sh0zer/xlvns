@@ -10,7 +10,7 @@
  */
 
 /*
- * Leaf æ–°ã‚¸ãƒ³ã‚°ãƒ« (ç—•/ToHeartå…±é€š)
+ * Leaf ¿·¥¸¥ó¥°¥ë (º¯/ToHeart¶¦ÄÌ)
  */
 
 #include <stdio.h>
@@ -37,14 +37,14 @@ Slide(Lvns *lvns, LvnsScript *scr)
     lvns->flushWindow(lvns);
 
     if (++scr->state == ((HEIGHT - SLIDE_H)/2/6 + 1)) {
-        return True;                  /* å‡¦ç†çµ‚äº† */
+        return True;                  /* ½èÍı½ªÎ» */
     } else {
         return False;
     }
 }
 #undef SLIDE_H
 
-/* ã‚¸ãƒ³ã‚°ãƒ«ç”¨ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ */
+/* ¥¸¥ó¥°¥ëÍÑ¥Ñ¥ì¥Ã¥È¥Ç¡¼¥¿ */
 static u_char pal[][3] = {
     { 0xff, 0xff, 0xff },
     { 0xff, 0xff, 0xff },
@@ -108,16 +108,16 @@ LoadTitle(Lvns *lvns, LvnsScript *scr)
     int i;
     LvnsImage *image;
 
-    /* ãƒ­ã‚´ãƒ‡ãƒ¼ã‚¿æº–å‚™ */
+    /* ¥í¥´¥Ç¡¼¥¿½àÈ÷ */
     image = LvnsLoadImage(lvns, "LEAF.LFG", NULL);
-    /* è‘‰ã£ã±ä»¥å¤–ã®éƒ¨åˆ†ã‚’ç™½ã« */
+    /* ÍÕ¤Ã¤Ñ°Ê³°¤ÎÉôÊ¬¤òÇò¤Ë */
     for (i=5; i<16; i++) {
         image->palette[i][0] =
         image->palette[i][1] = 
         image->palette[i][2] = 255;
     }
 
-    /* ç”»åƒæº–å‚™ */
+    /* ²èÁü½àÈ÷ */
 #ifndef USE_MGL
     image->yoffset += ((HEIGHT - 400) / 2);
     image->height  += ((HEIGHT - 400) / 2);
@@ -135,7 +135,7 @@ LoadTitle(Lvns *lvns, LvnsScript *scr)
 static int
 Palette(Lvns *lvns, LvnsScript *scr)
 {
-    /* ãƒ‘ãƒ¬ãƒƒãƒˆåˆ¶å¾¡ã—ãªãŒã‚‰è‘‰ã£ã±ã‚’è¡¨ç¤º */
+    /* ¥Ñ¥ì¥Ã¥ÈÀ©¸æ¤·¤Ê¤¬¤éÍÕ¤Ã¤Ñ¤òÉ½¼¨ */
     int i;
     int cnt = scr->state;
 
@@ -166,7 +166,7 @@ Palette(Lvns *lvns, LvnsScript *scr)
     }
 }    
 
-/* ã‚¸ãƒ³ã‚°ãƒ«ã‚¹ã‚¯ãƒªãƒ—ãƒˆ */
+/* ¥¸¥ó¥°¥ë¥¹¥¯¥ê¥×¥È */
 static LvnsScriptData jingledata[] = {
     { LVNS_SCRIPT_FUNC, ClearWhite },
     { LVNS_SCRIPT_MUSIC, (void*)2 },

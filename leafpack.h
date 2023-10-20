@@ -22,21 +22,21 @@ typedef enum {
     LPTYPE_UNKNOWN
 } LeafPackType;
 
-/* уГСуГГуВпцГЕха▒ */
+/* е╤е├еп╛Ё╩є */
 typedef struct {
 
-    LeafPackType type;   /* уГСуГГуВпуБочиохИе         */
+    LeafPackType type;   /* е╤е├епд╬╝я╩╠         */
 
-    u_char *addr;        /* хЕИщануВвуГЙуГмуВ╣         */
-    size_t  size;        /* уВ╡уВдуВ║               */
-    int file_num;        /* уГСуГГуВпф╕нуБоуГХуВбуВдуГлцХ░ */
-    int key[LP_KEY_LEN]; /* х▒ХщЦЛчФиуВнуГ╝           */
+    u_char *addr;        /* └ш╞меве╔еье╣         */
+    size_t  size;        /* е╡еде║               */
+    int file_num;        /* е╤е├еп├цд╬е╒ебедеы┐Ї */
+    int key[LP_KEY_LEN]; /* ┼╕│л═╤енб╝           */
 
-    /* уГХуВбуВдуГлцГЕха▒ */
+    /* е╒ебедеы╛Ё╩є */
     struct LeafFileInfo {
-        char name[13];   /* уГХуВбуВдуГлхРН                     */
-        off_t pos;       /* уГХуВбуВдуГлуБохЕИщануБЛуВЙуБоуВкуГХуВ╗уГГуГИ */
-        size_t len;      /* уГХуВбуВдуГлуБоуВ╡уВдуВ║               */
+        char name[13];   /* е╒ебедеы╠╛                     */
+        off_t pos;       /* е╒ебедеыд╬└ш╞мдлдщд╬еке╒е╗е├е╚ */
+        size_t len;      /* е╒ебедеыд╬е╡еде║               */
     } *files;
 
 } LeafPack;

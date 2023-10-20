@@ -10,7 +10,7 @@
 
 /*
  * LvnsCore  
- * XLVNS ã®æœ¬ä½“ã«ãªã‚‹ CoreWidget
+ * XLVNS ¤ÎËÜÂÎ¤Ë¤Ê¤ë CoreWidget
  */
 
 #include <stdio.h>
@@ -216,7 +216,7 @@ Realize(Widget widget, XtValueMask * value_mask, XSetWindowAttributes * attr)
 }
 
 /* 
- * ç”»é¢ã®å†æç”»
+ * ²èÌÌ¤ÎºÆÉÁ²è
  */
 static void
 Redisplay(Widget widget, XEvent *ev, Region region)
@@ -229,7 +229,7 @@ Redisplay(Widget widget, XEvent *ev, Region region)
 }
 
 /*
- * ç”»é¢ã®ã‚µã‚¤ã‚ºå¤‰æ›´
+ * ²èÌÌ¤Î¥µ¥¤¥ºÊÑ¹¹
  */
 static void
 Resize(Widget widget)
@@ -247,7 +247,7 @@ Resize(Widget widget)
 /* ------------------------------------------------------------------- */
 /* Actions */
 
-/* ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹• */
+/* ¥Ş¥¦¥¹¥«¡¼¥½¥ë°ÜÆ° */
 static void
 Motion(Widget widget, XEvent *ev, String *p, Cardinal *n)
 {
@@ -259,7 +259,7 @@ Motion(Widget widget, XEvent *ev, String *p, Cardinal *n)
     }
 }
 
-/* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ */
+/* ¥­¡¼ÆşÎÏÂÔ¤Á */
 static void
 ClickLeft(Widget widget, XEvent *ev, String *p, Cardinal *n)
 {
@@ -269,7 +269,7 @@ ClickLeft(Widget widget, XEvent *ev, String *p, Cardinal *n)
         LvnsSelect(lvns);
 }
 
-/* å³ã‚¯ãƒªãƒƒã‚¯ */
+/* ±¦¥¯¥ê¥Ã¥¯ */
 static void
 ClickRight(Widget widget, XEvent *ev, String *p, Cardinal *n)
 {
@@ -279,7 +279,7 @@ ClickRight(Widget widget, XEvent *ev, String *p, Cardinal *n)
         LvnsCancel(lvns);
 }
 
-/* æ–‡å­—æ¶ˆå»ãƒ¢ãƒ¼ãƒ‰ */
+/* Ê¸»ú¾Ãµî¥â¡¼¥É */
 static void
 ImageMode(Widget widget, XEvent *ev, String *p, Cardinal *n)
 {
@@ -290,7 +290,7 @@ ImageMode(Widget widget, XEvent *ev, String *p, Cardinal *n)
 }
 
 /**
- * ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã€Œé¸æŠè‚¢ã¾ã§ã¨ã°ã™ã€
+ * ¥á¥Ë¥å¡¼¡ÖÁªÂò»è¤Ş¤Ç¤È¤Ğ¤¹¡×
  */
 static void
 SkipTillSelect(Widget widget, XEvent *ev, String *p, Cardinal *n)
@@ -302,7 +302,7 @@ SkipTillSelect(Widget widget, XEvent *ev, String *p, Cardinal *n)
 }
 
 /**
- * æ—¢èª­/æœªèª­ã‚’ç„¡è¦–ã—ã¦é¸æŠè‚¢ã¾ã§ã¨ã°ã™â€¦
+ * ´ûÆÉ/Ì¤ÆÉ¤òÌµ»ë¤·¤ÆÁªÂò»è¤Ş¤Ç¤È¤Ğ¤¹¡Ä
  */
 static void
 SkipTillSelectForce(Widget widget, XEvent *ev, String *p, Cardinal *n)
@@ -349,11 +349,11 @@ Number(Widget widget, XEvent *ev, String *p, Cardinal *n)
 
 /* ---------------------------------------------------------------- */
 /*
- * ä»®æƒ³ VRAM æç”»ç³»
+ * ²¾ÁÛ VRAM ÉÁ²è·Ï
  */
 
 /** 
- * å…¨ç”»é¢ã‚’ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã—ã¦å®Ÿéš›ã®ç”»é¢ã«åæ˜ ã•ã›ã‚‹
+ * Á´²èÌÌ¤ò¥ê¥Õ¥ì¥Ã¥·¥å¤·¤Æ¼Âºİ¤Î²èÌÌ¤ËÈ¿±Ç¤µ¤»¤ë
  */
 static void
 FlushWindow(Lvns *lvns)
@@ -365,7 +365,7 @@ FlushWindow(Lvns *lvns)
 }
 
 /**
- * ç”»é¢ã‚’éƒ¨åˆ†çš„ã«ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã—ã¦å®Ÿéš›ã®ç”»é¢ã«åæ˜ ã•ã›ã‚‹
+ * ²èÌÌ¤òÉôÊ¬Åª¤Ë¥ê¥Õ¥ì¥Ã¥·¥å¤·¤Æ¼Âºİ¤Î²èÌÌ¤ËÈ¿±Ç¤µ¤»¤ë
  */
 static void
 FlushWindowArea(Lvns *lvns, int x, int y, int w, int h)
@@ -376,7 +376,7 @@ FlushWindowArea(Lvns *lvns, int x, int y, int w, int h)
 }
 
 /**
- * å…¨ä½“ã‚’æç”»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—) 
+ * Á´ÂÎ¤òÉÁ²è(¥Õ¥é¥Ã¥·¥åÌµ¤·) 
  */
 static void
 DrawWindow(Lvns *lvns) 
@@ -386,7 +386,7 @@ DrawWindow(Lvns *lvns)
 }
 
 /**
- * éƒ¨åˆ†æç”»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—) 
+ * ÉôÊ¬ÉÁ²è(¥Õ¥é¥Ã¥·¥åÌµ¤·) 
  */
 static void
 DrawWindowArea(Lvns *lvns, int x, int y, int w, int h, int x2, int y2)
@@ -397,7 +397,7 @@ DrawWindowArea(Lvns *lvns, int x, int y, int w, int h, int x2, int y2)
 }
 
 /**
- * å…¨ç”»é¢ç”»é¢æ¶ˆå»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
+ * Á´²èÌÌ²èÌÌ¾Ãµî(¥Õ¥é¥Ã¥·¥åÌµ¤·)
  */
 static void
 ClearWindow(Lvns *lvns)
@@ -408,7 +408,7 @@ ClearWindow(Lvns *lvns)
 }
 
 /**
- * éƒ¨åˆ†ç”»é¢æ¶ˆå»(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
+ * ÉôÊ¬²èÌÌ¾Ãµî(¥Õ¥é¥Ã¥·¥åÌµ¤·)
  */
 static void
 ClearWindowArea(Lvns *lvns, int x, int y, int w, int h)
@@ -419,7 +419,7 @@ ClearWindowArea(Lvns *lvns, int x, int y, int w, int h)
 }
 
 /**
- * ç‰¹å®šã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«ã‚«ãƒ©ãƒ¼ã‚’å‰²ã‚Šå½“ã¦ã‚‹
+ * ÆÃÄê¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹¤Ë¥«¥é¡¼¤ò³ä¤êÅö¤Æ¤ë
  */
 static void
 SetPaletteIndex(Lvns *lvns, int index, int r, int g, int b)
@@ -429,8 +429,8 @@ SetPaletteIndex(Lvns *lvns, int index, int r, int g, int b)
 }
 
 /**
- * ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š(é€šå¸¸)
- * å…¨éƒ¨ã‚’è¨­å®šã™ã‚‹â€¦
+ * ¥Ñ¥ì¥Ã¥ÈÀßÄê(ÄÌ¾ï)
+ * Á´Éô¤òÀßÄê¤¹¤ë¡Ä
  */
 static void
 SetPalette(Lvns *lvns)
@@ -440,7 +440,7 @@ SetPalette(Lvns *lvns)
 }
 
 /**
- * ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š(multiple)
+ * ¥Ñ¥ì¥Ã¥ÈÀßÄê(multiple)
  */
 static void
 SetPaletteMulti(Lvns *lvns, int par16)
@@ -450,7 +450,7 @@ SetPaletteMulti(Lvns *lvns, int par16)
 }
 
 /**
- * ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š(screen)
+ * ¥Ñ¥ì¥Ã¥ÈÀßÄê(screen)
  */
 static void
 SetPaletteScreen(Lvns *lvns, int par16)
@@ -460,7 +460,7 @@ SetPaletteScreen(Lvns *lvns, int par16)
 }
 
 /* 
- * ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«å¯¾ã—ã¦æç”»ã‚’è¡Œã†(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
+ * ¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ç¥¦¥¤¥ó¥É¥¦¤ËÂĞ¤·¤ÆÉÁ²è¤ò¹Ô¤¦(¥Õ¥é¥Ã¥·¥åÌµ¤·)
  */
 static void
 DrawWindowMask(Lvns *lvns, int x, int y, int state)
@@ -471,7 +471,7 @@ DrawWindowMask(Lvns *lvns, int x, int y, int state)
 }
 
 /* 
- * çŸ©å½¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾ã—ã¦æç”»ã‚’è¡Œã†(ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ç„¡ã—)
+ * ¶ë·Á¥Ñ¥¿¡¼¥ó¤Ç¥¦¥£¥ó¥É¥¦¤ËÂĞ¤·¤ÆÉÁ²è¤ò¹Ô¤¦(¥Õ¥é¥Ã¥·¥åÌµ¤·)
  */
 static void
 DrawWindowSquareMask(Lvns *lvns, int x, int y, int state)
@@ -483,7 +483,7 @@ DrawWindowSquareMask(Lvns *lvns, int x, int y, int state)
 }
 
 /*
- * è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ç”»é¢ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’ãšã‚‰ã™(æŒ¯å‹•ç”¨)
+ * É½¼¨¤µ¤ì¤Æ¤¤¤ë²èÌÌ¤Î¥ª¥Õ¥»¥Ã¥È¤ò¤º¤é¤¹(¿¶Æ°ÍÑ)
  */
 static void
 SetDispOffset(Lvns *lvns, int xoff, int yoff, int maxoff)
@@ -507,7 +507,7 @@ SetDispOffset(Lvns *lvns, int xoff, int yoff, int maxoff)
 }
 
 /* 
- * æ–‡å­—ãƒ‘ã‚¿ãƒ¼ãƒ³è¡¨ç¤º (é›«/ç—• ç”¨)
+ * Ê¸»ú¥Ñ¥¿¡¼¥óÉ½¼¨ (¼¶/º¯ ÍÑ)
  */
 static void
 PutPattern(Lvns *lvns, int x, int y, int index, u_char *data)
@@ -518,7 +518,7 @@ PutPattern(Lvns *lvns, int x, int y, int index, u_char *data)
 }
 
 /* 
- * æ–‡å­—ãƒ‘ã‚¿ãƒ¼ãƒ³è¡¨ç¤º (ToHeart ç”¨)
+ * Ê¸»ú¥Ñ¥¿¡¼¥óÉ½¼¨ (ToHeart ÍÑ)
  */
 static void
 PutPattern2(Lvns *lvns, int x, int y, int index, u_char *data)
@@ -529,8 +529,8 @@ PutPattern2(Lvns *lvns, int x, int y, int index, u_char *data)
 }
 
 /* 
- * ã‚¿ã‚¤ãƒã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
- * @param no ã‚¿ã‚¤ãƒç•ªå·
+ * ¥¿¥¤¥Ş¤ò¥ê¥»¥Ã¥È¤¹¤ë
+ * @param no ¥¿¥¤¥ŞÈÖ¹æ
  */
 static void
 ResetTimer(Lvns *lvns, int no)
@@ -540,9 +540,9 @@ ResetTimer(Lvns *lvns, int no)
 }
 
 /*
- * ã‚¿ã‚¤ãƒå€¤ã‚’å–å¾—ã™ã‚‹
- * @param no ã‚¿ã‚¤ãƒç•ªå·
- * @return ã‚¿ã‚¤ãƒå€¤ (msecå˜ä½)
+ * ¥¿¥¤¥ŞÃÍ¤ò¼èÆÀ¤¹¤ë
+ * @param no ¥¿¥¤¥ŞÈÖ¹æ
+ * @return ¥¿¥¤¥ŞÃÍ (msecÃ±°Ì)
  */
 static long 
 GetTimer(Lvns *lvns, int no)
@@ -555,9 +555,9 @@ GetTimer(Lvns *lvns, int no)
 }
 
 /**
- * çŸ©å½¢ã‚’æç”»ã™ã‚‹
- * @param x,y,w,h ä½ç½®ã¨ã‚µã‚¤ã‚º
- * @param idx è‰²ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤
+ * ¶ë·Á¤òÉÁ²è¤¹¤ë
+ * @param x,y,w,h °ÌÃÖ¤È¥µ¥¤¥º
+ * @param idx ¿§¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹ÃÍ
  */
 static void
 DrawBox(Lvns *lvns, int x, int y, int w, int h, int idx)
@@ -570,7 +570,7 @@ DrawBox(Lvns *lvns, int x, int y, int w, int h, int idx)
 #include <sys/stat.h>
 
 /** 
- * æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®æ›´æ–°æ—¥ä»˜ã‚’å–å¾—ã™ã‚‹
+ * »ØÄê¤·¤¿¥Õ¥¡¥¤¥ë¤Î¹¹¿·ÆüÉÕ¤ò¼èÆÀ¤¹¤ë
  */
 static time_t
 GetFileTime(Lvns *lvns, const char *path)
@@ -584,7 +584,7 @@ GetFileTime(Lvns *lvns, const char *path)
 }
 
 /*
- * æç”»ã‚·ãƒ³ã‚¯ãƒ­å¾…ã¡å‡¦ç†
+ * ÉÁ²è¥·¥ó¥¯¥íÂÔ¤Á½èÍı
  */
 static void
 Flip(Lvns *lvns)
@@ -594,19 +594,19 @@ Flip(Lvns *lvns)
 
     XSync(XtDisplay((Widget)lcw), False);
 
-	// X ã®ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
+	// X ¤Î¥¤¥Ù¥ó¥È½èÍı
 	while (!XtIsRealized((Widget)lcw) || XtAppPending(app)) {
 		XEvent event;
 		XtAppNextEvent(app, &event);
 		XtDispatchEvent(&event);
 	}
 
-	// çµ‚äº†å‡¦ç†
+	// ½ªÎ»½èÍı
 	if (XtAppGetExitFlag(app)) {
 		LvnsJump(lvns, LVNS_JUMP_END);
 	} 
 
-	// ã‚¿ã‚¤ãƒŸãƒ³ã‚°è£œæ­£å‡¦ç†
+	// ¥¿¥¤¥ß¥ó¥°ÊäÀµ½èÍı
 	{
 		int wait, sa;
 		wait = LCW.wait_count / 60;
@@ -648,7 +648,7 @@ LvnsCoreGetBestHeight(LvnsCoreWidget lcw)
 }
 
 /*
- * å¤–éƒ¨ã‹ã‚‰ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œ
+ * ³°Éô¤«¤é¥³¥Ş¥ó¥É¤ò¼Â¹Ô
  */
 void
 LvnsCoreExecCommand(LvnsCoreWidget lcw, const char *command)
@@ -659,7 +659,7 @@ LvnsCoreExecCommand(LvnsCoreWidget lcw, const char *command)
 }
 
 /*
- * ã‚³ãƒãƒ³ãƒ‰æƒ…å ±ã®å–å¾—
+ * ¥³¥Ş¥ó¥É¾ğÊó¤Î¼èÆÀ
  */
 LvnsCommandInfo *
 LvnsCoreGetCommandList(LvnsCoreWidget lcw)
@@ -672,20 +672,20 @@ LvnsCoreGetCommandList(LvnsCoreWidget lcw)
 }
 
 /*
- * LVNS æƒ…å ±ã®æ¥ç¶š
+ * LVNS ¾ğÊó¤ÎÀÜÂ³
  */ 
 void
 LvnsCoreSetLvns(LvnsCoreWidget lcw, Lvns *lvns)
 {
 	LCW.info = lvns;
 
-	/* SE é–¢é€£åˆæœŸåŒ–è¨­å®š */
+	/* SE ´ØÏ¢½é´ü²½ÀßÄê */
 	lvns->sound = &LCW.sound;
 
-	/* BGMé–¢é€£åˆæœŸåŒ– */
+	/* BGM´ØÏ¢½é´ü²½ */
 	lvns->music = &LCW.music;
 
-	/* ãƒªã‚½ãƒ¼ã‚¹ã®åæ˜  */
+	/* ¥ê¥½¡¼¥¹¤ÎÈ¿±Ç */
 	lvns->demo_mode        = LCW.demo_mode;
 	lvns->seen_mode        = LCW.seen_mode;
 	lvns->latitude_dark    = LCW.latitude_dark;
@@ -695,7 +695,7 @@ LvnsCoreSetLvns(LvnsCoreWidget lcw, Lvns *lvns)
 	lvns->start_scn_num     = LCW.scenario_number;
 #endif
 
-	/* ã‚·ã‚¹ãƒ†ãƒ ä¾å­˜é–¢æ•°ç¾¤ã®è¨­å®š */
+	/* ¥·¥¹¥Æ¥à°ÍÂ¸´Ø¿ô·²¤ÎÀßÄê */
 	lvns->flushWindow          = FlushWindow;
 	lvns->flushWindowArea      = FlushWindowArea;
 	lvns->drawWindow           = DrawWindow;

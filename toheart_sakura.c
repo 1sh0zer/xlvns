@@ -10,7 +10,7 @@
  */
 
 /*
- * To Heart ã€Œã•ãã‚‰ã€å‡¦ç†ç”¨
+ * To Heart ¡Ö¤µ¤¯¤é¡×½èÍıÍÑ
   */
 
 #include <stdio.h>
@@ -21,7 +21,7 @@
 
 #define TOHEART_EXE_NAME "lvns3.exe"
 
-/* EXE ãƒ•ã‚¡ã‚¤ãƒ«å‚ç…§ç”¨â€¦ */
+/* EXE ¥Õ¥¡¥¤¥ë»²¾ÈÍÑ¡Ä */
 static u_char *thexe_addr = NULL;
 static size_t thexe_size  = 0;
 static off_t sakura_offset;
@@ -30,7 +30,7 @@ void *filemap(const char *path, size_t *size);
 void  fileunmap(void *addr, size_t size);
 
 /**
- * EXE ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
+ * EXE ¥Õ¥¡¥¤¥ë¤òÆÉ¤ß¹ş¤à
  */
 static Bool
 mapfile(const char *path)
@@ -46,7 +46,7 @@ unmapfile(void)
 }
 
 /*
- * ãƒ‡ãƒ¼ã‚¿ã®ä¸€è‡´ã®æ¤œå‡ºâ€¦
+ * ¥Ç¡¼¥¿¤Î°ìÃ×¤Î¸¡½Ğ¡Ä
  */
 static Bool
 check(char *p, char *dat, size_t len)
@@ -60,7 +60,7 @@ check(char *p, char *dat, size_t len)
 }
 
 /*
- * start ã®éƒ¨åˆ†ã‹ã‚‰ MAX ã®ä½ç½®ã¾ã§ã®é–“ã‹ã‚‰æ¤œç´¢
+ * start ¤ÎÉôÊ¬¤«¤é MAX ¤Î°ÌÃÖ¤Ş¤Ç¤Î´Ö¤«¤é¸¡º÷
  */
 static off_t 
 search(char *start, char *data, size_t len, size_t max)
@@ -97,7 +97,7 @@ create_hsb_sakura(void)
 
     int i, j, k;
 
-    /* æ¡œ(å‰) */
+    /* ºù(Á°) */
     for (i = 0; i < 8; i++) {
       u_char *p = thexe_addr + sakura_offset + i * 16 * 16;
       u_short *q = sakura_front + i * 8 * 8;
@@ -108,7 +108,7 @@ create_hsb_sakura(void)
       }
     }
     
-    /* æ¡œ(å¾Œ) */
+    /* ºù(¸å) */
     for (i = 0; i < 8; i++) {
       u_char *p = thexe_addr + sakura_offset + 2048 + i * 8 * 8;
       u_short *q = sakura_back + i * 4 * 4;
@@ -122,12 +122,12 @@ create_hsb_sakura(void)
 #endif
 
 /*
- * ãƒ‡ãƒ¼ã‚¿åˆæœŸåŒ–
+ * ¥Ç¡¼¥¿½é´ü²½
  */
 void ToHeartSakuraInit(Lvns *lvns)
 {
     if (thexe_addr == NULL) {
-        /* ãƒ‡ãƒ¼ã‚¿èª­ã¿å‡ºã—ç”¨ãƒ‘ã‚¹ */
+        /* ¥Ç¡¼¥¿ÆÉ¤ß½Ğ¤·ÍÑ¥Ñ¥¹ */
         char path[1024];
 
         snprintf(path, sizeof path, "%s/%s", lvns->data_path, TOHEART_EXE_NAME);
@@ -138,7 +138,7 @@ void ToHeartSakuraInit(Lvns *lvns)
             }
         }
 
-        /* æ¡œã®ãƒ‡ãƒ¼ã‚¿ã‚’æ¢ã™ */
+        /* ºù¤Î¥Ç¡¼¥¿¤òÃµ¤¹ */
         {
             static char sakura_data[] = {
                 0, 0, 0, 4, 6, 6, 6, 4, 2, 0, 0, 0, 0, 0, 0, 0
@@ -146,7 +146,7 @@ void ToHeartSakuraInit(Lvns *lvns)
 
             off_t pos, rdata;
 
-            /* ã¾ãš rdata é ˜åŸŸã‚’æ¢ã™â€¦ */
+            /* ¤Ş¤º rdata ÎÎ°è¤òÃµ¤¹¡Ä */
             if ((pos = search(thexe_addr, "rdata", 5, 1024)) == 0) {
                 fprintf(stderr, "Can't find rdata segment in %s\n", 
                         TOHEART_EXE_NAME);
@@ -157,14 +157,14 @@ void ToHeartSakuraInit(Lvns *lvns)
                     (thexe_addr[pos + 13] << 16) +
                     (thexe_addr[pos + 14] << 24);
 
-            /* ç¶šã„ã¦æ¡œã®ãƒ‡ãƒ¼ã‚¿ã‚’æ¢ã™ */
+            /* Â³¤¤¤Æºù¤Î¥Ç¡¼¥¿¤òÃµ¤¹ */
             if ((pos = search(thexe_addr + rdata, sakura_data, 14, 0xffff)) == 0) {
                 fprintf(stderr, "Can't find sakura data in %s\n", 
                         TOHEART_EXE_NAME);
                 exit(1);
             }
             
-            /* ã“ã‚ŒãŒæ¡œã®ãƒ‡ãƒ¼ã‚¿ã®å…ˆé ­ä½ç½®â€¦ */
+            /* ¤³¤ì¤¬ºù¤Î¥Ç¡¼¥¿¤ÎÀèÆ¬°ÌÃÖ¡Ä */
             sakura_offset = rdata + pos - 16;
         }
     }        
@@ -173,7 +173,7 @@ void ToHeartSakuraInit(Lvns *lvns)
 }
 
 /**
- * ã•ãã‚‰ã®æ•°ã‚’æŒ‡å®š
+ * ¤µ¤¯¤é¤Î¿ô¤ò»ØÄê
  */
 void
 ToHeartSakuraSetNumber(Lvns *lvns, int num)
@@ -188,7 +188,7 @@ ToHeartSakuraSetNumber(Lvns *lvns, int num)
 }
 
 /**
- * ã•ãã‚‰ã®æ•°ã‚’æŒ‡å®š (å ´æ‰€ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«)
+ * ¤µ¤¯¤é¤Î¿ô¤ò»ØÄê (¾ì½ê¤ò¥é¥ó¥À¥à¤Ë)
  */
 void
 ToHeartSakuraSetRandomNumber(Lvns *lvns, int num)
@@ -217,7 +217,7 @@ ToHeartSakuraSetRandomNumber(Lvns *lvns, int num)
 }    
 
 /**
- * å‰é¢ã®æ¡œã‚’è¡¨ç¤º
+ * Á°ÌÌ¤Îºù¤òÉ½¼¨
  */
 #ifndef USE_MGL
 #define SSIZE_F 16
@@ -279,7 +279,7 @@ put_sakura_before(LvnsImage *dst, int x2, int y2, int state)
 }
 
 /*
- * èƒŒé¢ã®æ¡œã‚’è¡¨ç¤º
+ * ÇØÌÌ¤Îºù¤òÉ½¼¨
  */
 static void
 put_sakura_back(LvnsImage *dst, int x2, int y2, int state) 
@@ -345,7 +345,7 @@ NewSakura(Lvns *lvns, int num)
 {
     ToHeartState *state = (ToHeartState *)lvns->system_state;
 
-    /* æ–°è¦èŠ±ã³ã‚‰ */
+    /* ¿·µ¬²Ö¤Ó¤é */
     int size;
     if (random() % 3 > 0) {
         state->sakura[num].position = SAKURA_BEFORE;
@@ -371,7 +371,7 @@ NewSakura(Lvns *lvns, int num)
 #endif
 
 /**
- * æ¡œã®åˆæˆå‡¦ç†
+ * ºù¤Î¹çÀ®½èÍı
  */
 static void
 ToHeartSakuraEffect(Lvns *lvns)
@@ -390,10 +390,10 @@ ToHeartSakuraEffect(Lvns *lvns)
     int i;
     ToHeartState *state = (ToHeartState *)lvns->system_state;
 
-    /* èƒŒæ™¯ */
+    /* ÇØ·Ê */
     lvnsimage_copy(lvns->background, lvns->vram);
 
-    /* èƒŒé¢ã®æ¡œ */
+    /* ÇØÌÌ¤Îºù */
     for (i=0; i<state->sakura_disp_num; i++) {
         if (state->sakura[i].position == SAKURA_BACK) {
             put_sakura_back(lvns->vram, 
@@ -403,10 +403,10 @@ ToHeartSakuraEffect(Lvns *lvns)
         }
     }
 
-    /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ç«‹ã¡çµµã‚’è¿½åŠ  */
+    /* ¥­¥ã¥é¥¯¥¿Î©¤Á³¨¤òÄÉ²Ã */
     LVNS->mergeCharacter(lvns);
 
-    /* å‰é¢ã®æ¡œ */
+    /* Á°ÌÌ¤Îºù */
     for (i=0; i<state->sakura_disp_num; i++) {
         if (state->sakura[i].position == SAKURA_BEFORE) {
             put_sakura_before(lvns->vram, 
@@ -416,7 +416,7 @@ ToHeartSakuraEffect(Lvns *lvns)
         }
     }
 
-    /* æ¡œç”¨ãƒ‘ãƒ¬ãƒƒãƒˆè¿½åŠ  */
+    /* ºùÍÑ¥Ñ¥ì¥Ã¥ÈÄÉ²Ã */
     lvnsimage_set_palette3(lvns->vram, sakura_pal, TOHEART_COL_SAKURA, 8);
     lvns->vram->palette_num = TOHEART_COL_SAKURA + 8;
 }   
@@ -437,13 +437,13 @@ ToHeartSakuraEffectSetState(Lvns *lvns)
     }
 #endif
 
-    /* æ–°ã—ã„èŠ±ã³ã‚‰ */
+    /* ¿·¤·¤¤²Ö¤Ó¤é */
     if (state->sakura_disp_num < state->sakura_num) {
         NewSakura(lvns, state->sakura_disp_num);
         state->sakura_disp_num++;
     }
 
-    /* èƒŒé¢ã®æ¡œ */
+    /* ÇØÌÌ¤Îºù */
     for (i=0; i<state->sakura_disp_num; i++) {
         if (state->sakura[i].position == SAKURA_BACK) {
             state->sakura[i].x += 4;

@@ -10,7 +10,7 @@
  */
 
 /* 
- * ç—• ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚°/ã‚¿ã‚¤ãƒˆãƒ«
+ * º¯ ¥ª¡¼¥×¥Ë¥ó¥°/¥¿¥¤¥È¥ë
  */
 
 #include <stdio.h>
@@ -18,11 +18,11 @@
 #include "kizuato.h"
 
 /* ------------------------------------------------------------ */
-/** ã‚²ãƒ¼ãƒ åˆæœŸåŒ–ç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¥²¡¼¥à½é´ü²½ÍÑ¥á¥Ë¥å¡¼ */
 
 static MenuLine from_first_menu_line[] = {
-	MENULINE(5, "åˆã‚ã‹ã‚‰å§‹ã‚ã‚‹", 1),
-    MENULINE(6, "ç¶šãã‹ã‚‰å§‹ã‚ã‚‹", 2),
+	MENULINE(5, "½é¤á¤«¤é»Ï¤á¤ë", 1),
+    MENULINE(6, "Â³¤­¤«¤é»Ï¤á¤ë", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -33,12 +33,12 @@ static MenuData from_first_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ã—ãŠã‚Šé¸æŠç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¤·¤ª¤êÁªÂòÍÑ¥á¥Ë¥å¡¼ */
 
 static MenuLine siori_select_menu_line[] = {
-	MENULINE(5, "ã—ãŠã‚Šã€€ï¼‘", 1),
-	MENULINE(6, "ã—ãŠã‚Šã€€ï¼’", 2),
-	MENULINE(7, "ã—ãŠã‚Šã€€ï¼“", 3),
+	MENULINE(5, "¤·¤ª¤ê¡¡£±", 1),
+	MENULINE(6, "¤·¤ª¤ê¡¡£²", 2),
+	MENULINE(7, "¤·¤ª¤ê¡¡£³", 3),
 	MENULINE(0, NULL, 0),
 };
 
@@ -49,7 +49,7 @@ SioriSelectMenuEngine(Lvns *lvns, int select)
 	
 	state->siori_no = select;
 	KizuatoLoad(lvns);
-	if (lvns->savepoint.scn) { /* ã‚·ãƒŠãƒªã‚ªã®å…ˆé ­ã‹? */
+	if (lvns->savepoint.scn) { /* ¥·¥Ê¥ê¥ª¤ÎÀèÆ¬¤«? */
 		switch (LvnsMenu(lvns, &from_first_menu, True)) {
 		case -1: /* cancel */
 			return 0;
@@ -72,13 +72,13 @@ static MenuData siori_select_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ã—ãŠã‚ŠåˆæœŸåŒ–ç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/** ¤·¤ª¤ê½é´ü²½ÍÑ¥á¥Ë¥å¡¼ */
 
 static MenuLine siori_init_menu_line[] = {
-	MENULINE(6, "åˆæœŸåŒ–ã™ã‚‹ã—ãŠã‚Šã‚’é¸æŠã—ã¦ä¸‹ã•ã„",0),
-	MENULINE(7, "ã—ãŠã‚Šã€€ï¼‘",1),
-	MENULINE(8, "ã—ãŠã‚Šã€€ï¼’",2),
-    MENULINE(9, "ã—ãŠã‚Šã€€ï¼“",3),
+	MENULINE(6, "½é´ü²½¤¹¤ë¤·¤ª¤ê¤òÁªÂò¤·¤Æ²¼¤µ¤¤",0),
+	MENULINE(7, "¤·¤ª¤ê¡¡£±",1),
+	MENULINE(8, "¤·¤ª¤ê¡¡£²",2),
+    MENULINE(9, "¤·¤ª¤ê¡¡£³",3),
 	MENULINE(0, NULL, 0),
 };
 
@@ -128,7 +128,7 @@ AddImage(Lvns *lvns, LvnsScript *scr,
 }
 
 /*
- * SDT ç”»åƒã®ãƒ­ãƒ¼ãƒ‰
+ * SDT ²èÁü¤Î¥í¡¼¥É
  */
 #ifndef USE_MGL
 static LvnsImage *
@@ -154,7 +154,7 @@ LoadSDT(Lvns *lvns, const char *name, int width, int height)
     size = data[0] | (data[1]<<8) | (data[2]<<16) | (data[3]<<24);
     leafpack_lzs2(data + 4, ret->data, size);
 
-    /* ä¸Šä¸‹åè»¢ */
+    /* ¾å²¼È¿Å¾ */
     {
         int i, j;
         for (i=0; i<height/2; i++) {
@@ -198,9 +198,9 @@ LoadSDT(Lvns *lvns, const char *name, int width, int height)
 
 #ifndef USE_MGL
 /**
- * ç”»åƒã® index ã‚’ or åˆæˆã™ã‚‹
- * â€»ã€Œç—•ã€ã® OP ã§ä½¿ç”¨
- * ã¯ã¿ã ã—ã®ãƒã‚§ãƒƒã‚¯ã‚‚è¡Œã£ã¦ã„ã‚‹ã€‚
+ * ²èÁü¤Î index ¤ò or ¹çÀ®¤¹¤ë
+ * ¢¨¡Öº¯¡×¤Î OP ¤Ç»ÈÍÑ
+ * ¤Ï¤ß¤À¤·¤Î¥Á¥§¥Ã¥¯¤â¹Ô¤Ã¤Æ¤¤¤ë¡£
  */
 static void
 lvnsimage_or(LvnsImage *src, LvnsImage *dst, int x, int y)
@@ -216,7 +216,7 @@ lvnsimage_or(LvnsImage *src, LvnsImage *dst, int x, int y)
     x += src->xoffset;
     y += src->yoffset;
 
-    /* ã¯ã¿ã§ã‚‹éƒ¨åˆ†ã®èª¿æ•´ */
+    /* ¤Ï¤ß¤Ç¤ëÉôÊ¬¤ÎÄ´À° */
     if (x < 0)  {
         srcx = -x;
         dstx = 0;
@@ -240,7 +240,7 @@ lvnsimage_or(LvnsImage *src, LvnsImage *dst, int x, int y)
         height = dst->rheight  - dsty;
     }
 
-    /* or åˆæˆ */
+    /* or ¹çÀ® */
     for (i = 0; i < height; i++) {
         u_char *p = src->data + (srcy + i) * src->rwidth + srcx;
         u_char *q = dst->data + (dsty + i) * dst->rwidth + dstx;
@@ -252,7 +252,7 @@ lvnsimage_or(LvnsImage *src, LvnsImage *dst, int x, int y)
 #endif
 
 /*
- * ã‚¿ã‚¤ãƒˆãƒ«ç”¨é›²åˆæˆç”¨
+ * ¥¿¥¤¥È¥ëÍÑ±À¹çÀ®ÍÑ
  */
 #ifndef USE_MGL
 static void
@@ -269,7 +269,7 @@ OpShadow(LvnsImage *src, LvnsImage *dst, int x, int y)
     x += src->xoffset;
     y += src->yoffset;
 
-    /* ã¯ã¿ã§ã‚‹éƒ¨åˆ†ã®èª¿æ•´ */
+    /* ¤Ï¤ß¤Ç¤ëÉôÊ¬¤ÎÄ´À° */
     if (x < 0)  {
         srcx = -x;
         dstx = 0;
@@ -293,7 +293,7 @@ OpShadow(LvnsImage *src, LvnsImage *dst, int x, int y)
         height = dst->rheight  - dsty;
     }
 
-    /* or åˆæˆ */
+    /* or ¹çÀ® */
     for (i = 0; i < height; i++) {
         u_char *p = src->data + (srcy + i) * src->rwidth + srcx;
         u_char *q = dst->data + (dsty + i) * dst->rwidth + dstx;
@@ -322,7 +322,7 @@ disp(Lvns *lvns, int latitude)
     lvns->flushWindow(lvns);
 }
 
-/* ãƒ‘ãƒ¬ãƒƒãƒˆæƒ…å ± ã€Œæœˆã€ */
+/* ¥Ñ¥ì¥Ã¥È¾ğÊó ¡Ö·î¡× */
 static u_char pal0[][3] = {
     {51,0,85},
     {34,0,51},
@@ -345,7 +345,7 @@ static u_char pal0[][3] = {
 	{34,17,85},
 };
 
-/* ãƒ‘ãƒ¬ãƒƒãƒˆæƒ…å ± åƒé¶´ & æ¢“ */
+/* ¥Ñ¥ì¥Ã¥È¾ğÊó ÀéÄá & °´ */
 static u_char pal1[][3] = {
     {0, 0, 0},
     {0, 192, 192},
@@ -365,7 +365,7 @@ static u_char pal1[][3] = {
     {64, 64, 64},
 };
 
-/* ãƒ‘ãƒ¬ãƒƒãƒˆæƒ…å ± æ¥“ & åˆéŸ³ */
+/* ¥Ñ¥ì¥Ã¥È¾ğÊó Éö & ½é²» */
 static u_char pal2[][3] = {
     {0, 0, 0},
     {192, 0, 0},
@@ -385,22 +385,22 @@ static u_char pal2[][3] = {
     {64, 32, 64},
 };
 
-/* åˆæœŸåŒ– */
+/* ½é´ü²½ */
 static int
 init(Lvns *lvns, LvnsScript *scr)
 {
     KizuatoState *state = (KizuatoState*)lvns->system_state;
 
-    /* OP ç”¨ç”»åƒãƒ‡ãƒ¼ã‚¿ãƒ­ãƒ¼ãƒ‰ */
-    state->chizuru = LoadSDT(lvns, "OP1W.SDT", 336, 400); /* åƒé¶´ */
-    state->azusa   = LoadSDT(lvns, "OP2W.SDT", 448, 512); /*  æ¢“  */
-    state->kaede   = LoadSDT(lvns, "OP3W.SDT", 448, 512); /*  æ¥“  */
-    state->hatsune = LoadSDT(lvns, "OP4W.SDT", 336, 400); /* åˆéŸ³ */
-    state->moon    = LvnsLoadImage(lvns, "OP2_MN_W.LFG", NULL); /* æœˆ   */
-    state->shadow  = LoadSDT(lvns, "OP2_KM_W.SDT", 1280, 400);   /* å½±   */
+    /* OP ÍÑ²èÁü¥Ç¡¼¥¿¥í¡¼¥É */
+    state->chizuru = LoadSDT(lvns, "OP1W.SDT", 336, 400); /* ÀéÄá */
+    state->azusa   = LoadSDT(lvns, "OP2W.SDT", 448, 512); /*  °´  */
+    state->kaede   = LoadSDT(lvns, "OP3W.SDT", 448, 512); /*  Éö  */
+    state->hatsune = LoadSDT(lvns, "OP4W.SDT", 336, 400); /* ½é²» */
+    state->moon    = LvnsLoadImage(lvns, "OP2_MN_W.LFG", NULL); /* ·î   */
+    state->shadow  = LoadSDT(lvns, "OP2_KM_W.SDT", 1280, 400);   /* ±Æ   */
     state->moon_pos = 0;
 
-    /* æœˆã®ãƒ‘ãƒ¬ãƒƒãƒˆã‚’è£œæ­£ */
+    /* ·î¤Î¥Ñ¥ì¥Ã¥È¤òÊäÀµ */
 #ifndef USE_MGL
     {
         int i;
@@ -414,7 +414,7 @@ init(Lvns *lvns, LvnsScript *scr)
     return True;
 }
 
-/* æœˆãã®1 */
+/* ·î¤½¤Î1 */
 static int
 moon(Lvns *lvns, LvnsScript *scr)
 {
@@ -438,7 +438,7 @@ moon(Lvns *lvns, LvnsScript *scr)
     }
 }
 
-/* åƒé¶´ & æ¢“ */
+/* ÀéÄá & °´ */
 static int
 CandA(Lvns *lvns, LvnsScript *scr)
 {
@@ -469,7 +469,7 @@ CandA(Lvns *lvns, LvnsScript *scr)
     }
 }
 
-/* æ¥“ & åˆéŸ³ */
+/* Éö & ½é²» */
 static int
 KandH(Lvns *lvns, LvnsScript *scr)
 {
@@ -500,7 +500,7 @@ KandH(Lvns *lvns, LvnsScript *scr)
     }
 }
 
-/* æœˆãã®2 */
+/* ·î¤½¤Î2 */
 static int
 moon2(Lvns *lvns, LvnsScript *scr)
 {
@@ -558,9 +558,9 @@ static LvnsScriptData opdata[] = {
 };
 
 /* ------------------------------------------------------------ */
-/**  ã‚¿ã‚¤ãƒˆãƒ«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
+/**  ¥¿¥¤¥È¥ë¥á¥Ë¥å¡¼ */
 
-/* ç—•ã‚²ãƒ¼ãƒ é–‹å§‹ç”¨ã‚¹ã‚¯ãƒªãƒ—ãƒˆ */
+/* º¯¥²¡¼¥à³«»ÏÍÑ¥¹¥¯¥ê¥×¥È */
 static LvnsScriptData gamestart[] = {
     { LVNS_SCRIPT_FUNC, LoadImage, "OP2_BACK.LFG" },
     { LVNS_SCRIPT_DISP_VRAM, (void *)LVNS_EFFECT_FADE_MASK },
@@ -568,32 +568,32 @@ static LvnsScriptData gamestart[] = {
 };
 
 static MenuLine title_menu_line[] = {
-	MENULINE(7, "ã‚²ãƒ¼ãƒ ã‚’å§‹ã‚ã‚‹",1),
-	MENULINE(8, "ã—ãŠã‚Šã®åˆæœŸåŒ–",2),
+	MENULINE(7, "¥²¡¼¥à¤ò»Ï¤á¤ë",1),
+	MENULINE(8, "¤·¤ª¤ê¤Î½é´ü²½",2),
 #if 0
-	MENULINE(9, "å›æƒ³ãƒ¢ãƒ¼ãƒ‰",3),
-    MENULINE(10, "æ¬¡å›äºˆå‘Š",4),
+	MENULINE(9, "²óÁÛ¥â¡¼¥É",3),
+    MENULINE(10, "¼¡²óÍ½¹ğ",4),
 #endif
-	MENULINE(9, "çµ‚äº†ã™ã‚‹",3),
+	MENULINE(9, "½ªÎ»¤¹¤ë",3),
 	MENULINE(0, NULL, 0),
 };
 
 /*
- * ã‚¿ã‚¤ãƒˆãƒ«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¨ãƒ³ã‚¸ãƒ³
+ * ¥¿¥¤¥È¥ë¥á¥Ë¥å¡¼¥¨¥ó¥¸¥ó
  */
 static int
 TitleMenuEngine(Lvns *lvns, int select)
 {
     switch (select) {
-    case 1: /*ã‚²ãƒ¼ãƒ é–‹å§‹ */
+    case 1: /*¥²¡¼¥à³«»Ï */
 		LvnsScriptRun(lvns, gamestart);
 		return LvnsMenu(lvns, &siori_select_menu, True) > 0 ? 1: 0;
         
-    case 2: /* ã—ãŠã‚ŠåˆæœŸåŒ– */
+    case 2: /* ¤·¤ª¤ê½é´ü²½ */
 		LvnsMenu(lvns, &siori_init_menu, True);
 		return 0;
 
-    case 3: /* çµ‚äº† */
+    case 3: /* ½ªÎ» */
 		LvnsClearLow(lvns, LVNS_EFFECT_FADE_MASK);
         LvnsJump(lvns, LVNS_JUMP_END);
     }
@@ -609,7 +609,7 @@ static MenuData title_menu = {
 
 /* ------------------------------------------------------------ */
 
-/* ç—• ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚°ã‚¨ãƒ³ã‚¸ãƒ³ */
+/* º¯ ¥ª¡¼¥×¥Ë¥ó¥°¥¨¥ó¥¸¥ó */
 void
 KizuatoOpening(Lvns *lvns)
 {
@@ -629,7 +629,7 @@ KizuatoOpening(Lvns *lvns)
 
 /* ------------------------------------------------------------ */
 
-/* ç—•ã‚¿ã‚¤ãƒˆãƒ«ç”¨ã‚¹ã‚¯ãƒªãƒ—ãƒˆ */
+/* º¯¥¿¥¤¥È¥ëÍÑ¥¹¥¯¥ê¥×¥È */
 static LvnsScriptData titledata[] = {
     { LVNS_SCRIPT_FUNC, LoadImage, "OP2_BACK.LFG" },
     { LVNS_SCRIPT_FUNC, SetPalette },
@@ -642,7 +642,7 @@ static LvnsScriptData titledata[] = {
     { LVNS_SCRIPT_END }
 };
 
-/* ç—•ã‚¿ã‚¤ãƒˆãƒ«ã‚¨ãƒ³ã‚¸ãƒ³ */
+/* º¯¥¿¥¤¥È¥ë¥¨¥ó¥¸¥ó */
 void
 KizuatoTitle(Lvns *lvns)
 {

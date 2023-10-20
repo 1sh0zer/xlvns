@@ -10,13 +10,13 @@
  */
 
 /*
- * To Heart ã‚·ãƒŠãƒªã‚ªå‡¦ç†ã‚¨ãƒ³ã‚¸ãƒ³ 
+ * To Heart ¥·¥Ê¥ê¥ª½èÍı¥¨¥ó¥¸¥ó 
  */
 
 #include <stdio.h>
 #include "toheart.h"
 
-/* æ™‚è¨ˆã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ */
+/* »ş·×¥¢¥Ë¥á¡¼¥·¥ç¥ó */
 static LvnsAnimationData clock_anim[] = {
     { LVNS_ANIM_IMAGE_ADD, "OC_00.LF2", 0, 160, 0 },
     { LVNS_ANIM_IMAGE_ADD, "OC_01.LF2", 0, 160, 0 },
@@ -54,10 +54,10 @@ static struct {
     { "CBAK_05.LF2"},
 };
 
-/* ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ */
+/* ¥«¥ì¥ó¥À¡¼¥¢¥Ë¥á¡¼¥·¥ç¥ó */
 static LvnsAnimationData calendar_anim[] = {
-    /* å‰æ—¥ */
-    { LVNS_ANIM_IMAGE, NULL, 0, 0, 0},  /* èƒŒæ™¯  */
+    /* Á°Æü */
+    { LVNS_ANIM_IMAGE, NULL, 0, 0, 0},  /* ÇØ·Ê  */
     { LVNS_ANIM_IMAGE_ADD, NULL, 10, 192, 80 },
     { LVNS_ANIM_IMAGE_ADD, NULL, 10, 192, 80 },
     { LVNS_ANIM_IMAGE_ADD, NULL, 10, 192, 80 },
@@ -71,20 +71,20 @@ static LvnsAnimationData calendar_anim[] = {
 };
 
 /**
- * åå‰ãƒ‡ãƒ¼ã‚¿
+ * Ì¾Á°¥Ç¡¼¥¿
  */
 static u_char names[][14] = {
-    "è—¤ç”°",
-    "æµ©ä¹‹",
-    "ãƒ’ãƒ­",
-    "ã²ã‚ã‚†ã",
-    "ãƒ’ãƒ­ãƒ¦ã‚­"
+    "Æ£ÅÄ",
+    "¹ÀÇ·",
+    "¥Ò¥í",
+    "¤Ò¤í¤æ¤­",
+    "¥Ò¥í¥æ¥­"
 };
 
 u_char         *posstr[] = {
-    "å·¦",
-    "å³",
-    "ä¸­å¤®"
+    "º¸",
+    "±¦",
+    "Ãæ±û"
 };
 
 char *
@@ -93,111 +93,111 @@ FlgName(int c)
     static char     foo[10];
     switch (c) {
     case 0x00:
-	return "<ä¸€æ™‚ã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ>";
+	return "<°ì»ş¥¤¥Ù¥ó¥È¥Ó¥Ã¥È>";
     case 0x01:
-	return "<ã‚ã‹ã‚Šã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ>";
+	return "<¤¢¤«¤ê¥¤¥Ù¥ó¥È¥Ó¥Ã¥È>";
     case 0x02:
-	return "<èŠ¹é¦™ã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ>";
+	return "<¶Ü¹á¥¤¥Ù¥ó¥È¥Ó¥Ã¥È>";
     case 0x03:
-	return "<æ™ºå­ã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ>";
+	return "<ÃÒ»Ò¥¤¥Ù¥ó¥È¥Ó¥Ã¥È>";
     case 0x04:
-	return "<å¿—ä¿ã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ?>";
+	return "<»ÖÊİ¥¤¥Ù¥ó¥È¥Ó¥Ã¥È?>";
     case 0x06:
-	return "<ãƒãƒ«ãƒã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ?>";
+	return "<¥Ş¥ë¥Á¥¤¥Ù¥ó¥È¥Ó¥Ã¥È?>";
     case 0x08:
-	return "<ãƒ¬ãƒŸã‚£ã‚¤ãƒ™ãƒ³ãƒˆãƒ•ãƒ©ã‚°>";
+	return "<¥ì¥ß¥£¥¤¥Ù¥ó¥È¥Õ¥é¥°>";
     case 0x09:
-	return "<ãƒ¬ãƒŸã‚£ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2?>";
+	return "<¥ì¥ß¥£¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2?>";
     case 0x0c:
-	return "<å¿—ä¿ã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ>";
+	return "<»ÖÊİ¥¤¥Ù¥ó¥È¥Ó¥Ã¥È>";
     case 0x0d:
-	return "<ã‚ã‹ã‚Švsã‚¤ãƒ™ãƒ³ãƒˆãƒ•ãƒ©ã‚°>";
+	return "<¤¢¤«¤êvs¥¤¥Ù¥ó¥È¥Õ¥é¥°>";
     case 0x0e:
-	return "<ãƒ¬ãƒŸã‚£å¿…é ˆã‚¤ãƒ™ãƒ³ãƒˆãƒ•ãƒ©ã‚°>";
+	return "<¥ì¥ß¥£É¬¿Ü¥¤¥Ù¥ó¥È¥Õ¥é¥°>";
     case 0x0f:
-	return "<ãã®ä»–vsã‚¤ãƒ™ãƒ³ãƒˆãƒ•ãƒ©ã‚°>";
+	return "<¤½¤ÎÂ¾vs¥¤¥Ù¥ó¥È¥Õ¥é¥°>";
     case 0x11:
-	return "ç†ç·’ã‚¤ãƒ™ãƒ³ãƒˆãƒ“ãƒƒãƒˆ";
+	return "Íı½ï¥¤¥Ù¥ó¥È¥Ó¥Ã¥È";
     case 0x20:
-	return "<æ™ºå­ã‚¤ãƒ™ãƒ³ãƒˆé€šé>";
+	return "<ÃÒ»Ò¥¤¥Ù¥ó¥ÈÄÌ²á>";
     case 0x14:
-	return "<ã‚ã‹ã‚Šå¥½æ„Ÿåº¦>";
+	return "<¤¢¤«¤ê¹¥´¶ÅÙ>";
     case 0x15:
-	return "<èŠ¹é¦™å¥½æ„Ÿåº¦>";
+	return "<¶Ü¹á¹¥´¶ÅÙ>";
     case 0x16:
-	return "<æ™ºå­å¥½æ„Ÿåº¦>";
+	return "<ÃÒ»Ò¹¥´¶ÅÙ>";
     case 0x17:
-	return "<å¿—ä¿å¥½æ„Ÿåº¦>";
+	return "<»ÖÊİ¹¥´¶ÅÙ>";
     case 0x18:
-	return "<è‘µå¥½æ„Ÿåº¦>";
+	return "<°ª¹¥´¶ÅÙ>";
     case 0x19:
-	return "<ãƒãƒ«ãƒå¥½æ„Ÿåº¦>";
+	return "<¥Ş¥ë¥Á¹¥´¶ÅÙ>";
     case 0x1a:
-	return "<ç´éŸ³å¥½æ„Ÿåº¦>";
+	return "<¶×²»¹¥´¶ÅÙ>";
     case 0x1b:
-	return "<ãƒ¬ãƒŸã‚£å¥½æ„Ÿåº¦>";
+	return "<¥ì¥ß¥£¹¥´¶ÅÙ>";
     case 0x1d:
-	return "<ç†ç·’å¥½æ„Ÿåº¦>";
+	return "<Íı½ï¹¥´¶ÅÙ>";
     case 0x1e:
-	return "<ã‚ã‹ã‚Šå›æ•°ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	return "<¤¢¤«¤ê²ó¿ô¥¤¥Ù¥ó¥È>";
     case 0x1f:
-	return "<èŠ¹é¦™å›æ•°ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	return "<¶Ü¹á²ó¿ô¥¤¥Ù¥ó¥È>";
     case 0x22:
-	return "<è‘µå›æ•°ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	return "<°ª²ó¿ô¥¤¥Ù¥ó¥È>";
     case 0x23:
-	return "<ãƒãƒ«ãƒå›æ•°ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	return "<¥Ş¥ë¥Á²ó¿ô¥¤¥Ù¥ó¥È>";
     case 0x24:
-	return "<ç´éŸ³å›æ•°ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	return "<¶×²»²ó¿ô¥¤¥Ù¥ó¥È>";
     case 0x27:
-	return "<ç†ç·’ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<Íı½ï¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x29:
-	return "<èŠ¹é¦™ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<¶Ü¹á¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x2a:
-	return "<æ™ºå­ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<ÃÒ»Ò¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x2c:
-	return "<è‘µã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<°ª¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x2d:
-	return "<ãƒãƒ«ãƒã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<¥Ş¥ë¥Á¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x2e:
-	return "<ç´éŸ³ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<¶×²»¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x2f:
-	return "<ãƒ¬ãƒŸã‚£ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<¥ì¥ß¥£¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x33:
-	return "<èŠ¹é¦™ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2>";
+	return "<¶Ü¹á¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2>";
     case 0x34:
-	return "<æ™ºå­ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2>";
+	return "<ÃÒ»Ò¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2>";
     case 0x35:
-	return "<è‘µã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2>";
+	return "<°ª¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2>";
     case 0x37:
-	return "<ãƒãƒ«ãƒã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2>";
+	return "<¥Ş¥ë¥Á¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2>";
     case 0x38:
-	return "<ç´éŸ³ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2>";
+	return "<¶×²»¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2>";
     case 0x39:
-	return "<ãƒ¬ãƒŸã‚£ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿2>";
+	return "<¥ì¥ß¥£¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿2>";
     case 0x3b:
-	return "<ç†ç·’ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<Íı½ï¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿>";
     case 0x3e:
-	return "<æ™ºå­ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿3>";
+	return "<ÃÒ»Ò¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿3>";
     case 0x42:
-	return "<ç´éŸ³ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿3>";
+	return "<¶×²»¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿3>";
     case 0x4c:
-	return "<ç´éŸ³ã‚¤ãƒ™ãƒ³ãƒˆã‚«ã‚¦ãƒ³ã‚¿4>";
+	return "<¶×²»¥¤¥Ù¥ó¥È¥«¥¦¥ó¥¿4>";
     case 0x50:
-	return "<ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒ•ãƒ©ã‚°1>";
+	return "<¥¨¥ó¥Ç¥£¥ó¥°¥Õ¥é¥°1>";
     case 0x51:
-	return "<ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒ•ãƒ©ã‚°2>";
+	return "<¥¨¥ó¥Ç¥£¥ó¥°¥Õ¥é¥°2>";
     case 0xa6:
-        return "<ãã®æ—¥ã®è¡Œå‹•ç”¨ãƒ•ãƒ©ã‚°?>";
+        return "<¤½¤ÎÆü¤Î¹ÔÆ°ÍÑ¥Õ¥é¥°?>";
     case 0xab:
-	return "<æ—¥ä»˜ã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<ÆüÉÕ¥«¥¦¥ó¥¿>";
     case 0xac:
-        return "<æ”¾èª²å¾Œç§»å‹•ä½ç½®ãƒ•ãƒ©ã‚°>?";
+        return "<Êü²İ¸å°ÜÆ°°ÌÃÖ¥Õ¥é¥°>?";
     case 0xad:
-	return "<æ›œæ—¥ã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<ÍËÆü¥«¥¦¥ó¥¿>";
     case 0xae:
-	return "<æ™‚é–“ã‚«ã‚¦ãƒ³ã‚¿>";
+	return "<»ş´Ö¥«¥¦¥ó¥¿>";
     case 0xaf:
-        return "<æ”¾èª²å¾Œç§»å‹•é‡ã‚«ã‚¦ãƒ³ã‚¿>?";
+        return "<Êü²İ¸å°ÜÆ°ÎÌ¥«¥¦¥ó¥¿>?";
     }
     sprintf(foo, "flg:%02x", c);
     return foo;
@@ -210,140 +210,140 @@ FlgBit(int flg, int c)
     switch (flg) {
     case 0x00:
 	switch (c) {
-	case 2:	    return "<æˆæ¥­ä¸­åŠ©ã‘ã¦ãã‚ŒãŸãŠç¤¼ã‚’å±‹ä¸Šã§>";
+	case 2:	    return "<¼ø¶ÈÃæ½õ¤±¤Æ¤¯¤ì¤¿¤ªÎé¤ò²°¾å¤Ç>";
 	case 6:
-	    return "<ç´éŸ³ã¡ã‚ƒã‚“ã¨å‡ºä¼šã†>";
+	    return "<¶×²»¤Á¤ã¤ó¤È½Ğ²ñ¤¦>";
 	}
     case 0x01:
 	switch (c) {
 	case 0:
-	    return "<é«ªå‹å¤‰æ›´>";
+	    return "<È±·¿ÊÑ¹¹>";
 	case 1:
-	    return "<è©¦é¨“å‹‰å¼·>";
+	    return "<»î¸³ÊÙ¶¯>";
 	case 2:
-	    return "<ä¿®å­¦æ—…è¡Œç›¸è«‡>";
+	    return "<½¤³ØÎ¹¹ÔÁêÃÌ>";
 	case 3:
-	    return "<é¢¨é‚ªå¼•ãä¸­>";
+	    return "<É÷¼Ù°ú¤­Ãæ>";
 	}
 	break;
     case 0x02:
 	switch (c) {
 	case 0:
-	    return "<4/1ã®é™éœŠä¼š>";
+	    return "<4/1¤Î¹ßÎî²ñ>";
 	case 1:
-	    return "<4/1ã®é™éœŠä¼šã®ãŠè©«ã³>";
+	    return "<4/1¤Î¹ßÎî²ñ¤Î¤ªÏÍ¤Ó>";
 	}
     case 0x04:
 	switch (c) {
 	case 0:
-	    return "<è£œç¿’ã‚’å—ã‘ã‚‹>";
+	    return "<Êä½¬¤ò¼õ¤±¤ë>";
 	case 1:
-	    return "<ã‚«ãƒ©ã‚ªã‚±ã§å‹ã¤>";
+	    return "<¥«¥é¥ª¥±¤Ç¾¡¤Ä>";
 	}
     case 0x06:
 	switch (c) {
 	case 0:
-	    return "<å’æ¥­å¼ã‚’è¿ãˆã‚‹>";
+	    return "<Â´¶È¼°¤ò·Ş¤¨¤ë>";
 	}
     case 0x08:
 	switch (c) {
 	case 0:
-	    return "<ãƒãƒ³ã‚¿ãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆ1>";
+	    return "<¥Ï¥ó¥¿¡¼¥¤¥Ù¥ó¥È1>";
 	case 1:
-	    return "<ãƒãƒ³ã‚¿ãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆ2>";
+	    return "<¥Ï¥ó¥¿¡¼¥¤¥Ù¥ó¥È2>";
 	case 2:
-	    return "<ãƒ‡ãƒ¼ãƒˆç´„æŸ>";
+	    return "<¥Ç¡¼¥ÈÌóÂ«>";
 	case 3:
-	    return "<ãƒ‡ãƒ¼ãƒˆ>";
+	    return "<¥Ç¡¼¥È>";
 	case 4:
-	    return "<ãƒ¬ãƒŸã‚£å§‰ãŒæ¥ã‚‹ã“ã¨ã‚’èã>";
+	    return "<¥ì¥ß¥£»Ğ¤¬Íè¤ë¤³¤È¤òÊ¹¤¯>";
 	case 5:
-	    return "<åˆæ‹ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	    return "<½éÎø¥¤¥Ù¥ó¥È>";
 	case 6:
-	    return "<ãƒ¬ãƒŸã‚£ã¨è¿·å­ã‚’æœã™>";
+	    return "<¥ì¥ß¥£¤ÈÌÂ»Ò¤òÁÜ¤¹>";
 	}
     case 0x0c:
 	switch (c) {
 	case 0:
-	    return "<ä¸­åº­ã§ãƒ‘ãƒ³ãƒ„è¦‹ã‚‹>";
+	    return "<ÃæÄí¤Ç¥Ñ¥ó¥Ä¸«¤ë>";
 	case 1:
-	    return "<å€‹äººæƒ…å ±èªŒ>";
+	    return "<¸Ä¿Í¾ğÊó»ï>";
 	case 2:
-	    return "<æ©‹æœ¬å…ˆè¼©>";
+	    return "<¶¶ËÜÀèÇÚ>";
 	case 3:
-	    return "<ã‚²ãƒ¼ã‚»ãƒ³ã§å‹è² ç´„æŸ>";
+	    return "<¥²¡¼¥»¥ó¤Ç¾¡ÉéÌóÂ«>";
 	case 4:
-	    return "<ã‚²ãƒ¼ã‚»ãƒ³ã§å‹è² >";
+	    return "<¥²¡¼¥»¥ó¤Ç¾¡Éé>";
 	case 5:
-	    return "<ã‚²ãƒ¼ã‚»ãƒ³ã§å‹è² 2>";
+	    return "<¥²¡¼¥»¥ó¤Ç¾¡Éé2>";
 	case 6:
-	    return "<äºŒäººã§ã‚«ãƒ©ã‚ªã‚±>";
+	    return "<Æó¿Í¤Ç¥«¥é¥ª¥±>";
 	}
     case 0x0d:
 	switch (c) {
 	case 0:
-	    return "<vsæ™ºå­>";
+	    return "<vsÃÒ»Ò>";
 	case 1:
-	    return "<vsãƒ¬ãƒŸã‚£>";
+	    return "<vs¥ì¥ß¥£>";
 	case 2:
-	    return "<vsè‘µ>";
+	    return "<vs°ª>";
 	case 3:
-	    return "<vsç´éŸ³>";
+	    return "<vs¶×²»>";
 	case 4:
-	    return "<vså¿—ä¿>";
+	    return "<vs»ÖÊİ>";
 	}
 	break;
     case 0x0e:
 	switch (c) {
 	case 0:
-	    return "<åˆæ‹ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	    return "<½éÎø¥¤¥Ù¥ó¥È>";
 	case 1:
-	    return "<å¼“é“éƒ¨ã‚¤ãƒ™ãƒ³ãƒˆ>";
+	    return "<µİÆ»Éô¥¤¥Ù¥ó¥È>";
 	case 2:
-	    return "<ãƒ¬ãƒŸã‚£ã¨è¿·å­ã‚’æœã™>";
+	    return "<¥ì¥ß¥£¤ÈÌÂ»Ò¤òÁÜ¤¹>";
 	case 3:
-	    return "<ãƒ¬ãƒŸã‚£å§‰ã¨ä¼šã†>";
+	    return "<¥ì¥ß¥£»Ğ¤È²ñ¤¦>";
 	case 4:
-	    return "<è»¢æ ¡ã™ã‚‹ã®ã§å…ƒæ°—ãŒãªã„ãƒ¬ãƒŸã‚£ã«ä¼šã†>";
+	    return "<Å¾¹»¤¹¤ë¤Î¤Ç¸µµ¤¤¬¤Ê¤¤¥ì¥ß¥£¤Ë²ñ¤¦>";
 	}
     case 0x0f:
 	switch (c) {
 	case 0:
-	    return "<è‘µvsç´éŸ³>";
+	    return "<°ªvs¶×²»>";
 	case 1:
-	    return "<æ™ºå­vså¿—ä¿>";
+	    return "<ÃÒ»Òvs»ÖÊİ>";
 	case 2:
-	    return "<èŠ¹é¦™vsãƒãƒ«ãƒ>";
+	    return "<¶Ü¹ávs¥Ş¥ë¥Á>";
 	case 3:
-	    return "<ãƒãƒ«ãƒvsãƒ¬ãƒŸã‚£>";
+	    return "<¥Ş¥ë¥Ávs¥ì¥ß¥£>";
 	}
     case 0x50:
 	switch (c) {
 	case 0:
-	    return "<ã‚ã‹ã‚Šã‚¨ãƒ³ãƒ‰>";
+	    return "<¤¢¤«¤ê¥¨¥ó¥É>";
 	case 1:
-	    return "<èŠ¹é¦™ã‚¨ãƒ³ãƒ‰>";
+	    return "<¶Ü¹á¥¨¥ó¥É>";
 	case 2:
-	    return "<æ™ºå­ã‚¨ãƒ³ãƒ‰>";
+	    return "<ÃÒ»Ò¥¨¥ó¥É>";
 	case 3:
-	    return "<å¿—ä¿ã‚¨ãƒ³ãƒ‰>";
+	    return "<»ÖÊİ¥¨¥ó¥É>";
 	case 4:
-	    return "<è‘µã‚¨ãƒ³ãƒ‰>";
+	    return "<°ª¥¨¥ó¥É>";
         case 5:
-	    return "<ãƒãƒ«ãƒã‚¨ãƒ³ãƒ‰>";
+	    return "<¥Ş¥ë¥Á¥¨¥ó¥É>";
 	case 6:
-	    return "<ç´éŸ³ã‚¨ãƒ³ãƒ‰>";
+	    return "<¶×²»¥¨¥ó¥É>";
 	case 7:
-	    return "<ãƒ¬ãƒŸã‚£ã‚¨ãƒ³ãƒ‰>";
+	    return "<¥ì¥ß¥£¥¨¥ó¥É>";
 	}
     case 0x51:
 	switch (c) {
 	case 0:
-	    return "<é›…å²ã‚¨ãƒ³ãƒ‰>";
+	    return "<²í»Ë¥¨¥ó¥É>";
 	case 1:
-	    return "<ç†ç·’ã‚¨ãƒ³ãƒ‰>";
+	    return "<Íı½ï¥¨¥ó¥É>";
 	case 7:
-	    return "<ãŠã¾ã‘ã‚·ãƒŠãƒªã‚ª>";
+	    return "<¤ª¤Ş¤±¥·¥Ê¥ê¥ª>";
 	}
     }
     sprintf(foo, "%d", c);
@@ -351,7 +351,7 @@ FlgBit(int flg, int c)
 }
 
 /**
- * ã‚¨ãƒ•ã‚§ã‚¯ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å¤‰æ›
+ * ¥¨¥Õ¥§¥¯¥È¥Ñ¥é¥á¡¼¥¿ÊÑ´¹
  */
 static LvnsEffectType
 text_effect(int no)
@@ -405,7 +405,7 @@ text_effect(int no)
 }
 
 /*
- * bgm ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å¤‰æ›
+ * bgm ¥Ñ¥é¥á¡¼¥¿ÊÑ´¹
  */
 static int
 bgmmap(int no)
@@ -431,7 +431,7 @@ bgmmap(int no)
 }
 
 /* ---------------------------------------------------------------- */
-/* ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼å‡¦ç† */
+/* ¥«¥ì¥ó¥À¡¼½èÍı */
 
 static void
 init_calendar(Lvns *lvns)
@@ -456,12 +456,12 @@ set_calendar(Lvns *lvns, int day, int trans)
 
     weekday = (day + 5) % 7;
    
-    /* ä»Šæ—¥ */
-    if (weekday == 0) {        /* æ—¥æ›œ */
+    /* º£Æü */
+    if (weekday == 0) {        /* ÆüÍË */
         col = 1;
-    } else if (weekday == 6) { /* åœŸæ›œ */
+    } else if (weekday == 6) { /* ÅÚÍË */
         col = 2;
-    } else {                                              /* å¹³æ—¥ */
+    } else {                                              /* Ê¿Æü */
         col = 0; 
     }
 
@@ -493,7 +493,7 @@ set_calendar(Lvns *lvns, int day, int trans)
         day2 = LvnsLoadImage(lvns, name, NULL);
     }
 
-    /* ç”»åƒåˆæˆ */
+    /* ²èÁü¹çÀ® */
     for (i=0; i< sizeof calendar_data / sizeof calendar_data[0]; i++) {
         if (day1) {
             lvnsimage_add3(day1, calendar_anim[i].image, 
@@ -532,8 +532,8 @@ set_calendar(Lvns *lvns, int day, int trans)
 }
 
 /*
- * ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼è¡¨ç¤º
- * æ‹¡å¤§ã‚µã‚¤ã‚ºâ†’é€šå¸¸â†’æ—¥ã‚ãã‚Šâ†’æ‹¡å¤§
+ * ¥«¥ì¥ó¥À¡¼É½¼¨
+ * ³ÈÂç¥µ¥¤¥º¢ªÄÌ¾ï¢ªÆü¤á¤¯¤ê¢ª³ÈÂç
  */
 static Bool
 calendar(Lvns *lvns, int *effect_state)
@@ -597,7 +597,7 @@ calendar(Lvns *lvns, int *effect_state)
 /* ---------------------------------------------------------------- */
 
 /**
- * ã‚·ãƒŠãƒªã‚ªåˆæœŸåŒ–
+ * ¥·¥Ê¥ê¥ª½é´ü²½
  */
 void
 ToHeartScenarioInit(Lvns *lvns)
@@ -605,7 +605,7 @@ ToHeartScenarioInit(Lvns *lvns)
     ToHeartState *state = (ToHeartState *)lvns->system_state;
     int i;
 
-    /* ã‚»ãƒ¼ãƒ–çŠ¶æ…‹çŠ¶æ…‹åˆæœŸåŒ– */
+    /* ¥»¡¼¥Ö¾õÂÖ¾õÂÖ½é´ü²½ */
     LvnsInitSavePoint(lvns, &lvns->savepoint);
 
     for (i=0; i<TOHEART_FLAG_NO; i++) {
@@ -618,8 +618,8 @@ ToHeartScenarioInit(Lvns *lvns)
 }
 
 /**
- * ã—ãŠã‚ŠåˆæœŸåŒ– (å…¨ãƒ•ãƒ©ã‚°æ¶ˆå»)
- * ToHeartã¯å…¨ã—ãŠã‚Šã‚’åŒæ™‚ã«åˆæœŸåŒ–ã™ã‚‹
+ * ¤·¤ª¤ê½é´ü²½ (Á´¥Õ¥é¥°¾Ãµî)
+ * ToHeart¤ÏÁ´¤·¤ª¤ê¤òÆ±»ş¤Ë½é´ü²½¤¹¤ë
  */
 void
 ToHeartSioriInit(Lvns *lvns)
@@ -627,21 +627,21 @@ ToHeartSioriInit(Lvns *lvns)
     ToHeartState *state = (ToHeartState *)lvns->system_state;
     int i;
     
-    /* ã‚·ãƒŠãƒªã‚ªãƒ‡ãƒ¼ã‚¿åˆæœŸåŒ– */
+    /* ¥·¥Ê¥ê¥ª¥Ç¡¼¥¿½é´ü²½ */
     ToHeartScenarioInit(lvns);
 
-    /* æœªè¦‹ãƒ•ãƒ©ã‚°å…¨æ¶ˆå» */
+    /* Ì¤¸«¥Õ¥é¥°Á´¾Ãµî */
     for (i=0;i<sizeof state->seen_flag / sizeof state->seen_flag[0];i++) {
         state->seen_flag[i] = 0;
     }
 
-    /* æ®‹ã‚Šã®åˆ¶å¾¡ãƒ•ãƒ©ã‚°ã®æ¶ˆå» */
+    /* »Ä¤ê¤ÎÀ©¸æ¥Õ¥é¥°¤Î¾Ãµî */
 }
 
 static void TextParser(Lvns *lvns, int no, Bool history_mode);
 
 /*
- * ToHeart ã‚³ãƒãƒ³ãƒ‰å‡¦ç†
+ * ToHeart ¥³¥Ş¥ó¥É½èÍı
  */
 #define c (*p)
 static int
@@ -651,20 +651,20 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 
     switch (c[0]) {
     case 0x20:
-        dprintf((stderr, "[END()]\n"));	/* ã‚·ãƒŠãƒªã‚ªçµ‚äº† */
+        dprintf((stderr, "[END()]\n"));	/* ¥·¥Ê¥ê¥ª½ªÎ» */
         c++;
         return True;
 
     case 0x21:
         if (c[1] == 3) {
             ToHeartState *state = (ToHeartState *)lvns->system_state;
-            dprintf((stderr, "[ã‚¿ã‚¤ãƒˆãƒ«å‡¦ç†? 0x21,0x03]\n"));
+            dprintf((stderr, "[¥¿¥¤¥È¥ë½èÍı? 0x21,0x03]\n"));
 
 			if (!history_mode) {
-				// çœŸã£ç™½ãªèƒŒæ™¯
+				// ¿¿¤ÃÇò¤ÊÇØ·Ê
 				ToHeartLoadBG(lvns, 254);
 				
-				// ã‚¿ã‚¤ãƒˆãƒ«ãƒ­ã‚´
+				// ¥¿¥¤¥È¥ë¥í¥´
 				lvnsimage_delete(state->title);
 				state->title = LvnsLoadImage(lvns, "TITLE2.LF2", NULL);
 				state->title_mask = 16;
@@ -679,20 +679,20 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 				state->title = NULL;
 			}
             c += 2;
-        } else if (c[1] == 8) { /* è¬ ã‚ã‹ã‚Šã‚·ãƒŠãƒªã‚ªçµ‚ç›¤ã§åˆ©ç”¨ã•ã‚Œã‚‹ */
-            dprintf((stderr, "[ã‚ã‹ã‚Šã‚·ãƒŠãƒªã‚ªçµ‚ç›¤ 0x21,0x08,%x,%x,%x,%x]\n",
+        } else if (c[1] == 8) { /* Ææ ¤¢¤«¤ê¥·¥Ê¥ê¥ª½ªÈ×¤ÇÍøÍÑ¤µ¤ì¤ë */
+            dprintf((stderr, "[¤¢¤«¤ê¥·¥Ê¥ê¥ª½ªÈ× 0x21,0x08,%x,%x,%x,%x]\n",
                      c[2],c[3],c[4],c[5]));
             c += 6;
         }
         break;
 
     case 0x23:
-        dprintf((stderr, "[è¬23(%02x)]\n", c[1]));
+        dprintf((stderr, "[Ææ23(%02x)]\n", c[1]));
         c += 2;
         break;
 
-    case 0x24:		/* é¸æŠè‚¢ */
-		dprintf((stderr, "[é¸æŠè‚¢(%d)]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[2], c[1]));
+    case 0x24:		/* ÁªÂò»è */
+		dprintf((stderr, "[ÁªÂò»è(%d)]-[¥á¥Ã¥»¡¼¥¸:%d]\n", c[2], c[1]));
         LvnsSetSavePoint(lvns, &lvns->selectpoint);
         memcpy(state->flag_select, state->flag, sizeof state->flag);
         {
@@ -700,7 +700,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
             TextParser(lvns, c[1], True);
             for (i = 0; i < c[2]; i++) {
                 dprintf((stderr, 
-                         "[é¸æŠè‚¢ %d]-[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]-[ã‚ªãƒ•ã‚»ãƒƒãƒˆ:%02x]\n", 
+                         "[ÁªÂò»è %d]-[¥á¥Ã¥»¡¼¥¸:%d]-[¥ª¥Õ¥»¥Ã¥È:%02x]\n", 
                          i, c[3 + i*2], c[4 + i*2]));
 				lvns->text_attr = i+1;
 				TextParser(lvns, c[3+i*2], False);
@@ -709,34 +709,34 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 			i = LvnsWaitSelect(lvns, c[2]);
 			LvnsAddHistory(lvns, c[3+i*2]);
 
-			dprintf((stderr, "é¸æŠåˆ†å²: %d (+%02x)\n", i, c[4 + i*2]));
+			dprintf((stderr, "ÁªÂòÊ¬´ô: %d (+%02x)\n", i, c[4 + i*2]));
             c = c + 3 + c[2] * 2 + c[4+i*2];
         }
         break;
 
     case 0x26:
-        dprintf((stderr, "[è¬26()]\n"));
+        dprintf((stderr, "[Ææ26()]\n"));
         c++;
         break;
 
     case 0x27:
-        dprintf((stderr, "[1ã¤å‰ã®é¸æŠè‚¢ã«æˆ»ã‚‹ãƒãƒ¼ã‚¯????]\n"));
+        dprintf((stderr, "[1¤ÄÁ°¤ÎÁªÂò»è¤ËÌá¤ë¥Ş¡¼¥¯????]\n"));
         c++;
         break;
 
     case 0x28:
-        dprintf((stderr, "[ã‚¸ãƒ£ãƒ³ãƒ— %04x - Block %d]\n", 
+        dprintf((stderr, "[¥¸¥ã¥ó¥× %04x - Block %d]\n", 
                  c[1]*256 + c[2], c[3]));
         ToHeartLoadScenario(lvns, c[1] * 256 + c[2], c[3]);
         break;
 
     case 0x29:
-        dprintf((stderr, "[ãƒ–ãƒ­ãƒƒã‚¯ã‚¸ãƒ£ãƒ³ãƒ—- Block %d]\n", c[1]));
+        dprintf((stderr, "[¥Ö¥í¥Ã¥¯¥¸¥ã¥ó¥×- Block %d]\n", c[1]));
         LvnsLoadScenarioBlock(lvns, c[1]);
         break;
 
     case 0x2b:
-		dprintf((stderr, "[å¯å¤‰é¸æŠè‚¢(é¸æŠè‚¢ã‚ªãƒ•ã‚»ãƒƒãƒˆ:%d)] - [ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[1], c[2]));
+		dprintf((stderr, "[²ÄÊÑÁªÂò»è(ÁªÂò»è¥ª¥Õ¥»¥Ã¥È:%d)] - [¥á¥Ã¥»¡¼¥¸:%d]\n", c[1], c[2]));
         {
 			int i, select_num = 0;
 			int selmap[12];
@@ -745,7 +745,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 				int msg = state->flag[TOHEART_FLAG_VSELECT_MSG + i];
 				if (msg != 0) {
                     dprintf((stderr, 
-                             "[é¸æŠè‚¢ %d][ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d][ã‚ªãƒ•ã‚»ãƒƒãƒˆ:%02x]\n", 
+                             "[ÁªÂò»è %d][¥á¥Ã¥»¡¼¥¸:%d][¥ª¥Õ¥»¥Ã¥È:%02x]\n", 
                              i, msg, 
 							 state->flag[TOHEART_FLAG_VSELECT_OFF + i]));
 					selmap[select_num++] = i;
@@ -762,7 +762,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x2c:
-		dprintf((stderr, "[é¸æŠè‚¢å‰ä½ç½®()]\n"));
+		dprintf((stderr, "[ÁªÂò»èÁ°°ÌÃÖ()]\n"));
         {
             int i;
             LvnsSetSavePoint(lvns, &lvns->selectpoint);
@@ -807,30 +807,30 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
                             state->flag[TOHEART_FLAG_2F_BLK]);
         break;
         
-    case 0x32: /* æ—¥ä»˜ã‚’è¨­å®šã™ã‚‹ */
-        dprintf((stderr, "[æ—¥ä»˜è¨­å®š(ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ç„¡)(%02x)]\n", c[1]));
+    case 0x32: /* ÆüÉÕ¤òÀßÄê¤¹¤ë */
+        dprintf((stderr, "[ÆüÉÕÀßÄê(¥«¥ì¥ó¥À¡¼Ìµ)(%02x)]\n", c[1]));
         if (c[1] == 0xf0) {
-            state->flag[TOHEART_FLAG_DATE] = 3; /* æ—¥ä»˜åˆæœŸåŒ– */
+            state->flag[TOHEART_FLAG_DATE] = 3; /* ÆüÉÕ½é´ü²½ */
         } else {
-            state->flag[TOHEART_FLAG_DATE] ++;  /* ä¸€æ—¥è¿½åŠ  */
+            state->flag[TOHEART_FLAG_DATE] ++;  /* °ìÆüÄÉ²Ã */
         }       
         state->flag[TOHEART_FLAG_WEEKDAY] = 
             (state->flag[TOHEART_FLAG_DATE] + 5) % 7;
         c+=2;   
         break;
         
-    case 0x33: /* æ™‚åˆ»ã‚’è¨­å®šã™ã‚‹ */
-        dprintf((stderr, "[æ™‚åˆ»è¨­å®š(%02x)]\n", c[1]));
+    case 0x33: /* »ş¹ï¤òÀßÄê¤¹¤ë */
+        dprintf((stderr, "[»ş¹ïÀßÄê(%02x)]\n", c[1]));
 
-        /* è¡Œå‹•ãƒ•ãƒ©ã‚°åˆæœŸåŒ–ã€‚ã“ã“ã§è‰¯ã„ã®ã‹ã©ã†ã‹ã¯ä¸æ˜ */
+        /* ¹ÔÆ°¥Õ¥é¥°½é´ü²½¡£¤³¤³¤ÇÎÉ¤¤¤Î¤«¤É¤¦¤«¤ÏÉÔÌÀ */
         state->flag[TOHEART_FLAG_EVENT_DONE] = 0;
         state->flag[TOHEART_FLAG_IDOU] = 0;
 
         if (c[1] >= 0xf0) {  
-            /* è¡¨ç¤ºç„¡ã—æ›´æ–° */
+            /* É½¼¨Ìµ¤·¹¹¿· */
             state->flag[TOHEART_FLAG_TIME] = c[1] - 0xf0;
         } else {  
-            /* è¡¨ç¤ºæœ‰ã‚Šæ›´æ–° */
+            /* É½¼¨Í­¤ê¹¹¿· */
             int i;
             int start;
             
@@ -851,23 +851,23 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         c += 2;
         break;
         
-    case 0x34:		/* ãƒ•ãƒ©ã‚°åŠ ç®— */
+    case 0x34:		/* ¥Õ¥é¥°²Ã»» */
         dprintf((stderr, "[%s += %d]\n", FlgName(c[1]), c[2]));
         state->flag[c[1]] += c[2];
         c += 3;
         break;
         
-    case 0x35:          /* ãƒ•ãƒ©ã‚°æ¸›ç®— */
+    case 0x35:          /* ¥Õ¥é¥°¸º»» */
         dprintf((stderr, "[%s -= %d]\n", FlgName(c[1]), c[2]));
         state->flag[c[1]] -= c[2];
         c += 3;
         break;
 
-    case 0x3c:/* èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰ */
-        dprintf((stderr, "[èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰ to VRAM? 0x3c(%d/%d)]\n", c[1]/50, c[1]%50));
+    case 0x3c:/* ÇØ·Ê¥í¡¼¥É */
+        dprintf((stderr, "[ÇØ·Ê¥í¡¼¥É to VRAM? 0x3c(%d/%d)]\n", c[1]/50, c[1]%50));
 		if (!history_mode) {
 			ToHeartLoadBG(lvns, c[1]);
-			/* çµµã‚’ä»®æƒ³VRAMã«è¨­å®š */
+			/* ³¨¤ò²¾ÁÛVRAM¤ËÀßÄê */
 			lvnsimage_copy(lvns->background, lvns->vram);
 			LVNS->mergeCharacter(lvns);
 		}
@@ -875,7 +875,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x3d:
-        dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿æ¶ˆå» 0x3d(%d)]\n", c[1]));
+        dprintf((stderr, "[¥­¥ã¥é¥¯¥¿¾Ãµî 0x3d(%d)]\n", c[1]));
 		if (!history_mode) {
 			ToHeartClearCharacter(lvns, c[1]);
 		}
@@ -883,12 +883,12 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x40:
-        dprintf((stderr, "[è¬40(%02x)]\n", c[1]));
+        dprintf((stderr, "[Ææ40(%02x)]\n", c[1]));
         c += 2;
         break;
 
     case 0x42:
-        dprintf((stderr, "[VISUALãƒ­ãƒ¼ãƒ‰ 0x42 (V%02x.LF2)]\n", c[1]));
+        dprintf((stderr, "[VISUAL¥í¡¼¥É 0x42 (V%02x.LF2)]\n", c[1]));
 		if (!history_mode) { 
 			ToHeartLoadVisual(lvns, c[1]);
 		}
@@ -896,7 +896,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x43:	
-        dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿è¡¨ç¤º 0x43 (%s, C%02x%02x.LF2)]\n", 
+        dprintf((stderr, "[¥­¥ã¥é¥¯¥¿É½¼¨ 0x43 (%s, C%02x%02x.LF2)]\n", 
                  posstr[c[1]], c[2], c[3]));
 		if (!history_mode) {
 			ToHeartLoadCharacter(lvns, c[2]<<8|c[3], c[1]);
@@ -904,13 +904,13 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         c += 4;
         break;
 
-    case 0x44: /* æ¶ˆå»è¡¨ç¤ºå‡¦ç† */
-        dprintf((stderr, "[???? 0x44 è¬è¡¨ç¤ºå‡¦ç†?(%02x, %02x)]\n", c[1], c[2]));
+    case 0x44: /* ¾ÃµîÉ½¼¨½èÍı */
+        dprintf((stderr, "[???? 0x44 ÆæÉ½¼¨½èÍı?(%02x, %02x)]\n", c[1], c[2]));
 		c += 3;
         break;
 
     case 0x45:
-        dprintf((stderr, "[è¡¨ç¤ºå‡¦ç†(%02x)]\n", c[1]));
+        dprintf((stderr, "[É½¼¨½èÍı(%02x)]\n", c[1]));
 		if (!history_mode) {
 			LvnsDisp(lvns, text_effect(c[1]));
 		}
@@ -920,22 +920,22 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
     case 0x47:
 	switch (c[1]) {
 	case 1:
-		dprintf((stderr, "[ã‚»ãƒ”ã‚¢è¡¨ç¤º]\n"));
+		dprintf((stderr, "[¥»¥Ô¥¢É½¼¨]\n"));
 		lvns->sepia_mode_next = True;
 		break;
 	default:
-		dprintf((stderr, "[ãƒ‘ãƒ¬ãƒƒãƒˆå‡¦ç†? 0x47(%02x)]\n", c[1]));
+		dprintf((stderr, "[¥Ñ¥ì¥Ã¥È½èÍı? 0x47(%02x)]\n", c[1]));
 	}
         c += 2;
         break;
 
     case 0x50:
-        dprintf((stderr, "[è¬ 0x50]\n"));
+        dprintf((stderr, "[Ææ 0x50]\n"));
         c ++;
         break;
         
     case 0x55:
-        dprintf((stderr, "[åŒä¸€ãƒ–ãƒ­ãƒƒã‚¯å†…éƒ¨ã‚¸ãƒ£ãƒ³ãƒ—?(%02x)]\n", c[1]));
+        dprintf((stderr, "[Æ±°ì¥Ö¥í¥Ã¥¯ÆâÉô¥¸¥ã¥ó¥×?(%02x)]\n", c[1]));
         lvns->scn_cur += c[1];
         c += 2;
         break;
@@ -1025,7 +1025,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
             int flag = *c++;
             int data = *c++;
             int offset = *c++;
-            dprintf((stderr, "[if (%s ã® %s bitãŒON) pc += %02d)]\n",
+            dprintf((stderr, "[if (%s ¤Î %s bit¤¬ON) pc += %02d)]\n",
                      FlgName(flag), FlgBit(flag, data), offset));
             if ((state->flag[flag] & (1 << data))) 
                 lvns->scn_cur += offset;
@@ -1038,7 +1038,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
             int flag = *c++;
             int data = *c++;
             int offset = *c++;
-            dprintf((stderr, "[if (%s ã® %s bitãŒOFF) pc += %02d)]\n",
+            dprintf((stderr, "[if (%s ¤Î %s bit¤¬OFF) pc += %02d)]\n",
                      FlgName(flag), FlgBit(flag, data), offset));
             if (!(state->flag[flag] & (1 << data))) 
                 lvns->scn_cur += offset;
@@ -1058,7 +1058,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x63:
-        dprintf((stderr, "[%sã®%sbitç›®ã‚’%02xã«)]\n", 
+        dprintf((stderr, "[%s¤Î%sbitÌÜ¤ò%02x¤Ë)]\n", 
                  FlgName(c[1]), FlgBit(c[1], c[2]), c[3]));
         if (c[3]) {
             state->flag[c[1]] |= (1 << c[2]);
@@ -1069,7 +1069,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x69:
-        dprintf((stderr, "[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¡¨ç¤ºå¾Œã‚¯ãƒªã‚¢]\n"));
+        dprintf((stderr, "[¥á¥Ã¥»¡¼¥¸É½¼¨¸å¥¯¥ê¥¢]\n"));
 		TextParser(lvns, c[1], True);
 		if (!history_mode) {
 			LvnsClearText(lvns);
@@ -1078,39 +1078,39 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         c += 2;
         break;
 
-    case 0x6a:		/* ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¡¨ç¤º */
-        dprintf((stderr, "[ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸:%d]\n", c[1]));
+    case 0x6a:		/* ¥á¥Ã¥»¡¼¥¸É½¼¨ */
+        dprintf((stderr, "[¥á¥Ã¥»¡¼¥¸:%d]\n", c[1]));
 		TextParser(lvns, c[1], True);
         c += 2;
         break;
 
     case 0x6c:
-        dprintf((stderr, "[è¬6c(%02x)]\n", c[1]));
+        dprintf((stderr, "[Ææ6c(%02x)]\n", c[1]));
         c += 2;
         break;
         
     case 0x6b:
-        dprintf((stderr, "[é¸æŠè‚¢å¾Œç”»é¢æ¶ˆå»?]\n"));
+        dprintf((stderr, "[ÁªÂò»è¸å²èÌÌ¾Ãµî?]\n"));
         c++;
         break;
 
     case 0x70:
-        dprintf((stderr, "[è¬%2x()]\n", c[0]));
+        dprintf((stderr, "[Ææ%2x()]\n", c[0]));
         c ++;
         break;
 
     case 0x71:
-        dprintf((stderr, "[è¬%2x()]\n", c[0]));
+        dprintf((stderr, "[Ææ%2x()]\n", c[0]));
         c ++;
         break;
 
     case 0x72:
-        dprintf((stderr, "[è¬%2x(%x)]\n", c[0], c[1]));
+        dprintf((stderr, "[Ææ%2x(%x)]\n", c[0], c[1]));
         c += 2;
 		break;
 
     case 0x73:
-        dprintf((stderr, "[ç”»é¢ã‚’æ˜ã‚‹ãã™ã‚‹? è¬%2x(%x)]\n", c[0], c[1]));
+        dprintf((stderr, "[²èÌÌ¤òÌÀ¤ë¤¯¤¹¤ë? Ææ%2x(%x)]\n", c[0], c[1]));
 		if (!history_mode) {
 			lvns->latitude = 0;
 			LvnsLighten(lvns);
@@ -1119,22 +1119,22 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		break;
 
     case 0x74:
-        dprintf((stderr, "[è¬%2x()]\n", c[0]));
+        dprintf((stderr, "[Ææ%2x()]\n", c[0]));
         c ++;
         break;
 
     case 0x75:
-        dprintf((stderr, "[è¬%2x()]\n", c[0]));
+        dprintf((stderr, "[Ææ%2x()]\n", c[0]));
         c ++;
         break;
 
     case 0x76:
-        dprintf((stderr, "[è¬%2x()]\n", c[0]));
+        dprintf((stderr, "[Ææ%2x()]\n", c[0]));
         c ++;
         break;
 
     case 0x77:
-        dprintf((stderr, "[WhiteOut? è¬%2x(%x)]\n", c[0], c[1]));
+        dprintf((stderr, "[WhiteOut? Ææ%2x(%x)]\n", c[0], c[1]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
 			LvnsWhiteOut(lvns);
@@ -1143,7 +1143,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x78:
-        dprintf((stderr, "[WhiteIn? è¬%02x(%x)]\n", c[0], c[1]));
+        dprintf((stderr, "[WhiteIn? Ææ%02x(%x)]\n", c[0], c[1]));
 		if (!history_mode) {
 			LvnsWhiteIn(lvns);
 		}
@@ -1151,45 +1151,45 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x79: 
-        dprintf((stderr, "[??ãƒ†ã‚­ã‚¹ãƒˆæ¶ˆå»? %2x]\n", c[0]));
+        dprintf((stderr, "[??¥Æ¥­¥¹¥È¾Ãµî? %2x]\n", c[0]));
         c ++;
         break;
 
     case 0x7a:
-        dprintf((stderr, "[??ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º? %2x]\n", c[0]));
+        dprintf((stderr, "[??¥Æ¥­¥¹¥ÈÉ½¼¨? %2x]\n", c[0]));
         c ++;
         break;
 
     case 0x80:
-        dprintf((stderr, "BGM é–‹å§‹(%d)\n", c[1]));
+        dprintf((stderr, "BGM ³«»Ï(%d)\n", c[1]));
 		if (!history_mode)
 			LvnsStartMusicLoop(lvns, bgmmap(c[1]));
         c += 2;
         break;
 
     case 0x81:
-        dprintf((stderr, "BGM ãƒ•ã‚§ãƒ¼ãƒ‰åˆ¶å¾¡\n"));
+        dprintf((stderr, "BGM ¥Õ¥§¡¼¥ÉÀ©¸æ\n"));
 		if (!history_mode)
 			LvnsFadeMusic(lvns);
         c++;
         break;
 
     case 0x82:
-        dprintf((stderr, "BGMåœæ­¢\n"));
+        dprintf((stderr, "BGMÄä»ß\n"));
 		if (!history_mode)
 			LvnsPauseMusic(lvns);
         c++;
         break;
 
     case 0x85:
-        dprintf((stderr, "BGM ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç†çµ‚äº†å¾…ã¡\n"));
+        dprintf((stderr, "BGM ¥Õ¥§¡¼¥É½èÍı½ªÎ»ÂÔ¤Á\n"));
 		if (!history_mode)
 			LvnsWaitMusicFade(lvns);
         c++;
         break;
 
     case 0x87:
-        dprintf((stderr, "BGM é–‹å§‹(fadein)(%d)\n", c[1]));
+        dprintf((stderr, "BGM ³«»Ï(fadein)(%d)\n", c[1]));
 		if (!history_mode) {
 			LvnsStartMusicLoop2(lvns, bgmmap(c[1]));
 			LvnsFadeMusic(lvns);
@@ -1198,81 +1198,81 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0x88:
-        dprintf((stderr, "NEXT BGM é–‹å§‹?(%d)\n", c[1]));
+        dprintf((stderr, "NEXT BGM ³«»Ï?(%d)\n", c[1]));
 		if (!history_mode)
 			LvnsSetNextMusicLoop(lvns, bgmmap(c[1]));
         c += 2;
         break;
 
     case 0x94:
-        dprintf((stderr, "[ã‚²ãƒ¼ãƒ çµ‚äº†(94)?()]\n"));
+        dprintf((stderr, "[¥²¡¼¥à½ªÎ»(94)?()]\n"));
         c++;
         break;
 
     case 0x95:
-        dprintf((stderr, "[ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°é–‹å§‹(95)(%02x)]\n", c[1]));
+        dprintf((stderr, "[¥¨¥ó¥Ç¥£¥ó¥°³«»Ï(95)(%02x)]\n", c[1]));
 		if (!history_mode) {
-			/* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°èµ·å‹• */
+			/* ¥¨¥ó¥Ç¥£¥ó¥°µ¯Æ° */
 			ToHeartEnding(lvns);
-			/* ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°åˆ°é”ã«ã¤ãå…±é€šãƒ‡ãƒ¼ã‚¿ä¿å­˜ */
+			/* ¥¨¥ó¥Ç¥£¥ó¥°ÅşÃ£¤Ë¤Ä¤­¶¦ÄÌ¥Ç¡¼¥¿ÊİÂ¸ */
 			ToHeartSaveCommon(lvns);
 		}
         c += 2;
         return True;
 
-    case 0xa0:		/* PCMã‚¹ã‚¿ãƒ¼ãƒˆ? */
-        dprintf((stderr, "[A0 PCMèª­ã¿è¾¼ã¿(%02d)]\n", c[1]));
+    case 0xa0:		/* PCM¥¹¥¿¡¼¥È? */
+        dprintf((stderr, "[A0 PCMÆÉ¤ß¹ş¤ß(%02d)]\n", c[1]));
 		if (!history_mode)
 			LvnsLoadSound(lvns, "TH_VD%02d.P16", c[1]);
         c += 2;
         break;
 
     case 0xa1:
-        dprintf((stderr, "[A1 PCMå®Œäº†]\n"));
+        dprintf((stderr, "[A1 PCM´°Î»]\n"));
 		if (!history_mode) 
 			LvnsStopSound(lvns);
         c++;
         break;
 
     case 0xa2:
-        dprintf((stderr, "[A2 PCMå†ç”Ÿ %x %x]\n",c[1],c[2]));
+        dprintf((stderr, "[A2 PCMºÆÀ¸ %x %x]\n",c[1],c[2]));
 		if (!history_mode)
 			LvnsStartSound(lvns, c[1]); 
         c+=3;
         break;
 
     case 0xa3:
-        dprintf((stderr, "[A3 PCMåœæ­¢å¾…ã¡]\n"));
+        dprintf((stderr, "[A3 PCMÄä»ßÂÔ¤Á]\n"));
 		if (!history_mode)
 			LvnsWaitSound(lvns);
         c++;
         break;
 
     case 0xA6:
-        dprintf((stderr, "[A6 PCMé–¢é€£?]\n"));
+        dprintf((stderr, "[A6 PCM´ØÏ¢?]\n"));
         c++;
         break;
 
-    case 0xa7:	        	/* ãŠãã‚‰ãPCMé–¢ä¿‚ */
-        dprintf((stderr, "[A7 PCMé–¢é€£?(%02x, %02x)]", c[1], c[2]));
+    case 0xa7:	        	/* ¤ª¤½¤é¤¯PCM´Ø·¸ */
+        dprintf((stderr, "[A7 PCM´ØÏ¢?(%02x, %02x)]", c[1], c[2]));
         c+= 3;
         break;
 
     case 0xa8:
-        dprintf((stderr, "[A8 PCMé–¢é€£?]"));
+        dprintf((stderr, "[A8 PCM´ØÏ¢?]"));
         c++;
         break;
         
-    case 0xaf:		/* ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº† */
+    case 0xaf:		/* ¥Ö¥í¥Ã¥¯½ªÎ» */
         return True;
         break;
 
     case 0xb0:
-        LvnsNewLineText(lvns); /* æ”¹è¡Œ */
+        LvnsNewLineText(lvns); /* ²ş¹Ô */
         c++;
         break;
 
-    case 0xb2:                    /* ã‚­ãƒ¼ã‚¯ãƒªãƒƒã‚¯å¾…ã¡ */
+    case 0xb2:                    /* ¥­¡¼¥¯¥ê¥Ã¥¯ÂÔ¤Á */
 		if (!history_mode) {
 			if (!lvns->fast_text)
 				LvnsWaitKey(lvns);
@@ -1280,7 +1280,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         c++;
         break;
 
-    case 0xb3:		      /* æ”¹ãƒšãƒ¼ã‚¸ */
+    case 0xb3:		      /* ²ş¥Ú¡¼¥¸ */
 		if (!history_mode) {
 			LvnsWaitPage(lvns);
 			lvns->savepoint_flag = True;
@@ -1289,20 +1289,20 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xb4:
-        dprintf((stderr, "[è¬b4(%02x)]", c[1]));
+        dprintf((stderr, "[Ææb4(%02x)]", c[1]));
         c += 2;
         break;
 
     case 0xb6:	
-        dprintf((stderr, "[æ–‡å­—æç”»é€Ÿåº¦å¤‰æ›´(%d*10ms)]\n", c[1]));
+        dprintf((stderr, "[Ê¸»úÉÁ²èÂ®ÅÙÊÑ¹¹(%d*10ms)]\n", c[1]));
 		if (!history_mode) {
 			lvns->char_wait_time = c[1];
 		}
         c += 2;
         break;
 
-    case 0xb7:		/* æ™‚é–“å¾…ã¡ */
-        dprintf((stderr, "[æ™‚é–“å¾…ã¡(%d*10ms)]\n", c[1]));
+    case 0xb7:		/* »ş´ÖÂÔ¤Á */
+        dprintf((stderr, "[»ş´ÖÂÔ¤Á(%d*10ms)]\n", c[1]));
 		if (!history_mode) {
 			if (!lvns->fast_text && !lvns->skip) {
 				LvnsWait(lvns, c[1]);
@@ -1312,12 +1312,12 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xb8:
-        dprintf((stderr, "[è¬b8()]"));
+        dprintf((stderr, "[Ææb8()]"));
         c++;
         break;
 
     case 0xb9:
-        dprintf((stderr, "[æ–‡å­—ä½ç½®å¤‰æ›´(x=%d*8)]\n", c[1]));
+        dprintf((stderr, "[Ê¸»ú°ÌÃÖÊÑ¹¹(x=%d*8)]\n", c[1]));
 		if (!history_mode) {
 			LvnsSetTextOffset(lvns, c[1]*8);
 		}
@@ -1325,12 +1325,12 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xba:
-        dprintf((stderr, "[è¬ba(%02x,%02x)]", c[1], c[2]));
+        dprintf((stderr, "[Ææba(%02x,%02x)]", c[1], c[2]));
         c += 3;
         break;
 
-    case 0xbb:		/* ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ */
-        dprintf((stderr, "ãƒ•ãƒ©ãƒƒã‚·ãƒ¥(0xbb)\n"));
+    case 0xbb:		/* ¥Õ¥é¥Ã¥·¥å¥¨¥Õ¥§¥¯¥È */
+        dprintf((stderr, "¥Õ¥é¥Ã¥·¥å(0xbb)\n"));
 		if (!history_mode) {
 			LvnsWhiteOut(lvns);
 			LvnsWhiteIn(lvns);
@@ -1338,8 +1338,8 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		c++;
         break;
 
-    case 0xbc:		/* ã°ãƒ¼ã‚“ã€ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ?*/
-        dprintf((stderr, "ã€Œã©ã‹ã£ã€ç”»é¢æŒ¯å‹•(0xbc:%x)\n", c[1]));
+    case 0xbc:		/* ¤Ğ¡¼¤ó¡¢¥¨¥Õ¥§¥¯¥È?*/
+        dprintf((stderr, "¡Ö¤É¤«¤Ã¡×²èÌÌ¿¶Æ°(0xbc:%x)\n", c[1]));
 		if (!history_mode) {
 			LvnsClearCursor(lvns);
 			LvnsVibrato(lvns);
@@ -1347,8 +1347,8 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         c+=2;
         break;
 
-    case 0xbd:		/* èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰ãã®2 */
-		dprintf((stderr, "[èƒŒæ™¯ãƒ­ãƒ¼ãƒ‰2 (%d/%d, %02x, %02x)]\n",
+    case 0xbd:		/* ÇØ·Ê¥í¡¼¥É¤½¤Î2 */
+		dprintf((stderr, "[ÇØ·Ê¥í¡¼¥É2 (%d/%d, %02x, %02x)]\n",
 				 c[1]/50, c[1]%50, c[2], c[3]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
@@ -1360,13 +1360,13 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xbe:
-        dprintf((stderr, "[è¬be()]"));
+        dprintf((stderr, "[Ææbe()]"));
         c++;
         break;
 
-    case 0xbf:		/* ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ã‚·ãƒ¼ãƒ³ç”»åƒãƒ­ãƒ¼ãƒ‰ */
+    case 0xbf:		/* ¥Ó¥¸¥å¥¢¥ë¥·¡¼¥ó²èÁü¥í¡¼¥É */
 		dprintf((stderr,
-				 "[VISUALãƒ­ãƒ¼ãƒ‰(V%02x.LF2, %02x, %02x)]\n", c[1], c[2], c[3]));
+				 "[VISUAL¥í¡¼¥É(V%02x.LF2, %02x, %02x)]\n", c[1], c[2], c[3]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
 			LvnsClear(lvns, text_effect(c[2]));
@@ -1376,8 +1376,8 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		c += 4;
         break;
 
-    case 0xc0:		/* Hã‚·ãƒ¼ãƒ³ç”»åƒãƒ­ãƒ¼ãƒ‰ */
-		dprintf((stderr, "[Hã‚·ãƒ¼ãƒ³c0(%02x, %02x, %02x)]\n", c[1], c[2], c[3]));
+    case 0xc0:		/* H¥·¡¼¥ó²èÁü¥í¡¼¥É */
+		dprintf((stderr, "[H¥·¡¼¥óc0(%02x, %02x, %02x)]\n", c[1], c[2], c[3]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
 			LvnsClear(lvns, text_effect(c[2]));
@@ -1387,8 +1387,8 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		c += 4;
         break;
 
-    case 0xc1:		/* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿å¤‰æ›´ */
-		dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿å¤‰æ›´(%s, C%02x%02x.LF2)]\n", 
+    case 0xc1:		/* ¥­¥ã¥é¥¯¥¿ÊÑ¹¹ */
+		dprintf((stderr, "[¥­¥ã¥é¥¯¥¿ÊÑ¹¹(%s, C%02x%02x.LF2)]\n", 
 				 posstr[c[1]], c[2], c[3]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
@@ -1399,7 +1399,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xc2:
-		dprintf((stderr, "[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿è¡¨ç¤º(%s, C%02x%02x.LF2)]\n", 
+		dprintf((stderr, "[¥­¥ã¥é¥¯¥¿É½¼¨(%s, C%02x%02x.LF2)]\n", 
 				 posstr[c[1]], c[2], c[3]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
@@ -1410,7 +1410,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xc3:
-		dprintf((stderr, "[å…¨æ¶ˆå»å¾Œã‚­ãƒ£ãƒ©è¡¨ç¤º(%s, C%02x%02x.LF2)]\n", 
+		dprintf((stderr, "[Á´¾Ãµî¸å¥­¥ã¥éÉ½¼¨(%s, C%02x%02x.LF2)]\n", 
 				 posstr[c[1]], c[2], c[3]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
@@ -1421,9 +1421,9 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		c += 4;
         break;
 
-    case 0xc4:		/* èƒŒæ™¯ä»˜ãç”»é¢ãƒ­ãƒ¼ãƒ‰ */
+    case 0xc4:		/* ÇØ·ÊÉÕ¤­²èÌÌ¥í¡¼¥É */
 		dprintf((stderr, 
-				 "[èƒŒæ™¯ä»˜ãã‚­ãƒ£ãƒ©å¤‰æ›´(%s, C%02x%02x.LF2, S%02d?.LF2, %02x, %02x)]\n",
+				 "[ÇØ·ÊÉÕ¤­¥­¥ã¥éÊÑ¹¹(%s, C%02x%02x.LF2, S%02d?.LF2, %02x, %02x)]\n",
 				 posstr[c[1]], c[2], c[3], c[4], c[5], c[6]));
 		if (!history_mode) {
 			LvnsUndispText(lvns);
@@ -1435,8 +1435,8 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		c += 7;
         break;
 
-    case 0xc6:  /* 3æšãƒ­ãƒ¼ãƒ‰ */
-		dprintf((stderr, "3ã‚­ãƒ£ãƒ©åŒæ™‚è¡¨ç¤º\n"));
+    case 0xc6:  /* 3Ëç¥í¡¼¥É */
+		dprintf((stderr, "3¥­¥ã¥éÆ±»şÉ½¼¨\n"));
 		LvnsUndispText(lvns);
 		if (!history_mode) {
 			ToHeartLoadCharacter(lvns, c[2]<<8|c[3], c[1]);
@@ -1448,27 +1448,27 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
         break;
 
     case 0xc7:
-        dprintf((stderr, "[è¬c7()]\n"));
+        dprintf((stderr, "[Ææc7()]\n"));
         c++;
         break;
 
     case 0xc9:
-        dprintf((stderr, "[è¬c9()]\n"));
+        dprintf((stderr, "[Ææc9()]\n"));
         c++;
         break;
 
     case 0xcc:
-        dprintf((stderr, "[è¬cc(%02x, %02x)]\n", c[1], c[2]));
+        dprintf((stderr, "[Ææcc(%02x, %02x)]\n", c[1], c[2]));
         c += 3;
         break;
 
     case 0xcf:
-        dprintf((stderr, "[è¬cf(%02x)]", c[1]));
+        dprintf((stderr, "[Ææcf(%02x)]", c[1]));
         c += 2;
         break;
 
     case 0xf5:
-        dprintf((stderr, "[æ—¥ä»˜æ›´æ–°(ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼æœ‰)(%02x/%02x)]\n", c[1],
+        dprintf((stderr, "[ÆüÉÕ¹¹¿·(¥«¥ì¥ó¥À¡¼Í­)(%02x/%02x)]\n", c[1],
                  state->flag[TOHEART_FLAG_DATE]));
 		if (!history_mode) {
 			int effect_state;
@@ -1493,23 +1493,23 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
     case 0xf7:		
 	switch (c[1]) {
 	case 01:
-		dprintf((stderr, "[é›¨(%02x)]\n", c[1]));
+		dprintf((stderr, "[±«(%02x)]\n", c[1]));
 		ToHeartRainEffectInit(lvns, 50);
 		LvnsSetNextBackEffect(lvns, &toHeartRainEffect);
 		break;
 	case 04:
-		dprintf((stderr, "[æ¡œ(%02x)]\n", c[1]));
+		dprintf((stderr, "[ºù(%02x)]\n", c[1]));
 		ToHeartSakuraSetRandomNumber(lvns, 15);
 		LvnsSetNextBackEffect(lvns, &toHeartSakuraEffect);
 		break;
 	default:
-		dprintf((stderr, "[è¬ (%02x)]\n", c[1]));
+		dprintf((stderr, "[Ææ (%02x)]\n", c[1]));
 	}
         c += 2;
         break;
 
     case 0xf8:
-        dprintf((stderr, "[è¬f8(%02x)]\n", c[1]));
+        dprintf((stderr, "[Ææf8(%02x)]\n", c[1]));
         c += 2;
         break;
 
@@ -1518,7 +1518,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 		return True;
 
     default:
-        fprintf(stderr, "ã‚­ãƒ£ãƒƒãƒã•ã‚Œãªã‹ã£ãŸã‚³ãƒãƒ³ãƒ‰ã§ã™(%02x)\n", c[0]);
+        fprintf(stderr, "¥­¥ã¥Ã¥Á¤µ¤ì¤Ê¤«¤Ã¤¿¥³¥Ş¥ó¥É¤Ç¤¹(%02x)\n", c[0]);
 		return True;
     }
     return False;
@@ -1526,7 +1526,7 @@ CommandParser(Lvns *lvns, const u_char **p, Bool history_mode)
 #undef c
 
 /*
- * ç¦å‰‡æ–‡å­—ã®åˆ¤å®š
+ * ¶ØÂ§Ê¸»ú¤ÎÈ½Äê
  */
 static Bool
 isKinsoku(int code)
@@ -1549,8 +1549,8 @@ ToHeartDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 		int code = c[0];
 		if (code >= 0 && code < 0x20) {
 			int FontCode = (code << 8) + c[1];
-			/* ç°¡æ˜“ç¦å‰‡ & è‡ªå‹•æ”¹è¡Œå‡¦ç†
-			   ããƒã…ã‡ã‰ã£ã‚ƒã‚…ã‚‡ã‚¡ã‚£ã‚¥ã‚§ã‚©ãƒƒãƒ£ãƒ¥ãƒ§ã€ã€‚ï¼Ÿï¼ã€ã€ */
+			/* ´Ê°×¶ØÂ§ & ¼«Æ°²ş¹Ô½èÍı
+			   ¤¡¤£¤¥¤§¤©¤Ã¤ã¤å¤ç¥¡¥£¥¥¥§¥©¥Ã¥ã¥å¥ç¡¢¡£¡©¡ª¡×¡Ù */
 			LvnsDispText(lvns);
 			if (lvns->tvram[lvns->current_tvram].cur_x + 
 				lvns->tvram[lvns->current_tvram].row[lvns->tvram[lvns->current_tvram].cur_y].offset / 24 >= TEXT_WIDTH - 2) {
@@ -1592,7 +1592,7 @@ ToHeartDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 		case 0xf0:
 		case 0xf1:
 		case 0xf2:
-			/* dprintf((stderr, "[ä¸»äººå…¬åå‰(%02x)]", code));*/
+			/* dprintf((stderr, "[¼ç¿Í¸øÌ¾Á°(%02x)]", code));*/
 			code = (code - 0xd1)*2;
 			code = (((u_char*)names)[code] << 8) + ((u_char*)names)[code+1];
 			if (code) {
@@ -1605,7 +1605,7 @@ ToHeartDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 			c ++;
 			break;
 		case 0x32:
-			dprintf((stderr, "è¬ã‚³ãƒãƒ³ãƒ‰\n"));
+			dprintf((stderr, "Ææ¥³¥Ş¥ó¥É\n"));
 			c ++;
 			break;
 		default:
@@ -1617,8 +1617,8 @@ ToHeartDispText(Lvns *lvns, const u_char *c, Bool history_mode)
 
 
 /*
- * ãƒ†ã‚­ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªãƒ‘ãƒ¼ã‚µ
- * è¡¨ç¤ºãŒçµ‚äº†ã—ãŸã‚‰ True ã‚’è¿”ã™
+ * ¥Æ¥­¥¹¥È¥·¥Ê¥ê¥ª¥Ñ¡¼¥µ
+ * É½¼¨¤¬½ªÎ»¤·¤¿¤é True ¤òÊÖ¤¹
  */
 static void
 TextParser(Lvns *lvns, int no, Bool add_history)
@@ -1630,19 +1630,19 @@ TextParser(Lvns *lvns, int no, Bool add_history)
 }
 
 /* ------------------------------------------------------------ */
-/** ã‚·ãƒŠãƒªã‚ªã‚¨ãƒ³ã‚¸ãƒ³é–‹å§‹ç”¨ */
+/** ¥·¥Ê¥ê¥ª¥¨¥ó¥¸¥ó³«»ÏÍÑ */
 static void
 ToHeartStartScenario(Lvns *lvns)
 {
     ToHeartState *state = (ToHeartState*)lvns->system_state;
 
-    /* ã‚·ãƒŠãƒªã‚ªçŠ¶æ…‹å¾©æ´» */
+    /* ¥·¥Ê¥ê¥ª¾õÂÖÉü³è */
     LvnsLoadScenario(lvns, lvns->savepoint.scn, lvns->savepoint.blk);
     lvns->scn_cur = lvns->scn_cur_head + lvns->savepoint.scn_offset;
 
 	LvnsClearText(lvns);
 
-    /* ç”»é¢å¾©æ´» */
+    /* ²èÌÌÉü³è */
     if (lvns->savepoint.bg_no) {
 		int i;
         switch (lvns->savepoint.bg_type) {
@@ -1667,24 +1667,24 @@ ToHeartStartScenario(Lvns *lvns)
         ToHeartClearCharacter(lvns, 3);
     }
 
-    /* BGM å¾©æ´» */
+    /* BGM Éü³è */
     if (lvns->savepoint.current_music)
         LvnsSetNextMusicLoop(lvns, lvns->savepoint.current_music);
 
-    /* ãƒ•ãƒ©ã‚°å¾©æ´» */
+    /* ¥Õ¥é¥°Éü³è */
     memcpy(state->flag, state->flag_save, sizeof state->flag);
 
-    /* å…±é€šãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿ */
+    /* ¶¦ÄÌ¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß */
     ToHeartLoadCommon(lvns);
 
-    /* ã€Œé¸æŠè‚¢ã«æˆ»ã‚‹ã€åˆæœŸåŒ– */
+    /* ¡ÖÁªÂò»è¤ËÌá¤ë¡×½é´ü²½ */
     lvns->selectpoint = lvns->savepoint;
     memcpy(state->flag_select, state->flag_save, sizeof state->flag);
 
 }
 
 /* 
- * ToHeart ã‚·ãƒŠãƒªã‚ªãƒ‘ãƒ¼ã‚µ 
+ * ToHeart ¥·¥Ê¥ê¥ª¥Ñ¡¼¥µ 
  */
 void 
 ToHeartMain(Lvns *lvns)
@@ -1696,7 +1696,7 @@ ToHeartMain(Lvns *lvns)
 		
 		lvns->inside_state = LVNS_MAIN;
 
-		/* ã‚»ãƒ¼ãƒ–ãƒã‚¤ãƒ³ãƒˆè¨­å®š */
+		/* ¥»¡¼¥Ö¥İ¥¤¥ó¥ÈÀßÄê */
 		if (lvns->savepoint_flag) {
 			LvnsSetSavePoint(lvns, &lvns->savepoint);
 			memcpy(state->flag_save, state->flag, sizeof state->flag);
@@ -1709,7 +1709,7 @@ ToHeartMain(Lvns *lvns)
 }
 
 /**
- * ToHeart ã®ã‚¨ãƒ³ã‚¸ãƒ³ãŒå†…éƒ¨ã§åˆ©ç”¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆæœŸåŒ–ã‚’è¡Œã†
+ * ToHeart ¤Î¥¨¥ó¥¸¥ó¤¬ÆâÉô¤ÇÍøÍÑ¤¹¤ë¥Ç¡¼¥¿¤Î½é´ü²½¤ò¹Ô¤¦
  */
 void
 ToHeartStart(Lvns *lvns)
@@ -1717,17 +1717,17 @@ ToHeartStart(Lvns *lvns)
     int i;
     ToHeartState *state = (ToHeartState *)lvns->system_state;
 
-    /* è‰²è¨­å®š */
+    /* ¿§ÀßÄê */
     lvns->setPaletteIndex(lvns, TOHEART_COL_BLACK,   0,   0,   0);
     lvns->setPaletteIndex(lvns, TOHEART_COL_WHITE, 255, 255, 255);
     lvns->setPaletteIndex(lvns, TOHEART_COL_GRAY,  127, 127, 127);
     lvns->vram->black       = TOHEART_COL_BLACK;
     lvns->background->black = TOHEART_COL_BLACK;
 
-    /* æ™‚è¨ˆã‚¢ãƒ‹ãƒ¡åˆæœŸåŒ– */
+    /* »ş·×¥¢¥Ë¥á½é´ü²½ */
     LvnsInitAnimation(lvns, clock_anim);
 
-    /* ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¢ãƒ‹ãƒ¡é–¢é€£åˆæœŸåŒ– */
+    /* ¥«¥ì¥ó¥À¡¼¥¢¥Ë¥á´ØÏ¢½é´ü²½ */
     LvnsInitAnimation(lvns, calendar_anim);
     for (i=0; i< sizeof calendar_data / sizeof calendar_data[0]; i++) {
         if ((calendar_data[i].image = 
@@ -1740,10 +1740,10 @@ ToHeartStart(Lvns *lvns)
         }
     }
 
-    /* æ¡œé–¢é€£åˆæœŸåŒ– */
+    /* ºù´ØÏ¢½é´ü²½ */
     ToHeartSakuraInit(lvns);
 
-    /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ‘ãƒ¬ãƒƒãƒˆæƒ…å ±èª­ã¿å‡ºã— */
+    /* ¥­¥ã¥é¥¯¥¿¥Ñ¥ì¥Ã¥È¾ğÊóÆÉ¤ß½Ğ¤· */
     if (!(state->charpal = (void*)LvnsLoadData(lvns, "CHR_PAL.DAT", NULL))) {
         fprintf(stderr, "Can't open CHR_PAL.DAT.\n");
         exit(1);
@@ -1753,21 +1753,21 @@ ToHeartStart(Lvns *lvns)
 void
 ToHeartDispHistory(Lvns *lvns, int pos)
 {
-	LvnsClearText(lvns);         /* æ¶ˆå» */
+	LvnsClearText(lvns);         /* ¾Ãµî */
 	LvnsDispWindow(lvns);
 	if (pos >= 0 && pos < lvns->history_pos) {
 		LvnsLoadScenario(lvns, lvns->history[pos].scn, lvns->history[pos].blk);
 		ToHeartDispText(lvns, LvnsGetScenarioText(lvns, lvns->history[pos].no), True);
 	}
 
-	// ã‚«ãƒ¼ã‚½ãƒ«è¡¨ç¤º
+	// ¥«¡¼¥½¥ëÉ½¼¨
 #ifndef USE_MGL
 #define CUR_X 25
 #else
 #define CUR_X 24
 #endif
 	LvnsLocate(lvns, CUR_X, 0);
-	LvnsPuts(lvns, "â–²", 1);
+	LvnsPuts(lvns, "¢¥", 1);
 	LvnsLocate(lvns, CUR_X, 11);
-	LvnsPuts(lvns, "â–¼", 2);
+	LvnsPuts(lvns, "¢§", 2);
 }

@@ -17,8 +17,8 @@
 #include "LvnsAnim.h"
 #include "LvnsScript.h"
 
-#define TOHEART_SCN_NO  0xA96   /* ã‚·ãƒŠãƒªã‚ªã®å€‹æ•° */
-#define TOHEART_FLAG_NO  256  /* ãƒ•ãƒ©ã‚°ã®å€‹æ•°   */
+#define TOHEART_SCN_NO  0xA96   /* ¥·¥Ê¥ê¥ª¤Î¸Ä¿ô */
+#define TOHEART_FLAG_NO  256  /* ¥Õ¥é¥°¤Î¸Ä¿ô   */
 
 #define TOHEART_FLAG_EVENT_DONE 0xa6
 #define TOHEART_FLAG_IDOU 0xaf
@@ -56,14 +56,14 @@ typedef u_char THCharPal[5][48][3];
 typedef struct {
     LvnsSystemState state;
 
-    int seen_flag[(TOHEART_SCN_NO+7)/8]; /* ã‚·ãƒŠãƒªã‚ªæ—¢èª­ãƒ•ãƒ©ã‚° */
+    int seen_flag[(TOHEART_SCN_NO+7)/8]; /* ¥·¥Ê¥ê¥ª´ûÆÉ¥Õ¥é¥° */
 
-    /* ãƒ•ãƒ©ã‚°æƒ…å ± */
+    /* ¥Õ¥é¥°¾ğÊó */
     int flag[TOHEART_FLAG_NO];
     int flag_save[TOHEART_FLAG_NO];
     int flag_select[TOHEART_FLAG_NO];
 
-    /* æ¡œã®çŠ¶æ…‹ */
+    /* ºù¤Î¾õÂÖ */
     int sakura_num;
     int sakura_disp_num;
     struct {
@@ -72,27 +72,27 @@ typedef struct {
         int state;
     } sakura[50];
     
-    /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ‘ãƒ¬ãƒƒãƒˆæƒ…å ± */
+    /* ¥­¥ã¥é¥¯¥¿¥Ñ¥ì¥Ã¥È¾ğÊó */
     THCharPal *charpal;
 
-    /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿åˆæˆç”¨ */
+    /* ¥­¥ã¥é¥¯¥¿¹çÀ®ÍÑ */
     LvnsImage *character[3];
 
-    /* ãã®ä»–åˆæˆç”¨ */
+    /* ¤½¤ÎÂ¾¹çÀ®ÍÑ */
     LvnsImage *title;
     int title_mask;
 
-	int colflag[2]; /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿è¡¨ç¤ºç”¨ãƒ‘ãƒ¬ãƒƒãƒˆã®é¸æŠ */
+	int colflag[2]; /* ¥­¥ã¥é¥¯¥¿É½¼¨ÍÑ¥Ñ¥ì¥Ã¥È¤ÎÁªÂò */
 	
-    /* op ä½œæ¥­ãƒ‡ãƒ¼ã‚¿ */
-    LvnsImage *roll;    /* OP ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç”¨ãƒãƒƒãƒ•ã‚¡ */
-    LvnsImage *light;   /* OP å…‰ã®è¼ª */
+    /* op ºî¶È¥Ç¡¼¥¿ */
+    LvnsImage *roll;    /* OP ¥¹¥¯¥í¡¼¥ëÍÑ¥Ğ¥Ã¥Õ¥¡ */
+    LvnsImage *light;   /* OP ¸÷¤ÎÎØ */
 
-    int fast_calendar;  /* æ—¥ä»˜ã‚’é«˜é€Ÿè¡¨ç¤º */
+    int fast_calendar;  /* ÆüÉÕ¤ò¹âÂ®É½¼¨ */
     int calendar_day;
-    int fast_clock;     /* æ™‚é–“ã‚’é«˜é€Ÿè¡¨ç¤º */
+    int fast_clock;     /* »ş´Ö¤ò¹âÂ®É½¼¨ */
 
-    time_t sioris[5];   /* å„ã—ãŠã‚Šã®æ—¥ä»˜æƒ…å ± */
+    time_t sioris[5];   /* ³Æ¤·¤ª¤ê¤ÎÆüÉÕ¾ğÊó */
 
 } ToHeartState;
 

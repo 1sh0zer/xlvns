@@ -44,41 +44,41 @@ extern LvnsCoreClassRec lvnsCoreClassRec;
 
 typedef struct _ImageCorePart {
 
-    Lvns *info;         /* åŸºæœ¬æƒ…å ± */
+    Lvns *info;         /* ´ğËÜ¾ğÊó */
 
     /* ----------------------------------------------------------- */
-    SuperXImage *sximage;     /* ã‚¤ãƒ¡ãƒ¼ã‚¸è¡¨ç¤ºä½œæ¥­ç”¨ ximage + pixmap */
+    SuperXImage *sximage;     /* ¥¤¥á¡¼¥¸É½¼¨ºî¶ÈÍÑ ximage + pixmap */
     int xoff, yoff;
 
     /* ---------------------------------------------------------- */
-    /* CD-DA æ¼”å¥ç”¨ãƒ‡ãƒ¼ã‚¿ */
+    /* CD-DA ±éÁÕÍÑ¥Ç¡¼¥¿ */
     CDInfo *cdinfo;
 	Music music;
 
     /* -------------------------------------------------------- */
-    /* ã‚µã‚¦ãƒ³ãƒ‰å†ç”Ÿç”¨ */
-    XtInputId sound_ctl_id;     /* Xå…¥åŠ›å‡¦ç†ç”¨      */
-    int sound_ctl_fd;           /* ãƒ—ãƒ­ã‚»ã‚¹é–“é€šä¿¡ç”¨ */
+    /* ¥µ¥¦¥ó¥ÉºÆÀ¸ÍÑ */
+    XtInputId sound_ctl_id;     /* XÆşÎÏ½èÍıÍÑ      */
+    int sound_ctl_fd;           /* ¥×¥í¥»¥¹´ÖÄÌ¿®ÍÑ */
 	Sound sound;
 
     /* -------------------------------------------------------- */
-    /* ãƒªã‚½ãƒ¼ã‚¹æŒ‡å®šç”¨ */
-    int  type;                    /* ã‚·ãƒŠãƒªã‚ªã‚¨ãƒ³ã‚¸ãƒ³ç¨®åˆ¥ */
-    Bool            root_mode;    /* ãƒ«ãƒ¼ãƒˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«è¡¨ç¤ºã™ã‚‹ */
-    Bool            seen_mode;    /* å…¨æ–‡æ—¢èª­ã¨ã¿ãªã™ãƒ¢ãƒ¼ãƒ‰(for DEBUG) */
-    Bool            demo_mode;    /* ã‚ªãƒ¼ãƒˆãƒ‡ãƒ¢ãƒ¢ãƒ¼ãƒ‰ */
-    int         latitude_dark;    /* ç”»é¢ãŒæš—ã„æ™‚ã®è¼åº¦ã®æŒ‡å®š          */
-    Bool        key_click_fast;   /* æ–‡å­—è¡¨ç¤ºä¸­æ–­ */
+    /* ¥ê¥½¡¼¥¹»ØÄêÍÑ */
+    int  type;                    /* ¥·¥Ê¥ê¥ª¥¨¥ó¥¸¥ó¼ïÊÌ */
+    Bool            root_mode;    /* ¥ë¡¼¥È¥¦¥£¥ó¥É¥¦¤ËÉ½¼¨¤¹¤ë */
+    Bool            seen_mode;    /* Á´Ê¸´ûÆÉ¤È¤ß¤Ê¤¹¥â¡¼¥É(for DEBUG) */
+    Bool            demo_mode;    /* ¥ª¡¼¥È¥Ç¥â¥â¡¼¥É */
+    int         latitude_dark;    /* ²èÌÌ¤¬°Å¤¤»ş¤Îµ±ÅÙ¤Î»ØÄê          */
+    Bool        key_click_fast;   /* Ê¸»úÉ½¼¨ÃæÃÇ */
 #ifdef DEBUG
-	int         scenario_number;  /* ã‚·ãƒŠãƒªã‚ªç•ªå·æŒ‡å®šç”¨ */
+	int         scenario_number;  /* ¥·¥Ê¥ê¥ªÈÖ¹æ»ØÄêÍÑ */
 #endif
     /* -------------------------------------------------------- */
-    /* é«˜ç²¾åº¦ã‚¿ã‚¤ãƒç”¨ */
+    /* ¹âÀºÅÙ¥¿¥¤¥ŞÍÑ */
     struct timeval timer[10];
     Bool noshared;
 
     /* -------------------------------------------------------- */
-	/* Flip å‡¦ç†ç”¨ */
+	/* Flip ½èÍıÍÑ */
 	long wait_clock;
 	long wait_count;
 

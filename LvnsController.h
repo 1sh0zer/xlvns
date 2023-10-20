@@ -6,20 +6,20 @@
 
 @interface LvnsController : NSView
 {
-	/* æç”»å¯¾è±¡ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ */
+	/* •`‰æ‘ÎÛƒEƒCƒ“ƒhƒE */
     IBOutlet id mainWindow;
 
-	/* LVNS æƒ…å ±æ§‹é€ ä½“ */
+	/* LVNS î•ñ\‘¢‘Ì */
     Lvns *lvns;
 	
-	/* Flip å‡¦ç†ç”¨ */
+	/* Flip ˆ——p */
 	NSTimeInterval wait_clock;
 	NSTimeInterval wait_count;
 
-	/* å†…éƒ¨æç”»ãƒãƒƒãƒ•ã‚¡ç”¨ */
+	/* “à•”•`‰æƒoƒbƒtƒ@—p */
 	NSLvnsImage *image;
 
-	/* ã‚¿ã‚¤ãƒä¿æŒç”¨ */
+	/* ƒ^ƒCƒ}•Û—p */
     struct timeval timer[10];
 }	
 

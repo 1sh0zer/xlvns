@@ -10,7 +10,7 @@
  */
 
 /*
- * Lvns ãƒ†ã‚­ã‚¹ãƒˆå‡¦ç†ã¾ã‚ã‚Š
+ * Lvns ¥Æ¥­¥¹¥È½èÍı¤Ş¤ï¤ê
  */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@
 #include "LvnsEffect.h"
 
 /*
- * æ–‡å­—æç”»ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®å¤‰æ›´
+ * Ê¸»úÉÁ²è¥«¡¼¥½¥ë°ÌÃÖÊÑ¹¹
  */
 void
 LvnsLocate(Lvns *lvns, int x, int y)
@@ -34,7 +34,7 @@ drawChar(Lvns *lvns, int x, int y, int code, int attr)
 }
 
 /*
- * æ–‡å­—è¡¨ç¤ºä¸‹è«‹ãƒ«ãƒ¼ãƒãƒ³
+ * Ê¸»úÉ½¼¨²¼ÀÁ¥ë¡¼¥Á¥ó
  */
 static void
 PutChar(Lvns *lvns, int code, int attr)
@@ -64,17 +64,17 @@ PutChar(Lvns *lvns, int code, int attr)
 }
 
 /* 
- * ä¸€æ–‡å­—è¡¨ç¤º (LeafCodeç”¨)
+ * °ìÊ¸»úÉ½¼¨ (LeafCodeÍÑ)
  */
 void
 LvnsPutChar(Lvns *lvns, int c, int attr)
 {
     PutChar(lvns, c, attr);
 
-    /* æ–‡å­—å¤‰æ›´ */
+    /* Ê¸»úÊÑ¹¹ */
     lvns->text_written = True;
 
-    /* æ–‡å­—å˜ä½ã®å¾…ã¡æ™‚é–“æ±ºå®š */
+    /* Ê¸»úÃ±°Ì¤ÎÂÔ¤Á»ş´Ö·èÄê */
     if (!lvns->skip &&	
 		!(lvns->select && lvns->key_click_fast) &&
 		!lvns->fast_text) {
@@ -84,17 +84,17 @@ LvnsPutChar(Lvns *lvns, int c, int attr)
 
 
 /* 
- * ä¸€æ–‡å­—è¡¨ç¤º (EUCç”¨)
+ * °ìÊ¸»úÉ½¼¨ (EUCÍÑ)
  */
 void
 LvnsPutCharNormal(Lvns *lvns, int c, int attr)
 {
     PutChar(lvns, lvns->jis_to_leaf[EucToJisPack(c)], attr);
 
-    /* æ–‡å­—å¤‰æ›´ */
+    /* Ê¸»úÊÑ¹¹ */
     lvns->text_written = True;
 
-    /* æ–‡å­—å˜ä½ã®å¾…ã¡æ™‚é–“æ±ºå®š */
+    /* Ê¸»úÃ±°Ì¤ÎÂÔ¤Á»ş´Ö·èÄê */
     if (!lvns->skip &&
 		!(lvns->select && lvns->key_click_fast) &&
 		!lvns->fast_text) {
@@ -103,7 +103,7 @@ LvnsPutCharNormal(Lvns *lvns, int c, int attr)
 }
 
 /*
- * æ–‡å­—åˆ—è¡¨ç¤º(EUCæ–‡å­—åˆ—å°‚ç”¨)
+ * Ê¸»úÎóÉ½¼¨(EUCÊ¸»úÎóÀìÍÑ)
  */
 void
 LvnsPuts(Lvns *lvns, const u_char *str, int attr)
@@ -118,7 +118,7 @@ LvnsPuts(Lvns *lvns, const u_char *str, int attr)
 }
 
 /*
- * ãƒ†ã‚­ã‚¹ãƒˆã®æ¶ˆå»
+ * ¥Æ¥­¥¹¥È¤Î¾Ãµî
  */
 void
 LvnsClearText(Lvns *lvns)
@@ -139,7 +139,7 @@ LvnsClearText(Lvns *lvns)
 }
 
 /*
- * è¡Œã®è¡¨ç¤ºã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’æŒ‡å®š
+ * ¹Ô¤ÎÉ½¼¨¥ª¥Õ¥»¥Ã¥È¤ò»ØÄê
  */
 void
 LvnsSetTextOffset(Lvns *lvns, int offset)
@@ -153,7 +153,7 @@ LvnsSetTextOffset(Lvns *lvns, int offset)
 }
 
 /*
- * æ”¹è¡Œå‡¦ç†
+ * ²ş¹Ô½èÍı
  */
 void
 LvnsNewLineText(Lvns *lvns)

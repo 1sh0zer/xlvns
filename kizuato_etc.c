@@ -9,7 +9,7 @@
  */
 
 /* 
- * ç—• å„ç¨®å‡¦ç†ãƒ«ãƒ¼ãƒãƒ³
+ * º¯ ³Æ¼ï½èÍı¥ë¡¼¥Á¥ó
  */
 
 #include <stdio.h>
@@ -17,20 +17,20 @@
 #include <string.h>
 #include "kizuato.h"
 
-/* ç—• ã‚­ãƒ£ãƒ©/èƒŒæ™¯åˆæˆå‡¦ç† */
+/* º¯ ¥­¥ã¥é/ÇØ·Ê¹çÀ®½èÍı */
 void
 KizuatoMergeCharacter(Lvns *lvns)
 {
     KizuatoState *state = (KizuatoState*)lvns->system_state;
 
-    /* ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚’åˆæˆ */
+    /* ¥­¥ã¥é¥¯¥¿¤ò¹çÀ® */
     lvnsimage_add2(state->vram_char, lvns->vram, 0, 0);
 
-    /* ãƒ‘ãƒ¬ãƒƒãƒˆç½®æ› */
+    /* ¥Ñ¥ì¥Ã¥ÈÃÖ´¹ */
     if (state->change_palette) {
         int i;
         for (i=0;i<15;i++) {
-            if (state->change_palette == 5) { /* åè»¢ */
+            if (state->change_palette == 5) { /* È¿Å¾ */
                 lvns->vram->palette[i][0] ^= 0xff;
                 lvns->vram->palette[i][1] ^= 0xff;
                 lvns->vram->palette[i][2] ^= 0xff;
@@ -39,22 +39,22 @@ KizuatoMergeCharacter(Lvns *lvns)
                          150 * lvns->vram->palette[i][1] +
                          30 * lvns->vram->palette[i][2]) / 256;
                 switch (state->change_palette) {
-                case 1: /* ç™½ */
+                case 1: /* Çò */
                     lvns->vram->palette[i][0] = 
                         lvns->vram->palette[i][1] = 
                             lvns->vram->palette[i][2] = l;
                     break;
-                case 2: /* èµ¤ */
+                case 2: /* ÀÖ */
                     lvns->vram->palette[i][0] = l;
                     lvns->vram->palette[i][1] = 0;
                     lvns->vram->palette[i][2] = 0;
                     break;
-                case 3: /* ç·‘ */
+                case 3: /* ÎĞ */
                     lvns->vram->palette[i][0] = 0;
                     lvns->vram->palette[i][1] = l;
                     lvns->vram->palette[i][2] = 0;
                     break;
-                case 4: /* é’ */
+                case 4: /* ÀÄ */
                     lvns->vram->palette[i][0] = 0;
                     lvns->vram->palette[i][1] = 0;
                     lvns->vram->palette[i][2] = l;
@@ -66,7 +66,7 @@ KizuatoMergeCharacter(Lvns *lvns)
         }
     }
 
-    /* ãƒ‘ãƒ¬ãƒƒãƒˆåè»¢ */
+    /* ¥Ñ¥ì¥Ã¥ÈÈ¿Å¾ */
     if (state->reverse_palette) {
 	int i;
 	for (i=0;i<16;i++) {
@@ -78,7 +78,7 @@ KizuatoMergeCharacter(Lvns *lvns)
 }
 
 /* 
- * ç—• ç”»åƒæ¶ˆå»
+ * º¯ ²èÁü¾Ãµî
  */
 void
 KizuatoClearScreen(Lvns *lvns)
@@ -88,7 +88,7 @@ KizuatoClearScreen(Lvns *lvns)
 }
 
 /*
- * ç—• ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ­ãƒ¼ãƒ‰
+ * º¯ ¥­¥ã¥é¥¯¥¿¥í¡¼¥É
  */
 void
 KizuatoLoadCharacter(Lvns *lvns, int no, int pos)
@@ -112,7 +112,7 @@ KizuatoLoadCharacter(Lvns *lvns, int no, int pos)
 
 
 /*
- * ç—• ã‚­ãƒ£ãƒ©ã‚¯ã‚¿æ¶ˆå»
+ * º¯ ¥­¥ã¥é¥¯¥¿¾Ãµî
  */
 void
 KizuatoClearCharacter(Lvns *lvns, int pos)
@@ -143,20 +143,20 @@ KizuatoClearCharacter(Lvns *lvns, int pos)
 }
 
 /**
- * ãƒ‘ãƒ¬ãƒƒãƒˆç½®æ›ãƒ†ãƒ¼ãƒ–ãƒ«
+ * ¥Ñ¥ì¥Ã¥ÈÃÖ´¹¥Æ¡¼¥Ö¥ë
  */
 u_char kizuato_haikei_palette[][16][3] = {
-    /* æœ */
+    /* Ä« */
     { {0x00,0x00,0x00},{0x33,0x44,0x33},{0x77,0x99,0x88},{0xdd,0xff,0xcc},
       {0xff,0xff,0xff},{0x22,0x33,0x55},{0x66,0x66,0xbb},{0xbb,0xcc,0xff}, 
       {0xff,0xee,0x77},{0xff,0x33,0x44},{0x55,0x33,0x22},{0x99,0x66,0x55},
       {0xee,0x99,0x77},{0xff,0xbb,0xaa},{0xff,0xdd,0xcc},{0x88,0xaa,0x99}},
-    /* æ˜¼ */
+    /* Ãë */
     { {0x00,0x00,0x00},{0x66,0x33,0x22},{0xbb,0x77,0x33},{0xff,0xcc,0x55},
       {0xff,0xff,0xff},{0x22,0x33,0x55},{0x66,0x66,0xbb},{0xbb,0xcc,0xff}, 
       {0xff,0xee,0x77},{0xff,0x33,0x44},{0x55,0x33,0x22},{0x99,0x66,0x55},
       {0xee,0x99,0x77},{0xff,0xbb,0xaa},{0xff,0xdd,0xcc},{0x88,0xaa,0x99}},
-    /* å¤œ */
+    /* Ìë */
     { {0x00,0x00,0x00},{0x33,0x22,0x55},{0x44,0x44,0x88},{0x66,0x66,0xcc},
       {0xff,0xff,0xff},{0x22,0x33,0x55},{0x66,0x66,0xbb},{0xbb,0xcc,0xff}, 
       {0xff,0xee,0xaa},{0xdd,0x33,0x77},{0x33,0x33,0x55},{0x77,0x66,0x88},
@@ -180,15 +180,15 @@ u_char kizuato_haikei_palette[][16][3] = {
 
 #ifdef USE_MGL
 int kizuato_haikei_palette_hsb[][3][16] = {
-    /* æœ */
+    /* Ä« */
   {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}},
-    /* æ˜¼ */
+    /* Ãë */
   {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}},
-    /* å¤œ */
+    /* Ìë */
   {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}},
@@ -208,7 +208,7 @@ int kizuato_haikei_palette_hsb[][3][16] = {
 #endif
 
 /*
- * ç—• èƒŒæ™¯ç”»åƒãƒ­ãƒ¼ãƒ‰
+ * º¯ ÇØ·Ê²èÁü¥í¡¼¥É
  */
 void
 KizuatoLoadBG(Lvns *lvns, int no)
@@ -265,7 +265,7 @@ KizuatoLoadBG(Lvns *lvns, int no)
 }
 
 /*
- * ç—• é€šå¸¸ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ã‚·ãƒ¼ãƒ³ãƒ­ãƒ¼ãƒ‰
+ * º¯ ÄÌ¾ï¥Ó¥¸¥å¥¢¥ë¥·¡¼¥ó¥í¡¼¥É
  */
 void 
 KizuatoLoadVisual(Lvns *lvns, int no)
@@ -282,7 +282,7 @@ KizuatoLoadVisual(Lvns *lvns, int no)
 }
 
 /*
- * ç—• Hãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ã‚·ãƒ¼ãƒ³ãƒ­ãƒ¼ãƒ‰
+ * º¯ H¥Ó¥¸¥å¥¢¥ë¥·¡¼¥ó¥í¡¼¥É
  */
 void
 KizuatoLoadHVisual(Lvns *lvns, int no)
@@ -299,35 +299,35 @@ KizuatoLoadHVisual(Lvns *lvns, int no)
 }
 
 /*
- * ç—• ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚­ã‚¹ãƒˆãƒ­ãƒ¼ãƒ‰ 
+ * º¯ ¥·¥Ê¥ê¥ª¤Î¥Æ¥­¥¹¥È¥í¡¼¥É 
  */
 void
 KizuatoSetTextScenarioState(Lvns *lvns, int no)
 {
     KizuatoState *state = (KizuatoState*)lvns->system_state;
 
-    /* æ—¢èª­æƒ…å ±ç™»éŒ² */
+    /* ´ûÆÉ¾ğÊóÅĞÏ¿ */
     if (!lvns->seen_mode && no >= state->seen_flag[lvns->scn_current]) {
         state->seen_flag[lvns->scn_current] = no+1;
 		lvns->seen = False;
         if (!lvns->force_skip)
-            lvns->skip = False; /* ã™ã£é£›ã°ã—è§£é™¤ */
+            lvns->skip = False; /* ¤¹¤ÃÈô¤Ğ¤·²ò½ü */
         lvns->fast_text = False;
     } else {
 		lvns->seen = True;
 		if (lvns->fast_when_seen)
-			lvns->fast_text = True; /* è¦‹ãŸæ–‡æ›¸ã¯é€Ÿãè¡¨ç¤ºã™ã‚‹ */
+			lvns->fast_text = True; /* ¸«¤¿Ê¸½ñ¤ÏÂ®¤¯É½¼¨¤¹¤ë */
 	}
 }
 
 static
 LvnsCommandInfo command[] = {
-    { "select",  False },   /* æ¬¡ã®é¸æŠè‚¢ã¾ã§ã¨ã°ã™ */
-    { "image",  False },    /* ç”»åƒè¡¨ç¤º             */
-    { "save",   False },    /* ãƒ‡ãƒ¼ã‚¿ä¿å­˜     */
-    { "load",   False },    /* ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿ */
-    { "before", False },    /* å‰ã®é¸æŠè‚¢ã¾ã§æˆ»ã‚‹ */
-    { "title",  False },    /* ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ */
+    { "select",  False },   /* ¼¡¤ÎÁªÂò»è¤Ş¤Ç¤È¤Ğ¤¹ */
+    { "image",  False },    /* ²èÁüÉ½¼¨             */
+    { "save",   False },    /* ¥Ç¡¼¥¿ÊİÂ¸     */
+    { "load",   False },    /* ¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß */
+    { "before", False },    /* Á°¤ÎÁªÂò»è¤Ş¤ÇÌá¤ë */
+    { "title",  False },    /* ¥¿¥¤¥È¥ë¤ËÌá¤ë */
     { NULL,  False }
 };
 
@@ -371,18 +371,18 @@ KizuatoExecCommand(Lvns *lvns, const char *command)
     } else if (!strcmp(command, "load")) {
         KizuatoLoad(lvns);
     } else if (!strcmp(command, "before")) {
-        /* é¸æŠè‚¢ã«æˆ»ã‚‹ */
+        /* ÁªÂò»è¤ËÌá¤ë */
 		KizuatoState *state = (KizuatoState*)lvns->system_state;
         lvns->savepoint = lvns->selectpoint;
         memcpy(state->flag_save, state->flag_select, sizeof state->flag);
     } else if (!strcmp(command, "title")) {
-        /* ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ */
+        /* ¥¿¥¤¥È¥ë¤ËÌá¤ë */
 		// KizuatoToTitle(lvns);
     }
 }
 
 /*
- * ä»®æƒ³ VRAM ã«ç›´æ¥ EUC æ–‡å­—åˆ—ã‚’æç”»
+ * ²¾ÁÛ VRAM ¤ËÄ¾ÀÜ EUC Ê¸»úÎó¤òÉÁ²è
  */
 #ifndef USE_MGL
 void
@@ -540,11 +540,11 @@ static LvnsSystemState kizuato_state_base = {
 	KizuatoDispHistory,
 
 #if !defined(USE_MGL) || defined(FONT_PLUS)
-    223, /* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ */
-    226, /* æ”¹ãƒšãƒ¼ã‚¸å¾…ã¡ */
+    223, /* ¥­¡¼ÆşÎÏÂÔ¤Á */
+    226, /* ²ş¥Ú¡¼¥¸ÂÔ¤Á */
 #else
-    2084, /* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ */
-    1, /* æ”¹ãƒšãƒ¼ã‚¸å¾…ã¡ */
+    2084, /* ¥­¡¼ÆşÎÏÂÔ¤Á */
+    1, /* ²ş¥Ú¡¼¥¸ÂÔ¤Á */
 #endif
 };
 

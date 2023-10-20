@@ -23,7 +23,7 @@ LvnsImage*
 lvnsimage_load_lfg(const u_char *data, LvnsImage *over)
 {
     LvnsImage  *img;
-    u_char *work;            /* ‰ΩúÊ•≠È†òÂüü */
+    u_char *work;            /* ∫Ó∂»ŒŒ∞Ë */
     size_t size;
     int width, height, xoffset, yoffset;
 
@@ -54,7 +54,7 @@ lvnsimage_load_lfg(const u_char *data, LvnsImage *over)
     img->palette_num = 16;
     /* read palette */
     {
-        /*   4bit Âçò‰Ωç
+        /*   4bit √±∞Ã
          *   RG BR GB RG BR ...
          */
 
@@ -81,7 +81,7 @@ lvnsimage_load_lfg(const u_char *data, LvnsImage *over)
         exit(1);
     }
 
-    /* Â±ïÈñã */
+    /* ≈∏≥´ */
     leafpack_lzs(data + 48, work, size);
 
 
@@ -125,7 +125,7 @@ lvnsimage_load_lfg(const u_char *data, LvnsImage *over)
         }
     }
 
-    /* ‰ΩúÊ•≠È†òÂüüËß£Êîæ */
+    /* ∫Ó∂»ŒŒ∞Ë≤Ú ¸ */
     free(work);
     
     return img;
@@ -143,7 +143,7 @@ lvnsimage_load_lfg_palette(LvnsImage *img, const u_char *data)
     img->palette_num = 16;
     /* read palette */
     {
-        /*   4bit Âçò‰Ωç
+        /*   4bit √±∞Ã
          *   RG BR GB RG BR ...
          */
 

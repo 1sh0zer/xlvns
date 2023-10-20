@@ -9,7 +9,7 @@
  */
 
 /* 
- * ToHeart å„ç¨®å‡¦ç†ãƒ«ãƒ¼ãƒãƒ³
+ * ToHeart ³Æ¼ï½èÍı¥ë¡¼¥Á¥ó
  */
 
 #include <stdio.h>
@@ -17,7 +17,7 @@
 #include "toheart.h"
 
 /*
- * ToHeart ã‚­ãƒ£ãƒ©/èƒŒæ™¯åˆæˆå‡¦ç† 
+ * ToHeart ¥­¥ã¥é/ÇØ·Ê¹çÀ®½èÍı 
  */
 void
 ToHeartMergeCharacter(Lvns *lvns)
@@ -51,7 +51,7 @@ ToHeartMergeCharacter(Lvns *lvns)
 }
 
 /*
- * ToHeart ç”»åƒæ¶ˆå» 
+ * ToHeart ²èÁü¾Ãµî 
  */
 void
 ToHeartClearScreen(Lvns *lvns)
@@ -74,7 +74,7 @@ set_colflag(Lvns *lvns, int pos)
 }
 
 /*
- * ToHeart ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ­ãƒ¼ãƒ‰
+ * ToHeart ¥­¥ã¥é¥¯¥¿¥í¡¼¥É
  */
 void
 ToHeartLoadCharacter(Lvns *lvns, int no, int pos)
@@ -87,9 +87,9 @@ ToHeartLoadCharacter(Lvns *lvns, int no, int pos)
         return;
     }
 
-    /* ã‚ã‹ã‚Šå°‚ç”¨å‡¦ç† */
+    /* ¤¢¤«¤êÀìÍÑ½èÍı */
     if ((no >> 8) == 0) {
-        if ((state->flag[TOHEART_FLAG_AKARI] & 0x01)) { /* é«ªå‹å¤‰æ›´ */
+        if ((state->flag[TOHEART_FLAG_AKARI] & 0x01)) { /* È±·¿ÊÑ¹¹ */
             no |= 0x80;
         }
         no |= 0x100;
@@ -113,7 +113,7 @@ clear_colflag(Lvns *lvns, int pos)
 }
 
 /*
- * ToHeart ã‚­ãƒ£ãƒ©ã‚¯ã‚¿æ¶ˆå» 
+ * ToHeart ¥­¥ã¥é¥¯¥¿¾Ãµî 
  */
 void
 ToHeartClearCharacter(Lvns *lvns, int pos)
@@ -139,7 +139,7 @@ ToHeartClearCharacter(Lvns *lvns, int pos)
 }
 
 /*
- * ToHeart èƒŒæ™¯ç”»åƒãƒ­ãƒ¼ãƒ‰
+ * ToHeart ÇØ·Ê²èÁü¥í¡¼¥É
  */
 void
 ToHeartLoadBG(Lvns *lvns, int no)
@@ -164,7 +164,7 @@ ToHeartLoadBG(Lvns *lvns, int no)
 }
 
 /* 
- * ToHeart é€šå¸¸ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ã‚·ãƒ¼ãƒ³ãƒ­ãƒ¼ãƒ‰
+ * ToHeart ÄÌ¾ï¥Ó¥¸¥å¥¢¥ë¥·¡¼¥ó¥í¡¼¥É
  */
 void
 ToHeartLoadVisual(Lvns *lvns, int no)
@@ -175,12 +175,12 @@ ToHeartLoadVisual(Lvns *lvns, int no)
     if (no == 0) {
         lvnsimage_clear(lvns->background);
     } else {
-        /* ã‚ã‹ã‚Šã®é«ªå‹å‡¦ç†â€¦ */
+        /* ¤¢¤«¤ê¤ÎÈ±·¿½èÍı¡Ä */
         if ((no == 0x11 || no == 0x13) && 
             (state->flag[TOHEART_FLAG_AKARI] & 0x01)) {
             no = 0x12;
         }
-        /* ãƒ¬ãƒŸã‚£ãƒ‘ãƒ³ãƒ†ã‚£ */
+        /* ¥ì¥ß¥£¥Ñ¥ó¥Æ¥£ */
         if (no == 0x80) {
         }
         LvnsLoadBackground(lvns, "V%02x.LF2", no);
@@ -189,7 +189,7 @@ ToHeartLoadVisual(Lvns *lvns, int no)
 }
 
 /* 
- * ToHeart Hãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ã‚·ãƒ¼ãƒ³ãƒ­ãƒ¼ãƒ‰
+ * ToHeart H¥Ó¥¸¥å¥¢¥ë¥·¡¼¥ó¥í¡¼¥É
  */
 void
 ToHeartLoadHVisual(Lvns *lvns, int no)
@@ -201,24 +201,24 @@ ToHeartLoadHVisual(Lvns *lvns, int no)
 }
 
 /*
- * ToHeart ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚­ã‚¹ãƒˆãƒ­ãƒ¼ãƒ‰ 
+ * ToHeart ¥·¥Ê¥ê¥ª¤Î¥Æ¥­¥¹¥È¥í¡¼¥É 
  */
 void
 ToHeartSetTextScenarioState(Lvns *lvns, int no)
 {
     ToHeartState *state = (ToHeartState *)lvns->system_state;
 
-    /* æ—¢èª­æƒ…å ±ç™»éŒ² */
+    /* ´ûÆÉ¾ğÊóÅĞÏ¿ */
     if (!lvns->seen_mode && 
         !(state->seen_flag[lvns->scn_current/8] & (1 << (lvns->scn_current%8)))) {
 		lvns->seen = False;
         if (!lvns->force_skip)
-            lvns->skip = False; /* ã™ã£é£›ã°ã—è§£é™¤ */
+            lvns->skip = False; /* ¤¹¤ÃÈô¤Ğ¤·²ò½ü */
         lvns->fast_text = False;
     } else {
 		lvns->seen = True;
 		if (lvns->fast_when_seen)
-			lvns->fast_text = True; /* è¦‹ãŸæ–‡æ›¸ã¯é€Ÿãè¡¨ç¤ºã™ã‚‹ */
+			lvns->fast_text = True; /* ¸«¤¿Ê¸½ñ¤ÏÂ®¤¯É½¼¨¤¹¤ë */
 	}
 }
 
@@ -226,7 +226,7 @@ void
 ToHeartLoadScenario(Lvns *lvns, int no, int blk)
 {
     ToHeartState *state = (ToHeartState *)lvns->system_state;
-    /* ç¾åœ¨ã®ã‚·ãƒŠãƒªã‚ªã‚’æ—¢èª­åŒ–â€¦ */
+    /* ¸½ºß¤Î¥·¥Ê¥ê¥ª¤ò´ûÆÉ²½¡Ä */
     state->seen_flag[lvns->scn_current/8] |= (1 << (lvns->scn_current%8));
     LvnsLoadScenario(lvns, no, blk);
 }
@@ -304,7 +304,7 @@ drawChar(Lvns *lvns, int x, int y, int code, int attr)
 #endif
 
 /*
- * ä»®æƒ³ VRAM ã«ç›´æ¥ EUC æ–‡å­—åˆ—ã‚’æç”»
+ * ²¾ÁÛ VRAM ¤ËÄ¾ÀÜ EUC Ê¸»úÎó¤òÉÁ²è
  */
 #ifndef USE_MGL
 void
@@ -330,7 +330,7 @@ ToHeartPutsVRAM(Lvns *lvns, int x, int y, const u_char *str, int color)
 #endif
 
 /*
- * ãƒ†ã‚­ã‚¹ãƒˆãƒ¬ã‚¤ãƒ¤ã«ç›´æ¥ EUC æ–‡å­—åˆ—ã‚’æç”»
+ * ¥Æ¥­¥¹¥È¥ì¥¤¥ä¤ËÄ¾ÀÜ EUC Ê¸»úÎó¤òÉÁ²è
  */
 void
 ToHeartPutsTEXT(Lvns *lvns, int x, int y, const u_char *str, int attr) 
@@ -348,10 +348,10 @@ ToHeartPutsTEXT(Lvns *lvns, int x, int y, const u_char *str, int attr)
 
 static
 LvnsCommandInfo command[] = {
-    { "select",  False },   /* æ¬¡ã®é¸æŠè‚¢ã¾ã§ã¨ã°ã™ */
-    { "image",  False },    /* ç”»åƒè¡¨ç¤º             */
-    { "before", False },    /* å‰ã®é¸æŠè‚¢ã¾ã§æˆ»ã‚‹ */
-    { "title",  False },    /* ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ */
+    { "select",  False },   /* ¼¡¤ÎÁªÂò»è¤Ş¤Ç¤È¤Ğ¤¹ */
+    { "image",  False },    /* ²èÁüÉ½¼¨             */
+    { "before", False },    /* Á°¤ÎÁªÂò»è¤Ş¤ÇÌá¤ë */
+    { "title",  False },    /* ¥¿¥¤¥È¥ë¤ËÌá¤ë */
     { NULL,  False }
 };
 
@@ -388,12 +388,12 @@ ToHeartExecCommand(Lvns *lvns, const char *command)
     } else if (!strcmp(command, "image")) {
 		LvnsImageMode(lvns);
     } else if (!strcmp(command, "before")) {
-        /* é¸æŠè‚¢ã«æˆ»ã‚‹ */
+        /* ÁªÂò»è¤ËÌá¤ë */
 		ToHeartState *state = (ToHeartState*)lvns->system_state;
 		lvns->savepoint = lvns->selectpoint;
         memcpy(state->flag_save, state->flag_select, sizeof state->flag);
     } else if (!strcmp(command, "title")) {
-        /* ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ */
+        /* ¥¿¥¤¥È¥ë¤ËÌá¤ë */
     }
 }
 
@@ -431,11 +431,11 @@ static LvnsSystemState toheart_state_base = {
 	ToHeartDispHistory,
 
 #if !defined(USE_MGL) || defined(FONT_PLUS)
-    250, /* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ */
-    253  /* æ”¹ãƒšãƒ¼ã‚¸å¾…ã¡ */
+    250, /* ¥­¡¼ÆşÎÏÂÔ¤Á */
+    253  /* ²ş¥Ú¡¼¥¸ÂÔ¤Á */
 #else
-    2770, /* ã‚­ãƒ¼å…¥åŠ›å¾…ã¡ */
-    1, /* æ”¹ãƒšãƒ¼ã‚¸å¾…ã¡ */
+    2770, /* ¥­¡¼ÆşÎÏÂÔ¤Á */
+    1, /* ²ş¥Ú¡¼¥¸ÂÔ¤Á */
 #endif
 };
 
