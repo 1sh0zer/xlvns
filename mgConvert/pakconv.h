@@ -14,6 +14,11 @@
 
 #define PATH_LEN 256
 
+#include <stdio.h>
+
+#define GET_SHORT(p) (((p)[1]<<8)|(p)[0])
+#define GET_LONG(p) ((p)[3]<<24|(p)[2]<<16|(p)[1]<<8|(p)[0])
+
 #include <sys/types.h>
 
 typedef struct {
@@ -59,6 +64,14 @@ void image_delete(Image *);
 void lvnsimage_copy(Image *src, Image *dst);
 void make_hsb_image(Image *);
 u_char *pack_img(u_short *, int, int, int, int, int *);
+
+
+extern u_char *scn_data; 
+extern u_char *scn_text;
+extern unsigned char* fonttable_buffer;
+extern unsigned char* text_buf;
+extern size_t fonttable_size;
+extern size_t size_text;
 
 /*
  * lfg.c 

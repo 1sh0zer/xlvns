@@ -10,13 +10,13 @@
  */
 
 /* 
- * ¼¶ ¥ª¡¼¥×¥Ë¥ó¥°/¥¿¥¤¥È¥ë
+ * é›« ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚°/ã‚¿ã‚¤ãƒˆãƒ«
  */
 
 #include <stdio.h>
 #include "sizuku.h"
 
-/* OP ÍÑ¥¢¥Ë¥á¥Ç¡¼¥¿¡ÖÎŞ¤Î¼¶¡× */
+/* OP ç”¨ã‚¢ãƒ‹ãƒ¡ãƒ‡ãƒ¼ã‚¿ã€Œæ¶™ã®é›«ã€ */
 static LvnsAnimationData sizuku[] = {
     { LVNS_ANIM_IMAGE, "OP_S00.LFG", 50, 0, 160 },
     { LVNS_ANIM_IMAGE, "OP_S01.LFG", 50, 0, 160 },
@@ -38,7 +38,7 @@ static LvnsAnimationData sizuku[] = {
     { LVNS_ANIM_NONE, NULL, 0 }
 };
 
-/* OP ÍÑ¥¢¥Ë¥á¥Ç¡¼¥¿¡ÖÎÜÍş»Ò¡× */
+/* OP ç”¨ã‚¢ãƒ‹ãƒ¡ãƒ‡ãƒ¼ã‚¿ã€Œç‘ ç’ƒå­ã€ */
 static LvnsAnimationData ruriko[] = {
     { LVNS_ANIM_IMAGE, "OP_L0.LFG", 50, 0, 0 },
     { LVNS_ANIM_IMAGE, "OP_L1.LFG", 50, 0, 0 },
@@ -94,12 +94,12 @@ static LvnsAnimationData ruriko[] = {
 };
 
 /* ------------------------------------------------------------ */
-/** ¥²¡¼¥à½é´ü²½ÍÑ¥á¥Ë¥å¡¼ */
+/** ã‚²ãƒ¼ãƒ åˆæœŸåŒ–ç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 
 static MenuLine from_first_menu_line[] = {
-	MENULINE(5, "½é¤á¤«¤é»Ï¤á¤ë", 1),
-    MENULINE(6, "Â³¤­¤«¤é»Ï¤á¤ë", 2),
-	MENULINE(0, NULL, 0),
+    MENULINE(5, "ĞĞ°Ñ‡Ğ°Ñ‚ÑŒ Ñ Ğ½Ğ°Ñ‡Ğ°Ğ»Ğ°", 1),
+    MENULINE(6, "ĞŸÑ€Ğ¾Ğ´Ğ¾Ğ»Ğ¶Ğ¸Ñ‚ÑŒ Ñ ÑĞ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ñ", 2),
+    MENULINE(0, NULL, 0),
 };
 
 static MenuData from_first_menu = {
@@ -109,13 +109,13 @@ static MenuData from_first_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ¤·¤ª¤êÁªÂòÍÑ¥á¥Ë¥å¡¼ */
+/** ã—ãŠã‚Šé¸æŠç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 
 static MenuLine siori_select_menu_line[] = {
-	MENULINE(5, "¤·¤ª¤ê¡¡£±", 1),
-	MENULINE(6, "¤·¤ª¤ê¡¡£²", 2),
-	MENULINE(7, "¤·¤ª¤ê¡¡£³", 3),
-	MENULINE(0, NULL, 0),
+    MENULINE(5, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ 1", 1),
+    MENULINE(6, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ 2", 2),
+    MENULINE(7, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ 3", 3),
+    MENULINE(0, NULL, 0),
 };
 
 static int
@@ -125,7 +125,7 @@ SioriSelectMenuEngine(Lvns *lvns, int select)
 	
 	state->siori_no = select;
 	SizukuLoad(lvns);
-	if (lvns->savepoint.scn) { /* ¥·¥Ê¥ê¥ª¤ÎÀèÆ¬¤«? */
+	if (lvns->savepoint.scn) { /* ã‚·ãƒŠãƒªã‚ªã®å…ˆé ­ã‹? */
 		switch (LvnsMenu(lvns, &from_first_menu, True)) {
 		case -1: /* cancel */
 			return 0;
@@ -148,14 +148,14 @@ static MenuData siori_select_menu = {
 
 
 /* ------------------------------------------------------------ */
-/** ¤·¤ª¤ê½é´ü²½ÍÑ¥á¥Ë¥å¡¼ */
+/** ã—ãŠã‚ŠåˆæœŸåŒ–ç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 
 static MenuLine siori_init_menu_line[] = {
-	MENULINE(6, "½é´ü²½¤¹¤ë¤·¤ª¤ê¤òÁªÂò¤·¤Æ²¼¤µ¤¤",0),
-	MENULINE(7, "¤·¤ª¤ê¡¡£±",1),
-	MENULINE(8, "¤·¤ª¤ê¡¡£²",2),
-    MENULINE(9, "¤·¤ª¤ê¡¡£³",3),
-	MENULINE(0, NULL, 0),
+    MENULINE(6, "Ğ’Ñ‹Ğ±ĞµÑ€Ğ¸Ñ‚Ğµ ÑĞ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ Ğ´Ğ»Ñ Ğ¸Ğ½Ğ¸Ñ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ğ¸", 0),
+    MENULINE(7, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ 1", 1),
+    MENULINE(8, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ 2", 2),
+    MENULINE(9, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğµ 3", 3),
+    MENULINE(0, NULL, 0),
 };
 
 static int
@@ -175,35 +175,35 @@ static MenuData siori_init_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/**  ¥¿¥¤¥È¥ë¥á¥Ë¥å¡¼ */
+/**  ã‚¿ã‚¤ãƒˆãƒ«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 
 static MenuLine title_menu_line[] = {
-	MENULINE(7, "¥²¡¼¥à¤ò»Ï¤á¤ë",1),
-	MENULINE(8, "¤·¤ª¤ê¤Î½é´ü²½",2),
+    MENULINE(7, "é¸æŠè‚¢ Ğ¸Ğ³Ñ€Ñƒ", 1),
+    MENULINE(8, "Ğ˜Ğ½Ğ¸Ñ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ñ ÑĞ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ğ¹", 2),
 #if 0
-	MENULINE(9, "²óÁÛ¥â¡¼¥É",3),
-    MENULINE(10, "¼¡²óÍ½¹ğ",4),
+    MENULINE(9, "Ğ ĞµĞ¶Ğ¸Ğ¼ Ğ²Ğ¾ÑĞ¿Ğ¾Ğ¼Ğ¸Ğ½Ğ°Ğ½Ğ¸Ğ¹", 3),
+    MENULINE(10, "ĞĞ½Ğ¾Ğ½Ñ ÑĞ»ĞµĞ´ÑƒÑÑ‰ĞµĞ³Ğ¾ ÑĞ¿Ğ¸Ğ·Ğ¾Ğ´Ğ°", 4),
 #endif
-	MENULINE(9, "½ªÎ»¤¹¤ë",3),
-	MENULINE(0, NULL, 0),
+    MENULINE(9, "Ğ’Ñ‹Ğ¹Ñ‚Ğ¸", 3),
+    MENULINE(0, NULL, 0),
 };
 
 /*
- * ¥¿¥¤¥È¥ë¥á¥Ë¥å¡¼¥¨¥ó¥¸¥ó
+ * ã‚¿ã‚¤ãƒˆãƒ«ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¨ãƒ³ã‚¸ãƒ³
  */
 static int
 TitleMenuEngine(Lvns *lvns, int select)
 {
     switch (select) {
-    case 1: /*¥²¡¼¥à³«»Ï */
+    case 1: /*ã‚²ãƒ¼ãƒ é–‹å§‹ */
 		LvnsClearLow(lvns, LVNS_EFFECT_FADE_MASK);
 		return LvnsMenu(lvns, &siori_select_menu, True) > 0 ? 1: 0;
         
-    case 2: /* ¤·¤ª¤ê½é´ü²½ */
+    case 2: /* ã—ãŠã‚ŠåˆæœŸåŒ– */
 		LvnsMenu(lvns, &siori_init_menu, True);
 		return 0;
 
-    case 3: /* ½ªÎ» */ 
+    case 3: /* çµ‚äº† */ 
 		LvnsClearLow(lvns, LVNS_EFFECT_FADE_MASK);
 		LvnsJump(lvns, LVNS_JUMP_END);
     }
@@ -249,7 +249,7 @@ AddImage(Lvns *lvns, LvnsScript *scr,
     return True;
 }
 
-/* ¼¶ ¥ª¡¼¥×¥Ë¥ó¥°¥¹¥¯¥ê¥×¥È */
+/* é›« ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚°ã‚¹ã‚¯ãƒªãƒ—ãƒˆ */
 static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_MUSIC, (void *)16 },
     { LVNS_SCRIPT_ANIM, sizuku },
@@ -278,7 +278,7 @@ static LvnsScriptData opdata[] = {
     { LVNS_SCRIPT_END }
 };
 
-/* ¼¶ ¥ª¡¼¥×¥Ë¥ó¥° */
+/* é›« ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚° */
 void
 SizukuOpening(Lvns *lvns)
 {
@@ -290,7 +290,7 @@ SizukuOpening(Lvns *lvns)
 
 /* ------------------------------------------------------------ */
 
-/* ¼¶¥¿¥¤¥È¥ëÍÑ¥¹¥¯¥ê¥×¥È */
+/* é›«ã‚¿ã‚¤ãƒˆãƒ«ç”¨ã‚¹ã‚¯ãƒªãƒ—ãƒˆ */
 static LvnsScriptData titledata[] = {
     { LVNS_SCRIPT_FUNC, LoadImage, "TITLE0.LFG" },
     { LVNS_SCRIPT_FUNC, AddImage,  "TITLE.LFG" },

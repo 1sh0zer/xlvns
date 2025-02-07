@@ -78,10 +78,11 @@ extern void leafpack_print_type(LeafPack *);
 extern void leafpack_print_table(LeafPack *, int verbose);
 
 extern int leafpack_find(LeafPack *p, const char *name);
-extern u_char *leafpack_extract(LeafPack *p, int index, size_t * sizeret);
+extern u_char *leafpack_extract(LeafPack *p, int index, int * sizeret);
 
 void leafpack_lzs(const u_char * loadBuf, u_char * saveBuf, size_t size);
 void leafpack_lzs2(const u_char * loadBuf, u_char * saveBuf, size_t size);
 void leafpack_lzs3(const u_char * loadBuf, u_char * saveBuf, size_t size);
+void leafpack_lsz2_compress(const u_char* input, u_char* output, size_t inputSize, size_t *ouputSize);
 
 #endif

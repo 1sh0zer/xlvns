@@ -365,7 +365,7 @@ leafpack_find(LeafPack *lp, const char *name)
 }
 
 u_char *
-leafpack_extract(LeafPack *lp, int index, size_t * sizeret)
+leafpack_extract(LeafPack *lp, int index, int * sizeret)
 {
     int i;
     u_char *ret;
@@ -577,6 +577,74 @@ leafpack_lzs2(const u_char * pLoadBuff, u_char * pSaveBuff,
     }
 }
 
+
+void 
+leafpack_lsz2_compress(const u_char* input, u_char* output, size_t inputSize, size_t *ouputSize)
+{
+    u_char TextBuff[0x1011];
+    memset(TextBuff, 0, sizeof(TextBuff));
+    
+    size_t inputIndex = 0;
+    size_t outputIndex = 0;
+    size_t textIndex = 0xfee;
+    u_char flag = 0;
+    int flagBit = 0;
+    
+    u_char *flagPosition = &output[outputIndex++];
+    *flagPosition = 0;
+    
+    while (inputIndex < inputSize) 
+    {
+        size_t matchLength = 0;
+        size_t matchOffset = 0; 
+        for(int i = 1; i < 0x0fff; i++)
+        {
+            size_t currentMatchLength = 0;
+            while(currentMatchLength < 18 && TextBuff[(textIndex - i) & 0x0fff] == input[inputIndex + currentMatchLength])
+            {
+                currentMatchLength++;
+                if(inputIndex + currentMatchLength >= inputSize) break;
+            }
+            if(currentMatchLength > matchLength)
+            {
+                matchLength = currentMatchLength;
+                matchOffset = i;
+            }
+        }
+        if( matchLength >= 3)
+        {
+            u_short lFlag = ((matchOffset & 0x0fff << 4)) | (matchLength - 3);
+            output[outputIndex++] = ~((lFlag & 0x00ff));
+			printf("%02x", ~((lFlag & 0x00ff)));
+			printf(" %02x", ~((lFlag >> 8) & 0x000f));
+			printf("\n");
+            output[outputIndex++] = ~((lFlag >> 8) & 0x000f);
+        }
+        else 
+        {
+            output[outputIndex++] = ~input[inputIndex++];
+			printf("%02x",  ~input[inputIndex++]);
+			printf("\n");
+            TextBuff[textIndex++] = input[inputIndex - 1];
+            flag = (flag << 1 | 0x01);
+        }
+        textIndex &= 0x0fff;
+        
+        if(++flagBit == 8)
+        {
+            *flagPosition = ~flag;
+            flagPosition = &output[outputIndex++];
+            *flagPosition = 0;
+            flag = 0;
+            flagBit = 0;
+        }
+    }
+    if(flagBit > 0)
+    {
+        *flagPosition = ~flag << (8 - flagBit);
+    }
+    *ouputSize = outputIndex;
+}
 
 void
 leafpack_lzs3(const u_char * pLoadBuff, u_char * pSaveBuff,

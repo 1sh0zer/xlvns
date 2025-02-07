@@ -15,7 +15,7 @@
 #include "lvnsimage.h"
 
 /**
- * LVNS ÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿À¸À®
+ * LVNS ç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ç”Ÿæˆ
  */
 LvnsImage *
 lvnsimage_new(int width, int height, int xoffset, int yoffset)
@@ -46,7 +46,7 @@ lvnsimage_new(int width, int height, int xoffset, int yoffset)
 }
 
 /**
- * LVNS ÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤ÎÇË´ş
+ * LVNS ç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®ç ´æ£„
  */
 void
 lvnsimage_delete(LvnsImage *image)
@@ -58,7 +58,7 @@ lvnsimage_delete(LvnsImage *image)
 }
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤Î¾Ãµî (¹õ¤Ç¾Ãµî)
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®æ¶ˆå» (é»’ã§æ¶ˆå»)
  */
 void
 lvnsimage_clear(LvnsImage *img)
@@ -74,7 +74,7 @@ lvnsimage_clear(LvnsImage *img)
 
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤Î¾Ãµî (Æ©ÌÀ¤Ç¾Ãµî)
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®æ¶ˆå» (é€æ˜ã§æ¶ˆå»)
  */
 void
 lvnsimage_clear_transparent(LvnsImage *img)
@@ -90,7 +90,7 @@ lvnsimage_clear_transparent(LvnsImage *img)
 }
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤ÎÆÃÄêÎÎ°è¤ò0ÈÖ¤Î¥Ô¥¯¥»¥ë¤Ç¾Ãµî
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®ç‰¹å®šé ˜åŸŸã‚’0ç•ªã®ãƒ”ã‚¯ã‚»ãƒ«ã§æ¶ˆå»
  */
 void
 lvnsimage_clear_area(LvnsImage *img, int x, int y, int w, int h)
@@ -101,7 +101,7 @@ lvnsimage_clear_area(LvnsImage *img, int x, int y, int w, int h)
 }
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤ÎÆÃÄêÎÎ°è¤òÆ©ÌÀ¿§¤Î¥Ô¥¯¥»¥ë¤Ç¾Ãµî
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®ç‰¹å®šé ˜åŸŸã‚’é€æ˜è‰²ã®ãƒ”ã‚¯ã‚»ãƒ«ã§æ¶ˆå»
  */
 void
 lvnsimage_clear_area_transparent(LvnsImage *img, int x, int y, int w, int h)
@@ -113,7 +113,7 @@ lvnsimage_clear_area_transparent(LvnsImage *img, int x, int y, int w, int h)
 
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤ò»ØÄê¤·¤¿¿§¤Ç¾Ãµî
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã—ãŸè‰²ã§æ¶ˆå»
  */
 void
 lvnsimage_clear_color(LvnsImage *img, int r, int g, int b)
@@ -126,7 +126,7 @@ lvnsimage_clear_color(LvnsImage *img, int r, int g, int b)
 }
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¥Ç¡¼¥¿¤ò»ØÄê¤·¤¿¿§¤Ç¾Ãµî
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã—ãŸè‰²ã§æ¶ˆå»
  */
 void
 lvnsimage_clear_index(LvnsImage *img, int idx)
@@ -136,7 +136,7 @@ lvnsimage_clear_index(LvnsImage *img, int idx)
 
 
 /**
- * LVNSÍÑ¥¤¥á¡¼¥¸¤ÎÆÃÄêÎÎ°è¤ò»ØÄê¤·¤¿¿§¤ÇÅÉ¤êÄÙ¤¹
+ * LVNSç”¨ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ç‰¹å®šé ˜åŸŸã‚’æŒ‡å®šã—ãŸè‰²ã§å¡—ã‚Šæ½°ã™
  */
 void
 lvnsimage_boxfill(LvnsImage *img, int idx,
@@ -148,7 +148,7 @@ lvnsimage_boxfill(LvnsImage *img, int idx,
 }
 
 /**
- * ¥Ñ¥ì¥Ã¥È¾ğÊó¤Î¤ß¥³¥Ô¡¼¤¹¤ë
+ * ãƒ‘ãƒ¬ãƒƒãƒˆæƒ…å ±ã®ã¿ã‚³ãƒ”ãƒ¼ã™ã‚‹
  */
 void
 lvnsimage_copy_palette(LvnsImage *src, LvnsImage *dst)
@@ -160,8 +160,8 @@ lvnsimage_copy_palette(LvnsImage *src, LvnsImage *dst)
 
 
 /**
- * Ã±½ã¤ÊÁ´ÂÎ¤Î¥³¥Ô¡¼¤ò¹Ô¤¦¡£
- * ¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤
+ * å˜ç´”ãªå…¨ä½“ã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã†ã€‚
+ * ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„
  */
 void
 lvnsimage_copy(LvnsImage *src, LvnsImage *dst)
@@ -189,8 +189,8 @@ lvnsimage_copy(LvnsImage *src, LvnsImage *dst)
 }
 
 /**
- * Ã±½ã¤ÊÁ´ÂÎ¤Î¥³¥Ô¡¼¤ò¹Ô¤¦
- * ³¨¤¬¤Ê¤¤ÉôÊ¬¤Ï col ¤Î¿§¤ÇÅÉ¤êÄÙ¤¹
+ * å˜ç´”ãªå…¨ä½“ã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã†
+ * çµµãŒãªã„éƒ¨åˆ†ã¯ col ã®è‰²ã§å¡—ã‚Šæ½°ã™
  */
 void
 lvnsimage_copy2(LvnsImage *src, LvnsImage *dst, int col)
@@ -205,7 +205,7 @@ lvnsimage_copy2(LvnsImage *src, LvnsImage *dst, int col)
         int i,j;
         u_char *p = src->data;
 
-        /* Â¾¤ÎÉôÊ¬¤Ï¾Ãµî... XXX */
+        /* ä»–ã®éƒ¨åˆ†ã¯æ¶ˆå»... XXX */
         memset(dst->data, col, dst->rwidth * dst->rheight);
 
         for (i=0; i<src->rheight; i++) {
@@ -220,8 +220,8 @@ lvnsimage_copy2(LvnsImage *src, LvnsImage *dst, int col)
 
 
 /**
- * »ØÄê¤·¤¿ÎÎ°è¤Î¥³¥Ô¡¼¤ò¹Ô¤¦¡£
- * src ¤Î¥ª¥Õ¥»¥Ã¥È¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¡£
+ * æŒ‡å®šã—ãŸé ˜åŸŸã®ã‚³ãƒ”ãƒ¼ã‚’è¡Œã†ã€‚
+ * src ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ã€‚
  */
 void
 lvnsimage_copy_area(LvnsImage *src, LvnsImage *dst, int x, int y, int w, int h, int x2, int y2)
@@ -272,7 +272,7 @@ lvnsimage_copy_area2(LvnsImage *src, LvnsImage *dst, int x, int y, int w, int h)
 
 
 /**
- * ¥Ñ¥ì¥Ã¥È¤òº®¤¼¤³¤à
+ * ãƒ‘ãƒ¬ãƒƒãƒˆã‚’æ··ãœã“ã‚€
  */
 void
 lvnsimage_add_pal(LvnsImage *dst, u_char pal[][3], int transparent, int *index, int num)
@@ -305,8 +305,8 @@ lvnsimage_add_pal(LvnsImage *dst, u_char pal[][3], int transparent, int *index, 
 
 
 /* 
- * ¶¯À©¹çÀ®¡£¥Ñ¥ì¥Ã¥È¤â¤Ş¤¼¤Æ¡¢index ÊÑ´¹¤ò¹Ô¤¦¡£
- * ²èÁü¤Î¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¤¿¤á¡¢¤Ï¤ß¤Ç¤ë¤ÈÇËÃ¾¤¹¤ë
+ * å¼·åˆ¶åˆæˆã€‚ãƒ‘ãƒ¬ãƒƒãƒˆã‚‚ã¾ãœã¦ã€index å¤‰æ›ã‚’è¡Œã†ã€‚
+ * ç”»åƒã®ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ãŸã‚ã€ã¯ã¿ã§ã‚‹ã¨ç ´ç¶»ã™ã‚‹
  */
 void
 lvnsimage_add(LvnsImage *src, LvnsImage *dst, int x, int y)
@@ -332,8 +332,8 @@ lvnsimage_add(LvnsImage *src, LvnsImage *dst, int x, int y)
 }
 
 /* 
- * ¶¯À©¹çÀ®¡£¥Ñ¥ì¥Ã¥È¤Ï¹çÀ®¤·¤Ê¤¤ (dst Â¦¤Î¤â¤Î¤ò¤½¤Î¤Ş¤Ş»È¤¦)
- * ²èÁü¤Î¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¤¿¤á¡¢¤Ï¤ß¤Ç¤ë¤ÈÇËÃ¾¤¹¤ë
+ * å¼·åˆ¶åˆæˆã€‚ãƒ‘ãƒ¬ãƒƒãƒˆã¯åˆæˆã—ãªã„ (dst å´ã®ã‚‚ã®ã‚’ãã®ã¾ã¾ä½¿ã†)
+ * ç”»åƒã®ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ãŸã‚ã€ã¯ã¿ã§ã‚‹ã¨ç ´ç¶»ã™ã‚‹
  */
 void
 lvnsimage_add2(LvnsImage *src, LvnsImage *dst, int x, int y)
@@ -356,9 +356,9 @@ lvnsimage_add2(LvnsImage *src, LvnsImage *dst, int x, int y)
 }
 
 /* 
- * ¶¯À©¹çÀ®¡£ToHeart ¤Î¥«¥ì¥ó¥À¡¼½èÍıÀìÍÑ
- * ²èÁü¤Î¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¤¿¤á¡¢¤Ï¤ß¤Ç¤ë¤ÈÇËÃ¾¤¹¤ë
- * (dummy °ú¿ô¤Ï MGL ÍÑ¤Î image_add3 ¤È¤Î¸ß´¹¤Î¤¿¤á¤Î¥À¥ß¡¼¤Ç¤¹ by TF)
+ * å¼·åˆ¶åˆæˆã€‚ToHeart ã®ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼å‡¦ç†å°‚ç”¨
+ * ç”»åƒã®ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ãŸã‚ã€ã¯ã¿ã§ã‚‹ã¨ç ´ç¶»ã™ã‚‹
+ * (dummy å¼•æ•°ã¯ MGL ç”¨ã® image_add3 ã¨ã®äº’æ›ã®ãŸã‚ã®ãƒ€ãƒŸãƒ¼ã§ã™ by TF)
  */
 void
 lvnsimage_add3(LvnsImage *src, LvnsImage *dst, int x, int y, int pixoff, int transparent, int dummy)
@@ -381,8 +381,8 @@ lvnsimage_add3(LvnsImage *src, LvnsImage *dst, int x, int y, int pixoff, int tra
 }
 
 /* 
- * ¶¯À©¹çÀ®¡£¥Ñ¥ì¥Ã¥È¤Ï¥ª¥Õ¥»¥Ã¥È½èÍı
- * ²èÁü¤Î¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤Ï¹Ô¤Ã¤Æ¤¤¤Ê¤¤¤¿¤á¡¢¤Ï¤ß¤Ç¤ë¤ÈÇËÃ¾¤¹¤ë
+ * å¼·åˆ¶åˆæˆã€‚ãƒ‘ãƒ¬ãƒƒãƒˆã¯ã‚ªãƒ•ã‚»ãƒƒãƒˆå‡¦ç†
+ * ç”»åƒã®ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã¯è¡Œã£ã¦ã„ãªã„ãŸã‚ã€ã¯ã¿ã§ã‚‹ã¨ç ´ç¶»ã™ã‚‹
  */
 void
 lvnsimage_add4(LvnsImage *src, LvnsImage *dst, int x, int y, int pixoff)
@@ -405,9 +405,9 @@ lvnsimage_add4(LvnsImage *src, LvnsImage *dst, int x, int y, int pixoff)
 }
 
 /*
- * 16¡ß16 ¤ÎÌÖÌÜ¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ë¤è¤ë¹çÀ®½èÍı
- * @param mask 1-15¤ÎÈÏ°Ï
- * @param index ¹çÀ®ÍÑ index ÊÑ´¹¥Ş¥Ã¥×
+ * 16Ã—16 ã®ç¶²ç›®ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ã‚ˆã‚‹åˆæˆå‡¦ç†
+ * @param mask 1-15ã®ç¯„å›²
+ * @param index åˆæˆç”¨ index å¤‰æ›ãƒãƒƒãƒ—
  */
 static void 
 lvnsimage_add_mask_base(LvnsImage *src, LvnsImage *dst, int x, int y, int mask, int idx_off)
@@ -427,8 +427,8 @@ lvnsimage_add_mask_base(LvnsImage *src, LvnsImage *dst, int x, int y, int mask, 
 }
 
 /*
- * 16¡ß16¤ÎÌÖÌÜ¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ë¤è¤ë¹çÀ®½èÍı
- * ¥Ñ¥ì¥Ã¥È¤Ï¤Ş¤¼¤³¤à
+ * 16Ã—16ã®ç¶²ç›®ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ã‚ˆã‚‹åˆæˆå‡¦ç†
+ * ãƒ‘ãƒ¬ãƒƒãƒˆã¯ã¾ãœã“ã‚€
  */
 void
 lvnsimage_add_mask(LvnsImage *src, LvnsImage *dst, int x, int y, int mask, int idx_off)
@@ -441,8 +441,8 @@ lvnsimage_add_mask(LvnsImage *src, LvnsImage *dst, int x, int y, int mask, int i
 }
 
 /*
- * 16¡ß16¤ÎÌÖÌÜ¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ç¥³¥Ô¡¼¤¹¤ë
- * »ØÄê¤·¤¿ºÂÉ¸¤«¤é mask ¤Ç»ØÄê¤µ¤ì¤¿¥Ñ¥¿¡¼¥ó¤Ç½èÍı
+ * 16Ã—16ã®ç¶²ç›®ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚³ãƒ”ãƒ¼ã™ã‚‹
+ * æŒ‡å®šã—ãŸåº§æ¨™ã‹ã‚‰ mask ã§æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¿ãƒ¼ãƒ³ã§å‡¦ç†
  */
 void 
 lvnsimage_copy_mask_unit(LvnsImage *src, LvnsImage *dst, int x, int y, int mask)
@@ -463,8 +463,8 @@ lvnsimage_copy_mask_unit(LvnsImage *src, LvnsImage *dst, int x, int y, int mask)
 }
 
 /*
- * 16¡ß16¤Î¶ë·Á¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ç¥³¥Ô¡¼¤¹¤ë¡£
- * »ØÄê¤·¤¿ºÂÉ¸¤«¤é mask ¤Ç»ØÄê¤µ¤ì¤¿¥Ñ¥¿¡¼¥ó¤Ç½èÍı
+ * 16Ã—16ã®çŸ©å½¢ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
+ * æŒ‡å®šã—ãŸåº§æ¨™ã‹ã‚‰ mask ã§æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¿ãƒ¼ãƒ³ã§å‡¦ç†
  */
 void
 lvnsimage_copy_squaremask_unit(LvnsImage *src, LvnsImage *dst, int x, int y, int mask)
@@ -496,8 +496,8 @@ lvnsimage_copy_squaremask_unit(LvnsImage *src, LvnsImage *dst, int x, int y, int
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¤Î³°Éô¤«¤é¤ÎÀßÄê
- * ¸Ä¿ô»ØÄê¤¢¤ê
+ * ãƒ‘ãƒ¬ãƒƒãƒˆã®å¤–éƒ¨ã‹ã‚‰ã®è¨­å®š
+ * å€‹æ•°æŒ‡å®šã‚ã‚Š
  */
 void
 lvnsimage_set_palette(LvnsImage *image, u_char paletteinfo[][3], int num) 
@@ -507,7 +507,7 @@ lvnsimage_set_palette(LvnsImage *image, u_char paletteinfo[][3], int num)
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¤Î³°Éô¤«¤é¤Î¾å½ñ¤­
+ * ãƒ‘ãƒ¬ãƒƒãƒˆã®å¤–éƒ¨ã‹ã‚‰ã®ä¸Šæ›¸ã
  */
 void
 lvnsimage_set_palette2(LvnsImage *image, u_char paletteinfo[][3], int num) 
@@ -516,7 +516,7 @@ lvnsimage_set_palette2(LvnsImage *image, u_char paletteinfo[][3], int num)
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¤Î³°Éô¤«¤é¤Î¾å½ñ¤­
+ * ãƒ‘ãƒ¬ãƒƒãƒˆã®å¤–éƒ¨ã‹ã‚‰ã®ä¸Šæ›¸ã
  */
 void
 lvnsimage_set_palette3(LvnsImage *image, u_char *paletteinfo, int pos, int num) 
@@ -532,7 +532,7 @@ lvnsimage_set_palette3(LvnsImage *image, u_char *paletteinfo, int pos, int num)
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¤Î³°Éô¤«¤é¤Î¾å½ñ¤­
+ * ãƒ‘ãƒ¬ãƒƒãƒˆã®å¤–éƒ¨ã‹ã‚‰ã®ä¸Šæ›¸ã
  */
 void
 lvnsimage_set_palette4(LvnsImage *image, u_char *paletteinfo, int pos, int num) 
@@ -548,8 +548,8 @@ lvnsimage_set_palette4(LvnsImage *image, u_char *paletteinfo, int pos, int num)
 }
 
 /*
- * ÆâÉô´Ø¿ô¡£ÅÀ¤ò¤¦¤Ä¡£
- * ¤Ï¤ß¤Ç¤Î¥Á¥§¥Ã¥¯¤ò¹Ô¤Ã¤Æ¤¤¤ë
+ * å†…éƒ¨é–¢æ•°ã€‚ç‚¹ã‚’ã†ã¤ã€‚
+ * ã¯ã¿ã§ã®ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã£ã¦ã„ã‚‹
  */
 static void
 lvnsimage_put_pixel(LvnsImage *image, int x, int y, int pixel)
@@ -561,8 +561,8 @@ lvnsimage_put_pixel(LvnsImage *image, int x, int y, int pixel)
 }
 
 /*
- * ÆâÉô´Ø¿ô
- * »ØÄê¤·¤¿¥µ¥¤¥º¤Î¶ë·Á¤ÇÅÀ¤òÂÇ¤Ä
+ * å†…éƒ¨é–¢æ•°
+ * æŒ‡å®šã—ãŸã‚µã‚¤ã‚ºã®çŸ©å½¢ã§ç‚¹ã‚’æ‰“ã¤
  */ 
 static void 
 lvnsimage_put_box_pixel(LvnsImage *image, int x, int y, int size, int pixel)
@@ -576,7 +576,7 @@ lvnsimage_put_box_pixel(LvnsImage *image, int x, int y, int size, int pixel)
 }
 
 /*
- * »ØÄê¤·¤¿¥µ¥¤¥º¤Î¶ë·Á¤ÎÅÀ¤Ç±ß¤ò½ñ¤¯
+ * æŒ‡å®šã—ãŸã‚µã‚¤ã‚ºã®çŸ©å½¢ã®ç‚¹ã§å††ã‚’æ›¸ã
  */
 void
 lvnsimage_circle(LvnsImage *image, int xc, int yc, int r, int size, int pixel)
@@ -601,8 +601,8 @@ lvnsimage_circle(LvnsImage *image, int xc, int yc, int r, int size, int pixel)
 }
 
 /*
- * 24¡ß24 ¤Î¥Ó¥Ã¥È¥Ş¥Ã¥×¥Ñ¥¿¡¼¥ó¤ò pixel ¤Î¿§¤ÇÉÁ²è¤¹¤ë
- * ToHeartÍÑ
+ * 24Ã—24 ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ pixel ã®è‰²ã§æç”»ã™ã‚‹
+ * ToHeartç”¨
  */ 
 void
 lvnsimage_put_pattern24(LvnsImage *image, int x, int y, int pixel, char *data)
@@ -642,8 +642,8 @@ lvnsimage_put_pattern24(LvnsImage *image, int x, int y, int pixel, char *data)
 }
 
 /*
- * 24¡ß24 ¤Î¥Ó¥Ã¥È¥Ş¥Ã¥×¥Ñ¥¿¡¼¥ó¤ò pixel ¤Î¿§¤ÇÉÁ²è¤¹¤ë
- * ¼¶/º¯ÍÑ
+ * 24Ã—24 ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ pixel ã®è‰²ã§æç”»ã™ã‚‹
+ * é›«/ç—•ç”¨
  */ 
 void
 lvnsimage_put_pattern24_2(LvnsImage *image, int x, int y, int pixel, char *data)
@@ -684,8 +684,8 @@ lvnsimage_put_pattern24_2(LvnsImage *image, int x, int y, int pixel, char *data)
 }
 
 /*
- * ³ÈÂç/½Ì¾®¥³¥Ô¡¼ 
- * ¥½¡¼¥¹Â¦¤ÎÈÏ°Ï¥Á¥§¥Ã¥¯¤ò¤·¤Æ¤¤¤Ê¤¤¤Î¤ÇÃí°Õ
+ * æ‹¡å¤§/ç¸®å°ã‚³ãƒ”ãƒ¼ 
+ * ã‚½ãƒ¼ã‚¹å´ã®ç¯„å›²ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ã„ãªã„ã®ã§æ³¨æ„
  */
 void
 lvnsimage_copy_scale(LvnsImage *src, int sx, int sy, int sw, int sh, 
@@ -723,13 +723,13 @@ lvnsimage_copy_scale(LvnsImage *src, int sx, int sy, int sw, int sh,
     fprintf(stderr, "scale: %d %d %d %d\n", x, y, w, h);
 #endif
 
-    /* ÂĞ±şºÂÉ¸»»½Ğ */
+    /* å¯¾å¿œåº§æ¨™ç®—å‡º */
     for (i=0; i<w; i++)
         xpos[i] = sx + (xoff + i) * sw / dw;
     for (i=0; i<h; i++)
         ypos[i] = sy + (yoff + i) * sh / dh;
 
-    /* ¤³¤Ô¡¼ */
+    /* ã“ã´ãƒ¼ */
     {
         u_char *q = dst->data + y * dst->rwidth + x;
         for (i=0; i<h; i++) {

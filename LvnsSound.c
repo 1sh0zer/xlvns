@@ -10,14 +10,14 @@
  */
 
 /*
- * Lvns ¥µ¥¦¥ó¥É½èÍı²ó¤ê
+ * Lvns ã‚µã‚¦ãƒ³ãƒ‰å‡¦ç†å›ã‚Š
  */
 
 #include <stdio.h>
 #include "Lvns.h"
 
 /*
- * ¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß 
+ * ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿ 
  */
 void
 LvnsLoadSound2(Lvns *lvns, const char* name)
@@ -27,7 +27,7 @@ LvnsLoadSound2(Lvns *lvns, const char* name)
 }
 
 /*
- * ¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß
+ * ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
  */
 void
 LvnsLoadSound(Lvns *lvns, const char* basename, int no)
@@ -38,7 +38,7 @@ LvnsLoadSound(Lvns *lvns, const char* basename, int no)
 }
 
 /*
- * ±éÁÕ´°Î»(¥Ç¡¼¥¿¤òÇË´ş)
+ * æ¼”å¥å®Œäº†(ãƒ‡ãƒ¼ã‚¿ã‚’ç ´æ£„)
  */
 void
 LvnsStopSound(Lvns *lvns)
@@ -49,7 +49,7 @@ LvnsStopSound(Lvns *lvns)
 }
 
 /*
- * ±éÁÕ³«»Ï
+ * æ¼”å¥é–‹å§‹
  */
 void
 LvnsStartSound(Lvns *lvns, int sound_count)
@@ -61,7 +61,7 @@ LvnsStartSound(Lvns *lvns, int sound_count)
 	SoundStart(lvns->sound);
 }
 
-/* ½ªÎ»ÂÔ¤Á½èÍı */
+/* çµ‚äº†å¾…ã¡å‡¦ç† */
 void
 LvnsWaitSound(Lvns *lvns)
 {
@@ -76,7 +76,7 @@ LvnsWaitSound(Lvns *lvns)
 	lvns->sound_count = 0;
 }
 
-/* ¥ë¡¼¥×½èÍı */
+/* ãƒ«ãƒ¼ãƒ—å‡¦ç† */
 void
 LvnsLoopSound(Lvns *lvns)
 {

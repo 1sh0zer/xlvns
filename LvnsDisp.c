@@ -10,7 +10,7 @@
  */
 
 /*
- * Lvns É½¼¨½èÍı¼şÊÕ
+ * Lvns è¡¨ç¤ºå‡¦ç†å‘¨è¾º
  */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@
 #include "LvnsEffect.h"
 
 /**
- * ¸½ºß¤Î¥Æ¥­¥¹¥È¥ì¥¤¥ä¤òÁ´ÉôºÆÉÁ²è¤¹¤ë
+ * ç¾åœ¨ã®ãƒ†ã‚­ã‚¹ãƒˆãƒ¬ã‚¤ãƒ¤ã‚’å…¨éƒ¨å†æç”»ã™ã‚‹
  */
 static void
 DrawTextLayerAll(Lvns *lvns)
@@ -39,7 +39,7 @@ DrawTextLayerAll(Lvns *lvns)
 }
 
 /*
- * ¥«¡¼¥½¥ë¤Î¾Ãµî
+ * ã‚«ãƒ¼ã‚½ãƒ«ã®æ¶ˆå»
  */
 void
 LvnsClearCursor(Lvns *lvns)
@@ -55,7 +55,7 @@ LvnsClearCursor(Lvns *lvns)
 }
 
 /*
- * ¥«¡¼¥½¥ë¤ÎÉÁ²è
+ * ã‚«ãƒ¼ã‚½ãƒ«ã®æç”»
  */
 void
 LvnsDrawCursor(Lvns *lvns, LvnsCursorType cursor_type)
@@ -88,7 +88,7 @@ LvnsDrawCursor(Lvns *lvns, LvnsCursorType cursor_type)
 }
 
 /**
- * ¥Æ¥­¥¹¥È¥«¡¼¥½¥ë¤Î¾Ãµî
+ * ãƒ†ã‚­ã‚¹ãƒˆã‚«ãƒ¼ã‚½ãƒ«ã®æ¶ˆå»
  */
 void
 LvnsClearTextCursor(Lvns *lvns)
@@ -109,7 +109,7 @@ LvnsClearTextCursor(Lvns *lvns)
 }
 
 /**
- * ¥Æ¥­¥¹¥È¥«¡¼¥½¥ë¤ÎÉ½¼¨
+ * ãƒ†ã‚­ã‚¹ãƒˆã‚«ãƒ¼ã‚½ãƒ«ã®è¡¨ç¤º
  */
 void
 LvnsDrawTextCursor(Lvns *lvns)
@@ -130,20 +130,20 @@ LvnsDrawTextCursor(Lvns *lvns)
 }
 
 /**
- * ¸½ºß¤Î²èÌÌ(ÇØ·Ê + Ê¸»ú)¤ò ²¾ÁÛ vram ¤«¤éÉÁ²è¤µ¤»¤ë
+ * ç¾åœ¨ã®ç”»é¢(èƒŒæ™¯ + æ–‡å­—)ã‚’ ä»®æƒ³ vram ã‹ã‚‰æç”»ã•ã›ã‚‹
  */
 void
 LvnsDispWindow(Lvns *lvns)
 {
-	/* ¥°¥é¥Õ¥£¥Ã¥¯Éô */
+	/* ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯éƒ¨ */
     lvns->setPaletteMulti(lvns, lvns->latitude);
     lvns->drawWindow(lvns);
 
-	/* ÄÉ²ÃÉ½¼¨½èÍı(¥á¥Ë¥å¡¼¤Ê¤É¤ÇÍøÍÑ) */
+	/* è¿½åŠ è¡¨ç¤ºå‡¦ç†(ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãªã©ã§åˆ©ç”¨) */
 	if (lvns->disp_func) 
 		lvns->disp_func(lvns, lvns->disp_func_param);
 
-	/* ¥Æ¥­¥¹¥ÈÉ½¼¨ */
+	/* ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º */
     if (lvns->text_mode) {
 		DrawTextLayerAll(lvns);
     }
@@ -151,11 +151,11 @@ LvnsDispWindow(Lvns *lvns)
 	lvns->flushWindow(lvns);
 }
 
-/* Ê¸»ú¾Ãµî½èÍı */
+/* æ–‡å­—æ¶ˆå»å‡¦ç† */
 void
 LvnsUndispText(Lvns *lvns)
 {
-	LvnsFlip(lvns, True); // ÉÁ²èÆ±´ü¤Î¤¿¤á¡Ä
+	LvnsFlip(lvns, True); // æç”»åŒæœŸã®ãŸã‚â€¦
 	lvns->text_mode = False;
 	if (lvns->skip) {
 		lvns->latitude = 16;
@@ -165,7 +165,7 @@ LvnsUndispText(Lvns *lvns)
 	}
 }
 
-/* Ê¸»úºÆÉ½¼¨½èÍı */
+/* æ–‡å­—å†è¡¨ç¤ºå‡¦ç† */
 void
 LvnsDispText(Lvns *lvns)
 {
@@ -177,31 +177,31 @@ LvnsDispText(Lvns *lvns)
 			LvnsDarken(lvns);
 		}
 		LvnsDispWindow(lvns);
-		LvnsFlip(lvns, True); // ÉÁ²èÆ±´ü¤Î¤¿¤á¡Ä
+		LvnsFlip(lvns, True); // æç”»åŒæœŸã®ãŸã‚â€¦
 	}
 }
 
 /**
- * ÇØ·Ê¤È¥­¥ã¥é¥¯¥¿¤Î¾õÂÖ¤«¤é²èÁü¤ò¹çÀ®¤·¤ÆÉ½¼¨¤¹¤ë
- * É½¼¨¸å¤·¤Ğ¤é¤¯ÂÔ¤Á¤¬Æş¤ë
+ * èƒŒæ™¯ã¨ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã®çŠ¶æ…‹ã‹ã‚‰ç”»åƒã‚’åˆæˆã—ã¦è¡¨ç¤ºã™ã‚‹
+ * è¡¨ç¤ºå¾Œã—ã°ã‚‰ãå¾…ã¡ãŒå…¥ã‚‹
  */
 void
 LvnsDisp(Lvns *lvns, LvnsEffectType effect)
 {
-	/* BGM ÊÑ¹¹¥Á¥§¥Ã¥¯ */
+	/* BGM å¤‰æ›´ãƒã‚§ãƒƒã‚¯ */
 	LvnsStartNextMusic(lvns);
 
-	/* ÇØ·Ê¥¨¥Õ¥§¥¯¥È»ØÄê */
+	/* èƒŒæ™¯ã‚¨ãƒ•ã‚§ã‚¯ãƒˆæŒ‡å®š */
 	if (lvns->effect_back_next) {
 		lvns->effect_back = lvns->effect_back_next;
 		lvns->effect_back_next = NULL;
 	}
 
-	/* ³¨¤ò²¾ÁÛVRAM¤ËÀßÄê */
+	/* çµµã‚’ä»®æƒ³VRAMã«è¨­å®š */
 	lvnsimage_copy(lvns->background, lvns->vram);
 	LVNS->mergeCharacter(lvns);
 
-	/* ¥»¥Ô¥¢Ä´É½¼¨¤Ê¤é¥Ñ¥ì¥Ã¥È½¤Àµ */
+	/* ã‚»ãƒ”ã‚¢èª¿è¡¨ç¤ºãªã‚‰ãƒ‘ãƒ¬ãƒƒãƒˆä¿®æ­£ */
 	if (lvns->sepia_mode) {
 	  lvnsimage_set_sepia(lvns->vram);
 	}
@@ -215,7 +215,7 @@ LvnsDisp(Lvns *lvns, LvnsEffectType effect)
 }
 
 /** 
- * ¾Ãµî½èÍı¤ò¹Ô¤¦
+ * æ¶ˆå»å‡¦ç†ã‚’è¡Œã†
  * 
  */
 void
@@ -231,24 +231,32 @@ LvnsClear(Lvns *lvns, LvnsEffectType effect)
 }
 
 /**
- * Ä¾ÀÜ¥Æ¥­¥¹¥ÈÉÁ²è
+ * ç›´æ¥ãƒ†ã‚­ã‚¹ãƒˆæç”»
  */
 void
 LvnsDrawString(Lvns *lvns, int x, int y, const u_char *str, int attr)
 {
     int code;  
     while (*str) {
-        code = ((str[0]&0x7f)-33) * 94 + (str[1]&0x7f)-33;
-        code = lvns->jis_to_leaf[code];
+        if ((str[0] & 0xF0) == 0xE0) {
+            code = (str[0] & 0x0F) << 12 | (str[1] & 0x3F) << 6 | (str[2] & 0x3F);
+            str += 3;
+        } else if ((str[0] & 0xE0) == 0xC0) {
+            code = (str[0] & 0x1F) << 6 | (str[1] & 0x3F);
+            str += 2;
+        } else {
+            code = str[0];
+            str += 1;
+            x -= CHARSIZE /3.6; //HAHA FUNNY
+        }
 		if (code)
 			LVNS->drawChar(lvns, x, y, code, attr);
-        str += 2;
         x += CHARSIZE;
     }
 }
 
 /*
- * Ä¾ÀÜ¥Æ¥­¥¹¥ÈÉÁ²è(¥»¥ó¥¿¥ê¥ó¥°)
+ * ç›´æ¥ãƒ†ã‚­ã‚¹ãƒˆæç”»(ã‚»ãƒ³ã‚¿ãƒªãƒ³ã‚°)
  */
 void
 LvnsDrawStringCenter(Lvns *lvns, int y, const u_char *str, int attr)

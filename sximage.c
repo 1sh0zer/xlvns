@@ -51,7 +51,7 @@ super_ximage_new(Display * dpy, Window win, int width, int height, int maxcol, i
     }
 #endif
 
-    /* ������ɥ���Ϣ°������μ��� */
+    /* ウィンドウ関連属性情報の取得 */
     {
 	XWindowAttributes attr;
 	XGetWindowAttributes(dpy, win, &attr);
@@ -76,7 +76,7 @@ super_ximage_new(Display * dpy, Window win, int width, int height, int maxcol, i
 	    }
 
 #ifdef DEBUG 
-	    /* Visual �ξ����ɽ�������� */
+	    /* Visual の情報を表示させる */
 	    fprintf(stderr, "Visual ID: %02x\n", vinfolist[0].visualid);
 	    {
 		char *visual_class[] = { 
@@ -94,7 +94,7 @@ super_ximage_new(Display * dpy, Window win, int width, int height, int maxcol, i
             sximage->visual_class = vinfolist[0].class;
 	    XFree(vinfolist);
 
-            /* ʬΥ���顼�ޥåפλ��ϼºݤο��Ȥλ����碌��Ԥ�... */
+            /* 分離カラーマップの時は実際の色との擦り合わせを行う... */
             if (sximage->visual_class == TrueColor ||
                 sximage->visual_class == DirectColor) {
                 
@@ -109,14 +109,14 @@ super_ximage_new(Display * dpy, Window win, int width, int height, int maxcol, i
                 }
 
                 {
-                    /* TrueColor �ѤΥ��顼�ޥåפ���� */
+                    /* TrueColor 用のカラーマップを取得 */
                     TrueColorMap *map;
                     if ((map = malloc(sizeof *map * 17)) == NULL) {
                         perror("tcmap");
                         exit(1);
                     }
                     sximage->tcmap = tcmap[tcmap_idx++].tcmap = map;
-                    /* RGB ���줾��ˤĤ��ƥԥ������ͤ�Ȥ� */
+                    /* RGB それぞれについてピクセル値をとる */
                     for (j=0;j<256;j++) {
                         int col;
                         XColor defs;
@@ -342,7 +342,7 @@ super_ximage_clear(SuperXImage *sximage, long pixel)
 }
 
 /*
- * 24��24 �Υӥåȥޥåץѥ������ pixel �ο������褹��
+ * 24×24 のビットマップパターンを pixel の色で描画する
  */ 
 void
 super_ximage_put_pattern24(SuperXImage *sximage, int x, int y, long pixel, char *data)
@@ -382,7 +382,7 @@ super_ximage_put_pattern24(SuperXImage *sximage, int x, int y, long pixel, char 
 }
 
 /*
- * 24��24 �Υӥåȥޥåץѥ������ pixel �ο������褹��
+ * 24×24 のビットマップパターンを pixel の色で描画する
  */ 
 void
 super_ximage_put_pattern24_2(SuperXImage *sximage, int x, int y, long pixel, char *data)
@@ -420,15 +420,30 @@ super_ximage_put_pattern24_2(SuperXImage *sximage, int x, int y, long pixel, cha
             x2++;
         }
     }
+//     int width = 24;
+//     int height = 24;
+//     int byte_width = (width + 7) / 8;
+//     for (int y2 = 0; y2 < height; y2++) 
+//     {
+//         for (int x2 = 0; x2 < width; x2++) 
+//         {
+//             int byte = data[y2 * byte_width + x2 / 8];
+//             if (byte & (0x80 >> (x2 % 8))) 
+//             {
+//                 
+//                 XPutPixel(sximage->ximage, x2 + x, y2 + y, pixel);
+//             }
+//         }
+// 
+//     }
 }
-
 #define STORE16(p,d)  (p[0]= (d) & 0xff, p[1]= ((d) >> 8) & 0xff)
 #define STORE24(p,d)  (p[0]= (d) & 0xff, p[1]= ((d) >> 8) & 0xff, p[2]= ((d) >> 16) & 0xff)
 #define STORE32(p,d)  (p[0]= (d) & 0xff, p[1]= ((d) >> 8) & 0xff, p[2]= ((d) >> 16) & 0xff, p[3]= ((d) >> 24) & 0xf)
 
 void
 super_ximage_copy_area(SuperXImage *src, SuperXImage *dst, int x, int y,
-                       int w, int h, int x2, int y2) {
+            int w, int h, int x2, int y2) {
     int i, j;
     if (src->ximage->bits_per_pixel == 32) {
         /* start position */

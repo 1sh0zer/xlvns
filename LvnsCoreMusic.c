@@ -10,9 +10,10 @@
  */
 
 /*
- * LvnsCore ≤ª≥⁄ΩËÕ˝≤Û§Í
+ * LvnsCore Èü≥Ê•ΩÂá¶ÁêÜÂõû„Çä
  */
 
+#include "mp3play.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -24,55 +25,62 @@
 #include "mgLvnsCore.h"
 #endif
 
-/* •‹•Í•Â°º•‡¿ﬂƒÍ */
+#ifndef PULSE
+/* „Éú„É™„É•„Éº„É†Ë®≠ÂÆö */
 static void
-SetMusicVolume(LvnsCoreWidget lcw, int no)
+SetMusicVolume(void* dep, int no)
 {
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
     cdinfo_set_volume(LCW.cdinfo, no);
 }
 
-/* BGM ±È¡’≥´ªœ */
+/* BGM ÊºîÂ•èÈñãÂßã */
 static void
-StartMusic(LvnsCoreWidget lcw, int no)
+StartMusic(void *dep, int no)
 {
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
     cdinfo_play(LCW.cdinfo, no);
 }
 
 static void
-StopMusic(LvnsCoreWidget lcw)
+StopMusic(void *dep)
 {
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
     cdinfo_stop(LCW.cdinfo);
 }
 
-/* BGM ∞Ïª˛ƒ‰ªﬂ */
+/* BGM ‰∏ÄÊôÇÂÅúÊ≠¢ */
 static void
-PauseMusic(LvnsCoreWidget lcw)
+PauseMusic(void* dep)
 {
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
     cdinfo_pause(LCW.cdinfo);
 }
 
 static int
-GetMusicState(LvnsCoreWidget lcw)
+GetMusicState(void *dep)
 {
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
     CDTimeInfo cur;
     return cdinfo_get_current_time(LCW.cdinfo, &cur);
 }
 
 static void
-CloseMusic(LvnsCoreWidget lcw)
+CloseMusic(void* dep)
 {
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
     cdinfo_delete(LCW.cdinfo);
 	LCW.cdinfo = NULL;
 }
 
 static void
-OpenMusic(LvnsCoreWidget lcw)
+OpenMusic(void *dep)
 {
-    char *disc = getenv("CDDEVICE");
-    if (!disc) 
-        disc = CDDEVICE;
-    if ((LCW.cdinfo = cdinfo_new(disc)) == NULL) {
-        perror(disc);
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    // char *disc = getenv("CDDEVICE");
+    // if (!disc) 
+    //     disc = CDDEVICE;
+    if ((LCW.cdinfo = cdinfo_new("CD")) == NULL) {
     } 
 }
 
@@ -90,4 +98,77 @@ LvnsCoreInitMusic(LvnsCoreWidget lcw)
 
 	LCW.cdinfo = NULL;
 }
+#else
+/* „Éú„É™„É•„Éº„É†Ë®≠ÂÆö */
+static void
+SetMusicVolume(void* dep, int no)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    MP3PlayVolume(LCW.mp3, no);
+}
 
+/* BGM ÊºîÂ•èÈñãÂßã */
+static void
+StartMusic(void *dep, int no)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    char name[256];
+    snprintf(name, sizeof(name), "CD/%d.mp3", no);
+    MP3PlayStart(LCW.mp3, name);
+}
+
+static void
+StopMusic(void *dep)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    MP3PlayStop(LCW.mp3);
+}
+
+/* BGM ‰∏ÄÊôÇÂÅúÊ≠¢ */
+static void
+PauseMusic(void* dep)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    // cdinfo_pause(LCW.cdinfo);
+}
+
+static int
+GetMusicState(void *dep)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    CDTimeInfo cur;
+    // return cdinfo_get_current_time(LCW.cdinfo, &cur);
+    return 0;   
+}
+
+static void
+CloseMusic(void* dep)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    MP3PlayFree(LCW.mp3);
+	LCW.mp3 = NULL;
+}
+
+static void
+OpenMusic(void *dep)
+{
+    struct _LvnsCoreRec *lcw = (struct _LvnsCoreRec *)dep;
+    if ((LCW.mp3 = MP3PlayNew()) == NULL) {
+    } 
+}
+
+void 
+LvnsCoreInitMusic(LvnsCoreWidget lcw)
+{
+	LCW.music.depend     = lcw;
+	LCW.music.open       = OpenMusic;
+	LCW.music.close      = CloseMusic;
+	LCW.music.start      = StartMusic;
+	LCW.music.stop       = StopMusic;
+	LCW.music.pause      = PauseMusic;
+	LCW.music.setVolume  = SetMusicVolume;
+	LCW.music.getState   = GetMusicState;
+
+	LCW.mp3 = NULL;
+}
+#endif

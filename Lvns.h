@@ -63,7 +63,7 @@
 #define INTERVAL 60
 #define NOCHARACTER 255
 
-/* EUC ¥³΅Ό¥Ι¤«¤ι¥Ρ¥Γ¥―¤·¤Ώ JIS ¥³΅Ό¥Ι¤Ψ΅Δ */
+/* EUC «Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©Π«Τ©Π«Τ©Πτώτώ΅ή«Τ©ΠτώΆμτώ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ«Τ©Π«Τ©Π«Τ©Πτώτώª£ JIS «Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©ΠτώΆντώτώτώª¤τώΆμτώ */
 #define EucToJisPack(code)  ((((code>>8)&0x7f)-33)*94 + ((code&0x7f)-33))
 
 #define LVNS     lvns->system_state
@@ -72,7 +72,7 @@
 #define HEIGHT	(lvns->system_state->height)
 #ifndef USE_MGL
 #define WIDTH2       640
-#define CHARSIZE     24
+#define CHARSIZE     18
 #define CHARDRAWSIZE 26
 #define EDYOFF       30
 #define XPOS(x,y)    ((x) * 24 + lvns->tvram[lvns->current_tvram].row[y].offset)
@@ -100,7 +100,7 @@
 #define MGL_XOFFSET 80
 #define MGL_YOFFSET 20
 
-/* °μΙτ¤Ξ΄ΨΏτ΅¦Ή½Β¤ΒΞ¤Ο MGL2 ΘΗ¤ΗΊΉ¤·ΒΨ¤¨ */
+/* ΆΒ«³τώτώªΆτώΆμ΅ήτώτώªΤ«Τ©ΠτώΆμª¤τώΆμ«ΣτώΆντώτώτώª£τώτώªΤτώτώª¤τώΆμ©°«Τ©ΠτώΆνªΏτώΆμτώ«Τ©ΠτώΆμτώτώΆμª¤«Τ©ΠτώΆμª΅ MGL2 τώΆμτώτώΆμΆξ«Τ©ΠτώΆμΆξτώτώ«³«Τ©Π«Τ©Π«Τ©ΠτώΆμτώτώΆντώ«Τ©Πτώτώ©° */
 #define LvnsImage mgImage
 #define lvnsimage_new mglimage_new
 #define lvnsimage_delete mglimage_delete
@@ -113,10 +113,13 @@
 #define lvnsimage_add4(s,d,x,y,p) mglimage_add(s,d,(x)/2,(y)/2)
 #define lvnsimage_circle(i,x,y,r,s,p) mglimage_circle(i,x,y,(r)/2,s,p)
 /*
- * MGL2 ΘΗ¤ΞΎμΉη¤Ο X ΘΗ¤Θ°γ¤¤΅¤Ώ§¤ς°ϊΏτ¤Λ¤³¤Ξ΄ΨΏτ¤ςΈΖ¤Σ½Π¤Ή¤³¤Θ΅¥
+ * MGL2 τώΆμτώτώΆμΆξ«Τ©ΠτώΆμª¤τώΆμ«ΡτώτώªΆ«Τ©ΠτώτώΆξ«Τ©ΠτώΆμª΅ X τώΆμτώτώΆμΆξ«Τ©ΠτώΆμτώΆΒ«³τώτώΆμ«Τ©Π«Τ©Πτώτώª¤«Τ©Πτώτώª£ΆΒ©Μ«Τ©ΠτώτώªÒΆΒ«³τώτώ«¤τώτώª£τώτώªΤ«Τ©ΠτώΆμτώ«Τ©Π«Τ©Π«Τ©ΠτώΆμª¤τώΆμ«ΣτώΆντώτώτώª£τώτώªΤ«Τ©ΠτώτώªÒτώτώ«ΣτώΆνΆΒ«Τ©ΠτώΆμªΠτώΆνªΏ«Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώτώτώª¤«Τ©Π
  */
 #define lvnsimage_clear_index mglimage_clear_color
 #endif
+
+#include <string.h>
+#include <stdlib.h>
 
 struct Lvns;
 
@@ -148,47 +151,47 @@ typedef struct {
 } LvnsBackEffectInfo;
 
 typedef struct {
-	int scn;  /* ¥·¥Κ¥κ¥ªΘΦΉζ */
-	int blk;  /* ¥Φ¥ν¥Γ¥―ΘΦΉζ */
-	int no;   /* ¥Ζ¥­¥Ή¥ΘΘΦΉζ */
-} LvnsHistoryData;        /* ²σΑΫ¥β΅Ό¥ΙΝΡ */
+	int scn;  /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐτώΆμτώτώΆμªΡ«Τ©ΠτώΆνª΅ */
+	int blk;  /* «Τ©ΠτώΆμªΡ«Τ©ΠτώτώΆΔ«Τ©ΠτώΆμΆμ«Τ©ΠτώτώªφτώΆμτώτώΆμªΡ«Τ©ΠτώΆνª΅ */
+	int no;   /* «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώτώΆμτώτώΆμªΡ«Τ©ΠτώΆνª΅ */
+} LvnsHistoryData;        /* «Τ©ΠτώτώªΠτώΆμΆΒτώΆμ«©«Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠτώΆμ΅ήτώΆμΆΔτώΆμτώ */
 
 typedef struct {
     char *command;
     int enable;
-} LvnsCommandInfo;   /* ³°Ιτΐ©ΈζΝΡ */
+} LvnsCommandInfo;   /* «Τ©ΠΆΒ«³τώΆμ΅ήτώτώªΤτώΆμτώτώτώ«Ώτώτώ«ΣτώΆνª΅τώΆμΆΔτώΆμτώ */
 
 typedef struct {
 
-    int width;                   /* ΖβΙτΙΑ²θΞΞ°θ¤Ξ¥µ¥¤¥Ί */
+    int width;                   /* τώΆνΆΒτώτώτώτώΆμ΅ήτώτώªΤτώΆμ΅ήτώΆμΆΒ«Τ©ΠτώτώτώτώΆμª¤τώΆμª¤ΆΒ«³τώτώτώ«Τ©ΠτώΆμª¤«Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©Πτώτώ«³ */
     int height;             
-    int colors;                  /* Ι¬ΝΧ¤ΚΊΗΒηΏ§Ώτ       */ 
+    int colors;                  /* τώΆμ΅ή«Τ©ΠτώΆμΆΔΆΒ©Ξ«Τ©ΠτώΆμªφτώτώ«³τώΆμΆξτώΆμτώτώτώΆξτώτώª£ΆΒ©Μτώτώª£τώτώªΤ       */ 
 
-    const char *leafpack_name;   /* ¥Η΅Ό¥ΏΝΡ¥Ρ¥Γ¥―¥Υ¥΅¥¤¥λΜΎΎΞ   */
-    const char *scnpack_name;    /* ¥·¥Κ¥κ¥ªΝΡ¥Ρ¥Γ¥―¥Υ¥΅¥¤¥λΜΎΎΞ */
-    const char *scn_name;        /* ¥·¥Κ¥κ¥ª¥Υ¥΅¥¤¥λ¥Ω΅Ό¥ΉΜΎΎΞ */
-    const char *fonttable_name;  /* ¥³΅Ό¥Ι¥³¥σ¥Π΅Ό¥Θ¥Ζ΅Ό¥Φ¥λΜΎΎΞ */
+    const char *leafpack_name;   /* «Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώΆμΆΔτώΆμτώ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ«Τ©ΠτώΆμ©¬«Τ©Πτώτώª¤«Τ©Π«Τ©Π«Τ©ΠτώτώτώτώΆμªΆτώΆμ«ΡτώΆμ«ΡτώΆμª¤   */
+    const char *scnpack_name;    /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐτώΆμΆΔτώΆμτώ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ«Τ©ΠτώΆμ©¬«Τ©Πτώτώª¤«Τ©Π«Τ©Π«Τ©ΠτώτώτώτώΆμªΆτώΆμ«ΡτώΆμ«ΡτώΆμª¤ */
+    const char *scn_name;        /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμ©¬«Τ©Πτώτώª¤«Τ©Π«Τ©Π«Τ©Πτώτώτώ«Τ©ΠτώΆμ«ªτώτώª¤τώΆν«Τ©Π«Τ©ΠτώΆμªΆτώΆμ«ΡτώΆμ«ΡτώΆμª¤ */
+    const char *fonttable_name;  /* «Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©Π«Τ©Π«Τ©ΠτώτώªΠ«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμτώ«Τ©ΠτώΆνΆΒτώτώª¤τώΆν«Τ©ΠτώΆμªΡ«Τ©ΠτώτώτώτώΆμªΆτώΆμ«ΡτώΆμ«ΡτώΆμª¤ */
 
 	MenuData *main_menu;
 
-	void (*start)(struct Lvns *lvns);    /* ½ι΄ό²½       */
-	void (*jingle)(struct Lvns *lvns);   /* ¥Έ¥σ¥°¥λ     */
-	void (*opening)(struct Lvns *lvns);  /* ¥ª΅Ό¥Χ¥Λ¥σ¥° */
-	void (*title)(struct Lvns *lvns);    /* ¥Ώ¥¤¥Θ¥λ     */
-	void (*main)(struct Lvns *lvns);     /* ¥α¥¤¥σ       */
+	void (*start)(struct Lvns *lvns);    /* τώΆνªΏτώτώ΅ήτώΆμ«Στώτώ«£«Τ©ΠτώΆνªΏ       */
+	void (*jingle)(struct Lvns *lvns);   /* «Τ©Πτώτώ«Σ«Τ©ΠτώτώªΠ«Τ©ΠΆΒ«³«Τ©Πτώτώτώ     */
+	void (*opening)(struct Lvns *lvns);  /* «Τ©Πτώτώ«ΐτώτώª¤τώΆν«Τ©ΠΆΒ©Ξ«Τ©ΠτώΆμτώ«Τ©ΠτώτώªΠ«Τ©ΠΆΒ«³ */
+	void (*title)(struct Lvns *lvns);    /* «Τ©Πτώτώª£«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ«Τ©Πτώτώτώ     */
+	void (*main)(struct Lvns *lvns);     /* «Τ©ΠτώτώΆΒ«Τ©Π«Τ©Π«Τ©ΠτώτώªΠ       */
 
-    void (*mergeCharacter)(struct Lvns *lvns);   /* ¥­¥γ¥ι¥―¥ΏΉηΐ® */
-    void (*clearScreen)(struct Lvns *lvns);      /* ²ΎΑΫ VRAM ¤ΞΎΓµξ */
-    void (*loadBG)(struct Lvns *lvns, int no);   /* ΗΨ·ΚΖΙ¤ίΉώ¤ί */
+    void (*mergeCharacter)(struct Lvns *lvns);   /* «Τ©Π«Τ©ΠτώτώΆμ«Τ©Πτώτώ΅ή«Τ©Πτώτώªφ«Τ©Πτώτώª£«Τ©ΠτώτώΆξτώΆμτώτώτώ«Β */
+    void (*clearScreen)(struct Lvns *lvns);      /* «Τ©ΠτώΆμ«ΡτώΆμΆΒτώΆμ«© VRAM «Τ©ΠτώΆμª¤τώΆμ«ΡτώΆμΆμ«Τ©Πτώτώª¤ */
+    void (*loadBG)(struct Lvns *lvns, int no);   /* τώΆμΆξτώΆντώ«Τ©ΠτώΆμªφτώΆνΆΒτώΆμ΅ή«Τ©ΠτώΆνªΒ«Τ©ΠτώΆντώ«Τ©ΠτώΆνªΒ */
 
-    LvnsCommandInfo* (*getCommandList)(struct Lvns *lvns);           /* ³°ΙτΑΰΊξ°μΝχ */
-    void (*execCommand)(struct Lvns *lvns, const char *command);     /* ³°ΙτΑΰΊξ     */
-    void (*drawChar)(struct Lvns *lvns, int x, int y, int, int);     /* ΚΈ»ϊΙ½Ό¨     */
+    LvnsCommandInfo* (*getCommandList)(struct Lvns *lvns);           /* «Τ©ΠΆΒ«³τώΆμ΅ήτώτώªΤτώΆμΆΒτώτώτώτώτώ«³τώτώª¤ΆΒ«³τώτώªΆτώΆμΆΔΆΒ«Ά */
+    void (*execCommand)(struct Lvns *lvns, const char *command);     /* «Τ©ΠΆΒ«³τώΆμ΅ήτώτώªΤτώΆμΆΒτώτώτώτώτώ«³τώτώª¤     */
+    void (*drawChar)(struct Lvns *lvns, int x, int y, int, int);     /* τώΆμªφτώτώ«Σ«Τ©Πτώτώ«¤τώΆμ΅ήτώΆνªΏτώΆντώτώ©°     */
 
 	void (*dispHistory)(struct Lvns *lvns, int pos);
 
-    int cursor_key;   /* ¥­΅ΌΖώΞΟΒΤ¤Α¤Ξ¥«΅Ό¥½¥λ */
-    int cursor_page;  /* ²ώ¥Ϊ΅Ό¥ΈΒΤ¤Α¤Ξ¥«΅Ό¥½¥λ */
+    int cursor_key;   /* «Τ©Πτώτώª¤τώΆντώΆνΆΒτώΆντώτώΆμª¤τώΆμª΅τώΆμτώτώΆμªΤ«Τ©ΠτώΆμΆΒ«Τ©ΠτώΆμª¤«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆνªΏ«Τ©Πτώτώτώ */
+    int cursor_page;  /* «Τ©ΠτώΆντώ«Τ©ΠτώΆμ«¤τώτώª¤τώΆν«Τ©Πτώτώ«ΣτώΆμτώτώΆμªΤ«Τ©ΠτώΆμΆΒ«Τ©ΠτώΆμª¤«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆνªΏ«Τ©Πτώτώτώ */
 
 } LvnsSystemState;
 
@@ -205,46 +208,46 @@ typedef struct Lvns {
 	} inside_state;
 
     /* ------------------------------------------------------------ */
-	/* ¥Η΅Ό¥Ώ¥Ρ¥ι¥α΅Ό¥Ώ */
+	/* «Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£«Τ©ΠτώΆμτώ«Τ©Πτώτώ΅ή«Τ©ΠτώτώΆΒτώτώª¤τώΆν«Τ©Πτώτώª£ */
 
-    LvnsSystemState *system_state;     /* ¥·¥Ή¥Ζ¥ΰ¥Ή¥Ζ΅Ό¥Θ */
+    LvnsSystemState *system_state;     /* «Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆνΆΒ«Τ©Πτώτώτώ«Τ©Π«Τ©Π«Τ©ΠτώΆνΆΒτώτώª¤τώΆν«Τ©ΠτώΆμτώ */
 
-    char *data_path;        /* ¥Η΅Ό¥ΏΈ΅Ίχ΄πΛά¥Ρ¥Ή */
-    char *savedata_path;    /* ¥Η΅Ό¥ΏΚέΒΈ°ΜΓΦ */
+    char *data_path;        /* «Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώτώ«Στώτώª¤τώτώ«³ΆΒ«ΆτώΆμ«ΣτώΆνªªτώΆμτώτώΆμ«£«Τ©ΠτώΆμτώ«Τ©Π«Τ©Π */
+    char *savedata_path;    /* «Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώΆμªφτώΆμ«ÒτώΆμτώτώτώ«ΣΆΒ«³τώΆμªΆτώΆμΆμτώΆμªΡ */
  
-    LeafPack *leafpack;     /* ¥Η΅Ό¥ΏΝΡ¥Ρ¥Γ¥―¥Υ¥΅¥¤¥λ */
-    LeafPack *scnpack;      /* ¥·¥Κ¥κ¥ªΝΡ¥Ρ¥Γ¥―¥Υ¥΅¥¤¥λ */
-    u_char *leaf_font_data; /* Leaf FONT ¤Ξ¥Η΅Ό¥Ώ   */
+    LeafPack *leafpack;     /* «Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώΆμΆΔτώΆμτώ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ«Τ©ΠτώΆμ©¬«Τ©Πτώτώª¤«Τ©Π«Τ©Π«Τ©Πτώτώτώ */
+    LeafPack *scnpack;      /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐτώΆμΆΔτώΆμτώ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ«Τ©ΠτώΆμ©¬«Τ©Πτώτώª¤«Τ©Π«Τ©Π«Τ©Πτώτώτώ */
+    u_char *leaf_font_data; /* Leaf FONT «Τ©ΠτώΆμª¤«Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£   */
 
-    u_char *leaf_to_euc;    /* ¥³΅Ό¥Ι¥³¥σ¥Π΅Ό¥Θ¥Ζ΅Ό¥Φ¥λ Leaf -> EUC  */
-    u_short *jis_to_leaf;   /* ¥³΅Ό¥Ι¥³¥σ¥Π΅Ό¥Θ¥Ζ΅Ό¥Φ¥λ JIS Pack -> Leaf */
-
-    /* ------------------------------------------------------ */
-    /* ¥κ¥½΅Ό¥Ή */
-
-    Bool force_skip;      /* Έ«¤ΏΚΈ½ρ¤Η¤β¤Ή¤Γ¤Θ¤Π¤Ή           */
-    Bool key_click_fast;  /* ¥­΅Ό¥―¥κ¥Γ¥―¤ΗΚΈ½ρ¤ςΉβΒ®Ι½Ό¨µφ²Δ */
-	Bool fast_when_seen;  /* ΄ϋΖΙΚΈ½ρ¤ΟΑα¤―Ι½Ό¨¤Ή¤λ           */
-    Bool enable_effect;       /* Έϊ²Μ¤ς»Θ¤¦ */
-    Bool enable_effect_back;  /* ΗΨ·ΚΈϊ²Μ¤ς»Θ¤¦ */
-
-    Bool seen_mode;       /* Α΄ΚΈ΄ϋΖΙ¤Θ¤ί¤Κ¤Ή¥β΅Ό¥Ι(for DEBUG) */
-    Bool demo_mode;       /* ¥ª΅Ό¥Θ¥Η¥β¥β΅Ό¥Ι */
+    u_char *leaf_to_euc;    /* «Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©Π«Τ©Π«Τ©ΠτώτώªΠ«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμτώ«Τ©ΠτώΆνΆΒτώτώª¤τώΆν«Τ©ΠτώΆμªΡ«Τ©Πτώτώτώ Leaf -> EUC  */
+    u_short *jis_to_leaf;   /* «Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©Π«Τ©Π«Τ©ΠτώτώªΠ«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμτώ«Τ©ΠτώΆνΆΒτώτώª¤τώΆν«Τ©ΠτώΆμªΡ«Τ©Πτώτώτώ JIS Pack -> Leaf */
 
     /* ------------------------------------------------------ */
-    /* ¥·¥Ή¥Ζ¥ΰ¥Ρ¥ι¥α΅Ό¥Ώ */
+    /* «Τ©Πτώτώªφ«Τ©ΠτώΆνªΏτώτώª¤τώΆν«Τ©Π«Τ©Π */
 
-    Bool image_dark;    /* Έ½Ίί¤Ξ°Ε¤µ                      */
+    Bool force_skip;      /* τώτώ«Σ«Τ©Π«Τ©Πτώτώª£τώΆμªφτώτώ«ΣτώΆνªΏτώτώτώ«Τ©ΠτώΆμΆξ«Τ©Πτώτώτώ«Τ©Π«Τ©Π«Τ©ΠτώΆμΆμ«Τ©ΠτώΆμτώ«Τ©Π«Τ©Π«Τ©Π«Τ©Π           */
+    Bool key_click_fast;  /* «Τ©Πτώτώª¤τώΆν«Τ©Πτώτώªφ«Τ©Πτώτώªφ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ«Τ©ΠτώΆμΆξτώΆμªφτώτώ«ΣτώΆνªΏτώτώτώ«Τ©ΠτώτώªÒ«Τ©ΠτώτώτώτώΆμτώτώτώ«ΒτώΆμ΅ήτώΆνªΏτώΆντώτώ©°«Τ©ΠτώτώªΡ«Τ©ΠτώΆμτώ */
+	Bool fast_when_seen;  /* τώΆμ«Στώτώ«©τώΆνΆΒτώΆμ΅ήτώΆμªφτώτώ«ΣτώΆνªΏτώτώτώ«Τ©ΠτώΆμª΅τώΆμΆΒτώτώΆΒ«Τ©ΠτώτώªφτώΆμ΅ήτώΆνªΏτώΆντώτώ©°«Τ©Π«Τ©Π«Τ©Πτώτώτώ           */
+    Bool enable_effect;       /* τώτώ«Στώτώ«¤«Τ©ΠτώΆμªΆ«Τ©ΠτώτώªÒ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμ©° */
+    Bool enable_effect_back;  /* τώΆμΆξτώΆντώ«Τ©ΠτώΆμªφτώτώ«Στώτώ«¤«Τ©ΠτώΆμªΆ«Τ©ΠτώτώªÒ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμ©° */
 
-    int  char_wait_time;         /* ΚΈ»ϊΙ½Ό¨ΒΤ¤Α»ώ΄Φ     */
+    Bool seen_mode;       /* τώΆμΆΒτώΆμ«ΣτώΆμªφτώτώ«ΣτώΆμ«Στώτώ«©τώΆνΆΒτώΆμ΅ή«Τ©ΠτώΆμτώ«Τ©ΠτώΆνªΒ«Τ©ΠτώΆμªφ«Τ©Π«Τ©Π«Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή(for DEBUG) */
+    Bool demo_mode;       /* «Τ©Πτώτώ«ΐτώτώª¤τώΆν«Τ©ΠτώΆμτώ«Τ©ΠτώΆμΆξ«Τ©Πτώτώτώ«Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή */
+
+    /* ------------------------------------------------------ */
+    /* «Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆνΆΒ«Τ©Πτώτώτώ«Τ©ΠτώΆμτώ«Τ©Πτώτώ΅ή«Τ©ΠτώτώΆΒτώτώª¤τώΆν«Τ©Πτώτώª£ */
+
+    Bool image_dark;    /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒ«Τ©ΠτώΆμª¤ΆΒ«³τώΆμΆν«Τ©Π«Τ©Π                      */
+
+    int  char_wait_time;         /* τώΆμªφτώτώ«Σ«Τ©Πτώτώ«¤τώΆμ΅ήτώΆνªΏτώΆντώτώ©°τώΆμτώτώΆμªΤ«Τ©ΠτώΆμΆΒ«Τ©ΠτώΆντώτώΆμ«ΣτώΆμªΡ     */
     
-    Bool fast_text;    /* ¥Ζ¥­¥Ή¥Θ¤Ή¤ΓΘτ¤Π¤·¥Υ¥ι¥°       */
-    Bool fast_disp;    /* Ι½Ό¨¥¨¥Υ¥§¥―¥Θ¤Ή¤Γ¤Θ¤Π¤·¥Υ¥ι¥° */
+    Bool fast_text;    /* «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ«Τ©Π«Τ©Π«Τ©ΠτώΆμΆμτώΆμτώτώτώªΤ«Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμ©¬«Τ©Πτώτώ΅ή«Τ©ΠΆΒ«³       */
+    Bool fast_disp;    /* τώΆμ΅ήτώΆνªΏτώΆντώτώ©°«Τ©Πτώτώ©°«Τ©ΠτώΆμ©¬«Τ©ΠΆΒ©Μ«Τ©Πτώτώªφ«Τ©ΠτώΆμτώ«Τ©Π«Τ©Π«Τ©ΠτώΆμΆμ«Τ©ΠτώΆμτώ«Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμ©¬«Τ©Πτώτώ΅ή«Τ©ΠΆΒ«³ */
 
 	jmp_buf jump;
 
     /* ------------------------------------------------------ */
-    /* Έ½Ίί¤ΞΎυΒΦ ¥Η΅Ό¥Ώ¤ΞΚέΒΈΝΡ */
+    /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒ«Τ©ΠτώΆμª¤τώΆμ«Ρτώτώ©¬τώΆμτώτώΆμªΡ «Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£«Τ©ΠτώΆμª¤τώΆμªφτώΆμ«ÒτώΆμτώτώτώ«ΣτώΆμΆΔτώΆμτώ */
     enum bgtype {
         LVNS_VISUAL,
         LVNS_HCG,
@@ -259,17 +262,17 @@ typedef struct Lvns {
         enum bgtype bg_type;
         int bg_no;
 		int character_no[3];
-        int scn;         /* ¥·¥Κ¥κ¥ªΘΦΉζΚέΒΈΝΡ */
-        int blk;         /* ¥·¥Κ¥κ¥ª¥Φ¥ν¥Γ¥―ΚέΒΈΝΡ       */
-        long scn_offset; /* ¥·¥Κ¥κ¥ª¥Η΅Ό¥ΏΚέΒΈΝΡ¥«΅Ό¥½¥λ */
+        int scn;         /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐτώΆμτώτώΆμªΡ«Τ©ΠτώΆνª΅τώΆμªφτώΆμ«ÒτώΆμτώτώτώ«ΣτώΆμΆΔτώΆμτώ */
+        int blk;         /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμªΡ«Τ©ΠτώτώΆΔ«Τ©ΠτώΆμΆμ«Τ©ΠτώτώªφτώΆμªφτώΆμ«ÒτώΆμτώτώτώ«ΣτώΆμΆΔτώΆμτώ       */
+        long scn_offset; /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώΆμªφτώΆμ«ÒτώΆμτώτώτώ«ΣτώΆμΆΔτώΆμτώ«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆνªΏ«Τ©Πτώτώτώ */
         int current_music;
     } savepoint;
     struct SavePoint selectpoint;
 
     /* ---------------------------------------------------------- */
-    /* ΑΰΊξΎυΒΦ */
+    /* τώΆμΆΒτώτώτώτώτώ«³τώτώª¤τώΆμ«Ρτώτώ©¬τώΆμτώτώΆμªΡ */
 
-	/* ³°Ιτΐ©ΈζΎυΒΦ */
+	/* «Τ©ΠΆΒ«³τώΆμ΅ήτώτώªΤτώΆμτώτώτώ«Ώτώτώ«ΣτώΆνª΅τώΆμ«Ρτώτώ©¬τώΆμτώτώΆμªΡ */
     Bool select;
 	Bool cancel;
 	Bool skip;
@@ -283,35 +286,35 @@ typedef struct Lvns {
 	Bool image_mode;
 	
     /* ---------------------------------------------------------- */
-    /* ¥·¥Κ¥κ¥ª¥Ρ΅Ό¥µ */
+    /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμτώτώτώª¤τώΆν«Τ©Π«Τ©Π */
 
-    int start_scn_num;    /* µ―Ζ°»ώ¥·¥Κ¥κ¥ªΘΦΉζ(for DEBUG) */
+    int start_scn_num;    /* «Τ©ΠτώτώªφτώΆνΆΒΆΒ«³«Τ©ΠτώΆντώ«Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐτώΆμτώτώΆμªΡ«Τ©ΠτώΆνª΅(for DEBUG) */
 
-    u_char *scn_data;     /* ¥·¥Κ¥κ¥ª¥Η΅Ό¥Ώ             */
-    u_char *scn_cur_head; /* ¥·¥Κ¥κ¥ª¥Η΅Ό¥ΏΐθΖ¬         */
-    u_char *scn_cur;      /* ¥·¥Κ¥κ¥ª¥Η΅Ό¥Ώ¥«΅Ό¥½¥λ     */
-    u_char *scn_text;     /* ¥·¥Κ¥κ¥ª¥Ζ¥­¥Ή¥Θ           */
+    u_char *scn_data;     /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£             */
+    u_char *scn_cur_head; /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώΆμτώτώτώτώτώΆνΆΒ«Τ©Π         */
+    const  u_char *scn_cur;      /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆνªΏ«Τ©Πτώτώτώ     */
+    u_char *scn_text;     /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ           */
 
     size_t  scn_length;
-	Bool    seen;         /* ΄ϋΖΙ¥·¥Κ¥κ¥ª¥Υ¥ι¥°         */
+	Bool    seen;         /* τώΆμ«Στώτώ«©τώΆνΆΒτώΆμ΅ή«Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμ©¬«Τ©Πτώτώ΅ή«Τ©ΠΆΒ«³         */
 
-    int scn_current;                       /* Έ½Ίί¤Ξ¥·¥Κ¥κ¥ªΘΦΉζ     */
-    int blk_current;                       /* Έ½Ίί¤Ξ¥·¥Κ¥κ¥ª¥Φ¥ν¥Γ¥― */
+    int scn_current;                       /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒ«Τ©ΠτώΆμª¤«Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐτώΆμτώτώΆμªΡ«Τ©ΠτώΆνª΅     */
+    int blk_current;                       /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒ«Τ©ΠτώΆμª¤«Τ©Π«Τ©Π«Τ©ΠτώΆμªφ«Τ©Πτώτώªφ«Τ©Πτώτώ«ΐ«Τ©ΠτώΆμªΡ«Τ©ΠτώτώΆΔ«Τ©ΠτώΆμΆμ«Τ©Πτώτώªφ */
 
 
     /* ------------------------------------------------------ */
-    /* ¥Ζ¥­¥Ή¥Θ¥μ¥¤¥δ½θΝύ·Ο */
+    /* «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ«Τ©ΠτώτώªΆ«Τ©Π«Τ©Π«Τ©ΠτώτώτώτώΆνªΏτώτώτώτώΆμΆΔτώτώ«Ò«Τ©ΠτώΆμª΅ */
 
 #define TEXT_WIDTH  26
 #define TEXT_HEIGHT 16
 
     struct {
-        /* ¥Ζ¥­¥Ή¥Θ¥μ¥¤¥δΝΡ²ΎΑΫVRAM */
+        /* «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ«Τ©ΠτώτώªΆ«Τ©Π«Τ©Π«Τ©ΠτώτώτώτώΆμΆΔτώΆμτώ«Τ©ΠτώΆμ«ΡτώΆμΆΒτώΆμ«©VRAM */
 		struct TextVramLine {
 			int offset;
 			struct TextVram {
-				int code;       /* ΚΈ»ϊ¤Ξ¥³΅Ό¥Ι       */
-				int attribute;  /* ΚΈ»ϊ¤ΞΒ°ΐ­         */
+				int code;       /* τώΆμªφτώτώ«Σ«Τ©Πτώτώ«¤«Τ©ΠτώΆμª¤«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή       */
+				int attribute;  /* τώΆμªφτώτώ«Σ«Τ©Πτώτώ«¤«Τ©ΠτώΆμª¤τώΆμτώΆΒ«³τώΆμτώ         */
 			} column[TEXT_WIDTH];
 		} row[TEXT_HEIGHT];
         int cur_x;
@@ -321,84 +324,84 @@ typedef struct Lvns {
     } tvram[2];
     int current_tvram;
 
-    /* ¥«΅Ό¥½¥λ¤ΞΎυΒΦ */
+    /* «Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆνªΏ«Τ©Πτώτώτώ«Τ©ΠτώΆμª¤τώΆμ«Ρτώτώ©¬τώΆμτώτώΆμªΡ */
     int cursor_state;
     
-    /* ¥Ζ¥­¥Ή¥Θ¥«΅Ό¥½¥λ¤ΞΎυΒΦ */
+    /* «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώΆνªΏ«Τ©Πτώτώτώ«Τ©ΠτώΆμª¤τώΆμ«Ρτώτώ©¬τώΆμτώτώΆμªΡ */
     int text_cursor_state;     
 
-	/* Ι½Ό¨Β°ΐ­ */
+	/* τώΆμ΅ήτώΆνªΏτώΆντώτώ©°τώΆμτώΆΒ«³τώΆμτώ */
     int text_attr;
 
-	/* ΚΈ»ϊ¤¬½ρ¤­Ήώ¤ή¤μ¤Ζ¤¤¤λ¤«? */
+	/* τώΆμªφτώτώ«Σ«Τ©Πτώτώ«¤«Τ©Π«Τ©ΠτώΆνªΏτώτώτώ«Τ©Π«Τ©ΠτώΆντώ«Τ©ΠτώΆν΅λ«Τ©ΠτώτώªΆ«Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Πτώτώτώ«Τ©Π«Τ©Π? */
 	Bool text_written;
 
-	/* ¥Ζ¥­¥Ή¥ΘΙ½Ό¨¥β΅Ό¥Ι¤«¤Ι¤¦¤« */
+	/* «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώτώΆμ΅ήτώΆνªΏτώΆντώτώ©°«Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©Π«Τ©Π«Τ©ΠτώΆμ΅ή«Τ©ΠτώΆμ©°«Τ©Π«Τ©Π */
 	Bool text_mode;
 
     /* ------------------------------------------------------- */
-    /* ²θΑόΙΑ²θ·Ο */
+    /* «Τ©ΠτώτώτώτώΆμΆΒτώτώ«£τώΆμ΅ήτώΆμΆΒ«Τ©Πτώτώτώ«Τ©ΠτώΆμª΅ */
 
-    LvnsImage *background; /* ΗΨ·Κ¥Η΅Ό¥ΏΚέ»ύΝΡ        */
-    LvnsImage *vram;       /* ΗΨ·ΚΉηΐ®Ίξ¶ΘΝΡ²ΎΑΫ VRAM */
+    LvnsImage *background; /* τώΆμΆξτώΆντώ«Τ©ΠτώΆμªφ«Τ©ΠτώΆμΆξτώτώª¤τώΆν«Τ©Πτώτώª£τώΆμªφτώΆμ«Ò«Τ©Πτώτώ«ÒτώΆμΆΔτώΆμτώ        */
+    LvnsImage *vram;       /* τώΆμΆξτώΆντώ«Τ©ΠτώΆμªφ«Τ©ΠτώτώΆξτώΆμτώτώτώ«Βτώτώ«³τώτώª¤τώ«γτώΆμτώτώΆμΆΔτώΆμτώ«Τ©ΠτώΆμ«ΡτώΆμΆΒτώΆμ«© VRAM */
 
-    int latitude;          /* Έ½Ίί¤Ξ²θΑό¤ΞΜΐ¤λ¤µ 0-255 */
-    int latitude_dark;     /* ²θΜΜ¤¬°Ε¤¤»ώ¤Ξµ±ΕΩ¤Ξ»ΨΔκ */
+    int latitude;          /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒ«Τ©ΠτώΆμª¤«Τ©ΠτώτώτώτώΆμΆΒτώτώ«£«Τ©ΠτώΆμª¤τώΆμªΆτώΆμτώ«Τ©Πτώτώτώ«Τ©Π«Τ©Π 0-255 */
+    int latitude_dark;     /* «Τ©ΠτώτώτώτώΆμªΆτώΆμªΆ«Τ©Π«Τ©ΠΆΒ«³τώΆμΆν«Τ©Π«Τ©Π«Τ©ΠτώΆντώ«Τ©ΠτώΆμª¤«Τ©ΠΆΒ©°τώΆμΆντώΆμ«ª«Τ©ΠτώΆμª¤«Τ©ΠτώΆντώτώΆμτώτώτώªφ */
 
-    int sepia_mode_next;   /* Ό΅¤Ξ²θΜΜΐΪ¤κΒΨ¤¨¤Η¥»¥Τ¥ΆΔ΄Ι½Ό¨ */
-    int sepia_mode;        /* ¥»¥Τ¥ΆΔ΄Ι½Ό¨ */
+    int sepia_mode_next;   /* τώΆντώτώª¤«Τ©ΠτώΆμª¤«Τ©ΠτώτώτώτώΆμªΆτώΆμªΆτώΆμτώτώΆμ«¤«Τ©ΠτώτώªφτώΆμτώτώΆντώ«Τ©Πτώτώ©°«Τ©ΠτώΆμΆξ«Τ©Π«Τ©Π«Τ©ΠτώΆμªΤ«Τ©Π«Τ©ΠτώΆμτώτώΆμ«ΣτώΆμ΅ήτώΆνªΏτώΆντώτώ©° */
+    int sepia_mode;        /* «Τ©Π«Τ©Π«Τ©ΠτώΆμªΤ«Τ©Π«Τ©ΠτώΆμτώτώΆμ«ΣτώΆμ΅ήτώΆνªΏτώΆντώτώ©° */
 
     LvnsBackEffectInfo *effect_back;
     LvnsBackEffectInfo *effect_back_next;
-    int effect_back_state;                 /* ΗΨ·Κ¥¨¥Υ¥§¥―¥ΘΝΡ¥Ή¥Ζ΅Ό¥Θ */
+    int effect_back_state;                 /* τώΆμΆξτώΆντώ«Τ©ΠτώΆμªφ«Τ©Πτώτώ©°«Τ©ΠτώΆμ©¬«Τ©ΠΆΒ©Μ«Τ©Πτώτώªφ«Τ©ΠτώΆμτώτώΆμΆΔτώΆμτώ«Τ©Π«Τ©Π«Τ©ΠτώΆνΆΒτώτώª¤τώΆν«Τ©ΠτώΆμτώ */
 #ifdef FONT_PLUS
     u_char*          font_file;
     LvnsFont	     *font;
 #endif /* FONT_PLUS */
 
-	void (*disp_func)(struct Lvns *lvns, void *data); /* ΔΙ²ΓΙ½Ό¨΄ΨΏτ */
+	void (*disp_func)(struct Lvns *lvns, MenuData *data); /* τώΆμτώτώΆμ΅ή«Τ©ΠτώΆμΆμτώΆμ΅ήτώΆνªΏτώΆντώτώ©°τώΆμ«ΣτώΆντώτώτώª£τώτώªΤ */
 	void *disp_func_param;
 
     /* -------------------------------------------------------- */
-    /* ²»³ΪΊΖΐΈ·Ο */
+    /* «Τ©Π«Τ©Π«Τ©ΠτώΆμ«¤τώτώ«³τώΆνΆΒτώΆμτώτώτώ«Σ«Τ©ΠτώΆμª΅ */
 	Music *music;
 
-    /* ¥λ΅Ό¥Χ½θΝύΝΡ */
-    int current_music;                            /* Έ½Ίί±ιΑΥΓζ¤Ξ²»³Ϊ     */
-    Bool loop_music;                              /* ¥λ΅Ό¥Χ¤«¤Ι¤¦¤«       */
-    int next_music;                               /* Ό΅¤Ξ¥·΅Ό¥σ¤«¤ι¤Ξ²»³Ϊ */
-    Bool loop_next_music;                         /* ¥λ΅Ό¥Χ¤«¤Ι¤¦¤«       */
+    /* «Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠΆΒ©ΞτώΆνªΏτώτώτώτώΆμΆΔτώτώ«ÒτώΆμΆΔτώΆμτώ */
+    int current_music;                            /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒΆΒ©°τώτώ΅ήτώΆμΆΒτώΆμ©¬τώΆμΆμτώΆνª΅«Τ©ΠτώΆμª¤«Τ©Π«Τ©Π«Τ©ΠτώΆμ«¤     */
+    Bool loop_music;                              /* «Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠΆΒ©Ξ«Τ©Π«Τ©Π«Τ©ΠτώΆμ΅ή«Τ©ΠτώΆμ©°«Τ©Π«Τ©Π       */
+    int next_music;                               /* τώΆντώτώª¤«Τ©ΠτώΆμª¤«Τ©Π«Τ©Πτώτώª¤τώΆν«Τ©ΠτώτώªΠ«Τ©Π«Τ©Π«Τ©Πτώτώ΅ή«Τ©ΠτώΆμª¤«Τ©Π«Τ©Π«Τ©ΠτώΆμ«¤ */
+    Bool loop_next_music;                         /* «Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠΆΒ©Ξ«Τ©Π«Τ©Π«Τ©ΠτώΆμ΅ή«Τ©ΠτώΆμ©°«Τ©Π«Τ©Π       */
 
-	/* ¥ά¥κ¥ε΅Ό¥ΰ½θΝύΝΡ */
-    int current_music_volume;                     /* Έ½Ίί¤Ξ¥ά¥κ¥ε΅Ό¥ΰΐίΔκ */
-    int music_fade_mode;                          /* ¥Υ¥§΅Ό¥Ι¥β΅Ό¥Ι       */
-    int music_fade_flag;                          /* ¥Υ¥§΅Ό¥Ι¤ΞΚύΈώ       */
+	/* «Τ©ΠτώΆμ«£«Τ©Πτώτώªφ«Τ©ΠτώτώΆντώτώª¤τώΆν«Τ©ΠτώτώτώτώΆνªΏτώτώτώτώΆμΆΔτώτώ«ÒτώΆμΆΔτώΆμτώ */
+    int current_music_volume;                     /* τώτώ«ΣτώΆνªΏτώτώ«³τώΆνªΒ«Τ©ΠτώΆμª¤«Τ©ΠτώΆμ«£«Τ©Πτώτώªφ«Τ©ΠτώτώΆντώτώª¤τώΆν«Τ©ΠτώτώτώτώΆμτώτώΆνªΒτώΆμτώτώτώªφ */
+    int music_fade_mode;                          /* «Τ©ΠτώΆμ©¬«Τ©ΠΆΒ©Μτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή       */
+    int music_fade_flag;                          /* «Τ©ΠτώΆμ©¬«Τ©ΠΆΒ©Μτώτώª¤τώΆν«Τ©ΠτώΆμ΅ή«Τ©ΠτώΆμª¤τώΆμªφτώτώ«Òτώτώ«ΣτώΆντώ       */
 
     /* -------------------------------------------------------- */
-    /* ¥µ¥¦¥σ¥ΙΊΖΐΈ·Ο */
+    /* «Τ©Π«Τ©Π«Τ©ΠτώΆμ©°«Τ©ΠτώτώªΠ«Τ©ΠτώΆμ΅ήτώτώ«³τώΆνΆΒτώΆμτώτώτώ«Σ«Τ©ΠτώΆμª΅ */
 	Sound *sound;
 
-    /* ¥λ΅Ό¥Χ½θΝύΝΡ */
+    /* «Τ©Πτώτώτώτώτώª¤τώΆν«Τ©ΠΆΒ©ΞτώΆνªΏτώτώτώτώΆμΆΔτώτώ«ÒτώΆμΆΔτώΆμτώ */
     int sound_loop;
     int sound_count;
     int interval_count;
 
     /* -------------------------------------------------------- */
-	/* ¥Ò¥Ή¥Θ¥κ */
+	/* «Τ©ΠτώΆμªÒ«Τ©Π«Τ©Π«Τ©ΠτώΆμτώ«Τ©Πτώτώªφ */
 	LvnsHistoryData *history;
 	int history_size;
 	int history_pos;
 
 #ifdef USE_MGL
     /* -------------------------------------------------------- */
-    /* mglvns ¤Ξ¤ί¤Η»Θ¤¦ΎυΒΦΓΝ */
+    /* mglvns «Τ©ΠτώΆμª¤«Τ©ΠτώΆνªΒ«Τ©ΠτώΆμΆξ«Τ©ΠτώΆμτώ«Τ©ΠτώΆμ©°τώΆμ«Ρτώτώ©¬τώΆμτώτώΆμªΡτώΆμΆμτώΆμΆΔ */
     int version;
 #endif
 
     /* -------------------------------------------------------- */
-	/* ¥·¥Ή¥Ζ¥ΰ°ΝΒΈΙτ */
+	/* «Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆνΆΒ«Τ©ΠτώτώτώΆΒ«³τώΆμΆΔτώΆμτώτώτώ«ΣτώΆμ΅ήτώτώªΤ */
 
-    void *system_depend;                /* Ζ°Ίξ¥·¥Ή¥Ζ¥ΰ°ΝΒΈΎπΚσ */
+    void *system_depend;                /* τώΆνΆΒΆΒ«³τώτώ«³τώτώª¤«Τ©Π«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆνΆΒ«Τ©ΠτώτώτώΆΒ«³τώΆμΆΔτώΆμτώτώτώ«ΣτώΆμ«ΡτώΆνªªτώΆμªφτώτώªΠ */
 
 	void (*flushWindow)(struct Lvns *lvns);
 	void (*flushWindowArea)(struct Lvns *lvns, int x, int y, int w, int h);
@@ -426,7 +429,7 @@ typedef struct Lvns {
 
 } Lvns;
 
-/* LvnsDisp.c Ι½Ό¨·Ο */
+/* LvnsDisp.c τώΆμ΅ήτώΆνªΏτώΆντώτώ©°«Τ©ΠτώΆμª΅ */
 void LvnsDrawTextLayerAll(Lvns *lvns);
 void LvnsDrawTextLayer(Lvns *lvns);
 void LvnsClearCursor(Lvns *lvns);
@@ -434,11 +437,12 @@ void LvnsDrawCursor(Lvns *lvns, LvnsCursorType cursor_type);
 void LvnsClearTextCursor(Lvns *lvns);
 void LvnsDrawTextCursor(Lvns *lvns);
 void LvnsDispWindow(Lvns *lvns);
+void LvnsUndispText(Lvns *lvns);
 void LvnsDispText(Lvns *lvns);
 void LvnsTextOff(Lvns *lvns);
 void LvnsTextOn(Lvns *lvns);
 
-/* LvnsText.c ¥Ζ¥­¥Ή¥Θ½θΝύ·Ο */
+/* LvnsText.c «Τ©ΠτώΆνΆΒ«Τ©Π«Τ©Π«Τ©Π«Τ©ΠτώΆμτώτώΆνªΏτώτώτώτώΆμΆΔτώτώ«Ò«Τ©ΠτώΆμª΅ */
 void LvnsLocate(Lvns *lvns, int x, int y);
 void LvnsPutChar(Lvns *lvns, int c, int attr);
 void LvnsPutCharNormal(Lvns *lvns, int c, int attr);
@@ -449,7 +453,7 @@ void LvnsNewLineText(Lvns *lvns);
 void LvnsDrawString(Lvns *lvns, int x, int y, const u_char *str, int attr);
 void LvnsDrawStringCenter(Lvns *lvns, int y, const u_char *str, int attr);
 
-/* LvnsMusic.c ²»³Ϊΐ©Έζ */
+/* LvnsMusic.c «Τ©Π«Τ©Π«Τ©ΠτώΆμ«¤τώΆμτώτώτώ«Ώτώτώ«ΣτώΆνª΅ */
 void LvnsSetMusicVolume(Lvns *lvns, int no);
 void LvnsStartMusic(Lvns *lvns, int no);
 void LvnsStopMusic(Lvns *lvns);
@@ -464,7 +468,7 @@ void LvnsLoopMusic(Lvns *lvns);
 void LvnsWaitMusic(Lvns *lvns);
 void LvnsWaitMusicFade(Lvns *lvns);
 
-/* LvnsSound.c Έϊ²Μ²»ΐ©Έζ */
+/* LvnsSound.c τώτώ«Στώτώ«¤«Τ©ΠτώΆμªΆ«Τ©Π«Τ©ΠτώΆμτώτώτώ«Ώτώτώ«ΣτώΆνª΅ */
 void LvnsLoadSound(Lvns *lvns, const char* basename, int no);
 void LvnsLoadSound2(Lvns *lvns, const char* name);
 void LvnsStartSound(Lvns *lvns, int count);
@@ -472,13 +476,13 @@ void LvnsStopSound(Lvns *lvns);
 void LvnsWaitSound(Lvns *lvns);
 void LvnsLoopSound(Lvns *lvns);
 
-/* LvnsBackEffect.c ΗΨ·Κ¥¨¥Υ¥§¥―¥Θΐ©Έζ */
+/* LvnsBackEffect.c τώΆμΆξτώΆντώ«Τ©ΠτώΆμªφ«Τ©Πτώτώ©°«Τ©ΠτώΆμ©¬«Τ©ΠΆΒ©Μ«Τ©Πτώτώªφ«Τ©ΠτώΆμτώτώΆμτώτώτώ«Ώτώτώ«ΣτώΆνª΅ */
 void LvnsSetBackEffect(Lvns *lvns, LvnsBackEffectInfo *info);
 void LvnsSetNextBackEffect(Lvns *lvns, LvnsBackEffectInfo *info);
 void LvnsBackEffectSetState(Lvns *lvns);
 void LvnsBackEffect(Lvns *lvns);
 
-/* LvnsFile.c ¥Υ¥΅¥¤¥λΖΙ¤ίΉώ¤ί */
+/* LvnsFile.c «Τ©ΠτώΆμ©¬«Τ©Πτώτώª¤«Τ©Π«Τ©Π«Τ©ΠτώτώτώτώΆνΆΒτώΆμ΅ή«Τ©ΠτώΆνªΒ«Τ©ΠτώΆντώ«Τ©ΠτώΆνªΒ */
 u_char *LvnsLoadData(Lvns *lvns, const char *name, size_t *size);
 LvnsImage *LvnsLoadImage(Lvns *lvns, const char *name, LvnsImage *over);
 void LvnsLoadScenario(Lvns *lvns, int scn, int blk);
@@ -515,7 +519,7 @@ void  LvnsWait(Lvns *lvns, int flip_cnt);
 void  LvnsJump(Lvns *lvns, LvnsJumpParameter param);
 void  LvnsSetDataPath(Lvns *lvns, const char *path);
 void  LvnsSetSaveDataPath(Lvns *lvns, const char *path);
-void  LvnsSetDispFunc(Lvns *lvns, void (*func)(Lvns *lvns, void *data), void *data);
+void  LvnsSetDispFunc(Lvns *lvns, void (*func)(Lvns *lvns, MenuData *data), void *data);
 
 /* LvnsMenu.c */
 void LvnsDrawMenu(Lvns *lvns);
@@ -549,4 +553,13 @@ void KizuatoInitialize(Lvns *);
 void ToHeartInitialize(Lvns *);
 #endif
 
+
+/* sizuku.c */
+void SizukuInitialize(Lvns *);
+
+// /* kizuato.c */
+// void KizuatoInitialize(Lvns *);
+// 
+// /* toheart.c */
+// void ToHeartInitialize(Lvns *);
 #endif

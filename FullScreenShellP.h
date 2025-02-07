@@ -34,12 +34,12 @@ typedef struct _FullScreenShellClassRec {
 extern FullScreenShellClassRec fullScreenShellClassRec;
 
 typedef struct _FullScreenShellPart {
-	Bool enable_screen_mode;          /* Á´²èÌÌ¥â¡¼¥É¤¬»È¤¨¤ë¤«? */
-	int vid_count;                    /* ¥â¡¼¥É¤Î¿ô              */
-	XF86VidModeModeInfo **modeinfos;  /* ¥â¡¼¥É¾ğÊó (0 ¤¬ºÇ½é)   */
-	Bool screen_mode;                 /* ¸½ºß¤Î¾õÂÖ              */
-	Dimension width;                  /* Window ¤ËÌá¤¹»ş¤Î¥µ¥¤¥º */
-	Dimension height;                 /* Window ¤ËÌá¤¹»ş¤Î¥µ¥¤¥º */
+	Bool enable_screen_mode;          /* å…¨ç”»é¢ãƒ¢ãƒ¼ãƒ‰ãŒä½¿ãˆã‚‹ã‹? */
+	int vid_count;                    /* ãƒ¢ãƒ¼ãƒ‰ã®æ•°              */
+	XF86VidModeModeInfo **modeinfos;  /* ãƒ¢ãƒ¼ãƒ‰æƒ…å ± (0 ãŒæœ€åˆ)   */
+	Bool screen_mode;                 /* ç¾åœ¨ã®çŠ¶æ…‹              */
+	Dimension width;                  /* Window ã«æˆ»ã™æ™‚ã®ã‚µã‚¤ã‚º */
+	Dimension height;                 /* Window ã«æˆ»ã™æ™‚ã®ã‚µã‚¤ã‚º */
 	int getsize;
 } FullScreenShellPart;
 

@@ -43,7 +43,7 @@ mgLvnsInit(Lvns *lvns)
     }
 
     /*
-     * ¥ª¥Õ¥¹¥¯¥ê¡¼¥óÀ¸À®
+     * ã‚ªãƒ•ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ç”Ÿæˆ
      */
     lvns->background = mglimage_new(WIDTH, HEIGHT, 0, 0);
     lvns->vram = mglimage_new(WIDTH, HEIGHT, 0, 0);
@@ -63,17 +63,17 @@ mgLvnsInit(Lvns *lvns)
         char fname[ 128];
 
         if( lvns->font_file == NULL){
-            /* ¥Õ¥©¥ó¥È¥Õ¥¡¥¤¥ë¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç */
+            /* ãƒ•ã‚©ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆ */
 		;;
 	} else if( strcmp( lvns->font_file , "PAK FILE") == 0){
-            /* PAK¥Õ¥¡¥¤¥ë¤«¤éÆÉ¤ß¹þ¤à¾ì¹ç */
+            /* PAKãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰èª­ã¿è¾¼ã‚€å ´åˆ */
             if( (buf = LvnsLoadData(lvns, "KNJ_ALL.KNJ", NULL)) != NULL){
-                /* ÆÉ¤á¤¿¾ì¹ç */
+                /* èª­ã‚ãŸå ´åˆ */
                 if( ( lvns->font = lvnsfont_new( buf)) == NULL){
                     perror( "Lvns fontload. Use system font.");
 	        }
             } else {
-                /* ÆÉ¤á¤Ê¤«¤Ã¤¿¾ì¹ç */
+                /* èª­ã‚ãªã‹ã£ãŸå ´åˆ */
                 strcpy( fname, lvns->data_path);
                 strcat( fname, "/");
                 strcat( fname, "KNJ_ALL.KNJ");
@@ -83,7 +83,7 @@ mgLvnsInit(Lvns *lvns)
 	        }
 	    }
         } else {
-            /* ¥Õ¥©¥ó¥È¥Õ¥¡¥¤¥ë¤¬»ØÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç */
+            /* ãƒ•ã‚©ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ */
             if( ( lvns->font = lvnsfont_load( lvns->font_file)) == NULL){
                 perror( "Lvns fontload. Use system font.");
             }

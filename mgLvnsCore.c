@@ -17,7 +17,7 @@
 #include "mgLvnsCore.h"
 
 /*
- * ÉÁ²è¥·¥ó¥¯¥íÂÔ¤Á½èÍı
+ * æç”»ã‚·ãƒ³ã‚¯ãƒ­å¾…ã¡å‡¦ç†
  */
 
 #define TICKSPERSEC 1000
@@ -37,9 +37,9 @@ getCurrentTime(void)
 }
 
 /**
- * ¶ë·Á¤òÉÁ²è¤¹¤ë
- * @param x,y,w,h °ÌÃÖ¤È¥µ¥¤¥º
- * @param ¿§¤Î HSB ÃÍ
+ * çŸ©å½¢ã‚’æç”»ã™ã‚‹
+ * @param x,y,w,h ä½ç½®ã¨ã‚µã‚¤ã‚º
+ * @param è‰²ã® HSB å€¤
  */
 static void
 DrawBox(Lvns *lvns, int x, int y, int w, int h, int color)
@@ -51,7 +51,7 @@ DrawBox(Lvns *lvns, int x, int y, int w, int h, int color)
 #include <sys/stat.h>
 
 /** 
- * »ØÄê¤·¤¿¥Õ¥¡¥¤¥ë¤Î¹¹¿·ÆüÉÕ¤ò¼èÆÀ¤¹¤ë
+ * æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®æ›´æ–°æ—¥ä»˜ã‚’å–å¾—ã™ã‚‹
  */
 static time_t
 GetFileTime(Lvns *lvns, const char *path)
@@ -67,7 +67,7 @@ GetFileTime(Lvns *lvns, const char *path)
 static void
 Flip(Lvns *lvns)
 {
-	// ¥¿¥¤¥ß¥ó¥°ÊäÀµ½èÍı
+	// ã‚¿ã‚¤ãƒŸãƒ³ã‚°è£œæ­£å‡¦ç†
 		int wait, sa;
 		wait = LCW.wait_count / 60;
 		if (wait > 0) {
@@ -253,8 +253,8 @@ PutPattern2(Lvns *lvns, int x, int y, int index, u_char *data)
 }
 
 /* 
- * ¥¿¥¤¥Ş¤ò¥ê¥»¥Ã¥È¤¹¤ë
- * @param no ¥¿¥¤¥ŞÈÖ¹æ
+ * ã‚¿ã‚¤ãƒã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
+ * @param no ã‚¿ã‚¤ãƒç•ªå·
  */
 static void
 ResetTimer(Lvns *lvns, int no)
@@ -263,9 +263,9 @@ ResetTimer(Lvns *lvns, int no)
 }
 
 /*
- * ¥¿¥¤¥ŞÃÍ¤ò¼èÆÀ¤¹¤ë
- * @param no ¥¿¥¤¥ŞÈÖ¹æ
- * @return ¥¿¥¤¥ŞÃÍ (msecÃ±°Ì)
+ * ã‚¿ã‚¤ãƒå€¤ã‚’å–å¾—ã™ã‚‹
+ * @param no ã‚¿ã‚¤ãƒç•ªå·
+ * @return ã‚¿ã‚¤ãƒå€¤ (msecå˜ä½)
  */
 static long 
 GetTimer(Lvns *lvns, int no)
@@ -278,7 +278,7 @@ GetTimer(Lvns *lvns, int no)
 
 
 /*
- * LVNS ¾ğÊó¤ÎÀÜÂ³
+ * LVNS æƒ…å ±ã®æ¥ç¶š
  */ 
 void
 mgLvnsCoreSetLvns(Lvns *lvns)
@@ -293,13 +293,13 @@ mgLvnsCoreSetLvns(Lvns *lvns)
     LvnsCoreInitMusic(lcw);
     //LvnsCoreInitSound(lcw);
 
-    /* SE ´ØÏ¢½é´ü²½ÀßÄê */
+    /* SE é–¢é€£åˆæœŸåŒ–è¨­å®š */
     //lvns->sound = &LCW.sound;
     
-    /* BGM´ØÏ¢½é´ü²½ */
+    /* BGMé–¢é€£åˆæœŸåŒ– */
     lvns->music = &LCW.music;
 
-    /* ¥·¥¹¥Æ¥à°ÍÂ¸´Ø¿ô·²¤ÎÀßÄê */
+    /* ã‚·ã‚¹ãƒ†ãƒ ä¾å­˜é–¢æ•°ç¾¤ã®è¨­å®š */
     lvns->flushWindow          = FlushWindow;
     lvns->flushWindowArea      = FlushWindowArea;
     lvns->drawWindow           = DrawWindow;

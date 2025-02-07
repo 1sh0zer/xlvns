@@ -1,13 +1,15 @@
 #include "config.tmpl"
-
 XCOMM ----------------
 XCOMM subdirs
 XCOMM ----------------
 
+FREETYPEINC = -I/usr/include/freetype2
+FREETYPELIB = -lfreetype
+
 DEFINES = -DXLVNSPACKDIR=\"$(XLVNSPACKDIR)\" -DCDDEVICE=\"$(CDDEVICE)\" -DAUDIODEVICE=\"$(AUDIODEVICE)\" $(AUDIODEFINES) ShmDefines
 
-EXTRA_INCLUDES += $(AUDIOINC)
-MYLIBS = $(AUDIOLIB)
+EXTRA_INCLUDES += $(AUDIOINC) $(FREETYPEINC)
+MYLIBS = $(AUDIOLIB) $(FREETYPELIB)
 
 #if BuildXF86VidModeExt
  DEFINES += -DXVIDMODE
@@ -69,6 +71,10 @@ OBJS =  filemap_unix.o\
 	LvnsCoreMusic.o\
 	LvnsCoreSound.o\
 	LvnsCore.o\
+	openal_manager.o\
+	mp3play.o\
+	message_hook.o\
+	freetype_manager.o\
 	$(XVIDOBJ) XtMain.o
 
 SRCS = $(OBJS:.o=.c)

@@ -3,17 +3,19 @@ XCOMM Common Setup
 XCOMM
 
 XCOMM CC = gcc
-CDEBUGFLAGS= -g 
+CDEBUGFLAGS= -g  
 CCOPTIONS= -DDEBUG
 
 XLVNSPACKDIR = $(LIBDIR)/xlvns
-CDDEVICE = /dev/cd0a
-AUDIODEVICE = /dev/audio
+CDDEVICE = 
+AUDIODEVICE = 
+AUDIODEFINES = -DPULSE
+AUDIOLIB = -lopenal -lsndfile
 
 XCOMM - for ESD support -
 XCOMM AUDIODEVICE = 
-XCOMM AUDIODEFINES = -DESDAUDIO
-XCOMM AUDIOLIB = -L/usr/local/lib -lesddsp -lesd
+XCOMM AUDIODEFINES = -DPULSE
+XCOMM AUDIOLIB = -lpulse-simple -lpulse
 XCOMM AUDIOINC = -I/usr/local/include
 
 XCOMM - Solaris -

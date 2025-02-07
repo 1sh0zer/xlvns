@@ -59,7 +59,7 @@ lvnsfont_load( const u_char* fname)
 	//ret->width  = width;
 	//ret->height = height;
 
-	// font¥Ç¡¼¥¿ÆÉ¤ß¹ş¤ß
+	// fontãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
 	fread( ret->font_data, st.st_size, 1, fp);
 
 	return ret;

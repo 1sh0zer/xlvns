@@ -9,15 +9,16 @@
  */
 
 /* 
- * Ό¶ ³ΖΌο½θΝύ¥λ΅Ό¥Α¥σ
+ * ©­Άω τώ©΅©­«Α©Ν«²ªΏ«ςτώ«³ΆΒ©­τώª΅τώ«Ρ
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "sizuku.h"
+#include "freetype_manager.h"
 
-/* Ό¶ ¥­¥γ¥ι/ΗΨ·ΚΉηΐ®½θΝύ */
+/* ©­Άω τώτώ«ªτώ«±/ª®©¬τώª΄τώ«®ªΆΆξ©Ν«²ªΏ«ς */
 void
 SizukuMergeCharacter(Lvns *lvns)
 {
@@ -26,7 +27,7 @@ SizukuMergeCharacter(Lvns *lvns)
 }
 
 /* 
- * Ό¶ ²θΑόΎΓµξ
+ * ©­Άω τώ«²ª΅«δªσªªτώ«Β
  */
 void
 SizukuClearScreen(Lvns *lvns)
@@ -36,7 +37,7 @@ SizukuClearScreen(Lvns *lvns)
 }
 
 /*
- * Ό¶ ¥­¥γ¥ι¥―¥Ώ¥ν΅Ό¥Ι
+ * ©­Άω τώτώ«ªτώ«±τώΆ΄τώΆΔτώ«ΏΆΒ©­τώª±
  */
 void
 SizukuLoadCharacter(Lvns *lvns, int no, int pos)
@@ -78,7 +79,7 @@ SizukuLoadCharacter(Lvns *lvns, int no, int pos)
 }
 
 /*
- * Ό¶ ¥­¥γ¥ι¥―¥ΏΎΓµξ
+ * ©­Άω τώτώ«ªτώ«±τώΆ΄τώΆΔªσªªτώ«Β
  */
 void
 SizukuClearCharacter(Lvns *lvns, int pos)
@@ -126,72 +127,72 @@ SizukuClearCharacter(Lvns *lvns, int pos)
 }
 
 /**
- * ¥Ρ¥μ¥Γ¥ΘΓΦ΄Ή¥Ζ΅Ό¥Φ¥λ
+ * τώªΠτώ«ΐτώªªτώª²ªªªΣªφτώτώ©΅ΆΒ©­τώªΣτώ«³
  */
 u_char sizuku_haikei_palette[][4][3] = {
-    /* Γλ 01, 03, 13, 22, 24*/
+    /* ªª«³ 01, 03, 13, 22, 24*/
     { {0x00,0x00,0x00}, {0x66,0x55,0x22}, {0x88,0x88,0x44}, {0xbb,0xcc,0x88} },
-    /* ΝΌΚύ (³°)*/
+    /* ªΏ©­ª΄«ς (τώ΅λ)*/
     { {0x00,0x00,0x00}, {0x77,0x44,0x33}, {0xcc,0x88,0x44}, {0xee,0xcc,0x55} },
-    /* Μλ   11,14,15,18,19 */
+    /* ªΐ«³   11,14,15,18,19 */
     { {0x00,0x00,0x00}, {0x22,0x44,0x66}, {0x55,0x88,0xbb}, {0xbb,0xcc,0xff} },
-    /* ΏΌΜλ 39 */
+    /* ΆΔ©­ªΐ«³ 39 */
     { {0x00,0x00,0x00}, {0x00,0x22,0x33}, {0x00,0x44,0x55}, {0x00,0x88,0x99} },
-    /* ΏΌΜλ¤Ξ¶µΌΌΝΡ */
+    /* ΆΔ©­ªΐ«³τώªΒΆωτώ©­©­ªΏªΠ */
     { {0x00,0x00,0x00}, {0x33,0x33,0x55}, {0x30,0x50,0x88}, {0x77,0x88,0xbb}},
-    /* ΐΦ¤¤²°Ύε */
+    /* ªΆªΣτώτώτώ΅λªσ«© */
     { {0x00,0x00,0x00}, {0xbb,0x00,0x00}, {0xff,0x55,0x00}, {0xff,0x77,0x00} },
-    /* ¤ή¤Γ¤―¤ι¤ΚΟ­²Ό */
+    /* τώ©°τώªªτώΆ΄τώ«±τώª΄ªΑτώ©­ */
     { {0x00,0x00,0x00}, {0x00,0x00,0x11}, {0x00,0x00,0x44}, {0x11,0x22,0x66} },
-    /* Μλ¤Ξ²°Ύε */
+    /* ªΐ«³τώªΒτώ΅λªσ«© */
     { {0x00,0x00,0x00}, {0x22,0x22,0x77}, {0x44,0x55,0xbb}, {0x77,0x77,0xff} },
-    /* ΝΌΚύ¤Ξ¶µΌΌ */
+    /* ªΏ©­ª΄«ςτώªΒΆωτώ©­©­ */
     { {0x00,0x00,0x00}, {0x77,0x33,0x33}, {0xaa,0x66,0x33}, {0xff,0xbb,0x66} },
 };
 
 #ifdef USE_MGL
 int sizuku_haikei_palette_hsb[][3][16] = {
-    /* Γλ 01, 03, 13, 22, 24*/
+    /* ªª«³ 01, 03, 13, 22, 24*/
   {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
   },
-    /* ΝΌΚύ (³°)*/
+    /* ªΏ©­ª΄«ς (τώ΅λ)*/
   {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1,  1,  1,  1},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
   },
-    /* Μλ   11,14,15,18,19 */
+    /* ªΐ«³   11,14,15,18,19 */
   {{8, 8, 8, 8, 8, 8, 8, 8, 8, 8,  8,  8,  8,  8,  8,  8},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 2, 3, 4, 5, 6, 6, 7,  8,  9, 10, 10, 11, 12}
   },
-    /* ΏΌΜλ 39 */
+    /* ΆΔ©­ªΐ«³ 39 */
   {{8, 8, 8, 8, 8, 8, 8, 8, 8, 8,  8,  8,  8,  8,  8,  8},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 2, 3, 4, 5, 6, 6, 7,  8,  9, 10, 10, 11, 12}
   },
-    /* ΏΌΜλ¤Ξ¶µΌΌΝΡ */
+    /* ΆΔ©­ªΐ«³τώªΒΆωτώ©­©­ªΏªΠ */
   {{8, 8, 8, 8, 8, 8, 8, 8, 8, 8,  8,  8,  8,  8,  8,  8},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 2, 3, 4, 5, 6, 6, 7,  8,  9, 10, 10, 11, 12}
   },
-    /* ΐΦ¤¤²°Ύε */
+    /* ªΆªΣτώτώτώ΅λªσ«© */
   {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0,  0,  0,  0},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
   },
-    /* ¤ή¤Γ¤―¤ι¤ΚΟ­²Ό */
+    /* τώ©°τώªªτώΆ΄τώ«±τώª΄ªΑτώ©­ */
   {{8, 8, 8, 8, 8, 8, 8, 8, 8, 8,  8,  8,  8,  8,  8,  8},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 2, 3, 4, 5, 6, 6, 7,  8,  9, 10, 10, 11, 12}
   },
-    /* Μλ¤Ξ²°Ύε */
+    /* ªΐ«³τώªΒτώ΅λªσ«© */
   {{8, 8, 8, 8, 8, 8, 8, 8, 8, 8,  8,  8,  8,  8,  8,  8},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 2, 3, 4, 5, 6, 6, 7,  8,  9, 10, 10, 11, 12}
   },
-    /* ΝΌΚύ¤Ξ¶µΌΌ */
+    /* ªΏ©­ª΄«ςτώªΒΆωτώ©­©­ */
   {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1,  1,  1,  1},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
@@ -200,58 +201,58 @@ int sizuku_haikei_palette_hsb[][3][16] = {
 #endif
 
 /*
- * ΗΨ·Κ²θΑό ¥Ρ¥ι¥α΅Ό¥ΏΚΡ΄Ή
+ * ª®©¬τώª΄τώ«²ª΅«δ τώªΠτώ«±τώ«΅ΆΒ©­τώΆΔª΄ªΠªφτώ
  */
 static int
 bgmap(int no)
 {
     switch (no) {
     case 4:
-        return 2; /* ¶µΌΌ(ΝΌΚύ) */
+        return 2; /* Άωτώ©­©­(ªΏ©­ª΄«ς) */
     case 5:
-        return 2; /* ¶µΌΌ(ΏΌΜλ) */
+        return 2; /* Άωτώ©­©­(ΆΔ©­ªΐ«³) */
     case 6:
-        return 3; /* µΩ¤ί»ώ΄Φ(ΝΌΚύ) */
+        return 3; /* τώªγτώ©Ξτώ©ΠªφªΣ(ªΏ©­ª΄«ς) */
     case 32:
-        return 31; /* ²°Ύε(ΝΌΚύ)   */
+        return 31; /* τώ΅λªσ«©(ªΏ©­ª΄«ς)   */
     case 33:
-        return 31; /* ²°Ύε(Μλ)     */
+        return 31; /* τώ΅λªσ«©(ªΐ«³)     */
     case 35:
-        return 34; /* ²°Ύε(ΜΦ)ΝΌΚύ */
+        return 34; /* τώ΅λªσ«©(ªΐªΣ)ªΏ©­ª΄«ς */
     case 36:
-        return 34; /* ²°Ύε(ΜΦ)Μλ   */
+        return 34; /* τώ΅λªσ«©(ªΐªΣ)ªΐ«³   */
     case 38:
-        return 11;/* ΒΞ°ι΄Ϋ (ΝΌΚύ) */
+        return 11;/* ª¤ªΒ΅λ«±ªφªε (ªΏ©­ª΄«ς) */
     case 41:
-        return 15; /* ΓζΔν (ΝΌΚύ) */
+        return 15; /* ªª©Αª£«Ώ (ªΏ©­ª΄«ς) */
     case 42:
-        return 15; /* ΓζΔν (Γλ) */
+        return 15; /* ªª©Αª£«Ώ (ªª«³) */
     case 43:
-        return 10;  /* ¤ν¤¦¤«(ΝΌΚύ) */
+        return 10;  /* τώ«Ώτώªήτώτώ(ªΏ©­ª΄«ς) */
     case 44:
-        return 10;  /* ¤ν¤¦¤«(ΏΌΜλ) */
+        return 10;  /* τώ«Ώτώªήτώτώ(ΆΔ©­ªΐ«³) */
     case 45:
-        return 30; /* Ώ¦°χΌΌ(ΝΌΚύ) */
+        return 30; /* ΆΔªή΅λ΅ΰ©­©­(ªΏ©­ª΄«ς) */
     case 46:
-        return 30; /* Ώ¦°χΌΌ(ΏΌΜλ) */
+        return 30; /* ΆΔªή΅λ΅ΰ©­©­(ΆΔ©­ªΐ«³) */
     case 47:
-        return 22; /* ³¬ΓΚ (ΝΌΚύ) */
+        return 22; /* τώτώªªª΄ (ªΏ©­ª΄«ς) */
     case 48:
-        return 22; /* ³¬ΓΚ΅ΚΏΌΜλ) */
+        return 22; /* τώτώªªª΄ΆΒª΄ΆΔ©­ªΐ«³) */
     case 49:
-        return 12; /* ΐΈΕΜ²ρΟ­²Ό(ΝΌΚύ) */
+        return 12; /* ªΆ«φª©ªΐτώ«ΠªΑτώ©­(ªΏ©­ª΄«ς) */
     case 50:
-        return 12; /* ΐΈΕΜ²ρΟ­²Ό(ΏΌΜλ) */
+        return 12; /* ªΆ«φª©ªΐτώ«ΠªΑτώ©­(ΆΔ©­ªΐ«³) */
     case 51:
-        return 24; /* ΒΞ°ι΄Ϋ¤ΞΓζ(ΝΌΚύ) */
+        return 24; /* ª¤ªΒ΅λ«±ªφªετώªΒªª©Α(ªΏ©­ª΄«ς) */
     case 52:
-        return 24; /* ΒΞ°ι΄Ϋ¤ΞΓζ(Μλ)   */
+        return 24; /* ª¤ªΒ΅λ«±ªφªετώªΒªª©Α(ªΐ«³)   */
     case 53:
-        return 12; /* Ιτ³θΟ­²Ό(ΏΏ¤Γ°Ε) */
+        return 12; /* ª±«Ττώ«²ªΑτώ©­(ΆΔΆΔτώªª΅λª©) */
     case 54:
-        return 18; /* Ε΄¤Ξ¤Θ¤Σ¤ιΚΔ(ΝΌΚύ) */
+        return 18; /* ª©ªφτώªΒτώª²τώªΡτώ«±ª΄ª£(ªΏ©­ª΄«ς) */
     case 55:
-	return 19; /* Ε΄¤Ξ¤Θ¤Σ¤ι³«(ΝΌΚύ) */
+	return 19; /* ª©ªφτώªΒτώª²τώªΡτώ«±τώτώ(ªΏ©­ª΄«ς) */
     default:
         return no;
     }
@@ -259,58 +260,58 @@ bgmap(int no)
 }
 
 /*
- * ΗΨ·Κ²θΑό¥Ρ¥μ¥Γ¥Θ»ΨΔκ (0: ¤½¤Ξ¤ή¤ή¥ν΅Ό¥Ι)
+ * ª®©¬τώª΄τώ«²ª΅«δτώªΠτώ«ΐτώªªτώª²τώ©¬ª£«΄ (0: τώ©ΝτώªΒτώ©°τώ©°τώ«ΏΆΒ©­τώª±)
  */
 static int
 palmap(int no)
 {
     switch (no) {
     case 4:
-        return SIZUKU_PAL_YUUGATA2;  /* ¶µΌΌ(ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA2;  /* Άωτώ©­©­(ªΏ©­ª΄«ς) */
     case 5:
-        return SIZUKU_PAL_MIDNIGHT; /* ¶µΌΌ(ΏΌΜλ) */
+        return SIZUKU_PAL_MIDNIGHT; /* Άωτώ©­©­(ΆΔ©­ªΐ«³) */
     case 6:
-        return SIZUKU_PAL_YUUGATA2;  /* µΩ¤ί»ώ΄Φ(ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA2;  /* τώªγτώ©Ξτώ©ΠªφªΣ(ªΏ©­ª΄«ς) */
     case 32:
-        return SIZUKU_PAL_YUUYAKE; /* ²°Ύε(ΝΌΎΖ¤±)  */
+        return SIZUKU_PAL_YUUYAKE; /* τώ΅λªσ«©(ªΏ©­ªσ©΅τώ΅ή)  */
     case 33:
-        return SIZUKU_PAL_NIGHT2; /* ²°Ύε(Μλ)     */
+        return SIZUKU_PAL_NIGHT2; /* τώ΅λªσ«©(ªΐ«³)     */
     case 35:
-        return SIZUKU_PAL_YUUYAKE; /* ²°Ύε(ΜΦ)ΝΌΎΖ¤± */
+        return SIZUKU_PAL_YUUYAKE; /* τώ΅λªσ«©(ªΐªΣ)ªΏ©­ªσ©΅τώ΅ή */
     case 36:
-        return SIZUKU_PAL_NIGHT2; /* ²°Ύε(ΜΦ)Μλ   */
+        return SIZUKU_PAL_NIGHT2; /* τώ΅λªσ«©(ªΐªΣ)ªΐ«³   */
     case 38:
-        return SIZUKU_PAL_YUUGATA;/* ΒΞ°ι΄Ϋ (ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA;/* ª¤ªΒ΅λ«±ªφªε (ªΏ©­ª΄«ς) */
     case 41:
-        return SIZUKU_PAL_YUUGATA; /* ΓζΔν (ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA; /* ªª©Αª£«Ώ (ªΏ©­ª΄«ς) */
     case 42:
-        return SIZUKU_PAL_DAY; /* ΓζΔν (Γλ΄Φ) */
+        return SIZUKU_PAL_DAY; /* ªª©Αª£«Ώ (ªª«³ªφªΣ) */
     case 43:
-        return SIZUKU_PAL_YUUGATA;  /* ¤ν¤¦¤«(ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA;  /* τώ«Ώτώªήτώτώ(ªΏ©­ª΄«ς) */
     case 44:
-        return SIZUKU_PAL_MIDNIGHT; /* ¤ν¤¦¤«(ΏΌΜλ) */
+        return SIZUKU_PAL_MIDNIGHT; /* τώ«Ώτώªήτώτώ(ΆΔ©­ªΐ«³) */
     case 45:
-        return SIZUKU_PAL_YUUGATA;  /* Ώ¦°χΌΌ(ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA;  /* ΆΔªή΅λ΅ΰ©­©­(ªΏ©­ª΄«ς) */
     case 46:
-        return SIZUKU_PAL_MIDNIGHT2; /* Ώ¦°χΌΌ(ΏΌΜλ) */
+        return SIZUKU_PAL_MIDNIGHT2; /* ΆΔªή΅λ΅ΰ©­©­(ΆΔ©­ªΐ«³) */
     case 47:
-        return SIZUKU_PAL_YUUGATA;  /* ³¬ΓΚ ΝΌΚύ */
+        return SIZUKU_PAL_YUUGATA;  /* τώτώªªª΄ ªΏ©­ª΄«ς */
     case 48:
-        return SIZUKU_PAL_MIDNIGHT; /* ³¬ΓΚ΅ΚΏΌΜλ) */
+        return SIZUKU_PAL_MIDNIGHT; /* τώτώªªª΄ΆΒª΄ΆΔ©­ªΐ«³) */
     case 49:
-        return SIZUKU_PAL_YUUGATA;  /* ΐΈΕΜ²ρΟ­²Ό(ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA;  /* ªΆ«φª©ªΐτώ«ΠªΑτώ©­(ªΏ©­ª΄«ς) */
     case 50:
-        return SIZUKU_PAL_MIDNIGHT; /* ΐΈΕΜ²ρΟ­²Ό(ΏΌΜλ) */
+        return SIZUKU_PAL_MIDNIGHT; /* ªΆ«φª©ªΐτώ«ΠªΑτώ©­(ΆΔ©­ªΐ«³) */
     case 51:
-        return SIZUKU_PAL_YUUGATA; /* ΒΞ°ι΄Ϋ¤ΞΓζ(ΝΌΚύ) */
+        return SIZUKU_PAL_YUUGATA; /* ª¤ªΒ΅λ«±ªφªετώªΒªª©Α(ªΏ©­ª΄«ς) */
     case 52:
-        return SIZUKU_PAL_NIGHT;   /* ΒΞ°ι΄Ϋ¤ΞΓζ(Μλ)   */
+        return SIZUKU_PAL_NIGHT;   /* ª¤ªΒ΅λ«±ªφªετώªΒªª©Α(ªΐ«³)   */
     case 53:
-        return SIZUKU_PAL_DARK;    /* ΙτΌΌ¤ν¤¦¤« (ΏΏ¤Γ°Ε)   */ 
+        return SIZUKU_PAL_DARK;    /* ª±«Τ©­©­τώ«Ώτώªήτώτώ (ΆΔΆΔτώªª΅λª©)   */ 
     case 54:
-	return SIZUKU_PAL_YUUGATA; /* Ε΄¤Ξ¤Θ¤Σ¤ιΚΔ(ΝΌΚύ)*/
+	return SIZUKU_PAL_YUUGATA; /* ª©ªφτώªΒτώª²τώªΡτώ«±ª΄ª£(ªΏ©­ª΄«ς)*/
     case 55:
-	return SIZUKU_PAL_YUUGATA; /* Ε΄¤Ξ¤Θ¤Σ¤ι³«(ΝΌΚύ)*/
+	return SIZUKU_PAL_YUUGATA; /* ª©ªφτώªΒτώª²τώªΡτώ«±τώτώ(ªΏ©­ª΄«ς)*/
     default:
         return -1;
     }
@@ -318,7 +319,7 @@ palmap(int no)
 }
 
 /*
- * ΗΨ·Κ²θΑό¥ν΅Ό¥Ι
+ * ª®©¬τώª΄τώ«²ª΅«δτώ«ΏΆΒ©­τώª±
  */
 void
 SizukuLoadBG(Lvns *lvns, int no)
@@ -340,9 +341,9 @@ SizukuLoadBG(Lvns *lvns, int no)
         lvnsimage_set_palette(lvns->background, pal_default, 16);
 #endif
     } else {
-        /* ΔΜΎο²θΑό */
+        /* ª£ªΐªσ«Ατώ«²ª΅«δ */
         LvnsLoadBackground(lvns, "MAX_S%02d.LFG", bgmap(no));
-        /* Ώ§ΚΡΉΉ½θΝύ */
+        /* ΆΔ΅ψª΄ªΠτώτώ©Ν«²ªΏ«ς */
 #ifndef USE_MGL
         if ((no = palmap(no)) >= 0)
             lvnsimage_set_palette2(lvns->background, sizuku_haikei_palette[no], 4);
@@ -355,7 +356,7 @@ SizukuLoadBG(Lvns *lvns, int no)
 }
 
 /*
- * Ό¶ ΔΜΎο¥Σ¥Έ¥ε¥Ά¥λ¥·΅Ό¥σ¥ν΅Ό¥Ι
+ * ©­Άω ª£ªΐªσ«ΑτώªΡτώ«φτώ«©τώτώτώ«³τώτώΆΒ©­τώ«Ρτώ«ΏΆΒ©­τώª±
  */
 void 
 SizukuLoadVisual(Lvns *lvns, int no)
@@ -389,7 +390,7 @@ SizukuLoadVisual(Lvns *lvns, int no)
 }
 
 /*
- * Ό¶ H¥Σ¥Έ¥ε¥Ά¥λ¥·΅Ό¥σ¥ν΅Ό¥Ι
+ * ©­Άω HτώªΡτώ«φτώ«©τώτώτώ«³τώτώΆΒ©­τώ«Ρτώ«ΏΆΒ©­τώª±
  */
 void
 SizukuLoadHVisual(Lvns *lvns, int no)
@@ -401,35 +402,35 @@ SizukuLoadHVisual(Lvns *lvns, int no)
 }
 
 /* 
- * Ό¶ ¥·¥Κ¥κ¥ª¤Ξ¥Ζ¥­¥Ή¥Θ¥ν΅Ό¥Ι 
+ * ©­Άω τώτώτώª΄τώ«΄τώΆμτώªΒτώ©΅τώτώτώτώª²τώ«ΏΆΒ©­τώª± 
  */
 void
 SizukuSetTextScenarioState(Lvns *lvns, int no)
 {
     SizukuState *state = (SizukuState*)lvns->system_state;
 
-    /* ΄ϋΖΙΎπΚσΕΠΟΏ */
+    /* ªφ«ε©΅ª±ªσ©Γª΄«Ρª©τώªΑΆΔ */
     if (!lvns->seen_mode && no >= state->seen_flag[lvns->scn_current]) {
         state->seen_flag[lvns->scn_current] = no+1;
-		lvns->seen = False;          /* Μ¤ΖΙ */
+		lvns->seen = False;          /* ªΐτώ©΅ª± */
         if (!lvns->force_skip)
-			lvns->skip      = False; /* ¥Ή¥­¥Γ¥Χ²ς½ό */
+			lvns->skip      = False; /* τώτώτώτώªªτώ΅ίτώ«Ò©Ν«δ */
 		lvns->fast_text = False;
     } else {
-		lvns->seen = True;          /* ΄ϋΖΙ */
+		lvns->seen = True;          /* ªφ«ε©΅ª± */
 		if (lvns->fast_when_seen)
-			lvns->fast_text = True; /* Έ«¤ΏΚΈ½ρ¤ΟΒ®¤―Ι½Ό¨¤Ή¤λ */
+			lvns->fast_text = True; /* «φτώτώΆΔª΄«φ©Ν«ΠτώªΑª¤ΆξτώΆ΄ª±©Ν©­«ήτώτώτώ«³ */
 	}
 }
 
 static
 LvnsCommandInfo command[] = {
-    { "select",  False },   /* Ό΅¤ΞΑªΒς»θ¤ή¤Η¤Θ¤Π¤Ή */
-    { "image",  False },    /* ²θΑόΙ½Ό¨             */
-    { "save",   False },    /* ¥Η΅Ό¥ΏΚέΒΈ     */
-    { "load",   False },    /* ¥Η΅Ό¥ΏΖΙ¤ίΉώ¤ί */
-    { "before", False },    /* Α°¤ΞΑªΒς»θ¤ή¤ΗΜα¤λ */
-    { "title",  False },    /* ¥Ώ¥¤¥Θ¥λ¤ΛΜα¤λ */
+    { "select",  False },   /* ©­ΆΒτώªΒª΅Άμª¤«Òτώ«²τώ©°τώª®τώª²τώτώτώτώ */
+    { "image",  False },    /* τώ«²ª΅«δª±©Ν©­«ή             */
+    { "save",   False },    /* τώª®ΆΒ©­τώΆΔª΄ªςª¤«φ     */
+    { "load",   False },    /* τώª®ΆΒ©­τώΆΔ©΅ª±τώ©Ξτώ©Πτώ©Ξ */
+    { "before", False },    /* ª΅΅λτώªΒª΅Άμª¤«Òτώ«²τώ©°τώª®ªΐ«΅τώ«³ */
+    { "title",  False },    /* τώΆΔτώτώτώª²τώ«³τώª³ªΐ«΅τώ«³ */
     { NULL,  False }
 };
 
@@ -473,18 +474,18 @@ SizukuExecCommand(Lvns *lvns, const char *command)
     } else if (!strcmp(command, "load")) {
         SizukuLoad(lvns);
     } else if (!strcmp(command, "before")) {
-        /* ΑªΒς»θ¤ΛΜα¤λ */
+        /* ª΅Άμª¤«Òτώ«²τώª³ªΐ«΅τώ«³ */
 		SizukuState *state = (SizukuState*)lvns->system_state;
         lvns->savepoint = lvns->selectpoint;
         memcpy(state->flag_save, state->flag_select, sizeof state->flag);
     } else if (!strcmp(command, "title")) {
-        /* ¥Ώ¥¤¥Θ¥λ¤ΛΜα¤λ */
+        /* τώΆΔτώτώτώª²τώ«³τώª³ªΐ«΅τώ«³ */
 		// SizukuToTitle(lvns);
     }
 }
 
 /*
- * ²ΎΑΫ VRAM ¤ΛΔΎΐά EUC ΚΈ»ϊΞσ¤ςΙΑ²θ
+ * τώªσª΅ªε VRAM τώª³ª£ªσªΆªδ EUC ª΄«φτώ«βªΒ«Ρτώ«Òª±ª΅τώ«²
  */
 #ifndef USE_MGL
 void
@@ -524,12 +525,15 @@ SizukuPutsVRAM(Lvns *lvns, int x, int y, const u_char *str, int idx)
     mglimage_draw_string(lvns->vram, x, y, str, color);
 }
 #endif
-
 #ifndef USE_MGL
 static void
 drawChar(Lvns *lvns, int x, int y, int code, int attr) 
 {
     u_char *data = lvns->leaf_font_data + (code - 1) * 24 * 3;
+    
+    //getChar(&ft_manager,code);
+    //u_char *data = ft_manager.bitmap_data;
+
     lvns->putPattern(lvns, x+1, y+1, SIZUKU_COL_BLACK, data);
     lvns->putPattern(lvns, x+2, y+1, SIZUKU_COL_BLACK, data);
     if (!attr)
@@ -632,11 +636,11 @@ static LvnsSystemState sizuku_state_base = {
 	SizukuDispHistory,
 
 #if !defined(USE_MGL) || defined(FONT_PLUS)
-    102, /* ¥­΅ΌΖώΞΟΒΤ¤Α */
-    103, /* ²ώ¥Ϊ΅Ό¥ΈΒΤ¤Α */
+    102, /* τώΆΒ©­©΅©ΠªΒªΑª¤ªΤτώª΅ */
+    103, /* τώ©ΠτώªβΆΒ©­τώ«φª¤ªΤτώª΅ */
 #else
-    1850, /* ¥­΅ΌΖώΞΟΒΤ¤Α */
-    1, /* ²ώ¥Ϊ΅Ό¥ΈΒΤ¤Α */
+    1850, /* τώΆΒ©­©΅©ΠªΒªΑª¤ªΤτώª΅ */
+    1, /* τώ©ΠτώªβΆΒ©­τώ«φª¤ªΤτώª΅ */
 #endif
 };
 

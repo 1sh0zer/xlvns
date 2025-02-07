@@ -10,20 +10,21 @@
  */
 
 /*
- * ¼¶ ¤·¤ª¤êÁªÂò¥á¥Ë¥å¡¼É½¼¨
+ * é›« ã—ãŠã‚Šé¸æŠãƒ¡ãƒ‹ãƒ¥ãƒ¼è¡¨ç¤º
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "sizuku.h"
 
 /* ------------------------------------------------------------ */
-/** ¥í¡¼¥É³ÎÇ§ÍÑ¥á¥Ë¥å¡¼ */
+/** ãƒ­ãƒ¼ãƒ‰ç¢ºèªç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 
 static MenuLine load_confirm_menu_line[] = {
-    MENULINE(4, "¥í¡¼¥É¤·¤Ş¤¹¡£", 0),
-    MENULINE(5, "¤è¤í¤·¤¤¤Ç¤¹¤«¡©", 0),
-    MENULINE(7, "¤Ï¤¤",1),
-    MENULINE(8, "¤¤¤¤¤¨", 2),
+    MENULINE(4, "Ğ—Ğ°Ğ³Ñ€ÑƒĞ·Ğ¸Ñ‚ÑŒ" , 0),
+    MENULINE(5, "Ğ’Ñ‹ ÑƒĞ²ĞµÑ€ĞµĞ½Ñ‹?" , 0),
+    MENULINE(7, "Ğ”Ğ°" , 1),
+    MENULINE(8, "ĞĞµÑ‚", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -34,13 +35,13 @@ static MenuData load_confirm_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ¥»¡¼¥Ö³ÎÇ§ÍÑ¥á¥Ë¥å¡¼ */
+/** ã‚»ãƒ¼ãƒ–ç¢ºèªç”¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 
 static MenuLine save_confirm_menu_line[] = {
-	MENULINE(4, "¥»¡¼¥Ö¤·¤Ş¤¹¡£", 0),
-    MENULINE(5, "¤è¤í¤·¤¤¤Ç¤¹¤«¡©", 0),
-    MENULINE(7, "¤Ï¤¤",1),
-    MENULINE(8, "¤¤¤¤¤¨", 2),
+    MENULINE(4, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½Ğ¸Ñ‚ÑŒ" , 0),
+    MENULINE(5, "Ğ’Ñ‹ ÑƒĞ²ĞµÑ€ĞµĞ½Ñ‹?" , 0),
+    MENULINE(7, "Ğ”Ğ°" , 1),
+    MENULINE(8, "ĞĞµÑ‚", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -51,13 +52,12 @@ static MenuData save_confirm_menu = {
 };
 
 /* ------------------------------------------------------------ */
-/** ½ªÎ»³ÎÇ§¥á¥Ë¥å¡¼ */
-
+/** çµ‚äº†ç¢ºèªãƒ¡ãƒ‹ãƒ¥ãƒ¼ */
 static MenuLine end_confirm_menu_line[] = {
-    MENULINE(4, "½ªÎ»¤·¤Ş¤¹¡£", 0),
-    MENULINE(5, "¤è¤í¤·¤¤¤Ç¤¹¤«¡©", 0),
-    MENULINE(7, "¤Ï¤¤", 1),
-    MENULINE(8, "¤¤¤¤¤¨", 2),
+    MENULINE(4, "Ğ’Ñ‹Ğ¹Ñ‚Ğ¸" , 0),
+    MENULINE(5, "Ğ’Ñ‹ ÑƒĞ²ĞµÑ€ĞµĞ½Ñ‹?" , 0),
+    MENULINE(7, "Ğ”Ğ°" , 1),
+    MENULINE(8, "ĞĞµÑ‚", 2),
 	MENULINE(0, NULL, 0),
 };
 
@@ -68,15 +68,15 @@ static MenuData end_confirm_menu = {
 };
 
 /* 
- * ¼¶¥á¥Ë¥å¡¼½èÍı
+ * é›«ãƒ¡ãƒ‹ãƒ¥ãƒ¼å‡¦ç†
  */
 static MenuLine sizuku_menu_line[] = {
-    MENULINE(3, "Ê¸»ú¤ò¾Ã¤¹",1),
-	MENULINE(4, "¥í¡¼¥É¤¹¤ë", 2),
-    MENULINE(5, "¥»¡¼¥Ö¤¹¤ë", 3),
-    MENULINE(6, "¥·¥Ê¥ê¥ª²óÁÛ", 4),
-    MENULINE(7, "°ì¤ÄÁ°¤ÎÁªÂò»è¤ËÌá¤ë", 5),
-    MENULINE(8, "¥²¡¼¥à½ªÎ»", 6),
+    MENULINE(3, "Ğ¡Ñ‚ĞµÑ€ĞµÑ‚ÑŒ Ñ‚ĞµĞºÑÑ‚", 1),
+	MENULINE(4, "Ğ—Ğ°Ğ³Ñ€ÑƒĞ·Ğ¸Ñ‚ÑŒ", 2),
+    MENULINE(5, "Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½Ğ¸Ñ‚ÑŒ", 3),
+    MENULINE(6, "Ğ’Ñ‹Ğ·Ğ¾Ğ² ÑÑ†ĞµĞ½Ğ°Ñ€Ğ¸Ñ", 4),
+    MENULINE(7, "Ğ’ĞµÑ€Ğ½ÑƒÑ‚ÑŒÑÑ Ğº Ğ¿Ñ€ĞµĞ´Ñ‹Ğ´ÑƒÑ‰ĞµĞ¼Ñƒ Ğ²Ğ°Ñ€Ğ¸Ğ°Ğ½Ñ‚Ñƒ", 5),
+    MENULINE(8, "ĞšĞ¾Ğ½ĞµÑ† Ğ¸Ğ³Ñ€Ñ‹", 6),
 	MENULINE(0, NULL, 0),
 };
 
@@ -87,17 +87,17 @@ SizukuMenuEngine(Lvns *lvns, int select)
     switch (select) {
 
     case 1:
-		/* ²èÁüÉ½¼¨¥â¡¼¥É */
+		/* ç”»åƒè¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰ */
 		LvnsImageMode(lvns);
         break;
 
     case 2:
-		/* ¥í¡¼¥É */
+		/* ãƒ­ãƒ¼ãƒ‰ */
 		switch (LvnsMenu(lvns, &load_confirm_menu, True)) {
 		case -1: /* cancel */
 			return 0;
 		case 1:
-			/* ¥í¡¼¥É½èÍı */
+			/* ãƒ­ãƒ¼ãƒ‰å‡¦ç† */
 			SizukuLoad(lvns);
 			LvnsClear(lvns, LVNS_EFFECT_WIPE_TTOB);
 			LvnsJump(lvns, LVNS_JUMP_RESTART);
@@ -107,12 +107,12 @@ SizukuMenuEngine(Lvns *lvns, int select)
 		break;
 
     case 3:
-        /* ¥»¡¼¥Ö */
+        /* ã‚»ãƒ¼ãƒ– */
 		switch (LvnsMenu(lvns, &save_confirm_menu, True)) {
 		case -1: /* cancel */
 			return 0;
 		case 1:
-			/* ¥»¡¼¥Ö½èÍı */
+			/* ã‚»ãƒ¼ãƒ–å‡¦ç† */
 			SizukuSave(lvns);
 		case 2:			
 			break;
@@ -120,19 +120,19 @@ SizukuMenuEngine(Lvns *lvns, int select)
 		break;
 
 	case 4:
-		/* ²óÁÛ¥â¡¼¥É */
+		/* å›æƒ³ãƒ¢ãƒ¼ãƒ‰ */
 		LvnsHistoryMode(lvns);
 		break;
 
     case 5:
-        /* ÁªÂò»è¤ËÌá¤ë */
+        /* é¸æŠè‚¢ã«æˆ»ã‚‹ */
         lvns->savepoint = lvns->selectpoint;
         memcpy(state->flag_save, state->flag_select, sizeof state->flag);
 		LvnsClear(lvns, LVNS_EFFECT_WIPE_TTOB);
 		LvnsJump(lvns, LVNS_JUMP_RESTART);
 
     case 6:
-        /* ¥¿¥¤¥È¥ë¤ËÌá¤ë */
+        /* ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹ */
 		switch (LvnsMenu(lvns, &end_confirm_menu, True)) {
 		case -1: /* cancel */
 			return 0;

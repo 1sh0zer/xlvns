@@ -9,8 +9,8 @@
  */
 
 /*
- * Lvns ÉÁ²è¥¨¥Õ¥§¥¯¥È½èÍı
- * ¾Ãµî/ÉÁ²è»ş¤Î¥¨¥Õ¥§¥¯¥È¤ò½èÍı¤¹¤ë¡£
+ * Lvns æç”»ã‚¨ãƒ•ã‚§ã‚¯ãƒˆå‡¦ç†
+ * æ¶ˆå»/æç”»æ™‚ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å‡¦ç†ã™ã‚‹ã€‚
  */
 
 #include <stdio.h>
@@ -28,7 +28,7 @@ set_waittime(Lvns *lvns, int time)
 }
 
 /*
- * ¥Ş¥¹¥¯¤Ë¤è¤ëÃÊ³¬É½¼¨
+ * ãƒã‚¹ã‚¯ã«ã‚ˆã‚‹æ®µéšè¡¨ç¤º
  */
 static int
 FadeMask(Lvns *lvns, int *state)
@@ -50,14 +50,14 @@ FadeMask(Lvns *lvns, int *state)
     LvnsWait(lvns, 1);
 
     if (++*state == 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¥Ş¥¹¥¯(¶ë·Á)¤Ë¤è¤ëÃÊ³¬É½¼¨
+ * ãƒã‚¹ã‚¯(çŸ©å½¢)ã«ã‚ˆã‚‹æ®µéšè¡¨ç¤º
  */
 static int
 FadeSquare(Lvns *lvns, int *state)
@@ -72,15 +72,15 @@ FadeSquare(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state == 31) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¥Û¥ï¥¤¥È¥¢¥¦¥È 
- * ²èÁü ¢ª Çò
+ * ãƒ‘ãƒ¬ãƒƒãƒˆãƒ›ãƒ¯ã‚¤ãƒˆã‚¢ã‚¦ãƒˆ 
+ * ç”»åƒ â†’ ç™½
  */
 static int
 WhiteOut(Lvns *lvns, int *state)
@@ -90,15 +90,15 @@ WhiteOut(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state > 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¥Û¥ï¥¤¥È¥¤¥ó 
- * Çò ¢ª ²èÁü 
+ * ãƒ‘ãƒ¬ãƒƒãƒˆãƒ›ãƒ¯ã‚¤ãƒˆã‚¤ãƒ³ 
+ * ç™½ â†’ ç”»åƒ 
  */
 static int
 WhiteIn(Lvns *lvns, int *state)
@@ -108,14 +108,14 @@ WhiteIn(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state > 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¾å¤«¤é²¼¤Ø¥ï¥¤¥×
+ * ä¸Šã‹ã‚‰ä¸‹ã¸ãƒ¯ã‚¤ãƒ—
  */
 static int
 WipeTtoB(Lvns *lvns, int *state)
@@ -131,14 +131,14 @@ WipeTtoB(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state == (HEIGHT / 16) + 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * º¸¤«¤é±¦¤Ø¥ï¥¤¥×
+ * å·¦ã‹ã‚‰å³ã¸ãƒ¯ã‚¤ãƒ—
  */
 static int
 WipeLtoR(Lvns *lvns, int *state)
@@ -154,14 +154,14 @@ WipeLtoR(Lvns *lvns, int *state)
     }
 
     if (++*state == 40 + 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- *¥Ş¥¹¥¯¥Ñ¥¿¡¼¥ó¤Ë¤è¤ëº¸¤«¤é±¦¤Ø¤Î¥ï¥¤¥×
+ *ãƒã‚¹ã‚¯ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ã‚ˆã‚‹å·¦ã‹ã‚‰å³ã¸ã®ãƒ¯ã‚¤ãƒ—
 */
 static int
 WipeMaskLtoR(Lvns *lvns, int *state)
@@ -179,14 +179,14 @@ WipeMaskLtoR(Lvns *lvns, int *state)
     }
 
     if (++*state == 40 + 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * É©·Á¤Ç¤Îº¸¤«¤é±¦¤Ø¤Î¥ï¥¤¥×
+ * è±å½¢ã§ã®å·¦ã‹ã‚‰å³ã¸ã®ãƒ¯ã‚¤ãƒ—
  */
 static int
 WipeSquareLtoR(Lvns *lvns, int *state)
@@ -204,14 +204,14 @@ WipeSquareLtoR(Lvns *lvns, int *state)
     }
 
     if (++*state == 20 + 31) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ²£¥¹¥é¥¤¥É
+ * æ¨ªã‚¹ãƒ©ã‚¤ãƒ‰
  */
 static int
 SlideLtoR(Lvns *lvns, int *state)
@@ -227,14 +227,14 @@ SlideLtoR(Lvns *lvns, int *state)
     LvnsWait(lvns, 1);
 
     if (++*state == 16) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /* 
- * ²óÅ¾¾Ãµî (³°Â¦¤«¤é)
+ * å›è»¢æ¶ˆå» (å¤–å´ã‹ã‚‰)
  */
 static Bool
 GURUGURUClear(Lvns *lvns, int *state)
@@ -306,14 +306,14 @@ GURUGURUClear(Lvns *lvns, int *state)
     }
 
     if (leny < 0) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ²óÅ¾ÉÁ²è (ÆâÂ¦¤«¤é)
+ * å›è»¢æç”» (å†…å´ã‹ã‚‰)
  */
 static Bool
 GURUGURUDisp(Lvns *lvns, int *state)
@@ -388,14 +388,14 @@ GURUGURUDisp(Lvns *lvns, int *state)
     }
 	
     if (y < 0) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ½ÄÊı¸ş¤Ë½Ì¤ß¤Ê¤¬¤é¾Ãµî
+ * ç¸¦æ–¹å‘ã«ç¸®ã¿ãªãŒã‚‰æ¶ˆå»
  */
 static int
 VertCompositionClear(Lvns *lvns, int *state)
@@ -405,7 +405,7 @@ VertCompositionClear(Lvns *lvns, int *state)
     y  = *state * 8;
     y2 = HEIGHT/2-y-1;
 
-    /* ÉÁ²è */
+    /* æç”» */
     lvns->clearWindowArea(lvns, 0, 0, WIDTH, y);
 #ifndef USE_MGL
     lvns->clearWindowArea(lvns, 0, HEIGHT-1-y, WIDTH, y);
@@ -421,14 +421,14 @@ VertCompositionClear(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state > HEIGHT/2/8) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ½ÄÊı¸ş¤Ë±ä¤Ó¤Ê¤¬¤éÉÁ²è
+ * ç¸¦æ–¹å‘ã«å»¶ã³ãªãŒã‚‰æç”»
  */
 static int
 VertCompositionDisp(Lvns *lvns, int *state)
@@ -437,7 +437,7 @@ VertCompositionDisp(Lvns *lvns, int *state)
 
     y  = *state * 8 + 1;
 
-    /* ÉÁ²è */
+    /* æç”» */
     for (i=0; i<y;i++) {
         int pos = i * (HEIGHT/2) / y;
         lvns->drawWindowArea(lvns, 0, pos, WIDTH, 1, 0, HEIGHT/2 - y + i + 1);
@@ -447,14 +447,14 @@ VertCompositionDisp(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state > HEIGHT/2/8) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /* 
- * º¸¤Ë¥¹¥¯¥í¡¼¥ë¤·¤Æ¾Ãµî
+ * å·¦ã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã¦æ¶ˆå»
  */
 static int
 LeftScrollClear(Lvns *lvns, int *state)
@@ -463,20 +463,20 @@ LeftScrollClear(Lvns *lvns, int *state)
 
     x  = *state * 8;
 
-    /* ÉÁ²è */
+    /* æç”» */
     lvns->clearWindowArea(lvns, (WIDTH-x), 0, 8, HEIGHT);
     lvns->drawWindowArea(lvns, x, 0, WIDTH-x, HEIGHT, x, 0);
     lvns->flushWindow(lvns);
 
     if (++*state > WIDTH/8) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /* 
- * º¸¤«¤é¥¹¥¯¥í¡¼¥ë¥¤¥ó
+ * å·¦ã‹ã‚‰ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¤ãƒ³
  */
 static int
 LeftScrollDisp(Lvns *lvns, int *state)
@@ -485,19 +485,19 @@ LeftScrollDisp(Lvns *lvns, int *state)
 
     x  = *state * 8;
 
-    /* ÉÁ²è */
+    /* æç”» */
     lvns->drawWindowArea(lvns, WIDTH-x, 0, x, HEIGHT, WIDTH-x, 0);
     lvns->flushWindow(lvns);
 
     if (++*state > WIDTH/8) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /* 
- * ¾å¤Ë¥¹¥¯¥í¡¼¥ë¤·¤Æ¾Ãµî
+ * ä¸Šã«ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã¦æ¶ˆå»
  */
 static int
 TopScrollClear(Lvns *lvns, int *state)
@@ -506,20 +506,20 @@ TopScrollClear(Lvns *lvns, int *state)
 
     y  = *state * 8;
 
-    /* ÉÁ²è */
+    /* æç”» */
     lvns->clearWindowArea(lvns, 0, (HEIGHT-y), WIDTH, y);
     lvns->drawWindowArea(lvns, 0, y, WIDTH, HEIGHT-y, 0, y);
     lvns->flushWindow(lvns);
 
     if (++*state > WIDTH/8) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /* 
- * ¾å¤«¤é¥¹¥¯¥í¡¼¥ë¥¤¥ó
+ * ä¸Šã‹ã‚‰ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã‚¤ãƒ³
  */
 static int
 TopScrollDisp(Lvns *lvns, int *state)
@@ -528,13 +528,13 @@ TopScrollDisp(Lvns *lvns, int *state)
 
     y  = *state * 8;
 
-    /* ÉÁ²è */
+    /* æç”» */
     lvns->clearWindowArea(lvns, 0, (HEIGHT-y), WIDTH, y);
     lvns->drawWindowArea(lvns, 0, HEIGHT-y, WIDTH, y, 0, HEIGHT-y);
     lvns->flushWindow(lvns);
 
     if (++*state > HEIGHT/8) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
@@ -565,14 +565,14 @@ SlantTile(Lvns *lvns, int *state)
     lvns->flushWindow(lvns);
 
     if (++*state > 12){
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ²èÌÌ¤ò¿¶Æ°¤µ¤»¤ë
+ * ç”»é¢ã‚’æŒ¯å‹•ã•ã›ã‚‹
  */
 static int
 Vibrato(Lvns *lvns, int *state)
@@ -584,7 +584,7 @@ Vibrato(Lvns *lvns, int *state)
                           VIB);
     if (++*state > 15){
         lvns->setDispOffset(lvns, 0, 0, VIB);
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
@@ -592,7 +592,7 @@ Vibrato(Lvns *lvns, int *state)
 }
 
 /*
- * ±ß¤Ç¾Ãµî
+ * å††ã§æ¶ˆå»
  */
 static int
 CircleClear(Lvns *lvns, int *state)
@@ -606,14 +606,14 @@ CircleClear(Lvns *lvns, int *state)
 
     ++*state;
     if (r <= 0) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¥é¥ó¥À¥à¹ÔÉ½¼¨
+ * ãƒ©ãƒ³ãƒ€ãƒ è¡Œè¡¨ç¤º
  */
 #ifndef USE_MGL
 #define LINE 480
@@ -681,7 +681,7 @@ RandomRaster(Lvns *lvns, int *state)
     lvns->flushWindowArea(lvns, 0, y, WIDTH, 1);
 
     if (++*state > LINE){
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
@@ -689,8 +689,8 @@ RandomRaster(Lvns *lvns, int *state)
 #undef LINE
 
 /*
- * ¥Ñ¥ì¥Ã¥È¥Õ¥§¡¼¥É¥¢¥¦¥È
- * to_latitude ¤ÎÃÍ¤Ş¤Ç°Å¤¯¤¹¤ë
+ * ãƒ‘ãƒ¬ãƒƒãƒˆãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
+ * to_latitude ã®å€¤ã¾ã§æš—ãã™ã‚‹
  */
 Bool
 Darken(Lvns *lvns, int to_latitude, int diff)
@@ -704,15 +704,15 @@ Darken(Lvns *lvns, int to_latitude, int diff)
     lvns->flushWindow(lvns);
 	
     if (lvns->latitude == to_latitude) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¥Ñ¥ì¥Ã¥È¥Õ¥§¡¼¥É¥¤¥ó 
- * to_latitude ¤ÎÃÍ¤Ş¤ÇÌÀ¤ë¤¯¤¹¤ë
+ * ãƒ‘ãƒ¬ãƒƒãƒˆãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ 
+ * to_latitude ã®å€¤ã¾ã§æ˜ã‚‹ãã™ã‚‹
  */
 static Bool
 Lighten(Lvns *lvns, int to_latitude, int diff)
@@ -726,14 +726,14 @@ Lighten(Lvns *lvns, int to_latitude, int diff)
     lvns->flushWindow(lvns);
 	
     if (lvns->latitude == to_latitude) {
-        return True;                  /* ½èÍı½ªÎ» */
+        return True;                  /* å‡¦ç†çµ‚äº† */
     } else {
         return False;
     }
 }
 
 /*
- * ¥¨¥Õ¥§¥¯¥È½èÍı¼Â¹Ô
+ * ã‚¨ãƒ•ã‚§ã‚¯ãƒˆå‡¦ç†å®Ÿè¡Œ
  */
 static Bool
 DispEffect(Lvns *lvns, LvnsEffectType effect, int *state)
@@ -796,13 +796,13 @@ DispEffect(Lvns *lvns, LvnsEffectType effect, int *state)
         return RandomRaster(lvns, state);
 		
     default:
-		dprintf((stderr, "Ì¤¼ÂÁõ¤Î¥¨¥Õ¥§¥¯¥È¤Ç¤¹\n"));
+		dprintf((stderr, "æœªå®Ÿè£…ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã§ã™\n"));
         return True;
     }
 }
 
 /*
- * ¥¨¥Õ¥§¥¯¥È½èÍı¼Â¹Ô
+ * ã‚¨ãƒ•ã‚§ã‚¯ãƒˆå‡¦ç†å®Ÿè¡Œ
  */
 static Bool
 ClearEffect(Lvns *lvns, LvnsEffectType effect, int *state)
@@ -876,7 +876,7 @@ ClearEffect(Lvns *lvns, LvnsEffectType effect, int *state)
         return RandomRaster(lvns, state);
 		
     default:
-		dprintf((stderr, "Ì¤¼ÂÁõ¤Î¥¨¥Õ¥§¥¯¥È¤Ç¤¹\n"));
+		dprintf((stderr, "æœªå®Ÿè£…ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã§ã™\n"));
         return True;
     }
 }
@@ -891,10 +891,10 @@ LvnsClearLow(Lvns *lvns, LvnsEffectType effect)
     case LVNS_EFFECT_VERTCOMPOSITION:
     case LVNS_EFFECT_LEFT_SCROLL:
     case LVNS_EFFECT_TOP_SCROLL:
-		/* ¸½ºß¤ÎÉÁ²èÆâÍÆ¤òÍøÍÑ */
+		/* ç¾åœ¨ã®æç”»å†…å®¹ã‚’åˆ©ç”¨ */
 		break;
     default:
-		/* ¡Ö¹õ¡×¤Ë¤è¤ëºÆÉÁ²è¤È¤·¤Æ½èÍı */
+		/* ã€Œé»’ã€ã«ã‚ˆã‚‹å†æç”»ã¨ã—ã¦å‡¦ç† */
         lvnsimage_clear(lvns->vram);
         break;
     }
@@ -925,14 +925,14 @@ LvnsDispLow(Lvns *lvns, LvnsEffectType effect)
 {
 	int state = 0;
 
-	// ¥¨¥Õ¥§¥¯¥È¤Î½é´ü²½
+	// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®åˆæœŸåŒ–
     switch (effect) {
-    case LVNS_EFFECT_FADE_PALETTE:  /* ÆÈ¼«¥Ñ¥ì¥Ã¥ÈÀßÄê */
+    case LVNS_EFFECT_FADE_PALETTE:  /* ç‹¬è‡ªãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š */
 		lvns->latitude = 0;
 		break;
     default:
 #if 0
-      /* ¤³¤³¤Ç NULL ¤òÀßÄê¤¹¤ë¤È LvnsSetNextBackEffect ¤¬Æ°¤«¤Ê¤¤ */
+      /* ã“ã“ã§ NULL ã‚’è¨­å®šã™ã‚‹ã¨ LvnsSetNextBackEffect ãŒå‹•ã‹ãªã„ */
       		LvnsSetBackEffect(lvns, NULL);
 #endif
         lvns->setPaletteMulti(lvns, lvns->latitude);
@@ -1033,26 +1033,26 @@ const char*
 LvnsEffectName(LvnsEffectType type)
 {
     static const char *effect_type[] = {
-        "Ì¤ÃÎ",
-        "²¿¤â¤·¤Ê¤¤",
-        "ÄÌ¾ïÉ½¼¨",
-        "¥Ş¥¹¥¯¥Õ¥§¡¼¥É",
-        "¾å¤«¤é¥ï¥¤¥×",
-        "º¸¤«¤é¥ï¥¤¥×",
-        "Palette ¥Õ¥§¡¼¥É",
-        "Palette ¥Û¥ï¥¤¥È¥¢¥¦¥È",
-        "º¸¤«¤é¥ï¥¤¥×(¥Ş¥¹¥¯)",
-        "¤Ò¤··Á¢¡¥Õ¥§¡¼¥É",
-        "¤Ò¤··Á¢¡º¸¥ï¥¤¥×",
-        "º¸¤«¤é½Ä¥¹¥é¥¤¥É",
-        "¼Ğ¤º¤ì²£¥â¥¶¥¤¥¯¥¹¥é¥¤¥É",
-        "¤°¤ë¤°¤ë",
-        "½ÄÊı¸ş¤Ç¤Ï¤µ¤ß¤³¤ß",
-        "Ãæ¿´Êı¸ş¤Ë¤Á¤¸¤à",
-        "º¸¥¹¥¯¥í¡¼¥ë",
-        "¾å¥¹¥¯¥í¡¼¥ë",
-        "¥é¥ó¥À¥à¹ÔÉ½¼¨",
-        "·ì¤¬¤À¤é¤À¤é"
+        "æœªçŸ¥",
+        "ä½•ã‚‚ã—ãªã„",
+        "é€šå¸¸è¡¨ç¤º",
+        "ãƒã‚¹ã‚¯ãƒ•ã‚§ãƒ¼ãƒ‰",
+        "ä¸Šã‹ã‚‰ãƒ¯ã‚¤ãƒ—",
+        "å·¦ã‹ã‚‰ãƒ¯ã‚¤ãƒ—",
+        "Palette ãƒ•ã‚§ãƒ¼ãƒ‰",
+        "Palette ãƒ›ãƒ¯ã‚¤ãƒˆã‚¢ã‚¦ãƒˆ",
+        "å·¦ã‹ã‚‰ãƒ¯ã‚¤ãƒ—(ãƒã‚¹ã‚¯)",
+        "ã²ã—å½¢â—†ãƒ•ã‚§ãƒ¼ãƒ‰",
+        "ã²ã—å½¢â—†å·¦ãƒ¯ã‚¤ãƒ—",
+        "å·¦ã‹ã‚‰ç¸¦ã‚¹ãƒ©ã‚¤ãƒ‰",
+        "æ–œãšã‚Œæ¨ªãƒ¢ã‚¶ã‚¤ã‚¯ã‚¹ãƒ©ã‚¤ãƒ‰",
+        "ãã‚‹ãã‚‹",
+        "ç¸¦æ–¹å‘ã§ã¯ã•ã¿ã“ã¿",
+        "ä¸­å¿ƒæ–¹å‘ã«ã¡ã˜ã‚€",
+        "å·¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«",
+        "ä¸Šã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«",
+        "ãƒ©ãƒ³ãƒ€ãƒ è¡Œè¡¨ç¤º",
+        "è¡€ãŒã ã‚‰ã ã‚‰"
     };
     return effect_type[type];
 }

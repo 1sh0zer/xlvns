@@ -39,7 +39,7 @@
 
 #define APPLICATIONCLASS "XLvns"
 
-/* WM Protocol DELETE Õ— */
+/* WM Protocol DELETE Áî® */
 Atom            wm_protocols[2];
 
 /* options */
@@ -64,7 +64,7 @@ static void signal_handler(int sig) {
 }
 
 /* 
- * WM §´§È§ŒΩ™ŒªºıÕ˝
+ * WM „Åã„Çâ„ÅÆÁµÇ‰∫ÜÂèóÁêÜ
  */
 void
 Delete(Widget w, XEvent * e, String * p, Cardinal * n)
@@ -83,17 +83,17 @@ static XtActionsRec actions[] = {
     {"menu", CreateMenu},
 };
 
-/* TOP Widget Õ— translations */
+/* TOP Widget Áî® translations */
 String          translations =
 "<Message>WM_PROTOCOLS: delete()";
 
-/* LvnsCore Õ— translations */
+/* LvnsCore Áî® translations */
 String          translations_core =
    "<Btn2Down>: menu()";
 
 #ifdef XVIDMODE
 /*
- * •·•À•Â°º§´§È∏∆§”Ω–§∑Õ—
+ * „É°„Éã„É•„Éº„Åã„ÇâÂëº„Å≥Âá∫„ÅóÁî®
  */
 
 static void
@@ -110,11 +110,11 @@ ClearGrab(Widget w, XtPointer dat, XtPointer call)
 }
 
 /* ------------------------------------------------------------------- 
- * •∑•π•∆•‡•·•À•Â°º
+ * „Ç∑„Çπ„ÉÜ„É†„É°„Éã„É•„Éº
  */
 
 /*
- * •·•À•Â°º«À¥˛Õ—•≥°º•Î•–•√•Ø
+ * „É°„Éã„É•„ÉºÁ†¥Ê£ÑÁî®„Ç≥„Éº„É´„Éê„ÉÉ„ÇØ
  */
 static void
 destroyMenu(Widget w, XtPointer dat, XtPointer call)
@@ -123,7 +123,7 @@ destroyMenu(Widget w, XtPointer dat, XtPointer call)
 }
 
 /*
- * •◊•Ì•∞•È•‡Ω™ŒªÕ—•≥°º•Î•–•√•Ø
+ * „Éó„É≠„Ç∞„É©„É†ÁµÇ‰∫ÜÁî®„Ç≥„Éº„É´„Éê„ÉÉ„ÇØ
  */
 static void
 endProgram(Widget w, XtPointer dat, XtPointer call)
@@ -132,7 +132,7 @@ endProgram(Widget w, XtPointer dat, XtPointer call)
 }
 
 /*
- * •–°º•∏•Á•Ûæ Û≤ËÃÃÕ—•≥°º•Î•–•√•Ø
+ * „Éê„Éº„Ç∏„Éß„É≥ÊÉÖÂ†±ÁîªÈù¢Áî®„Ç≥„Éº„É´„Éê„ÉÉ„ÇØ
  */
 static void
 aboutProgram(Widget w, XtPointer dat, XtPointer call)
@@ -140,7 +140,7 @@ aboutProgram(Widget w, XtPointer dat, XtPointer call)
 }
 
 /*
- * •≥•ﬁ•Û•…µØ∆∞Õ—•≥°º•Î•–•√•Ø
+ * „Ç≥„Éû„É≥„ÉâËµ∑ÂãïÁî®„Ç≥„Éº„É´„Éê„ÉÉ„ÇØ
  */
 static void
 execCommand(Widget w, XtPointer dat, XtPointer call)
@@ -149,10 +149,10 @@ execCommand(Widget w, XtPointer dat, XtPointer call)
 }
 
 /*
- * •·•À•Â°º∫Ó¿Æ
+ * „É°„Éã„É•„Éº‰ΩúÊàê
  *
- * Widget §À∏Ω∫ﬂÕ¯Õ—≤ƒ«Ω§ •≥•ﬁ•Û•…§ÚÃ‰§§πÁ§Ô§ª§∆
- * ∆∞≈™§À•·•À•Â°º§Ú∫∆πΩ¿Æ§π§Î
+ * Widget „Å´ÁèæÂú®Âà©Áî®ÂèØËÉΩ„Å™„Ç≥„Éû„É≥„Éâ„ÇíÂïè„ÅÑÂêà„Çè„Åõ„Å¶
+ * ÂãïÁöÑ„Å´„É°„Éã„É•„Éº„ÇíÂÜçÊßãÊàê„Åô„Çã
  */
 static void
 CreateMenu(Widget widget, XEvent *e, String *p, Cardinal *n)
@@ -164,7 +164,7 @@ CreateMenu(Widget widget, XEvent *e, String *p, Cardinal *n)
 
     menu = XtVaCreatePopupShell("menu", simpleMenuWidgetClass, top, NULL);
 
-    /* •≥•ﬁ•Û•……Ù ¨ */
+    /* „Ç≥„Éû„É≥„ÉâÈÉ®ÂàÜ */
     if ((info = LvnsCoreGetCommandList(lcw)) != NULL) {
         XtVaCreateManagedWidget("line", smeLineObjectClass, menu, NULL);
 	while (info->command != NULL) {
@@ -176,19 +176,19 @@ CreateMenu(Widget widget, XEvent *e, String *p, Cardinal *n)
 	}
     }
 
-#ifdef XVIDMODE
-    if (XtFullScreenShellWidgetEnableScreenMode(top)) {
-        XtVaCreateManagedWidget("line", smeLineObjectClass, menu, NULL);
-        if (XtFullScreenShellWidgetScreenMode(top)) {
-            w = XtVaCreateManagedWidget("window", smeBSBObjectClass, menu, NULL);
-            XtAddCallback(w, XtNcallback, ScreenWindowCallback, top);
-        } else {
-            w = XtVaCreateManagedWidget("screen", smeBSBObjectClass, menu, NULL);
-            XtAddCallback(w, XtNcallback, ClearGrab, top);
-            XtAddCallback(w, XtNcallback, ScreenWindowCallback, top);
-        }
-    }
-#endif
+// #ifdef XVIDMODE
+//     if (XtFullScreenShellWidgetEnableScreenMode(top)) {
+//         XtVaCreateManagedWidget("line", smeLineObjectClass, menu, NULL);
+//         if (XtFullScreenShellWidgetScreenMode(top)) {
+//             w = XtVaCreateManagedWidget("window", smeBSBObjectClass, menu, NULL);
+//             XtAddCallback(w, XtNcallback, ScreenWindowCallback, top);
+//         } else {
+//             w = XtVaCreateManagedWidget("screen", smeBSBObjectClass, menu, NULL);
+//             XtAddCallback(w, XtNcallback, ClearGrab, top);
+//             XtAddCallback(w, XtNcallback, ScreenWindowCallback, top);
+//         }
+//     }
+// #endif
 
 #if 0
    /* ABOUT */
@@ -197,38 +197,38 @@ CreateMenu(Widget widget, XEvent *e, String *p, Cardinal *n)
     XtAddCallback(w, XtNcallback, aboutProgram, NULL);
 #endif
 
-    /* Ω™Œª */
+    /* ÁµÇ‰∫Ü */
     XtVaCreateManagedWidget("line", smeLineObjectClass, menu, NULL);
     w = XtVaCreateManagedWidget("end", smeBSBObjectClass, menu, NULL);
     XtAddCallback(w, XtNcallback, endProgram, NULL);
 
-    /* POPDOWN §π§Îª˛§À§œÀıæ√°ƒ */
-#ifdef XVIDMODE
-    if (!XtFullScreenShellWidgetScreenMode(top)) {
-#endif
+    /* POPDOWN „Åô„ÇãÊôÇ„Å´„ÅØÊäπÊ∂à‚Ä¶ */
+// #ifdef XVIDMODE
+//     if (!XtFullScreenShellWidgetScreenMode(top)) {
+// #endif
         XtAddCallback(menu, XtNpopdownCallback, ClearGrab, top);
-#ifdef XVIDMODE
-    }
-#endif
+// #ifdef XVIDMODE
+//     }
+// #endif
     XtAddCallback(menu, XtNpopdownCallback, destroyMenu, (XtPointer)menu);
 
-    /* •·•À•Â°º§Ú∞‹∆∞ */
+    /* „É°„Éã„É•„Éº„ÇíÁßªÂãï */
     {
         String param = "menu";
         XtCallActionProc(menu, "XawPositionSimpleMenu", e, &param, 1);
     }
 
     XtPopupSpringLoaded(menu);
-#ifdef XVIDMODE
-    if (!XtFullScreenShellWidgetScreenMode(top)) {
-#endif
+// #ifdef XVIDMODE
+//     if (!XtFullScreenShellWidgetScreenMode(top)) {
+// #endif
         XtGrabPointer(top,
                       True, 0,
                       GrabModeAsync, GrabModeAsync, 
                       XtWindow(top), None, CurrentTime);
-#ifdef XVIDMODE
-    }
-#endif
+// #ifdef XVIDMODE
+//     }
+// #endif
 }
 
 typedef void Sigfunc(int);
@@ -256,7 +256,7 @@ main(int argc, char **argv)
 
 	srandom((unsigned)getpid());
 
-    /*  ›¬∏Õ—•«•£•Ï•Ø•»•Í§Œ•¡•ß•√•Ø */
+    /* ‰øùÂ≠òÁî®„Éá„Ç£„É¨„ÇØ„Éà„É™„ÅÆ„ÉÅ„Çß„ÉÉ„ÇØ */
     {
         struct stat sb;
         snprintf(savepath, sizeof savepath, "%s/%s", getenv("HOME"), ".xlvns");
@@ -276,7 +276,7 @@ main(int argc, char **argv)
 	if (!(datapath = getenv("XLVNSPACKDIR")))
 		datapath = XLVNSPACKDIR;
 
-    /* •–°º•∏•Á•Û…Ωº® */
+    /* „Éê„Éº„Ç∏„Éß„É≥Ë°®Á§∫ */
     fprintf(stderr, VERSION); 
 
 #ifdef XVIDMODE
