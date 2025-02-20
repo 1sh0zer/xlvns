@@ -73,7 +73,6 @@ OBJS =  filemap_unix.o\
 	LvnsCore.o\
 	openal_manager.o\
 	mp3play.o\
-	message_hook.o\
 	freetype_manager.o\
 	$(XVIDOBJ) XtMain.o
 

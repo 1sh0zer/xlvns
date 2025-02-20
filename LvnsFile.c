@@ -17,10 +17,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Lvns.h"
-#include "message_hook.h"
-
-MHook mhook;
-
 /* 単純データロード */
 u_char *
 LvnsLoadData(Lvns *lvns, const char *name, size_t *size)
@@ -88,8 +84,6 @@ LvnsLoadScenario(Lvns *lvns, int scn, int blk)
 
     /* シナリオファイル名決定 */
     sprintf(name, LVNS->scn_name, scn);
-    
-    sprintf(mhook.name, "translation/SCN%03d_text.txt", scn);
 
     dprintf((stderr, "scenario: %s %d\n", name, blk));
 

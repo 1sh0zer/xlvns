@@ -18,7 +18,6 @@
 #include <string.h>
 #include "sizuku.h"
 #include "leafpack.h"
-#include "message_hook.h"
 
 /* うねうね sin_effect.h */
 extern LvnsBackEffectInfo lvnsSinEffect;
@@ -512,8 +511,6 @@ SizukuStartScenario(Lvns *lvns)
     /* シナリオ状態復活 */
     LvnsLoadScenario(lvns, lvns->savepoint.scn, lvns->savepoint.blk);
     lvns->scn_cur = lvns->scn_cur_head + lvns->savepoint.scn_offset;
-    LoadFile(lvns);
-
 	LvnsClearText(lvns);
 
     /* 画面状態の復活 */
@@ -630,7 +627,6 @@ SizukuMain(Lvns *lvns)
         case 0x04: /* ジャンプ命令 */
             dprintf((stderr, "[ジャンプ SCN%03d.DAT - Block %d]\n", c[1], c[2]));
             LvnsLoadScenario(lvns, c[1], c[2]);
-            LoadFile(lvns);
 			break;
 			
         case 0x05: /* 選択肢 */
@@ -879,7 +875,6 @@ SizukuDispHistory(Lvns *lvns, int pos)
 	LvnsDispWindow(lvns);
 	if (pos >= 0 && pos < lvns->history_pos) {
 		LvnsLoadScenario(lvns, lvns->history[pos].scn, lvns->history[pos].blk);
-        LoadFile(lvns);
 		SizukuDispText(lvns, LvnsGetScenarioText(lvns, lvns->history[pos].no), True);
 	}
 
